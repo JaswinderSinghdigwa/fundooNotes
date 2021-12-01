@@ -1,16 +1,21 @@
 const userService = require('../service/service.js')
 const validation = require('../utilities/validation');
+const helper = require('../utilities/helper');
+
+
 class Controller {
   register = (req, res) => {
     try {
+      let password = helper.hashedPassword(req.body.password);
+      console.log("pswd", password);
       const user = {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         email: req.body.email,
-        password: req.body.password
+        password: password
       };
 
-      const registerValidation = validation.authRegister.validate(user)
+      const registerValidation = validation.ValidationRegister.validate(user);
       if (registerValidation.error) {
         return res.status(400).send({
           success: false,
@@ -34,6 +39,7 @@ class Controller {
         }
       });
     } catch (error) {
+      // console.log("error >>>>>", error);
       return res.status(500).json({
         success: false, message: "Error While Registering",
         data: null,
@@ -43,12 +49,13 @@ class Controller {
 
   login = (req, res) => {
     try {
+      let paswd = (req.body.password);
       const userLoginInfo = {
         email: req.body.email,
-        password: req.body.password
+        password: paswd
       };
 
-      const loginValidation = validation.authLogin.validate(userLoginInfo);
+      const loginValidation = validation.ValidationLogin.validate(userLoginInfo);
       if (loginValidation.error) {
         res.status(400).send({
           success: false,
@@ -63,12 +70,16 @@ class Controller {
             message: 'Unable to login. Please enter correct info',
             error
           });
+        } else {
+          console.log("data", data);
+          let paswordResult = helper.comparePassword(paswd, data.password);
+          console.log("paswordResult", paswordResult);
+          return res.status(200).json({
+            success: true,
+            message: 'User logged in successfully',
+            data: data
+          });
         }
-        return res.status(200).json({
-          success: true,
-          message: 'User logged in successfully',
-          data: data
-        });
       });
     }
     catch (error) {

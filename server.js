@@ -5,8 +5,6 @@ require('dotenv').config();
 // create express app
 const app = express();
 
-// app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }))
 
@@ -15,8 +13,6 @@ app.use(express.json())
 
 // Configuring the database
 const dbConfig = require('./config/database.config.js');
-
-
 
 //mongoose.Promise = global.Promise;
 
