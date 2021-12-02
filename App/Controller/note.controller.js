@@ -1,6 +1,6 @@
 const userService = require('../service/service.js')
 const validation = require('../utilities/validation');
-
+const jwt = require('jsonwebtoken');
 
 class Controller {
   register = (req, res) => {
@@ -12,7 +12,7 @@ class Controller {
         password: req.body.password
       };
 
-      const registerValidation = validation.ValidationRegister.validate(user);
+      const registerValidation = validation.Validation(user);
       if (registerValidation.error) {
         return res.status(400).send({
           success: false,
@@ -58,19 +58,19 @@ class Controller {
         });
       }
 
-      userService.userLogin(userLoginInfo, (error, data) => {
+      userService.userLogin(userLoginInfo, (error, dataToken) => {
         if (error) {
+          console.log("error error", error);
           return res.status(400).json({
             success: false,
             message: 'Unable to login. Please enter correct info',
             error
           });
         } else {
-          console.log("data", data);
           return res.status(200).json({
             success: true,
             message: 'User logged in successfully',
-            data: data
+            token: dataToken,
           });
         }
       });
@@ -84,5 +84,22 @@ class Controller {
       });
     }
   };
+
+  dashboardControl = (req, res, next) => {
+    console.log("bearerHeader", req.token);
+    jwt.verify(req.token, process.env.JWT_SECRET, function (err, data) {
+      if (err) {
+        console.log("error", err);
+        res.sendStatus(403);
+      } else {
+        console.log("bearerHeader");
+        next();
+        res.json({
+          text: "this is protected",
+          data: data
+        });
+      }
+    });
+  }
 }
 module.exports = new Controller();

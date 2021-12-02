@@ -13,10 +13,15 @@ class userService {
     }
     userLogin = (InfoLogin, callback) => {
         userModel.loginModel(InfoLogin, (error, data) => {
-          let passwordResult = helper.comparePassword(InfoLogin.password, data.password);
-          console.log("paswordResult", passwordResult);
           if (data) {
-            return callback(null, data);
+            let passwordResult = helper.comparePassword(InfoLogin.password, data.password);
+            if(!passwordResult){
+            return callback("soe error ocured !!!", null);
+              
+            }else{
+              const token = helper.token(data);
+              return callback(null, token);
+            }
           } else {
             return callback(error, null);
           }
