@@ -1,4 +1,6 @@
 const userModel = require('../models/note.model.js')
+const helper = require('../utilities/helper');
+
 class userService {
     registerUser = (user, callback) => {
         userModel.registerUser(user, (err, data) => {
@@ -11,6 +13,8 @@ class userService {
     }
     userLogin = (InfoLogin, callback) => {
         userModel.loginModel(InfoLogin, (error, data) => {
+          let passwordResult = helper.comparePassword(InfoLogin.password, data.password);
+          console.log("paswordResult", passwordResult);
           if (data) {
             return callback(null, data);
           } else {

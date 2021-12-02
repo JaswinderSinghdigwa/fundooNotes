@@ -1,18 +1,15 @@
 const userService = require('../service/service.js')
 const validation = require('../utilities/validation');
-const helper = require('../utilities/helper');
 
 
 class Controller {
   register = (req, res) => {
     try {
-      let password = helper.hashedPassword(req.body.password);
-      console.log("pswd", password);
       const user = {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         email: req.body.email,
-        password: password
+        password: req.body.password
       };
 
       const registerValidation = validation.ValidationRegister.validate(user);
@@ -39,7 +36,7 @@ class Controller {
         }
       });
     } catch (error) {
-      // console.log("error >>>>>", error);
+      console.log(error);
       return res.status(500).json({
         success: false, message: "Error While Registering",
         data: null,
@@ -49,12 +46,10 @@ class Controller {
 
   login = (req, res) => {
     try {
-      let paswd = (req.body.password);
       const userLoginInfo = {
         email: req.body.email,
-        password: paswd
+        password: req.body.password
       };
-
       const loginValidation = validation.ValidationLogin.validate(userLoginInfo);
       if (loginValidation.error) {
         res.status(400).send({
@@ -72,8 +67,6 @@ class Controller {
           });
         } else {
           console.log("data", data);
-          let paswordResult = helper.comparePassword(paswd, data.password);
-          console.log("paswordResult", paswordResult);
           return res.status(200).json({
             success: true,
             message: 'User logged in successfully',
@@ -83,6 +76,7 @@ class Controller {
       });
     }
     catch (error) {
+      console.log(error);
       return res.status(500).json({
         success: false,
         message: 'Error while Login', error,

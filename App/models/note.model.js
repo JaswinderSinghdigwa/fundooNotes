@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const helper = require('../utilities/helper');
 
 const userSchema = mongoose.Schema({
     firstName: {
@@ -33,18 +34,19 @@ class userModel {
         newUser.lastName = userDetails.lastName;
         newUser.email = userDetails.email;
         newUser.password = userDetails.password;
-
-        newUser.save()
-            .then(data => {
+            let password = helper.hashedPassword(userDetails.password)
+            newUser.password = password;
+            newUser.save((error, data) => {
+              if (error) {
+                callback(error, null);
+              } else {
                 callback(null, data);
-            })
-            .catch(err => {
-                callback({ message: "Error while Storing User Details in DataBase" }, null);
-            })
+              }
+            });
     };
 
     loginModel = (loginData, callBack) => {
-        //To find a user email in the database
+        //To find a user email in the databas
         user.findOne({ email: loginData.email }, (error, data) => {
             if (error) {
                 return callBack(error, null);
