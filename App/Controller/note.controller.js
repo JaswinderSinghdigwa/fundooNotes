@@ -1,6 +1,5 @@
 const userService = require('../service/service.js')
 const validation = require('../utilities/validation');
-const jwt = require('jsonwebtoken');
 
 class Controller {
   register = (req, res) => {
@@ -84,22 +83,5 @@ class Controller {
       });
     }
   };
-
-  dashboardControl = (req, res, next) => {
-    console.log("bearerHeader", req.token);
-    jwt.verify(req.token, process.env.JWT_SECRET, function (err, data) {
-      if (err) {
-        console.log("error", err);
-        res.sendStatus(403);
-      } else {
-        console.log("bearerHeader");
-        next();
-        res.json({
-          text: "this is protected",
-          data: data
-        });
-      }
-    });
-  }
 }
 module.exports = new Controller();

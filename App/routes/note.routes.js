@@ -6,6 +6,4 @@ module.exports = (app) => {
   app.post('/register', controller.register);
   // api for login
   app.post('/login', controller.login);
-  // api for dashboard
-  app.get('/api/dahsboard',controller.ensuretoken,helper.dashboardControl);
 } 
