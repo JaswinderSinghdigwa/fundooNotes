@@ -1,0 +1,25 @@
+{
+    "user": {
+        "correctRegister": {
+            "firstName": "Vikram",
+            "lastName": "Singh",
+            "email": "vikra98@gmail.com",
+            "password": "Vikrm123@&"
+        },
+        "registrationWithImproperDetails": {
+            "firstName": "Ramvilash",
+            "email": "ramvilash@gmail.com",
+            "password": "ramvilash$123#"
+        },
+        "registrationWithOutEmail": {
+            "firstName": "sonu",
+            "lastName": "sn",
+            "password": "sonu$123"
+        },
+        "registrationWithOutfirstName": {
+            "lastName": "Sn",
+            "email": "manis@gmail.com",
+            "password": "srinivas$123"
+        }
+    }
+}
