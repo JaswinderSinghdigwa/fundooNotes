@@ -1,5 +1,7 @@
+var Promise = require("bluebird");
+const bcrypt = Promise.promisifyAll(require("bcrypt"));
 const mongoose = require('mongoose');
-const helper = require('../utilities/helper');
+
 
 const userSchema = mongoose.Schema({
     firstName: {
@@ -14,7 +16,7 @@ const userSchema = mongoose.Schema({
         type: String,
         required: true,
         unique: true
-    },          
+    },
     password: {
         type: String,
         required: true,
@@ -23,8 +25,22 @@ const userSchema = mongoose.Schema({
     {
         timestamps: true
     })
+userSchema.pre('save', async function (next) { // this line
+    const user = this;
+    console.log(user);
+    console.log(user.isModified);
+    console.log(user.isModified());
+    console.log(user.isModified('password'));
+    if (!user.isModified('password')) return next();
+    console.log('just before saving...');
+    user.password = await bcrypt.hashSync(user.password, 8);
+    console.log('just before saving...');
+    next();
+});
 
 const user = mongoose.model('User', userSchema);
+
+
 
 class userModel {
 
@@ -34,15 +50,14 @@ class userModel {
         newUser.lastName = userDetails.lastName;
         newUser.email = userDetails.email;
         newUser.password = userDetails.password;
-            let password = helper.hashedPassword(userDetails.password)
-            newUser.password = password;
-            newUser.save((error, data) => {
-              if (error) {
+
+        newUser.save((error, data) => {
+            if (error) {
                 callback(error, null);
-              } else {
+            } else {
                 callback(null, data);
-              }
-            });
+            }
+        });
     };
 
     loginModel = (loginData, callBack) => {

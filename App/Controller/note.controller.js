@@ -1,6 +1,5 @@
 const userService = require('../service/service.js')
 const validation = require('../utilities/validation');
-
 class Controller {
   register = (req, res) => {
     try {
@@ -11,7 +10,8 @@ class Controller {
         password: req.body.password
       };
 
-      const registerValidation = validation.Validation(user);
+
+      const registerValidation = validation.ValidationRegister.validate(user)
       if (registerValidation.error) {
         return res.status(400).send({
           success: false,
@@ -35,7 +35,6 @@ class Controller {
         }
       });
     } catch (error) {
-      console.log(error);
       return res.status(500).json({
         success: false, message: "Error While Registering",
         data: null,
@@ -49,6 +48,7 @@ class Controller {
         email: req.body.email,
         password: req.body.password
       };
+
       const loginValidation = validation.ValidationLogin.validate(userLoginInfo);
       if (loginValidation.error) {
         res.status(400).send({
@@ -57,25 +57,22 @@ class Controller {
         });
       }
 
-      userService.userLogin(userLoginInfo, (error, dataToken) => {
+      userService.userLogin(userLoginInfo, (error, data) => {
         if (error) {
-          console.log("error error", error);
           return res.status(400).json({
             success: false,
             message: 'Unable to login. Please enter correct info',
             error
           });
-        } else {
-          return res.status(200).json({
-            success: true,
-            message: 'User logged in successfully',
-            token: dataToken,
-          });
         }
+        return res.status(200).json({
+          success: true,
+          message: 'User logged in successfully',
+          data: data
+        });
       });
     }
     catch (error) {
-      console.log(error);
       return res.status(500).json({
         success: false,
         message: 'Error while Login', error,

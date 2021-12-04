@@ -3,13 +3,13 @@
         "correctRegister": {
             "firstName": "Jawinder ",
             "lastName": "Singh",
-            "email": "findjassi121212@gmail.com",
+            "email": "findjassi1212@gmail.com",
             "password": "Jaswinder@12345"
         },
         "registrationWithImproperDetails": {
             "firstName": "Hardeep Singh",
-            "email": "hardipsingh@gmail.com",
-            "password": "Hardip#123@"
+            "email": "hardipsinghgmail.com",
+            "password": "Hardip@123#"
         },
         "registrationWithOutEmail": {
             "firstName": "Jaspreet",
@@ -17,7 +17,7 @@
             "password": "jaspreetKaur@123"
         },
         "registrationWithOutfirstName": {
-            "lastName": "jaskrit",
+            "lastName": "ja",
             "email": "jaskrit@gmail.com",
             "password": "Jaskrit123"
         },
@@ -26,8 +26,8 @@
             "password": "12345678.Aa"
         },
         "loginWithImproperDetails": {
-            "email": "Jswer16@gmail.com",
-            "password": "12345678.Aa"
+            "email": "Jswer46@gmail.com",
+            "password": "12378.Aa"
         }
     }
 }
