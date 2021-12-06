@@ -45,6 +45,12 @@ const user = mongoose.model('User', userSchema);
 
 class userModel {
 
+    /**
+     * @description: Adds data to the database
+     * @param {*} userDetails
+     * @param {*} callback
+     */
+
     registerUser = (userDetails, callback) => {
         const newUser = new user();
         newUser.firstName = userDetails.firstName;
@@ -61,6 +67,12 @@ class userModel {
         });
     };
 
+     /**
+     * @description: Authenticates user information from the database
+     * @param {*} loginData
+     * @
+     * */
+    
     loginModel = (loginData, callBack) => {
         //To find a user email in the databas
         user.findOne({ email: loginData.email }, (error, data) => {

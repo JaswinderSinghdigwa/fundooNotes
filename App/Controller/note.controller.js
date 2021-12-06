@@ -2,6 +2,14 @@ const userService = require('../service/service.js')
 const validation = require('../utilities/validation');
 const { logger } = require('../../logger/logger');
 class Controller {
+
+  /**
+     * @description : Function created to add user into database
+     * @param {*} req
+     * @param {*} res
+     * @returns
+     */
+
   register = (req, res) => {
     try {
       const user = {
@@ -45,6 +53,12 @@ class Controller {
     }
   }
 
+   /**
+     * @description: Function created to verify user login info
+     * @param {*} req
+     * @param {*} res
+     */
+    
   login = (req, res) => {
     try {
       const userLoginInfo = {
