@@ -1,6 +1,7 @@
 var Promise = require("bluebird");
 const bcrypt = Promise.promisifyAll(require("bcrypt"));
 const mongoose = require('mongoose');
+const { logger } = require('../../logger/logger')
 
 
 const userSchema = mongoose.Schema({
@@ -25,7 +26,7 @@ const userSchema = mongoose.Schema({
     {
         timestamps: true
     })
-userSchema.pre('save', async function (next) { // this line
+    userSchema.pre('save', async function (next) { // this line
     const user = this;
     console.log(user);
     console.log(user.isModified);
@@ -64,10 +65,13 @@ class userModel {
         //To find a user email in the databas
         user.findOne({ email: loginData.email }, (error, data) => {
             if (error) {
+                logger.error('Find error while loggin user');
                 return callBack(error, null);
             } else if (!data) {
+                logger.error('Invalid User');
                 return callBack("Invalid Credential", null);
             } else {
+                logger.info('Email id found');
                 return callBack(null, data);
             }
         });

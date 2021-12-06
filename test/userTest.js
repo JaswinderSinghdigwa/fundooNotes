@@ -5,18 +5,8 @@ chai.use(chaiHttp);
 const registrationData = require('./user.json');
 const loginData = require('./user.json');
 const faker = require('faker');
-var expect = require('chai').expect;
 
 chai.should();
-
-describe('Math', function() {
-  describe('#abs()', function() {
-      it('should return positive value of given negative number', function() {
-        console.log("sCSCCCSC",Math.abs(-5));
-          expect(Math.abs(-5)).to.be.equal(4);
-      });
-  });
-});
 
 describe('registartion', () => {
   it('givenRegistrationDetails_whenProper_shouldSaveInDB', (done) => {

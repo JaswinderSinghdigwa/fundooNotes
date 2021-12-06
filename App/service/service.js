@@ -18,11 +18,14 @@ class userService {
       if (data) {
         let passwordResult = helper.comparePassword(InfoLogin.password, data.password);
         if (!passwordResult) {
+          logger.error(error);
           return callback("some error ocured !!!", null);
         }
         const token = helper.token(data);
+        logger.info(' token generated ');
         return callback(null, token);
       } else {
+        logger.error(error);
         return callback(error, null);
       }
     });
