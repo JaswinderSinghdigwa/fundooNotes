@@ -3,7 +3,6 @@ const bcrypt = Promise.promisifyAll(require("bcrypt"));
 const mongoose = require('mongoose');
 const { logger } = require('../../logger/logger')
 
-
 const userSchema = mongoose.Schema({
     firstName: {
         type: String,
@@ -26,9 +25,8 @@ const userSchema = mongoose.Schema({
     {
         timestamps: true
     })
-    userSchema.pre('save', async function (next) { // this line
+userSchema.pre('save', async function (next) { // this line
     const user = this;
-    console.log(user);
     console.log(user.isModified);
     console.log(user.isModified());
     console.log(user.isModified('password'));
@@ -40,8 +38,6 @@ const userSchema = mongoose.Schema({
 });
 
 const user = mongoose.model('User', userSchema);
-
-
 
 class userModel {
 
@@ -67,12 +63,12 @@ class userModel {
         });
     };
 
-     /**
-     * @description: Authenticates user information from the database
-     * @param {*} loginData
-     * @
-     * */
-    
+    /**
+    * @description: Authenticates user information from the database
+    * @param {*} loginData
+    * @
+    * */
+
     loginModel = (loginData, callBack) => {
         //To find a user email in the databas
         user.findOne({ email: loginData.email }, (error, data) => {
@@ -88,5 +84,24 @@ class userModel {
             }
         });
     }
+
+    /**
+    * @description mongoose function for forgot password
+    * @param {*} email
+    * @param {*} callback
+    */
+
+    forgotPassword = (data, callback) => {
+        User.findOne({ email: data.email }, (err, data) => {
+            if (err || !data) {
+                logger.error('User with email id doesnt exists');
+                return callback('User with email id doesnt exists', null);
+            } else {
+                return callback(null, data);
+            }
+        });
+    };
+
 }
+
 module.exports = new userModel();

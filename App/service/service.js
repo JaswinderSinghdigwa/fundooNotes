@@ -1,5 +1,7 @@
 const userModel = require('../models/note.model.js')
 const helper = require('../utilities/helper');
+const { logger } = require('../../logger/logger');
+const nodemailer = require('../utilities/nodemailer.js');
 
 class userService {
 
@@ -25,7 +27,7 @@ class userService {
      * @param {*} loginData
      * @param {*} authenticateUser
      */
-    
+
   userLogin = (InfoLogin, callback) => {
     userModel.loginModel(InfoLogin, (error, data) => {
       if (data) {
@@ -43,5 +45,17 @@ class userService {
       }
     });
   }
+
+forgotPassword = (email, callback) => {
+  userModel.forgotPassword(email, (error, data) => {
+    if (error || !data) {
+      logger.error(error);
+      return callback(error, null);
+    } else {
+      return callback(null, nodemailer.sendEmail(data));
+    }
+  });
 }
+}
+
 module.exports = new userService();

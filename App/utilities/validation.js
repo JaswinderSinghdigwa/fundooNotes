@@ -18,7 +18,7 @@ class Validation {
 
 
           email: Joi.string()
-            .pattern(new RegExp('^[a-zA-z]{3}([+-_ .]*[a-zA-Z0-9]+)*[@][a-zA-z0-9]+(.[a-z]{2,3})*$'))
+            .pattern(new RegExp('^[a-z0-9.+-]+@[A-Za-z0-9.-]+.[A-Za-z]{2,6}$'))
             .required(),
 
           password: Joi.string()

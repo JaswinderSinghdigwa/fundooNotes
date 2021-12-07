@@ -6,7 +6,6 @@ const swaggerDocument = require('./swagger/swagger.json');
 // create express app
 const app = express();
 
-// parse requests of content-type - application/x-www-form-urlencoded
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // parse requests of content-type - application/json
@@ -14,8 +13,6 @@ app.use(express.json())
 
 // Configuring the database
 const dbConfig = require('./config/database.config.js');
-
-//mongoose.Promise = global.Promise;
 
 // Connecting to the database
 

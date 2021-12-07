@@ -1,15 +1,30 @@
+/**
+ * @module       utilities
+ * @file         helper.js
+ * @description  it contains the Hashing and Token
+ * @author       Jaswinder Singh
+ */
+
 var bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 class helperClass {
-  token = (data) => {
-    const dataForToken = {
+  token = (data ,callback) => {
+    jwt.sign(
+      {
       id: data._id,
       firstName: data.firstName,
       lastName: data.lastName,
       email: data.email
-    };
-    return jwt.sign({ dataForToken }, process.env.JWT_SECRET, { expiresIn: '10H' });
+    },
+    process.env.JWT_SECRET,
+      (err, data) => {
+        if (err) {
+          return callback(err, null);
+        } else {
+          return callback(null, data);
+        }
+      });
   }
 
   comparePassword = (password, result) => {
