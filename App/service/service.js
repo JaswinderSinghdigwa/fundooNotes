@@ -46,6 +46,12 @@ class userService {
     });
   }
 
+  /** 
+    @description: Function gets data from model, whether it is valid or not.
+     * @param {*} user
+     * @param {*} callback
+     */
+
 forgotPassword = (email, callback) => {
   userModel.forgotPassword(email, (error, data) => {
     if (error || !data) {
