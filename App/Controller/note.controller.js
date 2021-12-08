@@ -99,7 +99,6 @@ class Controller {
       });
     }
   };
-}
 
  /**
      * description controller function for forgot password
@@ -115,12 +114,14 @@ class Controller {
       };
       userService.forgotPassword(userCredential, (error, result) => {
         if (error) {
+          console.log("error",error);
           return res.status(400).send({
             success: false,
             message: 'failed to send email',
             error
           });
-        } else {
+        }else {
+          console.log("resd",result);  
           return res.status(200).send({
             success: true,
             message: 'Email sent successfully',
@@ -129,6 +130,7 @@ class Controller {
         }
       });
     } catch (error) {
+      console.log("333333",error);
       logger.error('Internal server error');
       return res.status(500).send({
         success: false,
@@ -137,5 +139,5 @@ class Controller {
       });
     }
   }
-
+}
 module.exports = new Controller();

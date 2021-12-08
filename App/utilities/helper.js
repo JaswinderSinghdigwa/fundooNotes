@@ -9,24 +9,15 @@ var bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 class helperClass {
-  token = (data ,callback) => {
-    jwt.sign(
-      {
-      id: data._id,
+  token = (data) => {
+    const dataForToken = {
       firstName: data.firstName,
       lastName: data.lastName,
       email: data.email
-    },
-    process.env.JWT_SECRET,
-      (err, data) => {
-        if (err) {
-          return callback(err, null);
-        } else {
-          return callback(null, data);
-        }
-      });
+    };
+    return jwt.sign({ dataForToken }, process.env.JWT_SECRET, { expiresIn: '1H' });
   }
-
+  
   comparePassword = (password, result) => {
     return bcrypt.compareSync(password, result);
   }

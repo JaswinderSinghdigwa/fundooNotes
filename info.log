@@ -12,3 +12,13 @@
 {"level":"info","message":" token generated ","timestamp":"2021-12-06T11:58:48.462Z"}
 {"level":"info","message":"Email id found","timestamp":"2021-12-06T12:23:42.272Z"}
 {"level":"info","message":" token generated ","timestamp":"2021-12-06T12:23:42.311Z"}
+{"level":"info","message":"User registered","timestamp":"2021-12-07T11:04:01.259Z"}
+{"level":"info","message":"User registered","timestamp":"2021-12-07T11:48:42.770Z"}
+{"level":"error","message":"Internal server error","timestamp":"2021-12-07T11:49:46.607Z"}
+{"level":"error","message":"Internal server error","timestamp":"2021-12-07T11:51:29.589Z"}
+{"level":"error","message":"Internal server error","timestamp":"2021-12-07T11:54:15.408Z"}
+{"level":"error","message":"Internal server error","timestamp":"2021-12-07T11:54:49.277Z"}
+{"level":"info","message":"Email id found","timestamp":"2021-12-07T12:13:31.070Z"}
+{"level":"info","message":" token generated ","timestamp":"2021-12-07T12:13:31.108Z"}
+{"level":"info","message":"Email id found","timestamp":"2021-12-07T12:15:06.109Z"}
+{"level":"info","message":" token generated ","timestamp":"2021-12-07T12:15:06.145Z"}

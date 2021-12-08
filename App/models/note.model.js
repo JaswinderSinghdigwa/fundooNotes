@@ -30,10 +30,9 @@ userSchema.pre('save', async function (next) { // this line
     console.log(user.isModified);
     console.log(user.isModified());
     console.log(user.isModified('password'));
-    if (!user.isModified('password')) return next();
-    console.log('just before saving...');
+    if (!user.isModified('password')) 
+    return next();
     user.password = await bcrypt.hashSync(user.password, 8);
-    console.log('just before saving...');
     next();
 });
 
@@ -92,16 +91,16 @@ class userModel {
     */
 
     forgotPassword = (data, callback) => {
-        User.findOne({ email: data.email }, (err, data) => {
+        user.findOne({ email: data.email }, (err, data) => {
             if (err || !data) {
                 logger.error('User with email id doesnt exists');
                 return callback('User with email id doesnt exists', null);
             } else {
+                console.log("22222",data);
                 return callback(null, data);
             }
         });
     };
-
 }
 
 module.exports = new userModel();
