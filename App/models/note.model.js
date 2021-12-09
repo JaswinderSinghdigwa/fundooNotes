@@ -30,8 +30,8 @@ userSchema.pre('save', async function (next) { // this line
     console.log(user.isModified);
     console.log(user.isModified());
     console.log(user.isModified('password'));
-    if (!user.isModified('password')) 
-    return next();
+    if (!user.isModified('password'))
+        return next();
     user.password = await bcrypt.hashSync(user.password, 8);
     next();
 });
@@ -96,7 +96,7 @@ class userModel {
                 logger.error('User with email id doesnt exists');
                 return callback('User with email id doesnt exists', null);
             } else {
-                console.log("22222",data);
+                console.log("22222", data);
                 return callback(null, data);
             }
         });

@@ -53,12 +53,12 @@ class Controller {
     }
   }
 
-   /**
-     * @description: Function created to verify user login info
-     * @param {*} req
-     * @param {*} res
-     */
-    
+  /**
+    * @description: Function created to verify user login info
+    * @param {*} req
+    * @param {*} res
+    */
+
   login = (req, res) => {
     try {
       const userLoginInfo = {
@@ -100,12 +100,12 @@ class Controller {
     }
   };
 
- /**
-     * description controller function for forgot password
-     * @param {*} req
-     * @param {*} res
-     * @returns
-     */
+  /**
+      * description controller function for forgot password
+      * @param {*} req
+      * @param {*} res
+      * @returns
+      */
 
   forgotPassword = (req, res) => {
     try {
@@ -114,14 +114,14 @@ class Controller {
       };
       userService.forgotPassword(userCredential, (error, result) => {
         if (error) {
-          console.log("error",error);
+          console.log("error", error);
           return res.status(400).send({
             success: false,
             message: 'failed to send email',
             error
           });
-        }else {
-          console.log("resd",result);  
+        } else {
+          console.log("resd", result);
           return res.status(200).send({
             success: true,
             message: 'Email sent successfully',
@@ -130,7 +130,7 @@ class Controller {
         }
       });
     } catch (error) {
-      console.log("333333",error);
+      console.log("333333", error);
       logger.error('Internal server error');
       return res.status(500).send({
         success: false,
@@ -140,4 +140,57 @@ class Controller {
     }
   }
 }
+
+  /**
+      * description controller function for Reset password
+      * @param {*} req
+      * @param {*} res
+      * @returns
+      */
+
+
+resetPassword = (req, res) => {
+  try {
+    const userData = {
+      token: req.body.token,
+      password: req.body.password
+    };
+
+    const resetVlaidation = validation.validateReset.validate(userData);
+    if (resetVlaidation.error) {
+      logger.error('Invalid password');
+      res.status(422).send({
+        success: false,
+        message: 'Invalid password'
+      });
+      return;
+    }
+
+    userService.resetPassword(userData, (error, userData) => {
+      if (error) {
+        logger.error(error);
+        return res.status(400).send({
+          message: error,
+          success: false
+        });
+      } else {
+        logger.info('Password reset succesfully');
+        return res.status(200).json({
+          success: true,
+          message: 'Password reset succesfully',
+          data: userData
+        });
+      }
+    });
+  } catch (error) {
+    logger.error('Internal server error');
+    return res.status(500).send({
+      success: false,
+      message: 'Internal server error',
+      data: null
+    });
+  }
+}
+}
+
 module.exports = new Controller();

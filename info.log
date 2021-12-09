@@ -24,3 +24,8 @@
 {"level":"info","message":" token generated ","timestamp":"2021-12-07T12:15:06.145Z"}
 {"level":"info","message":"Email id found","timestamp":"2021-12-08T10:50:58.836Z"}
 {"level":"info","message":" token generated ","timestamp":"2021-12-08T10:50:58.889Z"}
+{"level":"error","message":"User with email id doesnt exists","timestamp":"2021-12-08T13:10:16.760Z"}
+{"level":"error","message":"User with email id doesnt exists","timestamp":"2021-12-08T13:10:16.771Z"}
+{"level":"info","message":"User registered","timestamp":"2021-12-08T13:10:29.852Z"}
+{"level":"info","message":"Email id found","timestamp":"2021-12-08T13:10:51.931Z"}
+{"level":"info","message":" token generated ","timestamp":"2021-12-08T13:10:52.020Z"}

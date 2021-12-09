@@ -22,7 +22,6 @@ describe('registartion', () => {
       .post('/register')
       .send(registerfaker)
       .end((err, res) => {
-
         if (err) {
           console.log('Please check details again and re-enter the details with proper format');
           done()
@@ -41,7 +40,6 @@ describe('registartion', () => {
       .post('/register')
       .send(registartionDetails)
       .end((err, res) => {
-        console.log('Please 0000000',err);
         if (err) {
           // done();
           return done(err);
