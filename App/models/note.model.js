@@ -101,6 +101,20 @@ class userModel {
             }
         });
     };
+
+
+    resetPassword = async (userData, callback) => {
+        const hashPass = bcrypt.hashSync(userData.password, 10);
+        const data = await User.findOne({ email: userData.email });
+        User.findByIdAndUpdate(data.id, { firstName: data.firstName, lastName: data.lastName, password: hashPass }, { new: true }, (error, data) => {
+          if (error) {
+            logger.error(error);
+            return callback(error, null);
+          } else {
+            return callback(null, data);
+          }
+        });
+      };
 }
 
 module.exports = new userModel();
