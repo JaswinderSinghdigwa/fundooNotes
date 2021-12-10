@@ -2,7 +2,7 @@
  * @module       utilities
  * @file         helper.js
  * @description  it contains the Hashing and Token
- * @author       Jaswinder Singh
+ * @author       Jaswinder Singh digwa
  */
 
 var bcrypt = require('bcrypt');
@@ -19,7 +19,7 @@ class helperClass {
       }
     });
   }
-  
+
   token = (data) => {
     const dataForToken = {
       firstName: data.firstName,
