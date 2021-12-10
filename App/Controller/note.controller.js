@@ -107,21 +107,37 @@ class Controller {
       * @returns
       */
 
-  forgotPassword = (req, res) => {
+  /**
+     * description controller function for forgot password
+     * @param {*} req
+     * @param {*} res
+     * @returns
+     */
+
+   forgotPassword = (req, res) => {
     try {
       const userCredential = {
         email: req.body.email
       };
+      const validationforgotPassword = validation.validationforgotPassword.validate(userCredential);
+
+      if (validationforgotPassword.error) {
+        logger.error('Wrong Input Validations');
+        return res.status(400).send({
+          success: false,
+          message: 'Wrong Input Validations',
+          data: validationforgotPassword
+        });
+      }
+
       userService.forgotPassword(userCredential, (error, result) => {
         if (error) {
-          console.log("error", error);
           return res.status(400).send({
             success: false,
             message: 'failed to send email',
             error
           });
         } else {
-          console.log("resd", result);
           return res.status(200).send({
             success: true,
             message: 'Email sent successfully',
@@ -130,7 +146,7 @@ class Controller {
         }
       });
     } catch (error) {
-      console.log("333333", error);
+      console.log("11111",error);
       logger.error('Internal server error');
       return res.status(500).send({
         success: false,
@@ -139,58 +155,51 @@ class Controller {
       });
     }
   }
-}
 
-  /**
-      * description controller function for Reset password
-      * @param {*} req
-      * @param {*} res
-      * @returns
-      */
+  resetPassword=(req, res) => {
+    try {
+      const userData = {
+        email: req.body.email,
+        newPassword: req.body.newPassword,
+        code:req.body.code
+      };
 
+      // const resetVlaidation = validation.validateReset.validate(userData);
+      // if (resetVlaidation.error) {
+      //   logger.error('Invalid password');
+      //   res.status(422).send({
+      //     success: false,
+      //     message: 'Invalid password'
+      //   });
+      //   return;
+      // }
 
-resetPassword = (req, res) => {
-  try {
-    const userData = {
-      token: req.body.token,
-      password: req.body.password
-    };
-
-    const resetVlaidation = validation.validateReset.validate(userData);
-    if (resetVlaidation.error) {
-      logger.error('Invalid password');
-      res.status(422).send({
-        success: false,
-        message: 'Invalid password'
+      userService.resetPassword(userData, (error, userData) => {
+        if (error) {
+          logger.error(error);
+          return res.status(400).send({
+            message: error,
+            success: false
+          });
+        } else {
+          logger.info('Password reset succesfully');
+          return res.status(200).json({
+            success: true,
+            message: 'Password reset succesfully',
+            data: userData
+          });
+        }
       });
-      return;
+    } catch (error) {
+      console.log("3333",error);
+      logger.error('Internal server error');
+      return res.status(500).send({
+        success: false,
+        message: 'Internal server error',
+        data: null
+      });
     }
-
-    userService.resetPassword(userData, (error, userData) => {
-      if (error) {
-        logger.error(error);
-        return res.status(400).send({
-          message: error,
-          success: false
-        });
-      } else {
-        logger.info('Password reset succesfully');
-        return res.status(200).json({
-          success: true,
-          message: 'Password reset succesfully',
-          data: userData
-        });
-      }
-    });
-  } catch (error) {
-    logger.error('Internal server error');
-    return res.status(500).send({
-      success: false,
-      message: 'Internal server error',
-      data: null
-    });
   }
-}
 }
 
 module.exports = new Controller();

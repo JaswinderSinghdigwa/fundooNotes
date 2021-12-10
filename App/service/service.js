@@ -14,7 +14,6 @@ class userService {
   registerUser = (user, callback) => {
     userModel.registerUser(user, (err, data) => {
       if (err) {
-        console.log("error->service", err);
         callback(err, null);
       } else {
         callback(null, data);
@@ -52,26 +51,28 @@ class userService {
      * @param {*} callback
      */
 
-forgotPassword = (email, callback) => {
-  userModel.forgotPassword(email, (error, data) => {
-    if (error || !data) {
-      console.log("error",error);
-      logger.error(error);
-      return callback(error, null);
-    } else {
-      return callback(null, nodemailer.sendEmail(data));
+    forgotPassword = (email, callback) => {
+      userModel.forgotPassword(email, (error, data) => {
+        if (error) {
+          logger.error(error);
+          return callback(error, null);
+        } else {
+          console.log("333",error);
+          return callback(null, nodemailer.sendEmail(data));
+        }
+      });
     }
-  });
-}
 
-resetPassword = (userData, callback) => {
-  if (error) {
-    logger.error(error);
-    return callback(error, null);
-  } else {
-    return callback(null, data);
-  }
-});
+    resetPassword = (userData, callback) => {
+      userModel.resetPassword(userData, (error, data) => {
+        if (error) {
+          logger.error(error);
+          return callback(error, null);
+        } else {
+          return callback(null, data);
+        }
+      });
+}
 }
 
 module.exports = new userService();

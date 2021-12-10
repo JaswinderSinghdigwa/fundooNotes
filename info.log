@@ -29,3 +29,28 @@
 {"level":"info","message":"User registered","timestamp":"2021-12-08T13:10:29.852Z"}
 {"level":"info","message":"Email id found","timestamp":"2021-12-08T13:10:51.931Z"}
 {"level":"info","message":" token generated ","timestamp":"2021-12-08T13:10:52.020Z"}
+{"level":"info","message":"User registered","timestamp":"2021-12-09T17:56:03.494Z"}
+{"level":"error","message":"Wrong Input Validations","timestamp":"2021-12-09T17:59:33.735Z"}
+{"level":"error","message":"Wrong Input Validations","timestamp":"2021-12-09T17:59:35.994Z"}
+{"level":"info","message":"User registered","timestamp":"2021-12-10T06:42:22.761Z"}
+{"level":"info","message":"User registered","timestamp":"2021-12-10T06:44:21.456Z"}
+{"level":"info","message":"Email id found","timestamp":"2021-12-10T06:44:42.389Z"}
+{"level":"info","message":" token generated ","timestamp":"2021-12-10T06:44:42.421Z"}
+{"level":"info","message":"User registered","timestamp":"2021-12-10T06:48:12.407Z"}
+{"level":"info","message":"Email id found","timestamp":"2021-12-10T06:48:42.477Z"}
+{"level":"info","message":" token generated ","timestamp":"2021-12-10T06:48:42.508Z"}
+{"level":"error","message":"User with email id doesnt exists","timestamp":"2021-12-10T07:08:39.049Z"}
+{"level":"error","message":"User with email id doesnt exists","timestamp":"2021-12-10T07:08:39.051Z"}
+{"level":"info","message":"User registered","timestamp":"2021-12-10T07:09:01.566Z"}
+{"level":"info","message":"Email id found","timestamp":"2021-12-10T07:09:29.483Z"}
+{"level":"info","message":" token generated ","timestamp":"2021-12-10T07:09:29.520Z"}
+{"level":"error","message":"Internal server error","timestamp":"2021-12-10T07:25:35.177Z"}
+{"level":"error","message":"Internal server error","timestamp":"2021-12-10T07:25:43.182Z"}
+{"level":"error","message":"Internal server error","timestamp":"2021-12-10T07:26:14.053Z"}
+{"level":"error","message":"Internal server error","timestamp":"2021-12-10T07:55:36.809Z"}
+{"level":"error","message":"Internal server error","timestamp":"2021-12-10T08:24:18.767Z"}
+{"level":"error","message":"Internal server error","timestamp":"2021-12-10T08:25:04.408Z"}
+{"level":"error","message":"Internal server error","timestamp":"2021-12-10T08:25:19.312Z"}
+{"level":"error","message":"Internal server error","timestamp":"2021-12-10T08:25:32.985Z"}
+{"level":"error","message":"Internal server error","timestamp":"2021-12-10T08:26:00.202Z"}
+{"level":"info","message":"Password reset succesfully","timestamp":"2021-12-10T08:37:10.286Z"}

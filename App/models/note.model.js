@@ -2,6 +2,8 @@ var Promise = require("bluebird");
 const bcrypt = Promise.promisifyAll(require("bcrypt"));
 const mongoose = require('mongoose');
 const { logger } = require('../../logger/logger')
+const Otp = require('../models/otp.model')
+const utilites= require('../utilities/helper')
 
 const userSchema = mongoose.Schema({
     firstName: {
@@ -42,10 +44,9 @@ class userModel {
 
     /**
      * @description: Adds data to the database
-     * @param {*} userDetails
-     * @param {*} callback
+     * @param {object} userDetails
+     * @param {function} callback
      */
-
     registerUser = (userDetails, callback) => {
         const newUser = new user();
         newUser.firstName = userDetails.firstName;
@@ -65,7 +66,7 @@ class userModel {
     /**
     * @description: Authenticates user information from the database
     * @param {*} loginData
-    * @
+    * @param {mongoose method} findone
     * */
 
     loginModel = (loginData, callBack) => {
@@ -85,36 +86,49 @@ class userModel {
     }
 
     /**
-    * @description mongoose function for forgot password
-    * @param {*} email
-    * @param {*} callback
-    */
-
-    forgotPassword = (data, callback) => {
+     * @description mongoose function for forgot password
+     * @param {*} email
+     * @param {*} callback
+     */
+     forgotPassword = (data, callback) => {
         user.findOne({ email: data.email }, (err, data) => {
-            if (err || !data) {
-                logger.error('User with email id doesnt exists');
-                return callback('User with email id doesnt exists', null);
-            } else {
-                console.log("22222", data);
-                return callback(null, data);
-            }
-        });
-    };
-
-
-    resetPassword = async (userData, callback) => {
-        const hashPass = bcrypt.hashSync(userData.password, 10);
-        const data = await User.findOne({ email: userData.email });
-        User.findByIdAndUpdate(data.id, { firstName: data.firstName, lastName: data.lastName, password: hashPass }, { new: true }, (error, data) => {
-          if (error) {
-            logger.error(error);
-            return callback(error, null);
+          if (err) {
+            logger.error('User with email id doesnt exists');
+            return callback('User with email id doesnt exists', null);
           } else {
+              console.log("2222",data);
             return callback(null, data);
           }
         });
       };
+
+      resetPassword = (userData, callback) =>{
+        Otp.findOne({code: userData.code }, (error, data) =>{
+            if(data){
+              if(userData.code==data.code){
+                utilites.hashing(userData.newPassword, (err, hash) => {
+                  if (hash) {
+                      userData.newPassword = hash;
+                      user.updateOne({"password": userData.newPassword}, (error, data) => {
+                          if(data){
+                              return callback (null, "Updated successfully")
+                          }
+                          else{
+                              return callback ("Error in updating", null)
+                          }
+                      })
+                  }else{
+                    return callback ("Error in hash on password", null)
+                  }
+                })       
+              }else{
+                return callback("User not found",null)
+              }
+            }else{
+              return callback("Otp doesnt match",null)
+            }
+          })
+        }
 }
 
 module.exports = new userModel();

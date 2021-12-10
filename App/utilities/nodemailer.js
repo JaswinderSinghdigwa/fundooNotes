@@ -6,7 +6,7 @@
  */
 const nodemailer = require('nodemailer');
 require('dotenv').config();
-const Otp = require('../models/otp.model');
+const Otp=require('../models/otp.model.js');
 
 exports.sendEmail = (data) => {
     let otpcode = Math.random().toString(36).substring(2, 12);
@@ -17,7 +17,7 @@ exports.sendEmail = (data) => {
     })
     optData.save();
     const transporter = nodemailer.createTransport({
-        service: 'gmail',
+        service: "gmail",
         auth: {
             user: process.env.EMAIL,
             pass: process.env.pass
@@ -27,10 +27,9 @@ exports.sendEmail = (data) => {
     const message = {
         from: process.env.EMAIL,
         to: data.email,
-        subject:'Fundoo notes otp code',
-        html:`Enter this otp to reset your password
-        <h3>${otpcode}</h3>`
-
+        subject: 'Fundoo notes otp code',
+        html: `Enter this otp to reset your password
+    <h3>${otpcode}</h3>`
     };
 
     transporter.sendMail(message, (err, info) => {
