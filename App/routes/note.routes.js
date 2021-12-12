@@ -11,6 +11,6 @@ module.exports = (app) => {
   app.post('/forgotPassword', controller.forgotPassword);
   // api for Reset password
   app.put('/reset-Password', controller.resetPassword);
-  // api for Create New Note
+  // api for Create Note 
   app.post('/createnotes', helper.validateToken ,note.createNote);
 }; 

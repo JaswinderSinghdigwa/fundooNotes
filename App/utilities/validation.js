@@ -56,4 +56,5 @@ class Validation {
             .required()
   })
 }
-module.exports = new Validation();
+
+module.exports = new Validation(); 

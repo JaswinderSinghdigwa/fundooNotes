@@ -123,3 +123,8 @@
 {"level":"info","message":"Email id found","timestamp":"2021-12-12T12:36:49.058Z"}
 {"level":"info","message":" token generated","timestamp":"2021-12-12T12:36:49.088Z"}
 {"level":"info","message":"Successfully inserted note","timestamp":"2021-12-12T13:17:41.041Z"}
+{"level":"info","message":"Password reset succesfully","timestamp":"2021-12-12T14:28:31.410Z"}
+{"level":"info","message":"Email id found","timestamp":"2021-12-12T14:29:36.315Z"}
+{"level":"error","message":null,"timestamp":"2021-12-12T14:29:36.348Z"}
+{"level":"info","message":"Email id found","timestamp":"2021-12-12T14:35:01.718Z"}
+{"level":"error","message":null,"timestamp":"2021-12-12T14:35:01.749Z"}
