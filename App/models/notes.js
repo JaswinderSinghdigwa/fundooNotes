@@ -16,6 +16,7 @@ const noteSchema = mongoose.Schema({
 
   const NoteRegister = mongoose.model('NoteRegister', noteSchema)
 
+  class Model {
   createNote = (info, callback) => {
     const note = new NoteRegister({
       userId: info.userId,
@@ -31,6 +32,6 @@ const noteSchema = mongoose.Schema({
       }
     });
   }
-
+}
 module.exports = new Model();
 

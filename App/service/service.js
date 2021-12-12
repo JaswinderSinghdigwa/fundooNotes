@@ -36,7 +36,7 @@ class userService {
           return callback("some error ocured !!!", null);
         }
         const token = helper.token(data);
-        logger.info(' token generated ');
+        logger.info(' token generated');
         return callback(null, token);
       } else {
         logger.error(error);

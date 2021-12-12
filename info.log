@@ -80,3 +80,46 @@
 {"level":"error","message":"Invalid password","timestamp":"2021-12-12T09:48:18.532Z"}
 {"level":"error","message":"Invalid password","timestamp":"2021-12-12T09:50:11.200Z"}
 {"level":"info","message":"Password reset succesfully","timestamp":"2021-12-12T09:52:25.535Z"}
+{"level":"error","message":"Invalid User","timestamp":"2021-12-12T10:50:12.172Z"}
+{"level":"error","message":"Invalid Credential","timestamp":"2021-12-12T10:50:12.174Z"}
+{"level":"info","message":"User registered","timestamp":"2021-12-12T10:50:28.018Z"}
+{"level":"info","message":"Email id found","timestamp":"2021-12-12T10:50:53.150Z"}
+{"level":"info","message":" token generated ","timestamp":"2021-12-12T10:50:53.183Z"}
+{"level":"error","message":"Internal server error","timestamp":"2021-12-12T10:54:57.947Z"}
+{"level":"error","message":"Internal server error","timestamp":"2021-12-12T10:57:28.762Z"}
+{"level":"error","message":"Internal server error","timestamp":"2021-12-12T10:59:09.338Z"}
+{"level":"error","message":"Internal server error","timestamp":"2021-12-12T10:59:25.136Z"}
+{"level":"error","message":"Internal server error","timestamp":"2021-12-12T11:00:24.304Z"}
+{"level":"error","message":"Internal server error","timestamp":"2021-12-12T11:01:37.548Z"}
+{"level":"error","message":"Internal server error","timestamp":"2021-12-12T11:03:19.043Z"}
+{"level":"info","message":"Email id found","timestamp":"2021-12-12T11:12:52.916Z"}
+{"level":"info","message":" token generated ","timestamp":"2021-12-12T11:12:52.950Z"}
+{"level":"info","message":"Email id found","timestamp":"2021-12-12T11:13:33.885Z"}
+{"level":"info","message":" token generated ","timestamp":"2021-12-12T11:13:33.919Z"}
+{"level":"info","message":"Email id found","timestamp":"2021-12-12T11:15:28.521Z"}
+{"level":"info","message":" token generated","timestamp":"2021-12-12T11:15:28.559Z"}
+{"level":"error","message":"Internal server error","timestamp":"2021-12-12T11:18:05.654Z"}
+{"level":"error","message":"Internal server error","timestamp":"2021-12-12T11:36:52.385Z"}
+{"level":"error","message":"Internal server error","timestamp":"2021-12-12T11:37:55.194Z"}
+{"level":"error","message":"Internal server error","timestamp":"2021-12-12T11:38:03.817Z"}
+{"level":"info","message":"Email id found","timestamp":"2021-12-12T11:38:21.013Z"}
+{"level":"info","message":" token generated","timestamp":"2021-12-12T11:38:21.049Z"}
+{"level":"error","message":"Internal server error","timestamp":"2021-12-12T11:38:33.891Z"}
+{"level":"error","message":"Internal server error","timestamp":"2021-12-12T11:38:43.178Z"}
+{"level":"error","message":"Internal server error","timestamp":"2021-12-12T11:39:34.325Z"}
+{"level":"error","message":"Internal server error","timestamp":"2021-12-12T11:39:47.276Z"}
+{"level":"error","message":"Internal server error","timestamp":"2021-12-12T11:49:22.872Z"}
+{"level":"info","message":"Email id found","timestamp":"2021-12-12T11:58:14.723Z"}
+{"level":"info","message":" token generated","timestamp":"2021-12-12T11:58:14.761Z"}
+{"level":"info","message":"Email id found","timestamp":"2021-12-12T12:34:07.293Z"}
+{"level":"info","message":" token generated","timestamp":"2021-12-12T12:34:07.329Z"}
+{"level":"info","message":"Email id found","timestamp":"2021-12-12T12:34:55.908Z"}
+{"level":"info","message":" token generated","timestamp":"2021-12-12T12:34:55.939Z"}
+{"level":"info","message":"User registered","timestamp":"2021-12-12T12:35:08.368Z"}
+{"level":"info","message":"Email id found","timestamp":"2021-12-12T12:35:22.173Z"}
+{"level":"info","message":" token generated","timestamp":"2021-12-12T12:35:22.204Z"}
+{"level":"info","message":"Email id found","timestamp":"2021-12-12T12:36:36.366Z"}
+{"level":"info","message":" token generated","timestamp":"2021-12-12T12:36:36.400Z"}
+{"level":"info","message":"Email id found","timestamp":"2021-12-12T12:36:49.058Z"}
+{"level":"info","message":" token generated","timestamp":"2021-12-12T12:36:49.088Z"}
+{"level":"info","message":"Successfully inserted note","timestamp":"2021-12-12T13:17:41.041Z"}
