@@ -96,7 +96,6 @@ class userModel {
             logger.error('User with email id doesnt exists');
             return callback('User with email id doesnt exists', null);
           } else {
-              console.log("2222",data);
             return callback(null, data);
           }
         });

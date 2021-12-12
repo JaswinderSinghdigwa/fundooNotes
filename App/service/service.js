@@ -57,7 +57,6 @@ class userService {
           logger.error(error);
           return callback(error, null);
         } else {
-          console.log("333",error);
           return callback(null, nodemailer.sendEmail(data));
         }
       });

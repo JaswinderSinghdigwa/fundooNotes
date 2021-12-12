@@ -146,7 +146,6 @@ class Controller {
         }
       });
     } catch (error) {
-      console.log("11111",error);
       logger.error('Internal server error');
       return res.status(500).send({
         success: false,

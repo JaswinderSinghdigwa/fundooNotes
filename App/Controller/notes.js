@@ -9,6 +9,15 @@ class Note {
                 title: req.body.title,
                 description: req.body.description
             };
+            const createNoteValidation = validation.notesCreationValidation.validate(note);
+            if (createNoteValidation.error) {
+              console.log(createNoteValidation.error);
+              return res.status(400).send({
+                success: false,
+                message: 'Wrong Input Validations',
+                data: createNoteValidation
+              });
+            }
             console.log('note for controller :: ' + note.userId);
             noteService.createNote(note, (error, data) => {
                 if (error) {

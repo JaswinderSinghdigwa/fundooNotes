@@ -54,7 +54,15 @@ class Validation {
           code: Joi.string()
             .pattern(new RegExp('[0-9aA-Za-z]{1,}'))
             .required()
-  })
+  });
+
+  notesCreationValidation = Joi.object({
+    userId: Joi.string().required(),
+    title: Joi.string().min(2)
+      .required(),
+    description: Joi.string().min(5)
+      .required()
+  });
 }
 
 module.exports = new Validation(); 
