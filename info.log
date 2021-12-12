@@ -54,3 +54,16 @@
 {"level":"error","message":"Internal server error","timestamp":"2021-12-10T08:25:32.985Z"}
 {"level":"error","message":"Internal server error","timestamp":"2021-12-10T08:26:00.202Z"}
 {"level":"info","message":"Password reset succesfully","timestamp":"2021-12-10T08:37:10.286Z"}
+{"level":"error","message":"Invalid password","timestamp":"2021-12-10T09:00:15.716Z"}
+{"level":"info","message":"User registered","timestamp":"2021-12-10T09:01:25.987Z"}
+{"level":"info","message":"User registered","timestamp":"2021-12-10T10:56:00.912Z"}
+{"level":"error","message":"Invalid password","timestamp":"2021-12-10T11:10:00.865Z"}
+{"level":"error","message":"Invalid password","timestamp":"2021-12-10T11:10:10.243Z"}
+{"level":"error","message":"Invalid password","timestamp":"2021-12-10T11:10:52.908Z"}
+{"level":"error","message":"Invalid password","timestamp":"2021-12-10T11:11:14.808Z"}
+{"level":"error","message":"Invalid password","timestamp":"2021-12-10T11:11:30.548Z"}
+{"level":"info","message":"Password reset succesfully","timestamp":"2021-12-10T11:12:58.773Z"}
+{"level":"error","message":"Otp doesnt match","timestamp":"2021-12-10T11:32:25.866Z"}
+{"level":"error","message":"Otp doesnt match","timestamp":"2021-12-10T11:32:25.868Z"}
+{"level":"info","message":"Password reset succesfully","timestamp":"2021-12-10T11:32:54.653Z"}
+{"level":"info","message":"Password reset succesfully","timestamp":"2021-12-10T14:23:54.492Z"}

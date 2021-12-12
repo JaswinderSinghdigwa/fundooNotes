@@ -70,7 +70,7 @@ class userModel {
     * */
 
     loginModel = (loginData, callBack) => {
-        //To find a user email in the databas
+        //To find a user email in the database
         user.findOne({ email: loginData.email }, (error, data) => {
             if (error) {
                 logger.error('Find error while loggin user');
@@ -102,6 +102,11 @@ class userModel {
         });
       };
 
+       /**
+     * @description mongoose function for Reset password
+     * @param {*} email
+     * @param {*} callback
+     */
       resetPassword = (userData, callback) =>{
         Otp.findOne({code: userData.code }, (error, data) =>{
             if(data){
