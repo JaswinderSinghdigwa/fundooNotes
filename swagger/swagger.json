@@ -99,9 +99,7 @@
 
         "/reset-Password": {
             "put": {
-                "tags": [
-                    "reset password"
-                ],
+                "tags": ["reset-password"],
                 "description": "Already registered ? Then reset password successfully !!",
                 "parameters": [
         
