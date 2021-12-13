@@ -1,5 +1,6 @@
 const { logger } = require('../../logger/logger');
 const noteService = require('../service/notes.js');
+const validation = require('../utilities/validation')
 
 class Note {
     createNote = (req, res) => {

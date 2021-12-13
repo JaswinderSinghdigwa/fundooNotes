@@ -128,3 +128,41 @@
 {"level":"error","message":null,"timestamp":"2021-12-12T14:29:36.348Z"}
 {"level":"info","message":"Email id found","timestamp":"2021-12-12T14:35:01.718Z"}
 {"level":"error","message":null,"timestamp":"2021-12-12T14:35:01.749Z"}
+{"level":"error","message":"Internal server error","timestamp":"2021-12-12T15:12:25.246Z"}
+{"level":"error","message":"Internal server error","timestamp":"2021-12-12T15:12:37.080Z"}
+{"level":"error","message":"Internal server error","timestamp":"2021-12-12T15:12:44.460Z"}
+{"level":"error","message":"Internal server error","timestamp":"2021-12-12T15:13:59.910Z"}
+{"level":"error","message":"Internal server error","timestamp":"2021-12-12T15:14:12.178Z"}
+{"level":"info","message":"Successfully inserted note","timestamp":"2021-12-12T15:17:33.725Z"}
+{"level":"error","message":"Invalid password","timestamp":"2021-12-13T02:28:03.762Z"}
+{"level":"error","message":"Invalid password","timestamp":"2021-12-13T02:28:15.813Z"}
+{"level":"info","message":"Password reset succesfully","timestamp":"2021-12-13T02:28:35.531Z"}
+{"level":"info","message":"Email id found","timestamp":"2021-12-13T02:29:38.676Z"}
+{"level":"error","message":null,"timestamp":"2021-12-13T02:29:38.709Z"}
+{"level":"info","message":"Email id found","timestamp":"2021-12-13T02:31:05.764Z"}
+{"level":"error","message":null,"timestamp":"2021-12-13T02:31:05.795Z"}
+{"level":"info","message":"Email id found","timestamp":"2021-12-13T02:34:54.133Z"}
+{"level":"error","message":null,"timestamp":"2021-12-13T02:34:54.165Z"}
+{"level":"info","message":"Email id found","timestamp":"2021-12-13T02:34:57.859Z"}
+{"level":"error","message":null,"timestamp":"2021-12-13T02:34:57.892Z"}
+{"level":"error","message":"User not found","timestamp":"2021-12-13T02:36:25.455Z"}
+{"level":"error","message":"User not found","timestamp":"2021-12-13T02:36:25.456Z"}
+{"level":"error","message":"User not found","timestamp":"2021-12-13T02:36:27.104Z"}
+{"level":"error","message":"User not found","timestamp":"2021-12-13T02:36:27.105Z"}
+{"level":"error","message":"User not found","timestamp":"2021-12-13T02:36:30.016Z"}
+{"level":"error","message":"User not found","timestamp":"2021-12-13T02:36:30.017Z"}
+{"level":"error","message":"Invalid password","timestamp":"2021-12-13T02:37:51.240Z"}
+{"level":"error","message":"Invalid password","timestamp":"2021-12-13T02:38:01.580Z"}
+{"level":"error","message":"Invalid password","timestamp":"2021-12-13T02:38:10.742Z"}
+{"level":"error","message":"User not found","timestamp":"2021-12-13T02:38:17.199Z"}
+{"level":"error","message":"User not found","timestamp":"2021-12-13T02:38:17.200Z"}
+{"level":"info","message":"Email id found","timestamp":"2021-12-13T02:44:23.925Z"}
+{"level":"error","message":null,"timestamp":"2021-12-13T02:44:23.957Z"}
+{"level":"info","message":"User registered","timestamp":"2021-12-13T02:44:42.640Z"}
+{"level":"info","message":"Email id found","timestamp":"2021-12-13T02:45:10.649Z"}
+{"level":"info","message":" token generated","timestamp":"2021-12-13T02:45:10.690Z"}
+{"level":"info","message":"Successfully inserted note","timestamp":"2021-12-13T02:45:43.690Z"}
+{"level":"info","message":"Email id found","timestamp":"2021-12-13T02:51:45.304Z"}
+{"level":"info","message":" token generated","timestamp":"2021-12-13T02:51:45.342Z"}
+{"level":"info","message":"Successfully inserted note","timestamp":"2021-12-13T02:53:54.629Z"}
+{"level":"info","message":"Successfully inserted note","timestamp":"2021-12-13T02:55:07.083Z"}

@@ -107,13 +107,13 @@ class userModel {
      * @param {*} callback
      */
       resetPassword = (userData, callback) =>{
-        Otp.findOne({code: userData.code }, (error, data) =>{
+        Otp.findOne({code: userData.code },{new : true}, (error, data) =>{
             if(data){
               if(userData.code==data.code){
-                utilites.hashing(userData.newPassword, (err, hash) => {
+                utilites.hashing(userData.password, (err, hash) => {
                   if (hash) {
-                      userData.newPassword = hash;
-                      user.updateOne({"password": userData.newPassword}, (error, data) => {
+                      userData.password = hash;
+                      user.updateOne({"password": userData.password}, (error, data) => {
                           if(data){
                               return callback (null, "Updated successfully")
                           }

@@ -36,9 +36,6 @@ class helperClass {
     const myArr = header.split(" ");
     const token = myArr[1];
     try {
-      console.log("22",header);
-      console.log("array",myArr[0]);
-      console.log("1111",token);
       if (token) {
         jwt.verify(token, process.env.JWT_SECRET, (error, decoded) => {
           if (error) {
