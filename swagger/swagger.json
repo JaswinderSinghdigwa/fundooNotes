@@ -99,7 +99,9 @@
 
         "/reset-Password": {
             "put": {
-                "tags": ["reset-password"],
+                "tags": [
+                    "reset password"
+                ],
                 "description": "Already registered ? Then reset password successfully !!",
                 "parameters": [
         
@@ -127,48 +129,49 @@
                     }
                 }
             }
-        }
-    },
-    "/createnotes": {
-        "post": {
-            "tags": [
-                "Create Notes"
-            ],
-            "description": "Create a  note !!",
-            "parameters": [
-                {
-                    "in": "header",
-                    "name": "Authorization",
-                    "description": "Token for vaidation",
-                    "schema": {
-                        "type": "string",
-                        "required": true
+        },
+
+        "/createnotes": {
+            "post": {
+                "tags": [
+                    "Create Notes"
+                ],
+                "description": "Create a  note !!",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "Token for vaidation",
+                        "schema": {
+                            "type": "string",
+                            "required": true
+                        }
+                    },
+                    {
+                        "name": "create note",
+                        "in": "body",
+                        "description": "Note's body",
+                        "schema": {
+                            "$ref": "#/definitions/notes"
+                        }
                     }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "schema": {
+                    "$ref": "#/definitions/notes"
                 },
-                {
-                    "name": "create note",
-                    "in": "body",
-                    "description": "Note's body",
-                    "schema": {
-                        "$ref": "#/definitions/notes"
+                "responses": {
+                    "201": {
+                        "description": "Create note succesfully !!"
+                    },
+                    "400": {
+                        "description": "Please enter Valid Token"
+                    },
+                    "500": {
+                        "description": "Internal server error"
                     }
-                }
-            ],
-            "produces": [
-                "application/json"
-            ],
-            "schema": {
-                "$ref": "#/definitions/notes"
-            },
-            "responses": {
-                "201": {
-                    "description": "Create note succesfully !!"
-                },
-                "400": {
-                    "description": "Please enter Valid Token"
-                },
-                "500": {
-                    "description": "Internal server error"
                 }
             }
         }
@@ -219,13 +222,14 @@
                 "email": {
                     "type": "string"   
                 },
-                "password":{
+                "newPassword":{
                     "type":"string"
                 },
                 "code":{
                     "type":"string"
                 }
-            }   
+            }
+            
         },
         "notes": {
             "type": "object",
