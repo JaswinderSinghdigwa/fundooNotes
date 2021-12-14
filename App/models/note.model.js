@@ -107,32 +107,31 @@ class userModel {
      * @param {*} callback
      */
       resetPassword = (userData, callback) =>{
-        Otp.findOne({code: userData.code },{new : true}, (error, data) =>{
-            if(data){
-              if(userData.code==data.code){
-                utilites.hashing(userData.password, (err, hash) => {
-                  if (hash) {
-                      userData.password = hash;
-                      user.updateOne({"password": userData.password}, (error, data) => {
-                          if(data){
+        Otp.findOne({code: userData.code }) 
+            .then(data =>{
+              if(userData.code == data.code){
+                utilites.hashing(userData.newPassword ,(error,hash) =>{
+                  if(hash) { 
+                      userData.newPassword = hash;
+                      user.updateOne({email:userData.email},{'$set':{"password": userData.newPassword}},{new : true})
+                          .then(data => {
                               return callback (null, "Updated successfully")
-                          }
-                          else{
-                              return callback ("Error in updating", null)
-                          }
+                          }).catch(error=>{
+                              return callback ("Error in updating", null);
                       })
                   }else{
                     return callback ("Error in hash on password", null)
                   }
-                })       
-              }else{
+              })
+            }else{
                 return callback("User not found",null)
               }
-            }else{
-              return callback("Otp doesnt match",null)
-            }
-          })
-        }
-}
+            }).catch(error =>{
+                console.log("error",error);
+                return callback("Otp doesnt match",null)
+            })
+          }
+    }
+    
 
 module.exports = new userModel();

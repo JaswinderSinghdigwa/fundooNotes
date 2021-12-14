@@ -159,7 +159,7 @@ class Controller {
     try {
       const userData = {
         email: req.body.email,
-        password: req.body.password,
+        newPassword: req.body.newPassword,
         code:req.body.code
       };
 

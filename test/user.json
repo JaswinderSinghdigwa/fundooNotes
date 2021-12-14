@@ -1,39 +1,48 @@
 {
     "user": {
         "correctRegister": {
-            "firstName": "Jawinder ",
-            "lastName": "Singh",
-            "email": "findjassi1212@gmail.com",
-            "password": "Jaswinder@12345"
+            "firstName" : "Sumit",
+            "lastName":"bansal",
+            "email":"jassi2344@gmail.com",
+            "password":"123456@Aa"
         },
         "registrationWithImproperDetails": {
-            "firstName": "Hardeep Singh",
-            "email": "hardipsinghgmail.com",
-            "password": "Hardip@123#"
+            "firstName": "Jaiswender",
+            "email": "jaiswender@gmail.com",
+            "password": "Jaiswender$123#"
         },
         "registrationWithOutEmail": {
-            "firstName": "Jaspreet",
-            "lastName": "Kour",
-            "password": "jaspreetKaur@123"
+            "firstName": "hardip",
+            "lastName": "Singh",
+            "password": "hardip$123"
         },
         "registrationWithOutfirstName": {
-            "lastName": "ja",
-            "email": "jaskrit@gmail.com",
-            "password": "Jaskrit123"
+            "lastName": "Sn",
+            "email": "shri@gmail.com",
+            "password": "srinivas$123"
         },
         "login": {
-            "email": "Jswer15@gmail.com",
-            "password": "12345678.Aa"
+            "email":"jaswinder9822@gmail.com",
+             "password":"123456@Aa"
         },
         "loginWithImproperDetails": {
-            "email": "Jswer23444344@gmail.com",
-            "password": "12378.Aa"
+            "email": "ansh123@gmail.com",
+            "password": "Anshas12@$"
         },
         "ForgotPasswordPos": {
-            "email": "singhmanishkumarsingh700@gmail.com"
+            "email": "utkarshkr945@gmail.com"
         },
         "ForgotPasswordNegNonRegistered": {
-            "email": "rajangmail.com"
+            "email": "akashgmail.com"
+        },
+        "validDetails":{
+            "email" :"findjassi121212@gmail.com",
+            "code" :"2r4hasdrfj",
+            "newPassword" : "234565Aas"
+        },
+        "invalidDetails":{
+            "email":"utkarsh95gmail.com",
+            "password":"Akahu76727"
         } 
     }
-}   
+}
