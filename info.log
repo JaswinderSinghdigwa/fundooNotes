@@ -576,3 +576,24 @@
 {"level":"error","message":"Wrong Input Validations","timestamp":"2021-12-14T16:32:43.347Z"}
 {"level":"info","message":"Password reset succesfully","timestamp":"2021-12-14T16:32:43.482Z"}
 {"level":"error","message":"Invalid password","timestamp":"2021-12-14T16:32:43.488Z"}
+{"level":"info","message":"Password reset succesfully","timestamp":"2021-12-14T17:42:08.139Z"}
+{"level":"info","message":"Email id found","timestamp":"2021-12-14T17:42:37.743Z"}
+{"level":"error","message":null,"timestamp":"2021-12-14T17:42:37.772Z"}
+{"level":"info","message":"Password reset succesfully","timestamp":"2021-12-14T17:50:02.700Z"}
+{"level":"info","message":"Password reset succesfully","timestamp":"2021-12-14T17:50:15.994Z"}
+{"level":"error","message":"Invalid password","timestamp":"2021-12-14T17:51:18.664Z"}
+{"level":"error","message":"Invalid password","timestamp":"2021-12-14T17:51:37.867Z"}
+{"level":"info","message":"Password reset succesfully","timestamp":"2021-12-14T17:51:48.768Z"}
+{"_original":{"email":"findjassi121212@gmail.com"},"details":[{"context":{"key":"password","label":"password"},"message":"\"password\" is required","path":["password"],"type":"any.required"}],"level":"error","timestamp":"2021-12-14T17:52:38.141Z"}
+{"level":"info","message":"Email id found","timestamp":"2021-12-14T17:52:38.146Z"}
+{"level":"info","message":"Password reset succesfully","timestamp":"2021-12-15T07:09:36.573Z"}
+{"level":"info","message":"Email id found","timestamp":"2021-12-15T07:09:48.970Z"}
+{"level":"info","message":" token generated","timestamp":"2021-12-15T07:09:49.093Z"}
+{"level":"info","message":"Email id found","timestamp":"2021-12-15T16:53:24.591Z"}
+{"level":"info","message":" token generated","timestamp":"2021-12-15T16:53:24.716Z"}
+{"level":"info","message":"Get All Notes successfully","timestamp":"2021-12-15T16:53:49.821Z"}
+{"level":"info","message":"Successfully inserted note","timestamp":"2021-12-15T16:55:30.601Z"}
+{"level":"info","message":"Get All Notes successfully","timestamp":"2021-12-15T16:55:51.309Z"}
+{"level":"info","message":"Email id found","timestamp":"2021-12-15T16:58:49.487Z"}
+{"level":"info","message":" token generated","timestamp":"2021-12-15T16:58:49.614Z"}
+{"level":"info","message":"Successfully inserted note","timestamp":"2021-12-15T17:00:14.690Z"}

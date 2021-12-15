@@ -37,6 +37,18 @@ const noteSchema = mongoose.Schema({
       }
     });
   }
+
+  /**
+   * @description function written to get all notes from database
+   * @returns retrieved notes or if error returns error
+   */
+   getNote = (id) => {
+    return new Promise((resolve, reject) => {
+      NoteRegister.find({ userId: id.id })
+        .then((data) => resolve(data))
+        .catch((err) => reject(err));
+    });
+  };
 }
 module.exports = new Model();
 

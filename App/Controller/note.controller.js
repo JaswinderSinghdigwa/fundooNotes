@@ -101,13 +101,6 @@ class Controller {
   };
 
   /**
-      * description controller function for forgot password
-      * @param {*} req
-      * @param {*} res
-      * @returns
-      */
-
-  /**
      * description controller function for forgot password
      * @param {*} req
      * @param {*} res
@@ -154,12 +147,18 @@ class Controller {
       });
     }
   }
+   /**
+     * description controller function for Reset password
+     * @param {*} req
+     * @param {*} res
+     * @returns
+     */
 
   resetPassword=(req, res) => {
     try {
       const userData = {
         email: req.body.email,
-        newPassword: req.body.newPassword,
+        password: req.body.password,
         code:req.body.code
       };
 

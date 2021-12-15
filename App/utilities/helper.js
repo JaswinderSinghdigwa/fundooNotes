@@ -36,16 +36,13 @@ class helperClass {
     const myArr = header.split(" ");
     const token = myArr[1];
     try {
-
-      // console.log("2211",header);
-      // console.log("areeay--",myArr);
-      // console.log("1111",token);
       if (token) {
         jwt.verify(token, process.env.JWT_SECRET, (error, decoded) => {
           if (error) {
             return res.status(400).send({ success: false, message: 'Invalid Token' });
           } else {
             req.user = decoded;
+            console.log("rew",typeof req);
             next();
           }
         });

@@ -3,6 +3,12 @@ const noteService = require('../service/notes.js');
 const validation = require('../utilities/validation')
 
 class Note {
+    /**
+     * @description function written to create notes into the database
+     * @param {*} a valid req body is expected
+     * @param {*} res
+     * @returns response
+     */
     createNote = (req, res) => {
         try {
             const note = {
@@ -21,6 +27,7 @@ class Note {
             }
             console.log('note for controller :: ' + note.userId);
             noteService.createNote(note, (error, data) => {
+                console.log("111",error,data);
                 if (error) {
                     logger.error('failed to post note');
                     return res.status(400).json({
@@ -46,5 +53,38 @@ class Note {
             });
         }
     }
+
+    /**
+     * @description function written to get all the notes from the database
+     * @param {*} req
+     * @param {*} res
+     * @returns response
+     */
+     getNote = (req, res) => {
+        try {
+          const id = { id: req.user.dataForToken.id };
+          noteService.getNote(id, resolve, reject);
+          function resolve (data) {
+            logger.info('Get All Notes successfully');
+            return res.status(201).json({
+              message: 'Get All Notes successfully',
+              success: true,
+              data: data
+            });
+          }
+          function reject () {
+            logger.error('Failed to get all notes');
+            return res.status(400).json({
+              message: 'failed to get all notes',
+              success: false
+            });
+          }
+        } catch {
+          logger.error('Internal Error');
+          return res.status(500).json({
+            message: 'Internal Error'
+          });
+      }
+    };
 }
 module.exports = new Note();

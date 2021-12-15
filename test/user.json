@@ -38,7 +38,7 @@
         "validDetails":{
             "email" :"findjassi121212@gmail.com",
             "code" :"2r4hasdrfj",
-            "newPassword" : "234565Aas"
+            "password" : "234565Aas"
         },
         "invalidDetails":{
             "email":"utkarsh95gmail.com",

@@ -222,7 +222,7 @@
                 "email": {
                     "type": "string"   
                 },
-                "newPassword":{
+                "password":{
                     "type":"string"
                 },
                 "code":{

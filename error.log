@@ -385,3 +385,7 @@
 {"level":"error","message":"Invalid Credential","timestamp":"2021-12-14T16:32:43.300Z"}
 {"level":"error","message":"Wrong Input Validations","timestamp":"2021-12-14T16:32:43.347Z"}
 {"level":"error","message":"Invalid password","timestamp":"2021-12-14T16:32:43.488Z"}
+{"level":"error","message":null,"timestamp":"2021-12-14T17:42:37.773Z"}
+{"level":"error","message":"Invalid password","timestamp":"2021-12-14T17:51:18.664Z"}
+{"level":"error","message":"Invalid password","timestamp":"2021-12-14T17:51:37.868Z"}
+{"_original":{"email":"findjassi121212@gmail.com"},"details":[{"context":{"key":"password","label":"password"},"message":"\"password\" is required","path":["password"],"type":"any.required"}],"level":"error","timestamp":"2021-12-14T17:52:38.142Z"}
