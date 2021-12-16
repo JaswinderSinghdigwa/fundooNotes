@@ -45,7 +45,7 @@ describe('create notes api', () => {
 });
 
 describe('get notes api by id ', () => {
-  it('get notes', (done) => {
+  it('get notes by id when return Success ', (done) => {
     const token = noteDB.notes.validToken;
     chai
     .request(server)
@@ -56,5 +56,18 @@ describe('get notes api by id ', () => {
       res.should.have.status(201);
       done();
     });
+    });
+
+    it('get notes By id when return Failure', (done) => {
+      const token = noteDB.notes.invalidToken;
+      chai
+      .request(server)
+      .get('/getnotes/:id')
+      .set({ authorization: token })
+      .send()
+      .end((err, res) => {
+        res.should.have.status(400);
+        done();
+      });
   });
-})
+});
