@@ -43,3 +43,18 @@ describe('create notes api', () => {
       });
   });
 });
+
+describe('get notes api by id ', () => {
+  it('get notes', (done) => {
+    const token = noteDB.notes.validToken;
+    chai
+    .request(server)
+    .get('/getnotes/:id')
+    .set({ authorization: token })
+    .send()
+    .end((err, res) => {
+      res.should.have.status(201);
+      done();
+    });
+  });
+})

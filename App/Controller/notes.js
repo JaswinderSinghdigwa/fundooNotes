@@ -25,9 +25,7 @@ class Note {
                 data: createNoteValidation
               });
             }
-            console.log('note for controller :: ' + note.userId);
             noteService.createNote(note, (error, data) => {
-                console.log("111",error,data);
                 if (error) {
                     logger.error('failed to post note');
                     return res.status(400).json({
@@ -62,29 +60,44 @@ class Note {
      */
      getNote = (req, res) => {
         try {
+          console.log("id--",req.user.dataForToken);
           const id = { id: req.user.dataForToken.id };
-          noteService.getNote(id, resolve, reject);
-          function resolve (data) {
-            logger.info('Get All Notes successfully');
-            return res.status(201).json({
-              message: 'Get All Notes successfully',
-              success: true,
-              data: data
-            });
+          noteService.getNote(id, (error,data)=>{
+            if(data){
+              logger.info('Get All Notes successfully');
+              return res.status(201).json({
+                message: 'Get All Notes successfully',
+                success: true,
+                data: data
+            })
           }
-          function reject () {
-            logger.error('Failed to get all notes');
+            else {
+              console.log("err--",error);
+              logger.error('Failed to get all notes');
             return res.status(400).json({
               message: 'failed to get all notes',
               success: false
-            });
+            })
           }
-        } catch {
-          logger.error('Internal Error');
-          return res.status(500).json({
-            message: 'Internal Error'
-          });
-      }
-    };
+        })
+    }
+      catch{
+        logger.error('Internal Error');
+        return res.status(500).json({
+          message: 'Internal Error'
+      });  
+  }
+}
+  getNoteById = (req, res) => {
+  try {
+      res.status(201).json({
+      message: 'Get All Notes successfully',
+      success: true
+    })
+  }
+  catch{
+    console.log("error",error);
+  }
+}
 }
 module.exports = new Note();

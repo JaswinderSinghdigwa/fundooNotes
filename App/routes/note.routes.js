@@ -13,5 +13,8 @@ module.exports = (app) => {
   app.put('/reset-Password', controller.resetPassword);
   // api for Create Note 
   app.post('/createnotes', helper.validateToken ,note.createNote);
+   // api for getnote
   app.get('/getnotes', helper.validateToken, note.getNote);
+   // api for getnotes Id 
+  app.get('/getnotes/:id', helper.validateToken, note.getNoteById);
 }; 

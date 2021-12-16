@@ -31,7 +31,6 @@ class helperClass {
     return jwt.sign({ dataForToken }, process.env.JWT_SECRET, { expiresIn: '24H' });
   }
   validateToken = (req, res, next) => {
-    console.log(req.headers.authorization);
     const header = req.headers.authorization;
     const myArr = header.split(" ");
     const token = myArr[1];
@@ -42,7 +41,6 @@ class helperClass {
             return res.status(400).send({ success: false, message: 'Invalid Token' });
           } else {
             req.user = decoded;
-            console.log("rew",typeof req);
             next();
           }
         });

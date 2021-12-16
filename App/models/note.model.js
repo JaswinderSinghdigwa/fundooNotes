@@ -107,31 +107,28 @@ class userModel {
      * @param {*} callback
      */
         resetPassword = (userData, callback) => {
-            Otp.findOne({ code: userData.code }, (error, data) => {
-                if (data) {
-                    if (userData.code == data.code) {
-                        utilites.hashing(userData.password, (err, hash) => {
-                            if (hash) {
-                                userData.password = hash;
-                                user.updateOne({email:userData.email},{'$set':{"password": userData.password}},{new : true}, (error, data) => {
-                                    if (data) {
-                                        return callback(null, "Updated successfully")
-                                    }
-                                    else {
-                                        return callback("Error in updating", null)
-                                    }
-                                })
-                            } else {
-                                return callback("Error in hash on password", null)
-                            }
-                        })
-                    } else {
-                        return callback("User not found", null)
-                    }
+            Otp.findOne({ code: userData.code })
+            .then((data)=>{
+                if (userData.code == data.code) {
+                    utilites.hashing(userData.password, (err, hash) => {
+                        if (hash) {
+                            userData.password = hash;
+                            user.updateOne({email:userData.email},{'$set':{"password": userData.password}})
+                            .then((data)=>{
+                                return callback(null, "Updated successfully")
+                            }).catch((error)=>{
+                                return callback("Error in updating", null)
+                            })  
+                        } else {
+                            return callback("Error in hash on password", null)
+                        }
+                    })
                 } else {
-                    return callback("Otp doesnt match", null)
+                    return callback("User not found", null)
                 }
-            })
+            }).catch((error)=>{
+                return callback("Otp doesnt match", null)
+            })   
         }
     }
     
