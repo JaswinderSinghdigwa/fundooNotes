@@ -36,6 +36,7 @@ class helperClass {
     const token = myArr[1];
     try {
       if (token) {
+        console.log("333",token);
         jwt.verify(token, process.env.JWT_SECRET, (error, decoded) => {
           if (error) {
             return res.status(400).send({ success: false, message: 'Invalid Token' });

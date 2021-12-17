@@ -73,6 +73,7 @@ class userModel {
         //To find a user email in the database
         user.findOne({ email: loginData.email }, (error, data) => {
             if (error) {
+                console.log("3333",error);
                 logger.error('Find error while loggin user');
                 return callBack(error, null);
             } else if (!data) {

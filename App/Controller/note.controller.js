@@ -76,6 +76,7 @@ class Controller {
       }
 
       userService.userLogin(userLoginInfo, (error, data) => {
+        console.log("111",error);
         if (error) {
           return res.status(400).json({
             success: false,

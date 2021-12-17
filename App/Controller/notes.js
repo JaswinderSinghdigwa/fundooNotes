@@ -10,6 +10,7 @@ class Note {
    * @returns response
    */
   createNote = (req, res) => {
+    console.log("44",req.user)
     try {
       const note = {
         userId: req.user.dataForToken.id,
@@ -93,7 +94,7 @@ class Note {
       const id = { id: req.user.dataForToken.id };
       const getNoteValidation = validation.getNoteValidation.validate(id);
       if (getNoteValidation.error) {
-        console.log(getNoteValidation.error);
+        logger.log(getNoteValidation.error);
         return res.status(400).send({
           success: false,
           message: 'Wrong Input Validations',

@@ -39,6 +39,7 @@ class userService {
         logger.info(' token generated');
         return callback(null, token);
       } else {
+        console.log("22",error);
         logger.error(error);
         return callback(error, null);
       }
