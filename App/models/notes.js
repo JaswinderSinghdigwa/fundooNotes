@@ -42,7 +42,7 @@ class Model {
    * @description function written to get all notes from database
    * @returns retrieved notes or if error returns error
    */
-  getNote = (id, callback) => {
+  getNote =   (id, callback) => {
     NoteRegister.find({ userId: id.id }, (error, data) => {
       if (data) {
         callback(null,data);

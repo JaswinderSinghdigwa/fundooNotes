@@ -2,15 +2,17 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 const server = require('../server');
 const faker = require('faker');
-const validation = require('../utilities/validation')
-
+// const validation = require('../utilities/validation')
+const noteJson = require('./notes.json');
 chai.use(chaiHttp);
-const noteDB = require('./notes.json');
+const note = require('../App/models/notes')
+console.log("55",note);
+
 chai.should();
 
 describe('create notes api', () => {
   it('notes', (done) => {
-    const token = noteDB.notes.validToken;
+    const token = noteJson.notes.validToken;
     const createNotes = {
       title: faker.lorem.word(),
       description: faker.lorem.sentence()
@@ -27,7 +29,7 @@ describe('create notes api', () => {
   });
 
   it('givenCreateNotes_whenInvalidToken_shouldNotbeCreated', (done) => {
-    const token = noteDB.notes.invalidToken;
+    const token = noteJson.notes.invalidToken;
     const createNotes = {
       title: faker.lorem.word(),
       description: faker.lorem.sentence()
@@ -47,10 +49,10 @@ describe('create notes api', () => {
 
 describe('get notes api by id ', () => {
   it('get notes by id Api return Success when token is verify ', (done) => {
-    const token = noteDB.notes.validToken;
+    const token = noteJson.notes.validToken;
     chai
       .request(server)
-      .get('/getnotes/:id')
+      .post('/createnotes')
       .set({ authorization: token })
       .send()
       .end((err, res) => {
@@ -60,10 +62,10 @@ describe('get notes api by id ', () => {
   });
 
   it('get notes By id Api return Failure when token is not verified', (done) => {
-    const token = noteDB.notes.invalidToken;
+    const token = noteJson.notes.invalidToken;
     chai
       .request(server)
-      .get('/getnotes/:id')
+      .post('/createnotes')
       .set({ authorization: token })
       .send()
       .end((err, res) => {
@@ -74,15 +76,29 @@ describe('get notes api by id ', () => {
 });
 
   describe('get notes api by id ', () => {
-    it('get notes by id when  ids not match with token id  ', (done) => {
-      const id = req.user.dataForToken.id;
-      const resultOFFind = notes.findById(id);
+    it('get notes by id when ids match with token id  ', (done) => {
+      const token = noteJson.notes.validToken;
+      const id =  noteJson.notes.id;
+      note.getNote(id,(error,data)=>{
+        if(data){
+          console.log("331",error);
+          return res.status(201).json({
+            message: 'Get All Notes successfully',
+            success: true,
+            data: data
+          });
+        }
+        else
+        console.log("444",data);
+      });
       chai
         .request(server)
-        .get('/getnotes/:id')
-        .send(resultOFFind)
+        .get('/getnotes')
+        .set({authorization:token})
+        .send(token)
         .end((err, res) => {
-          res.should.have.status(200);
+          console.log("bojapuri error",res.should.have);
+          res.should.have.status(201);
           done();
         });
     });
@@ -90,11 +106,11 @@ describe('get notes api by id ', () => {
 
     describe('get notes api by id ', () => {
       it('get notes by id when  ids match with token id ', (done) => {
-        const id = noteDB.notes.validToken.id;
+        const id = noteJson.notes.invalidToken.id;
         const resultOFFind = notes.findById(id);
         chai
           .request(server)
-          .get('/getnotes/:id')
+          .post('/createnotes')
           .send(resultOFFind)
           .end((err, res) => {
             res.should.have.status(400);
