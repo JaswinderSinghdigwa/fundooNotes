@@ -10,13 +10,14 @@ const jwt = require('jsonwebtoken');
 
 class helperClass {
 
-  hashing = (password, callback) => {
-    bcrypt.hash(password, 10, function (err, hash) {
-      if (err) {
-        return callback(err,null);
-      } else {
-        return callback(null, hash);
-      }
+  hashing = (password) => {
+    return new Promise((resolve, reject) => {
+    bcrypt.hash(password, 10)
+      .then((err)=> {
+        resolve(err);
+      }).catch((hash)=> {
+         reject(hash);
+      });
     });
   }
 

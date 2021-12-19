@@ -3,7 +3,7 @@ const bcrypt = Promise.promisifyAll(require("bcrypt"));
 const mongoose = require('mongoose');
 const { logger } = require('../../logger/logger')
 const Otp = require('../models/otp.model')
-const utilites= require('../utilities/helper')
+const utilities= require('../utilities/helper')
 
 const userSchema = mongoose.Schema({
     firstName: {
@@ -107,30 +107,30 @@ class userModel {
      * @param {*} email
      * @param {*} callback
      */
-        resetPassword = (userData, callback) => {
+        resetPassword = (userData) => {
+            return new Promise((resolve, reject) => {
             Otp.findOne({ code: userData.code })
             .then((data)=>{
-                if (userData.code == data.code) {
-                    utilites.hashing(userData.password, (err, hash) => {
-                        if (hash) {
+                if(userData.code == data.code){
+                    utilities.hashing(userData.password)
+                        .then((hash)=> {
                             userData.password = hash;
                             user.updateOne({email:userData.email},{'$set':{"password": userData.password}})
                             .then((data)=>{
-                                return callback(null, "Updated successfully")
+                                 resolve(data)
                             }).catch((error)=>{
-                                return callback("Error in updating", null)
-                            })  
-                        } else {
-                            return callback("Error in hash on password", null)
-                        }
-                    })
-                } else {
-                    return callback("User not found", null)
+                                reject(error)
+                            }) 
+                        }).catch((error)=>{
+                            rejct(error)
+                        })
+                }else{
+                    reject(null)
                 }
             }).catch((error)=>{
-                return callback("Otp doesnt match", null)
-            })   
-        }
+                reject("Otp doesnt match", null)
+            });
+        });
     }
-    
+}
 module.exports = new userModel();

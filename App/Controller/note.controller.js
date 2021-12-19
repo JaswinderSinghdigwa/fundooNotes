@@ -176,6 +176,7 @@ class Controller {
       userService.resetPassword(userData, (error, userData) => {
         if (error) {
           logger.error(error);
+          console.log("errrr",error);
           return res.status(400).send({
             message: error,
             success: false
