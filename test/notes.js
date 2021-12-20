@@ -102,3 +102,31 @@ describe('get notes api by id ', () => {
         });
     });
   });
+
+  describe('get notes api by id ', () => {
+    it('get notes by id Api return Success when token is verify ', (done) => {
+      const token = noteJson.notes.validToken;
+      chai
+        .request(server)
+        .get('/getnotes/:id')
+        .set({ authorization: token })
+        .send()
+        .end((err, res) => {
+          res.should.have.status(201);
+          done();
+        });
+    });
+  
+    it('get notes By id Api return Failure when token is not verified', (done) => {
+      const token = noteJson.notes.invalidToken;
+      chai
+        .request(server)
+        .get('/getnotes/:id')
+        .set({ authorization: token })
+        .send()
+        .end((err, res) => {
+          res.should.have.status(400);
+          done();
+        });
+    });
+  });
