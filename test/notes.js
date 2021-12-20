@@ -6,7 +6,6 @@ const faker = require('faker');
 const noteJson = require('./notes.json');
 chai.use(chaiHttp);
 const note = require('../App/models/notes')
-console.log("55",note);
 
 chai.should();
 
@@ -103,18 +102,3 @@ describe('get notes api by id ', () => {
         });
     });
   });
-
-    describe('get notes api by id ', () => {
-      it('get notes by id when  ids match with token id ', (done) => {
-        const id = noteJson.notes.invalidToken.id;
-        const resultOFFind = notes.findById(id);
-        chai
-          .request(server)
-          .post('/createnotes')
-          .send(resultOFFind)
-          .end((err, res) => {
-            res.should.have.status(400);
-            done();
-          });
-      });
-    });
