@@ -33,13 +33,10 @@ class helperClass {
   }
   validateToken = (req, res, next) => {
     const header = req.headers.authorization;
-    console.log("header",header);
     const myArr = header.split(" ");
-    console.log("33",myArr);
     const token = myArr[1];
     try {
       if (token) {
-        console.log("333",token);
         jwt.verify(token, process.env.JWT_SECRET, (error, decoded) => {
           if (error) {
             return res.status(400).send({ success: false, message: 'Invalid Token' });

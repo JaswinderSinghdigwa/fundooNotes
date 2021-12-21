@@ -43,8 +43,9 @@ class Model {
    * @returns retrieved notes or if error returns error
    */
   getNote =   (id, callback) => {
-    NoteRegister.find({ userId: id.id }, (error, data) => {
+    NoteRegister.find({ $and: [{ _id: id.noteId }, { userId: id.userId }] }, (error, data) => {
       if (data) {
+        console.log("111",data)
         callback(null,data);
       }
       else {
@@ -54,4 +55,3 @@ class Model {
   }
 }
 module.exports = new Model();
-

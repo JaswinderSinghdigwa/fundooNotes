@@ -12,9 +12,9 @@ module.exports = (app) => {
   // api for Reset password
   app.put('/reset-Password', controller.resetPassword);
   // api for Create Note 
-  app.post('/createnotes',note.createNote);
+  app.post('/createnotes',helper.validateToken,note.createNote);
    // api for getnote
   app.get('/getnotes', helper.validateToken, note.getNote);
    // api for getnotes Id 
-  app.get('/getnotes/:id', helper.validateToken, note.getNoteById);
+   app.get('/getnotes/:id', helper.validateToken, note.getNoteById);
 }; 

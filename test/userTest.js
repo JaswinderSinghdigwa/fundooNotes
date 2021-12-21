@@ -22,7 +22,7 @@ describe('registartion', () => {
     chai
       .request(server)
       .post('/register')
-      .send(registartionDetails)
+      .send(registerfaker)
       .end((err, res) => {
         if (err) {
           console.log('Please check details again and re-enter the details with proper format');
