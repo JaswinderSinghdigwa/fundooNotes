@@ -115,13 +115,13 @@ class Note {
       }
 
       noteService.getNoteById(id, (err, data) => {
-        if (data.message) {
+        if (err) {
           return res.status(404).json({
             message: 'Note not found',
             success: false
           });
         }
-        return res.status(200).json({
+        return res.status(201).json({
           message: 'Note retrieved succesfully',
           success: true,
           data: data

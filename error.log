@@ -992,3 +992,19 @@
 {"level":"error","message":"Wrong Input Validations","timestamp":"2021-12-22T06:01:17.781Z"}
 {"level":"error","message":{"acknowledged":true,"matchedCount":1,"modifiedCount":1,"upsertedCount":0,"upsertedId":null},"timestamp":"2021-12-22T06:01:18.603Z"}
 {"level":"error","message":"Invalid password","timestamp":"2021-12-22T06:01:18.643Z"}
+{"level":"error","message":"Wrong Input Validations","timestamp":"2021-12-22T08:56:34.427Z"}
+{"level":"error","message":"Wrong Input Validations","timestamp":"2021-12-22T08:56:34.518Z"}
+{"level":"error","message":"Wrong Input Validations","timestamp":"2021-12-22T08:56:34.593Z"}
+{"level":"error","message":null,"timestamp":"2021-12-22T08:56:35.811Z"}
+{"level":"error","message":"Wrong Input Validations","timestamp":"2021-12-22T08:56:36.084Z"}
+{"level":"error","message":{"acknowledged":true,"matchedCount":1,"modifiedCount":1,"upsertedCount":0,"upsertedId":null},"timestamp":"2021-12-22T08:56:37.198Z"}
+{"level":"error","message":"Invalid password","timestamp":"2021-12-22T08:56:37.248Z"}
+{"level":"error","message":{"acknowledged":true,"matchedCount":1,"modifiedCount":1,"upsertedCount":0,"upsertedId":null},"timestamp":"2021-12-22T08:58:31.921Z"}
+{"level":"error","message":"Invalid password","timestamp":"2021-12-22T08:58:32.116Z"}
+{"level":"error","message":"Wrong Input Validations","timestamp":"2021-12-22T09:00:09.937Z"}
+{"level":"error","message":"Wrong Input Validations","timestamp":"2021-12-22T09:00:10.029Z"}
+{"level":"error","message":"Wrong Input Validations","timestamp":"2021-12-22T09:00:10.100Z"}
+{"level":"error","message":null,"timestamp":"2021-12-22T09:00:11.145Z"}
+{"level":"error","message":"Wrong Input Validations","timestamp":"2021-12-22T09:00:11.423Z"}
+{"level":"error","message":{"acknowledged":true,"matchedCount":1,"modifiedCount":1,"upsertedCount":0,"upsertedId":null},"timestamp":"2021-12-22T09:00:12.123Z"}
+{"level":"error","message":"Invalid password","timestamp":"2021-12-22T09:00:12.167Z"}

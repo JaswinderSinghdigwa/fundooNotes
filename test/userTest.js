@@ -166,7 +166,7 @@ describe('reset Password API', () => {
       .put('/reset-Password')
       .send(reset)
       .end((error, res) => {
-        res.should.have.status(200);
+        res.should.have.status(201);
         res.body.should.have.property('success').eql(true);
         res.body.should.have.property('message').eql('Password reset succesfully');
         done();
@@ -180,7 +180,7 @@ describe('reset Password API', () => {
       .put('/reset-Password')
       .send(reset)
       .end((error, res) => {
-        res.should.have.status(422);
+        res.should.have.status(400);
         res.body.should.have.property('success').eql(false);
         res.body.should.have.property('message').eql('Invalid password');
         done();
