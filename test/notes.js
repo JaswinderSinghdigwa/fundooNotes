@@ -172,7 +172,7 @@ describe('Get notes by ID api', () => {
 
 // Update data by id
 describe('Update notes api', () => {
-  it.only('givenInvalidToken_should give false when it is invalid entry of token1', (done) => {
+  it.only('givenInvalidToken_should give false when it is invalid entry of token', (done) => {
     const token = noteDB.notes.invalidToken;
     chai
       .request(server)
@@ -184,20 +184,20 @@ describe('Update notes api', () => {
         done();
       });
   });
-  it.only('givenvalidToken_shoule give true when id it is verify2', (done) => {
+  it.only('givenvalidToken_shoule give true when id it is validate1', (done) => {
     const token = noteDB.notes.validToken;
     chai
       .request(server)
       .put('/updatenotes/:id')
       .set({ authorization: token })
-      .send({token})
+      .send({})
       .end((err, res) => {
-        res.should.have.status(201);
+        res.should.have.status(400);
         done();
       });
   });
 
-  it.only('givenvalidToken_shoule give true when id it is verify3', (done) => {
+  it.only('givenvalidToken_shoule give true when id it is validate', (done) => {
     const token = noteDB.notes.validToken;
     chai
       .request(server)
@@ -218,7 +218,7 @@ describe('Update notes api', () => {
       .set({ authorization: token })
       .send(note)
       .end((err, res) => {
-        res.should.have.status(400);
+        res.should.have.status(201);
         done();
       });
   });

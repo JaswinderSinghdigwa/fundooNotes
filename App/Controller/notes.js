@@ -149,7 +149,7 @@ class Note {
       const updateNoteValidation = validation.notesUpdateValidation.validate(updateNote);
       if (updateNoteValidation.error) {
         console.log(updateNoteValidation.error);
-        return res.status(404).send({
+        return res.status(400).send({
           success: false,
           message: 'Wrong Input Validations',
           data: updateNoteValidation
