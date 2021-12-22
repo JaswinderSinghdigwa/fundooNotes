@@ -54,7 +54,21 @@ class Model {
     });
   }
   getNoteById = (id, callback) => {
-    callback(null,id.id);
+    noteModel.getNoteById(id, (err, data) => {
+      if (data) {
+        return callback(null, data)
+      } else {
+        return callback(err, null)
+      }
+    });
+  };
+getNoteById = (id, callback) => {
+    NoteRegister.find({ $and: [{ _id: id.noteId }, { userId: id.userId }] })
+      .then((data) => {
+        callback(null, data)
+      }).catch((err) => {
+        callback(err, null)
+      })
   }; 
 }
 module.exports = new Model();
