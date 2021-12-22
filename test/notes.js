@@ -120,4 +120,28 @@ describe('Get notes by ID api', () => {
         done();
       });
   });
+  it.only("Should return true from GetNoteApi service  , return appropriate response", (done) => {
+    const token = noteDB.notes.validToken;
+    chai
+      .request(server)
+      .get('/getnotes/61c28a8516512bcec838cbbc')
+      .set({ authorization: token })
+      .send(token,'61c28a8516512bcec838cbbc')
+      .end((err, res) => {
+        res.should.have.status(201);
+        return done();
+      });
+  });
+  it.only("Should return true from GetNoteApi service  , return appropriate response", (done) => {
+    const token = noteDB.notes.invalidToken;
+    chai
+      .request(server)
+      .get('/getnotes/61c28a8516512bcec838cbbc')
+      .set({ authorization: token })
+      .send(token,'61c28a8516512bcec838cbbc')
+      .end((err, res) => {
+        res.should.have.status(400);
+        return done();
+      });
+  });
 });

@@ -111,14 +111,27 @@ class Note {
           data: getNoteValidation
         });
       }
-      res.status(201).json({
-        message: 'Get All Notes successfully',
-        success: true
-      })
+      noteService.getNoteById(id, (err, data) => {
+        if (err) {
+          return res.status(400).json({
+            message: 'Note not found',
+            success: false
+          });
+        }
+        return res.status(201).json({
+          message: 'Note retrieved succesfully',
+          success: true,
+          data: data
+
+        });
+      });
+    } catch (err) {
+      return res.status(500).json({
+        message: 'Internal Error',
+        success: false,
+        data: err
+      });
     }
-    catch {
-      console.log("error", error);
-    }
-  }
+  };
 }
 module.exports = new Note();

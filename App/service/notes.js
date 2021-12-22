@@ -31,6 +31,13 @@ class Service {
       }
     });
   };
+   /**
+     * @description this function is written to trigger or call the models function
+     * @returns error if it has error else data
+     */
+    getNoteById = (id, callback) => {
+      return callback(null,id.data);
+    };
 }
 
 module.exports = new Service();
