@@ -101,24 +101,27 @@ class Note {
   }
   getNoteById = (req, res) => {
     try {
-      const id = { id: req.user.dataForToken.id };
+      const noteId = req.params.id;
+      const id = { userId: req.user.dataForToken.id, noteId: req.params.id };
+
       const getNoteValidation = validation.getNoteValidation.validate(id);
       if (getNoteValidation.error) {
-        logger.log(getNoteValidation.error);
+        console.log(getNoteValidation.error);
         return res.status(400).send({
           success: false,
           message: 'Wrong Input Validations',
           data: getNoteValidation
         });
       }
+
       noteService.getNoteById(id, (err, data) => {
-        if (err) {
-          return res.status(400).json({
+        if (data.message) {
+          return res.status(404).json({
             message: 'Note not found',
             success: false
           });
         }
-        return res.status(201).json({
+        return res.status(200).json({
           message: 'Note retrieved succesfully',
           success: true,
           data: data

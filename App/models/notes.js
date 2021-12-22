@@ -42,11 +42,11 @@ class Model {
    * @description function written to get all notes from database
    * @returns retrieved notes or if error returns error
    */
-  getNote =   (id, callback) => {
-    NoteRegister.find({userId: id.id}, (error, data) => {
+  getNote = (id, callback) => {
+    NoteRegister.find({ userId: id.id }, (error, data) => {
       if (data) {
-        console.log("111",data)
-        callback(null,data);
+        console.log("111", data)
+        callback(null, data);
       }
       else {
         callback(error, null);
@@ -54,21 +54,12 @@ class Model {
     });
   }
   getNoteById = (id, callback) => {
-    noteModel.getNoteById(id, (err, data) => {
-      if (data) {
-        return callback(null, data)
-      } else {
-        return callback(err, null)
-      }
-    });
-  };
-getNoteById = (id, callback) => {
     NoteRegister.find({ $and: [{ _id: id.noteId }, { userId: id.userId }] })
       .then((data) => {
         callback(null, data)
       }).catch((err) => {
         callback(err, null)
       })
-  }; 
+  };
 }
 module.exports = new Model();

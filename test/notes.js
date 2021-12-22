@@ -46,7 +46,7 @@ describe('create notes api', () => {
 
 // get note test cases
 describe('get notes api', () => {
-  it.only('notes', (done) => {
+  it('notes', (done) => {
     const token = noteDB.notes.validToken;
     chai
       .request(server)
@@ -58,7 +58,7 @@ describe('get notes api', () => {
       });
   });
 
-  it.only('givenCreateNotes_whenInvalidToken_shouldNotbeGet', (done) => {
+  it('givenCreateNotes_whenInvalidToken_shouldNotbeGet', (done) => {
     const token = noteDB.notes.invalidToken;
     chai
       .request(server)
@@ -72,7 +72,7 @@ describe('get notes api', () => {
 });
 // get data by id
 describe('Get notes by ID api', () => {
-  it.only('given token should be valid token', (done) => {
+  it('given token should be valid token', (done) => {
     const token = noteDB.notes.validToken;
     chai
       .request(server)
@@ -84,7 +84,7 @@ describe('Get notes by ID api', () => {
         done();
       });
   });
-  it.only('given token should be invalid token', (done) => {
+  it('given token should be invalid token', (done) => {
     const token = noteDB.notes.invalidToken;
     chai
       .request(server)
@@ -96,7 +96,7 @@ describe('Get notes by ID api', () => {
         done();
       });
   });
-  it.only('givenPoperDetails_ShouldGetNoteid', (done) => {
+  it('givenPoperDetails_ShouldGetNoteid', (done) => {
     const token = noteDB.notes.validToken;
     chai
       .request(server)
@@ -108,7 +108,7 @@ describe('Get notes by ID api', () => {
         done();
       });
   });
-  it.only('givenPoperDetails_ShouldGetNoteid', (done) => {
+  it('givenPoperDetails_ShouldGetNoteid', (done) => {
     const token = noteDB.notes.invalidToken;
     chai
       .request(server)
@@ -120,7 +120,7 @@ describe('Get notes by ID api', () => {
         done();
       });
   });
-  it.only("Should return true from GetNoteApi service  , return appropriate response", (done) => {
+  it("Should return true from GetNoteApi service  , return appropriate response", (done) => {
     const token = noteDB.notes.validToken;
     chai
       .request(server)
@@ -132,7 +132,7 @@ describe('Get notes by ID api', () => {
         return done();
       });
   });
-  it.only("Should return false from GetNoteApi service  , return appropriate response", (done) => {
+  it("Should return false from GetNoteApi service  , return appropriate response", (done) => {
     const token = noteDB.notes.invalidToken;
     chai
       .request(server)
@@ -144,7 +144,7 @@ describe('Get notes by ID api', () => {
         return done();
       });
   });
-  it.only("Should return true from GetNoteApi model layer  , return appropriate response", (done) => {
+  it("Should return true from GetNoteApi model layer  , return appropriate response", (done) => {
     const token = noteDB.notes.validToken;
     chai
       .request(server)
@@ -156,7 +156,7 @@ describe('Get notes by ID api', () => {
         return done();
       });
   });
-  it.only("Should return false from GetNoteApi model Layer  , return appropriate response", (done) => {
+  it("Should return false from GetNoteApi model Layer  , return appropriate response", (done) => {
     const token = noteDB.notes.invalidToken;
     chai
       .request(server)
@@ -168,7 +168,7 @@ describe('Get notes by ID api', () => {
         return done();
       });
   });
-  it.only("Should return true from GetNoteApi when note is  find  , return appropriate response", (done) => {
+  it("Should return true from GetNoteApi when note is  find  , return appropriate response", (done) => {
     const token = noteDB.notes.validToken;
     chai
       .request(server)
@@ -180,7 +180,7 @@ describe('Get notes by ID api', () => {
         return done();
       });
   });
-  it.only("Should return false from GetNoteApi when note is not find   , return appropriate response", (done) => {
+  it("Should return false from GetNoteApi when note is not find   , return appropriate response", (done) => {
     const token = noteDB.notes.invalidToken;
     chai
       .request(server)
