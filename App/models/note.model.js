@@ -97,18 +97,10 @@ class userModel {
             logger.error('User with email id doesnt exists');
             return callback('User with email id doesnt exists', null);
           } else {
-            console.log("333",data);
             return callback(null, data);
           }
-
-            if (err) {
-                logger.error('User with email id doesnt exists');
-                return callback('User with email id doesnt exists', null);
-            } else {
-                return callback(null, data);
-            }
-        })
-        };
+        });
+        }
 
     /**
   * @description mongoose function for Reset password

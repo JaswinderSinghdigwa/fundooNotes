@@ -72,7 +72,7 @@ describe('get notes api', () => {
 });
 // get data by id
 describe('Get notes by ID api', () => {
-  it('given token should be valid token', (done) => {
+  it.only('given token should be valid token', (done) => {
     const token = noteDB.notes.validToken;
     chai
       .request(server)
@@ -80,11 +80,11 @@ describe('Get notes by ID api', () => {
       .set({ authorization: token })
       .send()
       .end((err, res) => {
-        res.should.have.status(201);
+        res.should.have.status(200);
         done();
       });
   });
-  it('given token should be invalid token', (done) => {
+  it.only('given token should be invalid token', (done) => {
     const token = noteDB.notes.invalidToken;
     chai
       .request(server)
@@ -96,7 +96,7 @@ describe('Get notes by ID api', () => {
         done();
       });
   });
-  it('givenPoperDetails_ShouldGetNoteid', (done) => {
+  it.only('givenPoperDetails_ShouldGetNoteid', (done) => {
     const token = noteDB.notes.validToken;
     chai
       .request(server)
@@ -104,11 +104,11 @@ describe('Get notes by ID api', () => {
       .set({ authorization: token })
       .send(token,'61c28a8516512bcec838cbbc')
       .end((err, res) => {
-        res.should.have.status(201);
+        res.should.have.status(200);
         done();
       });
   });
-  it('givenImPoperDetails_ShouldGetNoteid', (done) => {
+  it.only('givenImPoperDetails_ShouldGetNoteid', (done) => {
     const token = noteDB.notes.invalidToken;
     chai
       .request(server)
@@ -120,7 +120,7 @@ describe('Get notes by ID api', () => {
         done();
       });
   });
-  it("Should return true from GetNoteApi service  , return appropriate response", (done) => {
+  it.only("Should return true from GetNoteApi Service Layer  , return appropriate response", (done) => {
     const token = noteDB.notes.validToken;
     chai
       .request(server)
@@ -132,11 +132,11 @@ describe('Get notes by ID api', () => {
           res.should.have.status(400);
           return done();
         }
-        res.should.have.status(201);
+        res.should.have.status(200);
         return done();
       });
   });
-  it("Should return true from GetNoteApi model layer  , return appropriate response", (done) => {
+  it.only("Should return true from GetNoteApi model layer  , return appropriate response", (done) => {
     const token = noteDB.notes.validToken;
     chai
       .request(server)
@@ -148,11 +148,11 @@ describe('Get notes by ID api', () => {
           res.should.have.status(400);
           return done();
         }
-        res.should.have.status(201);
+        res.should.have.status(200);
         return done();
       });
   });
-  it("Should return true from GetNoteApi when note is find  , return appropriate response", (done) => {
+  it.only("Should return true from GetNoteApi when note is find  , return appropriate response", (done) => {
     const token = noteDB.notes.validToken;
     chai
       .request(server)
@@ -164,7 +164,7 @@ describe('Get notes by ID api', () => {
           res.should.have.status(400);
           return done();
           }
-        res.should.have.status(201);
+        res.should.have.status(200);
         return done();
       });
   });
@@ -172,40 +172,66 @@ describe('Get notes by ID api', () => {
 
 // Update data by id
 describe('Update notes api', () => {
-  it('given token should be valid token', (done) => {
+  it.only('givenInvalidToken_should give false when it is invalid entry of token1', (done) => {
+    const token = noteDB.notes.invalidToken;
+    chai
+      .request(server)
+      .put('/updatenotes/:id')
+      .set({ authorization: token })
+      .send({})
+      .end((err, res) => {
+        res.should.have.status(400);
+        done();
+      });
+  });
+  it.only('givenvalidToken_shoule give true when id it is verify2', (done) => {
     const token = noteDB.notes.validToken;
     chai
       .request(server)
-      .put('/updatenotes/61c28a8516512bcec838cbbc')
+      .put('/updatenotes/:id')
       .set({ authorization: token })
-      .send(token)
+      .send({token})
       .end((err, res) => {
         res.should.have.status(201);
         done();
       });
   });
 
-  it.only('givenInvalidToken_ShouldUpdateNote', (done) => {
-    const token = noteDB.notes.invalidToken;
+  it.only('givenvalidToken_shoule give true when id it is verify3', (done) => {
+    const token = noteDB.notes.validToken;
     chai
       .request(server)
-      .put('/updatenotes/:id')
+      .put('/updatenotes/61c28a8516512bcec838cbbc')
       .set({ authorization: token })
-      .send()
+      .send({token,id:'61c28a8516512bcec838cbbc'})
       .end((err, res) => {
-        res.should.have.status(404);
+        res.should.have.status(201);
         done();
       });
   });
   it.only('givenInvalidToken_ShouldUpdateNote', (done) => {
     const token = noteDB.notes.validToken;
+    const note = noteDB.updateNote.validData;
     chai
       .request(server)
-      .put('/updatenotes/:id')
+      .put('/updatenotes/61c28a9316512bcec838cbbe')
       .set({ authorization: token })
-      .send(token)
+      .send(note)
       .end((err, res) => {
-        res.should.have.status(404);
+        res.should.have.status(400);
+        done();
+      });
+  });
+  it.only('givenInvalidToken_ShouldUpdateNote', (done) => {
+    const token = noteDB.notes.invalidToken;
+    const note = noteDB.updateNote.validData;
+    chai
+      .request(server)
+      .put('/updatenotes/61c28a9316512bcec838cbbe')
+      .set({ authorization: token })
+      .send(note)
+      .end((err, res) => {
+        res.should.have.status(400);
         done();
       });
   });
