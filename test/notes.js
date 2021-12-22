@@ -2,7 +2,6 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 const server = require('../server');
 const faker = require('faker');
-
 chai.use(chaiHttp);
 const noteDB = require('./notes.json');
 const { expect } = require('chai');
@@ -10,7 +9,7 @@ const { string } = require('joi');
 chai.should();
 
 describe('create notes api', () => {
-  it('notes', (done) => {
+  it('givenCreateNotes_validToken_shouldNotbeCreated', (done) => {
     const token = noteDB.notes.validToken;
     const createNotes = {
       title: faker.lorem.word(),
@@ -33,7 +32,6 @@ describe('create notes api', () => {
       title: faker.lorem.word(),
       description: faker.lorem.sentence()
     };
-    console.log(createNotes);
     chai
       .request(server)
       .post('/createnotes')
@@ -48,7 +46,7 @@ describe('create notes api', () => {
 
 // get note test cases
 describe('get notes api', () => {
-  it('notes', (done) => {
+  it.only('notes', (done) => {
     const token = noteDB.notes.validToken;
     chai
       .request(server)
@@ -60,7 +58,7 @@ describe('get notes api', () => {
       });
   });
 
-  it('givenCreateNotes_whenInvalidToken_shouldNotbeGet', (done) => {
+  it.only('givenCreateNotes_whenInvalidToken_shouldNotbeGet', (done) => {
     const token = noteDB.notes.invalidToken;
     chai
       .request(server)
@@ -72,16 +70,53 @@ describe('get notes api', () => {
       });
   });
 });
-
-describe('get notes by id api', () => {
-  it('notes', (done) => {
-    // const token = noteDB.notes.validToken;
+// get data by id
+describe('Get notes by ID api', () => {
+  it.only('given token should be valid token', (done) => {
+    const token = noteDB.notes.validToken;
     chai
       .request(server)
-      .get('/getnotes/61c1e6f928755f3c6c15468b')
+      .get('/getnotes/61c28a8516512bcec838cbbc')
       .set({ authorization: token })
+      .send(token)
       .end((err, res) => {
         res.should.have.status(201);
+        done();
+      });
+  });
+  it.only('given token should be valid token', (done) => {
+    const token = noteDB.notes.invalidToken;
+    chai
+      .request(server)
+      .get('/getnotes/61c28a8516512bcec838cbbc')
+      .set({ authorization: token })
+      .send(token)
+      .end((err, res) => {
+        res.should.have.status(400);
+        done();
+      });
+  });
+  it.only('givenPoperDetails_ShouldGetNote', (done) => {
+    const token = noteDB.notes.validToken;
+    chai
+      .request(server)
+      .get('/getnotes/61c28a8516512bcec838cbbc')
+      .set({ authorization: token })
+      .send(token,'61c28a8516512bcec838cbbc')
+      .end((err, res) => {
+        res.should.have.status(201);
+        done();
+      });
+  });
+  it.only('givenPoperDetails_ShouldGetNote', (done) => {
+    const token = noteDB.notes.invalidToken;
+    chai
+      .request(server)
+      .get('/getnotes/61c28a8516512bcec838cbbc')
+      .set({ authorization: token })
+      .send(token,'61c28a8516512bcec838cbbc')
+      .end((err, res) => {
+        res.should.have.status(400);
         done();
       });
   });

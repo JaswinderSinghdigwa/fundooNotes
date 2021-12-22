@@ -92,6 +92,7 @@ class Note {
       })
     }
     catch {
+      console.log("error",req)
       logger.error('Internal Error');
       return res.status(500).json({
         message: 'Internal Error'

@@ -61,7 +61,6 @@ class userService {
           console.log("!!! Some Error in your code",null)
         }
         else{
-          console.log("222",data);
           return callback(null, nodemailer.sendEmail(data));
         }
       });

@@ -3,7 +3,7 @@ const bcrypt = Promise.promisifyAll(require("bcrypt"));
 const mongoose = require('mongoose');
 const { logger } = require('../../logger/logger')
 const Otp = require('../models/otp.model')
-const utilities= require('../utilities/helper')
+const utilities = require('../utilities/helper')
 
 const userSchema = mongoose.Schema({
     firstName: {
@@ -73,7 +73,7 @@ class userModel {
         //To find a user email in the database
         user.findOne({ email: loginData.email }, (error, data) => {
             if (error) {
-                console.log("3333",error);
+                console.log("3333", error);
                 logger.error('Find error while loggin user');
                 return callBack(error, null);
             } else if (!data) {
@@ -91,7 +91,7 @@ class userModel {
      * @param {*} email
      * @param {*} callback
      */
-     forgotPassword = (data, callback) => {
+    forgotPassword = (data, callback) => {
         user.findOne({ email: data.email }, (err, data) => {
           if (err) {
             logger.error('User with email id doesnt exists');
@@ -100,37 +100,44 @@ class userModel {
             console.log("333",data);
             return callback(null, data);
           }
-        });
-      };
 
-       /**
-     * @description mongoose function for Reset password
-     * @param {*} email
-     * @param {*} callback
-     */
-        resetPassword = (userData) => {
-            return new Promise((resolve, reject) => {
+            if (err) {
+                logger.error('User with email id doesnt exists');
+                return callback('User with email id doesnt exists', null);
+            } else {
+                return callback(null, data);
+            }
+        })
+        };
+
+    /**
+  * @description mongoose function for Reset password
+  * @param {*} email
+  * @param {*} callback
+  */
+    resetPassword = (userData) => {
+        return new Promise((resolve, reject) => {
             Otp.findOne({ code: userData.code })
-            .then((data)=>{
-                if(userData.code == data.code){
-                    utilities.hashing(userData.password)
-                        .then((hash)=> {
-                            userData.password = hash;
-                            user.updateOne({email:userData.email},{'$set':{"password": userData.password}})
-                            .then((data)=>{
-                                 resolve(data)
-                            }).catch((error)=>{
-                                reject(error)
-                            }) 
-                        }).catch((error)=>{
-                            rejct(error)
-                        })
-                }else{
-                    reject(null)
-                }
-            }).catch((error)=>{
-                reject("Otp doesnt match", null)
-            });
+                .then((data) => {
+                    if (userData.code == data.code) {
+                        utilities.hashing(userData.password)
+                            .then((hash) => {
+                                userData.password = hash;
+                                user.updateOne({ email: userData.email }, { '$set': { "password": userData.password } })
+                                    .then((data) => {
+                                        resolve(data)
+                                    }).catch((error) => {
+                                        reject(error)
+                                    })
+                            }).catch((error) => {
+                                rejct(error)
+                            })
+                    } else {
+                        reject(null)
+                    }
+                }).catch((error) => {
+                    reject("Otp doesnt match", null)
+                });
         });
     }
 }
