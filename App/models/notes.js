@@ -52,6 +52,9 @@ class Model {
         callback(error, null);
       }
     });
-  } 
+  }
+  getNoteById = (id, callback) => {
+    callback(null,id.id);
+  }; 
 }
 module.exports = new Model();
