@@ -12,25 +12,35 @@
     "host": "localhost:3000",
     "basePath": "/",
     "tags": [],
-    "schemes": ["http"],
-    "consumes": ["application/json"],
-    "produces": ["application/json"],
+    "schemes": [
+        "http"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
     "paths": {
         "/register": {
             "post": {
-                "tags": ["Register"],
+                "tags": [
+                    "Register"
+                ],
                 "description": "Register new user",
                 "parameters": [
                     {
                         "name": "Register",
                         "in": "body",
                         "description": "User that we want to register",
-                        "schema": { 
+                        "schema": {
                             "$ref": "#/definitions/registerUser"
                         }
                     }
                 ],
-                "produces": ["application/json"],
+                "produces": [
+                    "application/json"
+                ],
                 "responses": {
                     "201": {
                         "description": "New user is Registered"
@@ -46,7 +56,9 @@
         },
         "/login": {
             "post": {
-                "tags": ["Login"],
+                "tags": [
+                    "Login"
+                ],
                 "description": "Login user",
                 "parameters": [
                     {
@@ -58,8 +70,9 @@
                         }
                     }
                 ],
-
-                "produces": ["application/json"],
+                "produces": [
+                    "application/json"
+                ],
                 "responses": {
                     "200": {
                         "description": "ok"
@@ -70,10 +83,11 @@
                 }
             }
         },
-
         "/forgotpassword": {
             "post": {
-                "tags": ["forgotPassword"],
+                "tags": [
+                    "forgotPassword"
+                ],
                 "description": "Send password link",
                 "parameters": [
                     {
@@ -85,7 +99,9 @@
                         }
                     }
                 ],
-                "produces": ["application/json"],
+                "produces": [
+                    "application/json"
+                ],
                 "responses": {
                     "200": {
                         "description": "ok"
@@ -96,7 +112,6 @@
                 }
             }
         },
-
         "/reset-Password": {
             "put": {
                 "tags": [
@@ -104,7 +119,6 @@
                 ],
                 "description": "Already registered ? Then reset password successfully !!",
                 "parameters": [
-        
                     {
                         "name": "Reset Password",
                         "in": "body",
@@ -130,7 +144,6 @@
                 }
             }
         },
-
         "/createnotes": {
             "post": {
                 "tags": [
@@ -174,10 +187,88 @@
                     }
                 }
             }
+        },
+        "/getnotes": {
+            "get": {
+                "tags": [
+                    "Get Notes"
+                ],
+                "description": "Get a  note !!",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "Token for vaidation",
+                        "schema": {
+                            "type": "string",
+                            "required": true
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "schema": {
+                    "$ref": "#/definitions/notes"
+                },
+                "responses": {
+                    "201": {
+                        "description": "Get note succesfully !!"
+                    },
+                    "401": {
+                        "description": "Please enter Valid Token"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/getnotes/{id}": {
+            "get": {
+                "tags": [
+                    "Get Notes"
+                ],
+                "description": "Get a note by ID for perticuler person id",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "Token for vaidation",
+                        "schema": {
+                            "type": "string",
+                            "required": true
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of note you want to update",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "schema": {
+                    "$ref": "#/definitions/notes"
+                },
+                "responses": {
+                    "201": {
+                        "description": "Create note succesfully !!"
+                    },
+                    "400": {
+                        "description": "Please enter Valid Token"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
         }
     },
-    
-
     "definitions": {
         "registerUser": {
             "type": "object",
@@ -194,7 +285,6 @@
                 "password": {
                     "type": "string"
                 }
-                
             }
         },
         "loginUser": {
@@ -220,16 +310,15 @@
             "type": "object",
             "properties": {
                 "email": {
-                    "type": "string"   
+                    "type": "string"
                 },
-                "password":{
-                    "type":"string"
+                "password": {
+                    "type": "string"
                 },
-                "code":{
-                    "type":"string"
+                "code": {
+                    "type": "string"
                 }
             }
-            
         },
         "notes": {
             "type": "object",
