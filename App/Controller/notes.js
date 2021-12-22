@@ -121,7 +121,7 @@ class Note {
             success: false
           });
         }
-        return res.status(201).json({
+        return res.status().json({
           message: 'Note retrieved succesfully',
           success: true,
           data: data
@@ -136,5 +136,19 @@ class Note {
       });
     }
   };
+  updateNoteById = (req,res) =>{
+    try{
+      return res.status(201).json({
+        message: 'request send succesfully',
+        success: true,
+      });
+    }
+    catch(error){
+      return res.status(404).json({
+        message: 'Some Error Occured due to Authoriziation',
+        success: false
+      });
+    }
+  }
 }
 module.exports = new Note();
