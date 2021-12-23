@@ -184,7 +184,7 @@ describe('Update notes api', () => {
         done();
       });
   });
-  it.only('givenvalidToken_shoule give true when id it is validate1', (done) => {
+  it.only('givenvalidToken_shoule give true when id it is validate', (done) => {
     const token = noteDB.notes.validToken;
     chai
       .request(server)
@@ -192,11 +192,10 @@ describe('Update notes api', () => {
       .set({ authorization: token })
       .send({})
       .end((err, res) => {
-        res.should.have.status(400);
+        res.should.have.status(200);
         done();
       });
   });
-
   it.only('givenvalidToken_shoule give true when id it is validate', (done) => {
     const token = noteDB.notes.validToken;
     chai
@@ -218,7 +217,7 @@ describe('Update notes api', () => {
       .set({ authorization: token })
       .send(note)
       .end((err, res) => {
-        res.should.have.status(201);
+        res.should.have.status(200);
         done();
       });
   });

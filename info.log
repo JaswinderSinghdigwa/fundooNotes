@@ -1570,3 +1570,10 @@
 {"level":"info","message":"Successfully inserted note","timestamp":"2021-12-22T17:16:18.184Z"}
 {"level":"info","message":"Successfully inserted note","timestamp":"2021-12-22T17:20:26.048Z"}
 {"level":"info","message":"Successfully inserted note","timestamp":"2021-12-22T17:21:37.542Z"}
+{"level":"info","message":"Email id found","timestamp":"2021-12-23T02:24:51.833Z"}
+{"level":"info","message":" token generated","timestamp":"2021-12-23T02:24:51.970Z"}
+{"level":"info","message":"Successfully inserted note","timestamp":"2021-12-23T02:25:27.586Z"}
+{"level":"info","message":"Successfully inserted note","timestamp":"2021-12-23T02:25:38.194Z"}
+{"level":"info","message":"Get All Notes successfully","timestamp":"2021-12-23T02:45:50.567Z"}
+{"level":"info","message":"Get All Notes successfully","timestamp":"2021-12-23T02:48:05.857Z"}
+{"level":"info","message":"Get All Notes successfully","timestamp":"2021-12-23T03:03:15.911Z"}
