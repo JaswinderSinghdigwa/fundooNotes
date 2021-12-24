@@ -1577,3 +1577,44 @@
 {"level":"info","message":"Get All Notes successfully","timestamp":"2021-12-23T02:45:50.567Z"}
 {"level":"info","message":"Get All Notes successfully","timestamp":"2021-12-23T02:48:05.857Z"}
 {"level":"info","message":"Get All Notes successfully","timestamp":"2021-12-23T03:03:15.911Z"}
+{"level":"info","message":"Email id found","timestamp":"2021-12-24T03:01:42.590Z"}
+{"level":"info","message":" token generated","timestamp":"2021-12-24T03:01:42.737Z"}
+{"level":"info","message":"Successfully inserted note","timestamp":"2021-12-24T03:02:46.410Z"}
+{"level":"info","message":"Successfully inserted note","timestamp":"2021-12-24T03:08:04.357Z"}
+{"level":"info","message":"Successfully inserted note","timestamp":"2021-12-24T03:15:36.212Z"}
+{"kind":"ObjectId","level":"error","path":"_id","reason":{},"stringValue":"\":id\"","timestamp":"2021-12-24T03:16:17.764Z","value":":id","valueType":"string"}
+{"level":"error","message":"failed to update note","timestamp":"2021-12-24T03:16:17.770Z"}
+{"level":"info","message":"Successfully inserted note","timestamp":"2021-12-24T03:16:17.820Z"}
+{"level":"info","message":"Successfully inserted note","timestamp":"2021-12-24T03:16:17.848Z"}
+{"kind":"ObjectId","level":"error","path":"_id","reason":{},"stringValue":"\":id\"","timestamp":"2021-12-24T03:18:04.709Z","value":":id","valueType":"string"}
+{"level":"error","message":"failed to update note","timestamp":"2021-12-24T03:18:04.713Z"}
+{"level":"info","message":"Successfully inserted note","timestamp":"2021-12-24T03:18:04.760Z"}
+{"level":"info","message":"Successfully inserted note","timestamp":"2021-12-24T03:18:04.782Z"}
+{"kind":"ObjectId","level":"error","path":"_id","reason":{},"stringValue":"\":id\"","timestamp":"2021-12-24T03:20:23.449Z","value":":id","valueType":"string"}
+{"level":"error","message":"failed to update note","timestamp":"2021-12-24T03:20:23.452Z"}
+{"level":"info","message":"Successfully inserted note","timestamp":"2021-12-24T03:20:23.499Z"}
+{"level":"info","message":"Successfully inserted note","timestamp":"2021-12-24T03:20:23.529Z"}
+{"kind":"ObjectId","level":"error","path":"_id","reason":{},"stringValue":"\":id\"","timestamp":"2021-12-24T03:23:20.423Z","value":":id","valueType":"string"}
+{"level":"error","message":"failed to update note","timestamp":"2021-12-24T03:23:20.426Z"}
+{"level":"info","message":"Successfully inserted note","timestamp":"2021-12-24T03:23:20.467Z"}
+{"level":"info","message":"Successfully inserted note","timestamp":"2021-12-24T03:23:20.487Z"}
+{"level":"info","message":"Successfully inserted note","timestamp":"2021-12-24T03:23:20.525Z"}
+{"kind":"ObjectId","level":"error","path":"_id","reason":{},"stringValue":"\":id\"","timestamp":"2021-12-24T03:24:51.929Z","value":":id","valueType":"string"}
+{"level":"error","message":"failed to update note","timestamp":"2021-12-24T03:24:51.932Z"}
+{"level":"info","message":"Successfully inserted note","timestamp":"2021-12-24T03:24:51.976Z"}
+{"level":"info","message":"Successfully inserted note","timestamp":"2021-12-24T03:24:52.004Z"}
+{"kind":"ObjectId","level":"error","path":"_id","reason":{},"stringValue":"\":id\"","timestamp":"2021-12-24T03:25:40.848Z","value":":id","valueType":"string"}
+{"level":"error","message":"failed to update note","timestamp":"2021-12-24T03:25:40.850Z"}
+{"level":"info","message":"Successfully inserted note","timestamp":"2021-12-24T03:25:40.898Z"}
+{"level":"info","message":"Successfully inserted note","timestamp":"2021-12-24T03:25:40.919Z"}
+{"level":"info","message":"Successfully inserted note","timestamp":"2021-12-24T03:25:40.960Z"}
+{"kind":"ObjectId","level":"error","path":"_id","reason":{},"stringValue":"\":id\"","timestamp":"2021-12-24T03:30:56.295Z","value":":id","valueType":"string"}
+{"level":"error","message":"failed to update note","timestamp":"2021-12-24T03:30:56.298Z"}
+{"level":"info","message":"Successfully inserted note","timestamp":"2021-12-24T03:30:56.341Z"}
+{"level":"info","message":"Successfully inserted note","timestamp":"2021-12-24T03:30:56.360Z"}
+{"level":"info","message":"Successfully inserted note","timestamp":"2021-12-24T03:30:56.403Z"}
+{"kind":"ObjectId","level":"error","path":"_id","reason":{},"stringValue":"\":id\"","timestamp":"2021-12-24T03:31:48.221Z","value":":id","valueType":"string"}
+{"level":"error","message":"failed to update note","timestamp":"2021-12-24T03:31:48.223Z"}
+{"level":"info","message":"Successfully inserted note","timestamp":"2021-12-24T03:31:48.271Z"}
+{"level":"info","message":"Successfully inserted note","timestamp":"2021-12-24T03:31:48.294Z"}
+{"level":"info","message":"Successfully inserted note","timestamp":"2021-12-24T03:31:48.335Z"}

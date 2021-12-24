@@ -9,7 +9,6 @@ class Controller {
      * @param {*} res
      * @returns
      */
-
   register = (req, res) => {
     try {
       const user = {
@@ -58,7 +57,6 @@ class Controller {
     * @param {*} req
     * @param {*} res
     */
-
   login = (req, res) => {
     try {
       const userLoginInfo = {

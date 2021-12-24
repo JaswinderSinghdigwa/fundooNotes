@@ -10,7 +10,7 @@ class Note {
    * @returns response
    */
   createNote = (req, res) => {
-    console.log("44",req.user)
+    console.log("44", req.user)
     try {
       const note = {
         userId: req.user.dataForToken.id,
@@ -34,8 +34,6 @@ class Note {
             success: false
           });
         } else {
-          "title"
-          "description"
           logger.info('Successfully inserted note');
           return res.status(201).send({
             message: 'Successfully inserted note',
@@ -44,11 +42,11 @@ class Note {
           });
         }
       });
-    } catch {
-      logger.error('Internal server error');
+    } catch (error) {
+      console.log("error", req)
+      logger.error('Internal Error');
       return res.status(500).json({
-        message: 'Error occured',
-        success: false
+        message: 'Internal Error'
       });
     }
   }
@@ -92,7 +90,7 @@ class Note {
       })
     }
     catch {
-      console.log("error",req)
+      console.log("error", req)
       logger.error('Internal Error');
       return res.status(500).json({
         message: 'Internal Error'
@@ -129,7 +127,7 @@ class Note {
         });
       });
     } catch (err) {
-      console.log("222",err)
+      console.log("222", err)
       return res.status(500).json({
         message: 'Internal Error',
         success: false,

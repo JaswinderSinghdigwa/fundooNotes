@@ -102,7 +102,7 @@ describe('Get notes by ID api', () => {
       .request(server)
       .get('/getnotes/61c28a8516512bcec838cbbc')
       .set({ authorization: token })
-      .send(token,'61c28a8516512bcec838cbbc')
+      .send(token, '61c28a8516512bcec838cbbc')
       .end((err, res) => {
         res.should.have.status(200);
         done();
@@ -114,7 +114,7 @@ describe('Get notes by ID api', () => {
       .request(server)
       .get('/getnotes/61c28a8516512bcec838cbbc')
       .set({ authorization: token })
-      .send(token,'61c28a8516512bcec838cbbc')
+      .send(token, '61c28a8516512bcec838cbbc')
       .end((err, res) => {
         res.should.have.status(400);
         done();
@@ -126,9 +126,9 @@ describe('Get notes by ID api', () => {
       .request(server)
       .get('/getnotes/61c28a8516512bcec838cbbc')
       .set({ authorization: token })
-      .send(token,'61c28a8516512bcec838cbbc')
+      .send(token, '61c28a8516512bcec838cbbc')
       .end((err, res) => {
-        if(err){
+        if (err) {
           res.should.have.status(400);
           return done();
         }
@@ -142,9 +142,9 @@ describe('Get notes by ID api', () => {
       .request(server)
       .get('/getnotes/61c28a8516512bcec838cbbc')
       .set({ authorization: token })
-      .send(token,'61c28a8516512bcec838cbbc')
+      .send(token, '61c28a8516512bcec838cbbc')
       .end((err, res) => {
-        if(err){
+        if (err) {
           res.should.have.status(400);
           return done();
         }
@@ -158,12 +158,12 @@ describe('Get notes by ID api', () => {
       .request(server)
       .get('/getnotes/61c28a8516512bcec838cbbc')
       .set({ authorization: token })
-      .send(token,'61c28a8516512bcec838cbbc')
+      .send(token, '61c28a8516512bcec838cbbc')
       .end((err, res) => {
-        if(err){
+        if (err) {
           res.should.have.status(400);
           return done();
-          }
+        }
         res.should.have.status(200);
         return done();
       });
@@ -184,15 +184,15 @@ describe('Update notes api', () => {
         done();
       });
   });
-  it.only('givenvalidToken_shoule give true when id it is validate', (done) => {
+  it.only('givenvalidToken_shoule give true when token is verify', (done) => {
     const token = noteDB.notes.validToken;
     chai
       .request(server)
       .put('/updatenotes/:id')
       .set({ authorization: token })
-      .send({})
+      .send()
       .end((err, res) => {
-        res.should.have.status(200);
+        res.should.have.status(201);
         done();
       });
   });
@@ -202,7 +202,7 @@ describe('Update notes api', () => {
       .request(server)
       .put('/updatenotes/61c28a8516512bcec838cbbc')
       .set({ authorization: token })
-      .send({token,id:'61c28a8516512bcec838cbbc'})
+      .send()
       .end((err, res) => {
         res.should.have.status(201);
         done();
@@ -217,7 +217,7 @@ describe('Update notes api', () => {
       .set({ authorization: token })
       .send(note)
       .end((err, res) => {
-        res.should.have.status(200);
+        res.should.have.status(201);
         done();
       });
   });
@@ -234,4 +234,36 @@ describe('Update notes api', () => {
         done();
       });
   });
+  it.only('givenPoperDetails_ShouldUpdateNote Using Fake Data', (done) => {
+    const token = noteDB.notes.validToken;
+    const UpdateNote = {
+      title: faker.lorem.word(),
+      description: faker.lorem.word()
+    }
+    chai
+      .request(server)
+      .put('/updatenotes/61c28a9316512bcec838cbbe')
+      .set({ authorization: token })
+      .send(UpdateNote)
+      .end((err, res) => {
+        res.should.have.status(201);
+        done();
+      });
+  });
+  it.only('givenInvalidToken_ShouldNotUpdateNote Using Fake Data ', (done) => {
+    const token = noteDB.notes.invalidToken;
+    const UpdateNote = {
+      title: faker.lorem.word(),
+      description: faker.lorem.word()
+    }
+    chai
+      .request(server)
+      .put('/updatenotes/61c28a9316512bcec838cbbe')
+      .set({ authorization: token })
+      .send(UpdateNote)
+      .end((err, res) => {
+        res.should.have.status(400);
+        done();
+      });
+  })
 });
