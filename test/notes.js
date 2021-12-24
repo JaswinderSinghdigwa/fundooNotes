@@ -184,7 +184,7 @@ describe('Update notes api', () => {
         done();
       });
   });
-  it.only('givenvalidToken_shoule give true when token is verify', (done) => {
+  it('givenvalidToken_shoule give true when token is verify', (done) => {
     const token = noteDB.notes.validToken;
     chai
       .request(server)
@@ -267,3 +267,31 @@ describe('Update notes api', () => {
       });
   })
 });
+
+// Delete Note by id
+describe('Delete notes api', () => {
+  it.only('givenInvalidToken_should give false when it is invalid entry of token', (done) => {
+    const token = noteDB.notes.invalidToken;
+    chai
+      .request(server)
+      .put('/deletelabel/:id')
+      .set({ authorization: token })
+      .send()
+      .end((err, res) => {
+        res.should.have.status(404);
+        done();
+      });
+  })
+  it.only('givenInvalidToken_should give true when it is valid entry of token', (done) => {
+    const token = noteDB.notes.validToken;
+    chai
+      .request(server)
+      .put('/deletelabel')
+      .set({ authorization: token })
+      .send(token)
+      .end((err, res) => {
+        res.should.have.status(201);
+        done();
+      });
+  })
+})

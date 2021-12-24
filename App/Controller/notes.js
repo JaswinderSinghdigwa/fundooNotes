@@ -179,5 +179,22 @@ class Note {
       });
     }
   }
+  deleteNoteById = (req, res) => {
+    try {
+      console.log("222",req.user);
+      const token = req.user;
+      if(token){
+      return res.status(201).send({
+        message: 'Successfully update note',
+        success: true,
+      })
+    }
+    } catch (error) {
+      return res.status(404).send({
+        message: 'Internal Server Error',
+        success: true,
+      })
+    }
+  }
 }
 module.exports = new Note();

@@ -20,4 +20,6 @@ module.exports = (app) => {
    app.get('/getnotes/:id', helper.validateToken, note.getNoteById);
    // api for updatenotes Id 
    app.put('/updatenotes/:id', helper.validateToken, note.updateNoteById); 
+   // api for delete By Id 
+   app.delete('/deletenotes/:id', helper.validateToken, note.deleteNoteById);
 }; 
