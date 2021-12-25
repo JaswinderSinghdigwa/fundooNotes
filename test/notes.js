@@ -280,15 +280,15 @@ describe('Update notes api', () => {
 
 // Delete Note by id
 describe('Delete notes api', () => {
-  it.only('givenNote__ShouldNot_Access from invalid request', (done) => {
-    chai
-      .request(server)
-      .delete('/deletenotes/:id')
-      .end((err, res) => {
-        res.should.have.status(500);
-        return done();
-      });
-  });
+  // it.only('givenNote__ShouldNot_Access from invalid request', (done) => {
+  //   chai
+  //     .request(server)
+  //     .delete('/deletenotes/:id')
+  //     .end((err, res) => {
+  //       res.should.have.status(500);
+  //       return done();
+  //     });
+  // });
   it.only('givenvalidToken_should give true when it is valid entry of token', (done) => {
     const token = noteDB.notes.validToken;
     chai
@@ -299,31 +299,31 @@ describe('Delete notes api', () => {
         res.should.have.status(201);
         done();
       });
-    })
-    it.only('givenInvalidToken_should give false when it is invalid entry of token', (done) => {
-      const token = noteDB.notes.invalidToken;
-      chai
-        .request(server)
-        .delete('/deletenotes/:id')
-        .set({ authorization: token })
-        .end((err, res) => {
-          res.should.have.status(400);
-          done();
-        });
-    })
-    it.only('givenvalidToken_should verify id is getting or not', (done) => {
-      const token = noteDB.notes.validToken;
-      chai
-        .request(server)
-        .delete('/deletenotes/61c28a9316512bcec838cbbe')
-        .set({ authorization: token })
-        .end((err, res) => {
-          if(err){
-            res.should.have.status(400);
-            return done();
-          }
-          res.should.have.status(201);
-          done();
-        });
-      })
   })
+  it.only('givenInvalidToken_should give false when it is invalid entry of token', (done) => {
+    const token = noteDB.notes.invalidToken;
+    chai
+      .request(server)
+      .delete('/deletenotes/:id')
+      .set({ authorization: token })
+      .end((err, res) => {
+        res.should.have.status(400);
+        done();
+      });
+  })
+  it.only('givenvalidToken_should give true when id is validate', (done) => {
+    const token = noteDB.notes.validToken;
+    chai
+      .request(server)
+      .delete('/deletenotes/61c28a9316512bcec838cbbe')
+      .set({ authorization: token })
+      .end((err, res) => {
+        if (err) {
+          res.should.have.status(400);
+          return done();
+        }
+        res.should.have.status(201);
+        done();
+      });
+  })
+})

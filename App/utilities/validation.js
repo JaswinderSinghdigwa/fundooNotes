@@ -46,14 +46,14 @@ class Validation {
 
   validateReset = Joi.object({
     email: Joi.string()
-            .pattern(new RegExp('^[a-zA-Z0-9]+([+_.-][a-zA-Z0-9]+)*[@][a-zA-Z0-9]+[.][a-zA-Z]{2,4}([.][a-zA-Z]{2,4})?$'))
-            .required(),
-            password: Joi.string()
-            .pattern(new RegExp('(?=^.{8,}$)((?=.*\\d)|(?=.*\\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$'))
-            .required(),
-          code: Joi.string()
-            .pattern(new RegExp('[0-9aA-Za-z]{1,}'))
-            .required()
+      .pattern(new RegExp('^[a-zA-Z0-9]+([+_.-][a-zA-Z0-9]+)*[@][a-zA-Z0-9]+[.][a-zA-Z]{2,4}([.][a-zA-Z]{2,4})?$'))
+      .required(),
+    password: Joi.string()
+      .pattern(new RegExp('(?=^.{8,}$)((?=.*\\d)|(?=.*\\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$'))
+      .required(),
+    code: Joi.string()
+      .pattern(new RegExp('[0-9aA-Za-z]{1,}'))
+      .required()
   });
 
   notesCreationValidation = Joi.object({
@@ -76,6 +76,10 @@ class Validation {
     title: Joi.string().min(3),
     description: Joi.string().min(3)
   });
+  validateDeleteNote = Joi.object({
+    noteId: Joi.string(),
+    userId: Joi.string()
+  })
 }
 
 module.exports = new Validation(); 

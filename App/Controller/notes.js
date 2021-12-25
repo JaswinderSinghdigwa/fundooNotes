@@ -196,24 +196,24 @@ class Note {
   deleteNoteById = (req, res) => {
     try {
       const id = { userId: req.user.dataForToken.id, noteId: req.params.id };
-      if(id){
-      console.log("1111",id);
+      const deleteNoteValidation = validation.validateDeleteNote.validate(id);
+      if (deleteNoteValidation.error) {
+        console.log(deleteNoteValidation.error);
+        return res.status(400).send({
+          success: false,
+          message: 'Wrong Input Validations',
+          data: deleteNoteValidation
+        });
+      }
       return res.status(201).send({
         message: 'Successfully Deleted note',
         success: true
       });
-    }else{
-      logger.error('failed to Delete note');
-      return res.status(400).json({
-        message: 'failed to Delete note',
-        success: false
-      });
-    }
-    }catch(error){
+    } catch (error) {
       logger.error('Internal server error');
       return res.status(500).json({
-          message: 'Internal Server Error',
-          success: false
+        message: 'Internal Server Error',
+        success: false
       });
     }
   }
