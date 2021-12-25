@@ -278,6 +278,18 @@ describe('Update notes api', () => {
         done();
       });
   });
+  it.only('Should return true from ModelLayer  , return appropriate response', (done) => {
+    const token = noteDB.notes.validToken;
+    chai
+      .request(server)
+      .put('/updatenotes/61c28a9316512bcec838cbbe')
+      .set({ authorization: token })
+      .send()
+      .end((err, res) => {
+        res.should.have.status(201);
+        done();
+      });
+  });
 });
 
 // Delete Note by id
