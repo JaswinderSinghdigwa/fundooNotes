@@ -1025,3 +1025,5 @@
 {"kind":"ObjectId","level":"error","path":"_id","reason":{},"stringValue":"\":id\"","timestamp":"2021-12-24T03:31:48.222Z","value":":id","valueType":"string"}
 {"level":"error","message":"failed to update note","timestamp":"2021-12-24T03:31:48.223Z"}
 {"level":"error","message":"Note is Found","timestamp":"2021-12-24T09:24:11.541Z"}
+{"level":"error","message":"Internal server error","timestamp":"2021-12-25T20:15:20.140Z"}
+{"level":"error","message":"Internal server error","timestamp":"2021-12-25T20:18:47.381Z"}

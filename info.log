@@ -1671,6 +1671,7 @@
 {"level":"info","message":"Successfully inserted note","timestamp":"2021-12-25T14:10:21.961Z"}
 {"level":"info","message":"Successfully inserted note","timestamp":"2021-12-25T14:10:22.012Z"}
 {"level":"info","message":"Successfully inserted note","timestamp":"2021-12-25T14:10:22.090Z"}
+<<<<<<< HEAD
 {"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-25T19:20:13.952Z"}
 {"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-25T19:20:14.030Z"}
 {"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-25T19:20:14.076Z"}
@@ -1829,3 +1830,20 @@
 {"level":"info","message":"Successfully inserted note","timestamp":"2021-12-25T20:03:24.487Z"}
 {"level":"info","message":"Successfully inserted note","timestamp":"2021-12-25T20:03:24.547Z"}
 {"level":"info","message":"Successfully inserted note","timestamp":"2021-12-25T20:03:24.576Z"}
+=======
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-25T14:40:56.408Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-25T14:40:56.494Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-25T14:40:56.570Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-25T14:40:56.600Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-25T14:40:56.628Z"}
+{"level":"info","message":"Successfully inserted note","timestamp":"2021-12-25T14:40:56.769Z"}
+{"level":"info","message":"Successfully inserted note","timestamp":"2021-12-25T14:40:56.811Z"}
+{"level":"info","message":"Successfully inserted note","timestamp":"2021-12-25T14:40:56.883Z"}
+{"level":"info","message":"Successfully inserted note","timestamp":"2021-12-25T14:40:56.938Z"}
+>>>>>>> Development
+{"level":"info","message":"Successfully inserted note","timestamp":"2021-12-25T20:15:20.058Z"}
+{"level":"error","message":"Internal server error","timestamp":"2021-12-25T20:15:20.139Z"}
+{"level":"info","message":"Successfully inserted note","timestamp":"2021-12-25T20:18:47.290Z"}
+{"level":"error","message":"Internal server error","timestamp":"2021-12-25T20:18:47.380Z"}
+{"level":"info","message":"Successfully inserted note","timestamp":"2021-12-25T20:19:53.419Z"}
+{"level":"info","message":"Successfully inserted note","timestamp":"2021-12-25T20:20:17.050Z"}

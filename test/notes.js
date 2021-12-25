@@ -264,20 +264,32 @@ describe('Update notes api', () => {
         done();
       });
   });
+  it.only('Should return true from Model Layer , return appropriate response', (done) => {
+    const token = noteDB.notes.validToken;
+    chai
+      .request(server)
+      .put('/updatenotes/61c28a9316512bcec838cbbe')
+      .set({ authorization: token })
+      .send()
+      .end((err, res) => {
+        res.should.have.status(201);
+        done();
+      });
+  });
 });
 
 // Delete Note by id
 describe('Delete notes api', () => {
-  it.only('GetAll_notes_ApplyingInValidToken', (done) => {
+  it.only('givenNote__Should_Access from valid response', (done) => {
     chai
       .request(server)
       .delete('/deletenotes/:id')
       .end((err, res) => {
         res.should.have.status(500);
-         return done();
-    });
+        return done();
+      });
   });
-  it.only('givenInvalidToken_should give true when it is valid entry of token', (done) => {
+  it.only('givenvalidToken_should give true when it is valid entry of token', (done) => {
     const token = noteDB.notes.validToken;
     chai
       .request(server)
@@ -287,5 +299,16 @@ describe('Delete notes api', () => {
         res.should.have.status(201);
         done();
       });
+    })
+    it.only('givenInvalidToken_should give false when it is invalid entry of token', (done) => {
+      const token = noteDB.notes.invalidToken;
+      chai
+        .request(server)
+        .delete('/deletenotes/:id')
+        .set({ authorization: token })
+        .end((err, res) => {
+          res.should.have.status(400);
+          done();
+        });
+    })
   })
-})

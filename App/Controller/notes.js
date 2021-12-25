@@ -195,10 +195,18 @@ class Note {
    */
   deleteNoteById = (req, res) => {
     try {
+      if(req.user){
       return res.status(201).send({
         message: 'Successfully Deleted note',
         success: true
       });
+    }else{
+      logger.error('failed to Delete note');
+      return res.status(400).json({
+        message: 'failed to Delete note',
+        success: false
+      });
+    }
     }catch(error){
       logger.error('Internal server error');
       return res.status(500).json({
