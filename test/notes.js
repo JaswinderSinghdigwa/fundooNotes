@@ -352,5 +352,20 @@ describe('Delete notes api', () => {
         done();
       });
   })
+  it.only('givenvalidToken_should give true when,return particular userid is found ', (done) => {
+    const token = noteDB.notes.validToken;
+    chai
+      .request(server)
+      .delete('/deletenotes/61c28a9316512bcec838cbbe')
+      .set({ authorization: token })
+      .end((err, res) => {
+        if (err) {
+          res.should.have.status(400);
+          return done();
+        }
+        res.should.have.status(201);
+        done();
+      });
+  })
 
 })
