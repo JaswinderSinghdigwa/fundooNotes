@@ -156,7 +156,6 @@ class Note {
 
       const updateNoteValidation = validation.notesUpdateValidation.validate(updateNote);
       if (updateNoteValidation.error) {
-        console.log(updateNoteValidation.error);
         return res.status(400).send({
           success: false,
           message: 'Wrong Input Validations',
@@ -164,7 +163,6 @@ class Note {
         });
       }
 
-      console.log('note for controller :: ' + updateNote);
       noteService.updateNoteById(updateNote, (error, data) => {
         if (error) {
           logger.error('failed to update note');
@@ -197,19 +195,16 @@ class Note {
    */
   deleteNoteById = (req, res) => {
     try {
-      console.log("222",req.user);
-      const token = req.user;
-      if(token){
       return res.status(201).send({
-        message: 'Successfully update note',
-        success: true,
-      })
-    }
-    } catch (error) {
-      return res.status(404).send({
-        message: 'Internal Server Error',
-        success: true,
-      })
+        message: 'Successfully Deleted note',
+        success: true
+      });
+    }catch(error){
+      logger.error('Internal server error');
+      return res.status(500).json({
+          message: 'Internal Server Error',
+          success: false
+      });
     }
   }
 }
