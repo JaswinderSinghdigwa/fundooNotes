@@ -43,9 +43,8 @@ class Model {
    * @returns retrieved notes or if error returns error
    */
   getNote = (id, callback) => {
-    NoteRegister.find({ userId: id.id }, (error, data) => {
+    NoteRegister.findOne({ userId: id.id }, (error, data) => {
       if (data) {
-        console.log("111", data)
         callback(null, data);
       }
       else {

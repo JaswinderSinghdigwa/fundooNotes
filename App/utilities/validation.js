@@ -63,6 +63,9 @@ class Validation {
     description: Joi.string().min(5)
       .required()
   });
+  NoteValidation = Joi.object({
+    id: Joi.string().required()
+  });
   getNoteValidation = Joi.object({
     userId: Joi.string().required(),
     noteId: Joi.string().required()

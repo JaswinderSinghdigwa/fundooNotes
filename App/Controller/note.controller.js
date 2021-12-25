@@ -1,6 +1,8 @@
 const userService = require('../service/service.js')
 const validation = require('../utilities/validation');
 const { logger } = require('../../logger/logger');
+
+
 class Controller {
 
   /**
@@ -104,7 +106,7 @@ class Controller {
      * @returns
      */
 
-   forgotPassword = (req, res) => {
+  forgotPassword = (req, res) => {
     try {
       const userCredential = {
         email: req.body.email
@@ -144,19 +146,18 @@ class Controller {
       });
     }
   }
-   /**
-     * description controller function for Reset password
-     * @param {*} req
-     * @param {*} res
-     * @returns
-     */
-
-  resetPassword=(req, res) => {
+  /**
+    * description controller function for Reset password
+    * @param {*} req
+    * @param {*} res
+    * @returns
+    */
+  resetPassword = (req, res) => {
     try {
       const userData = {
         email: req.body.email,
         password: req.body.password,
-        code:req.body.code
+        code: req.body.code
       };
 
       const resetVlaidation = validation.validateReset.validate(userData);
@@ -172,7 +173,7 @@ class Controller {
       userService.resetPassword(userData, (error, userData) => {
         if (error) {
           logger.error(error);
-          console.log("errrr",error);
+          console.log("errrr", error);
           return res.status(400).send({
             message: error,
             success: false
@@ -187,7 +188,7 @@ class Controller {
         }
       });
     } catch (error) {
-      console.log("3333",error);
+      console.log("3333", error);
       logger.error('Internal server error');
       return res.status(500).send({
         success: false,

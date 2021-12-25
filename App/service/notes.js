@@ -17,10 +17,7 @@ class Service {
       }
     });
   }
-  /**
-  * @description this function is written to trigger or call the models function
-  * @returns error if it has error else data
-  */
+  
   getNote = (id, callback) => {
     noteModel.getNote(id, (error, data) => {
       if (data) {
@@ -36,6 +33,7 @@ class Service {
       if (data) {
         return callback(null, data)
       } else {
+        logger.error(error);
         return callback(err, null)
       }
     });

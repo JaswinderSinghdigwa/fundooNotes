@@ -10,7 +10,6 @@ class Note {
    * @returns response
    */
   createNote = (req, res) => {
-    console.log("44", req.user)
     try {
       const note = {
         userId: req.user.dataForToken.id,
@@ -59,9 +58,8 @@ class Note {
    */
   getNote = (req, res) => {
     try {
-      console.log("id--", req.user.dataForToken);
       const id = { id: req.user.dataForToken.id };
-      const getNoteValidation = validation.getNoteValidation.validate(id);
+      const getNoteValidation = validation.NoteValidation.validate(id);
       if (getNoteValidation.error) {
         console.log(getNoteValidation.error);
         return res.status(400).send({
@@ -80,7 +78,6 @@ class Note {
           })
         }
         else {
-          console.log("err--", error);
           logger.error('Failed to get all notes');
           return res.status(400).json({
             message: 'failed to get all notes',
@@ -90,16 +87,22 @@ class Note {
       })
     }
     catch {
-      console.log("error", req)
       logger.error('Internal Error');
       return res.status(500).json({
         message: 'Internal Error'
       });
     }
   }
+
+  /**
+   * @description function written to get notes id from the database
+   * @param {*} req
+   * @param {*} res
+   * @returns response
+   */
   getNoteById = (req, res) => {
     try {
-      const noteId = req.params.id;
+
       const id = { userId: req.user.dataForToken.id, noteId: req.params.id };
 
       const getNoteValidation = validation.getNoteValidation.validate(id);
@@ -113,12 +116,14 @@ class Note {
       }
 
       noteService.getNoteById(id, (err, data) => {
-        if (data.message) {
+        if (err) {
+          logger.error('Note is Found')
           return res.status(404).json({
             message: 'Note not found',
             success: false
           });
         }
+        logger.info('Get Note _id successfully');
         return res.status(200).json({
           message: 'Note retrieved succesfully',
           success: true,
@@ -127,7 +132,6 @@ class Note {
         });
       });
     } catch (err) {
-      console.log("222", err)
       return res.status(500).json({
         message: 'Internal Error',
         success: false,
@@ -135,6 +139,12 @@ class Note {
       });
     }
   };
+  /**
+   * @description function written to Update notes id from the database
+   * @param {*} req
+   * @param {*} res
+   * @returns response
+   */
   updateNoteById = (req, res) => {
     try {
       const updateNote = {
@@ -179,6 +189,12 @@ class Note {
       });
     }
   }
+  /**
+   * @description function written to delete note by id from the database
+   * @param {*} req
+   * @param {*} res
+   * @returns response
+   */
   deleteNoteById = (req, res) => {
     try {
       console.log("222",req.user);
