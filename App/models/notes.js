@@ -73,5 +73,11 @@ class Model {
       return callback(err, null);
     }
   };
+  deleteNoteById = (deleteNote, callback) => {
+    if (deleteNote) {
+      callback(null, deleteNote);
+    }
+    callback("Note is not Found", null);
+  };
 }
 module.exports = new Model();

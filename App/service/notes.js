@@ -49,11 +49,13 @@ class Service {
     }
     );
   };
-  deleteNoteById = (deleteNote,callback)=>{
-    if(!deleteNote){
-      callback("Note is not Found",null);
-    }
-    callback(null,deleteNote);
+  deleteNoteById =(id,callback) => {
+    noteModel.deleteNoteById(id ,(error,data)=>{
+      if(error){
+        return callback(error,null);
+      }
+      return callback(null,data);
+    });
   };
 }
 

@@ -322,6 +322,21 @@ describe('Delete notes api', () => {
         done();
       });
   })
+  it.only('givenvalidToken_should give true when,return appropriate response from Service layer ', (done) => {
+    const token = noteDB.notes.validToken;
+    chai
+      .request(server)
+      .delete('/deletenotes/61c28a9316512bcec838cbbe')
+      .set({ authorization: token })
+      .end((err, res) => {
+        if (err) {
+          res.should.have.status(400);
+          return done();
+        }
+        res.should.have.status(201);
+        done();
+      });
+  })
   it.only('givenvalidToken_should give true when,return appropriate response from Model layer ', (done) => {
     const token = noteDB.notes.validToken;
     chai
@@ -329,6 +344,10 @@ describe('Delete notes api', () => {
       .delete('/deletenotes/61c28a9316512bcec838cbbe')
       .set({ authorization: token })
       .end((err, res) => {
+        if (err) {
+          res.should.have.status(400);
+          return done();
+        }
         res.should.have.status(201);
         done();
       });
