@@ -280,7 +280,7 @@ describe('Update notes api', () => {
 
 // Delete Note by id
 describe('Delete notes api', () => {
-  it.only('givenNote__Should_Access from valid response', (done) => {
+  it.only('givenNote__ShouldNot_Access from invalid request', (done) => {
     chai
       .request(server)
       .delete('/deletenotes/:id')
@@ -311,4 +311,19 @@ describe('Delete notes api', () => {
           done();
         });
     })
+    it.only('givenvalidToken_should verify id is getting or not', (done) => {
+      const token = noteDB.notes.validToken;
+      chai
+        .request(server)
+        .delete('/deletenotes/61c28a9316512bcec838cbbe')
+        .set({ authorization: token })
+        .end((err, res) => {
+          if(err){
+            res.should.have.status(400);
+            return done();
+          }
+          res.should.have.status(201);
+          done();
+        });
+      })
   })

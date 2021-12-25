@@ -195,7 +195,9 @@ class Note {
    */
   deleteNoteById = (req, res) => {
     try {
-      if(req.user){
+      const id = { userId: req.user.dataForToken.id, noteId: req.params.id };
+      if(id){
+      console.log("1111",id);
       return res.status(201).send({
         message: 'Successfully Deleted note',
         success: true
