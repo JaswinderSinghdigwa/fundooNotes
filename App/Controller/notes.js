@@ -205,11 +205,20 @@ class Note {
           data: deleteNoteValidation
         });
       }
-      return res.status(201).send({
-        message: 'Successfully Deleted note',
-        success: true
+      noteService.deleteNoteById(id, (error, data) => {
+        if (error) {
+          return res.status(400).json({
+            message: 'Note not found',
+            success: false
+          });
+        }
+        return res.status(201).send({
+          message: 'Successfully Deleted note',
+          success: true
+        });
       });
     } catch (error) {
+      console.log("error",error);
       logger.error('Internal server error');
       return res.status(500).json({
         message: 'Internal Server Error',

@@ -49,6 +49,12 @@ class Service {
     }
     );
   };
+  deleteNoteById = (deleteNote,callback)=>{
+    if(!deleteNote){
+      callback("Note is not Found",null);
+    }
+    callback(null,deleteNote);
+  };
 }
 
 module.exports = new Service();
