@@ -1,7 +1,7 @@
 const note = require('../Controller/crud.notes.js')
 const controller = require('../Controller/note.controller.js');
 const helper = require('../utilities/helper.js');
-const { not } = require('joi');
+const labelController = require('../Controller/crud.label')
 
 module.exports = (app) => {
   // api for registration
@@ -22,4 +22,6 @@ module.exports = (app) => {
    app.put('/updatenotes/:id', helper.validateToken, note.updateNoteById); 
    // api for delete By Id 
    app.delete('/deletenotes/:id', helper.validateToken, note.deleteNoteById);
+   // api for Add Label By Id 
+   app.post('/addlabel/:id', helper.validateToken, labelController.addLabelById);
 }; 

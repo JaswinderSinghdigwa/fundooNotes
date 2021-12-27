@@ -1,0 +1,6 @@
+{
+    "label": {
+        "validToken": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhRm9yVG9rZW4iOnsiaWQiOiI2MWMxZjIyMmQxZWE2YzlhODI1YWViNmIiLCJmaXJzdE5hbWUiOiJTdW1pdCIsImxhc3ROYW1lIjoiYmFuc2FsIiwicGFzc3dvcmQiOiIkMmIkMTAkekk5eE9oVTNQUDVBZUJoQ2pZT2ZDdVBETkFlOVd5aG9ubU9HcWI4RW1xZGhpM2FWdTc5c1MiLCJlbWFpbCI6ImZpbmRqYXNzaTEyMTIxMkBnbWFpbC5jb20ifSwiaWF0IjoxNjQwNTkzNjc4LCJleHAiOjE2NDA2ODAwNzh9.0KMqiO6o1SRfSYgiTRrTO3y39B7YuO4vGv9HzWs8AzM",
+        "invalidToken":  "bearer eyJhbGciOR5cCI6IkpXVCJ9.eyJkYXRhRm9yVG9rZW4iOnsiZW1haWwiOiJ2aXZlay5paXRkOTNAZ21haWwuY29tIn0sImlhdCI6MTYzMzU1NTAyOH0.wJqpcpyzvlQPT684BKIeup28MMdy8M37gRuWuU-RhTY"
+    }
+}

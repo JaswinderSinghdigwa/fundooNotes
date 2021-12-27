@@ -42,7 +42,6 @@ class Note {
         }
       });
     } catch (error) {
-      console.log("error", req)
       logger.error('Internal Error');
       return res.status(500).json({
         message: 'Internal Error'
@@ -114,6 +113,7 @@ class Note {
       }
       noteService.getNoteById(id, (err, data) => {
         if (err) {
+          console.log("222",err);
           logger.error('Note is Found')
           return res.status(404).json({
             message: 'Note not found',
