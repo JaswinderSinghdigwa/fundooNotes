@@ -17,4 +17,15 @@ describe('Add label by id api ', () => {
                 done();
             });
     });
+    it.only('Given Token give true when token is verify', (done) => {
+        const token = labelDB.label.validToken
+        chai
+            .request(server)
+            .post('/addlabel/:id')
+            .set({ authorization: token })
+            .end((err, res) => {
+                res.should.have.status(201);
+                done();
+            });
+    });
 })

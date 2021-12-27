@@ -1,3 +1,10 @@
+/**
+ * @module       routes
+ * @file         user.routes.js
+ * @description  API Routing
+ * @author       Jaswinder Singh
+ */
+
 const note = require('../Controller/crud.notes.js')
 const controller = require('../Controller/note.controller.js');
 const helper = require('../utilities/helper.js');

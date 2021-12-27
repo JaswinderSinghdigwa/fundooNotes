@@ -1,3 +1,10 @@
+/**
+ * @module      :  Models
+ * @file        :  User.model.js
+ * @description :  Taking the request from the client and gives the response
+ * @author      :  Jaswinder Singh
+ */
+
 const { logger } = require('../../logger/logger');
 const mongoose = require('mongoose');
 const noteSchema = mongoose.Schema({
