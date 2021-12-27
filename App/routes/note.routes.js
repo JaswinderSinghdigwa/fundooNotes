@@ -1,4 +1,4 @@
-const note = require('../Controller/notes.js')
+const note = require('../Controller/crud.notes.js')
 const controller = require('../Controller/note.controller.js');
 const helper = require('../utilities/helper.js');
 const { not } = require('joi');

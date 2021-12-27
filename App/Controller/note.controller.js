@@ -2,9 +2,12 @@ const userService = require('../service/service.js')
 const validation = require('../utilities/validation');
 const { logger } = require('../../logger/logger');
 
+/**
+ * @description   : Taking the request from the client and gives the response
+ * @author        : Jaswinder Singh
+*/
 
 class Controller {
-
   /**
      * @description : Function created to add user into database
      * @param {*} req
@@ -19,7 +22,6 @@ class Controller {
         email: req.body.email,
         password: req.body.password
       };
-
       const registerValidation = validation.ValidationRegister.validate(user)
       if (registerValidation.error) {
         logger.error('Wrong Input Validations');
@@ -29,9 +31,9 @@ class Controller {
           data: registerValidation
         });
       }
-
       userService.registerUser(user, (error, data) => {
         if (error) {
+          console.log("111",error);
           return res.status(400).json({
             success: false,
             message: 'User already exist',
@@ -48,7 +50,8 @@ class Controller {
     } catch (error) {
       logger.error('Internal server error');
       return res.status(500).json({
-        success: false, message: "Error While Registering",
+        success: false, 
+        message: "Error While Registering",
         data: null,
       });
     }
@@ -105,7 +108,6 @@ class Controller {
      * @param {*} res
      * @returns
      */
-
   forgotPassword = (req, res) => {
     try {
       const userCredential = {
@@ -146,6 +148,7 @@ class Controller {
       });
     }
   }
+
   /**
     * description controller function for Reset password
     * @param {*} req

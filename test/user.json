@@ -3,7 +3,7 @@
         "correctRegister": {
             "firstName" : "Sumit",
             "lastName":"bansal",
-            "email":"jaswinder9223@gmail.com",
+            "email":"findjassi67788@gmail.com",
             "password":"123456@Aa"
         },
         "registrationWithImproperDetails": {
@@ -22,12 +22,12 @@
             "password": "srinivas$123"
         },
         "login": {
-            "email":"findjassi121212@gmail.com",
-             "password" : "1234578Hk"
+            "email": "findjassi121212@gmail.com",
+            "password": "1234578Hk"
         },
         "loginWithImproperDetails": {
-            "email":"findjassi121212@gmail.com",
-            "password" : "1211111578Hk"
+            "email": "findjassi121212@gmail.com",
+            "password": "1211111578Hk"
         },
         "ForgotPasswordPos": {
             "email": "findjassi121212@gmail.com"
@@ -35,14 +35,14 @@
         "ForgotPasswordNegNonRegistered": {
             "email": "akashgmail.com"
         },
-        "validDetails":{
-            "email" :"findjassi121212@gmail.com",
-            "code" :"y4ythnnd9x",
-            "password" : "1234578Hk"
+        "validDetails": {
+            "email": "findjassi121212@gmail.com",
+            "code": "y4ythnnd9x",
+            "password": "1234578Hk"
         },
-        "invalidDetails":{
-            "email":"utkarsh95gmail.com",
-            "password":"Akahu76727"
-        } 
+        "invalidDetails": {
+            "email": "utkarsh95gmail.com",
+            "password": "Akahu76727"
+        }
     }
 }

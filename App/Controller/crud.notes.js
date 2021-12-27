@@ -1,5 +1,5 @@
 const { logger } = require('../../logger/logger');
-const noteService = require('../service/notes.js');
+const noteService = require('../service/crud.notes.js');
 const validation = require('../utilities/validation')
 
 class Note {
@@ -102,9 +102,7 @@ class Note {
    */
   getNoteById = (req, res) => {
     try {
-
       const id = { userId: req.user.dataForToken.id, noteId: req.params.id };
-
       const getNoteValidation = validation.getNoteValidation.validate(id);
       if (getNoteValidation.error) {
         console.log(getNoteValidation.error);
@@ -114,7 +112,6 @@ class Note {
           data: getNoteValidation
         });
       }
-
       noteService.getNoteById(id, (err, data) => {
         if (err) {
           logger.error('Note is Found')
@@ -162,16 +159,16 @@ class Note {
           data: updateNoteValidation
         });
       }
-
       noteService.updateNoteById(updateNote, (error, data) => {
         if (error) {
+          console.log("111",error);
           logger.error('failed to update note');
           return res.status(400).json({
             message: 'failed to update note',
             success: false
           });
         } else {
-          logger.info('Successfully inserted note');
+          logger.info('Successfully Update note');
           return res.status(201).send({
             message: 'Successfully update note',
             success: true,
@@ -214,7 +211,8 @@ class Note {
         }
         return res.status(201).send({
           message: 'Successfully Deleted note',
-          success: true
+          success: true,
+          data:data
         });
       });
     } catch (error) {

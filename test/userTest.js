@@ -10,24 +10,14 @@ const faker = require('faker');
 
 chai.should();
 
-describe('registartion', () => {
+describe('registartion', () => {  
   it('givenRegistrationDetails_whenProper_shouldSaveInDB', (done) => {
     const registartionDetails = registrationData.user.correctRegister;
-    const registerfaker = {
-      firstName: faker.name.firstName(),
-      lastName: faker.name.lastName(),
-      email: faker.internet.email(),
-      password: faker.internet.password()
-    };
     chai
       .request(server)
       .post('/register')
       .send(registartionDetails)
       .end((err, res) => {
-        if (err) {
-          console.log('Please check details again and re-enter the details with proper format');
-          done()
-        }
         res.should.have.status(200);
         res.body.should.have.property('success').eql(true);
         res.body.should.have.property('message').eql('User Registered');
@@ -43,7 +33,6 @@ describe('registartion', () => {
       .send(registartionDetails)
       .end((err, res) => {
         if (err) {
-          // return done(err);
           console.log('Please check details again and re-enter the details with proper format');
           done();
         }
@@ -166,7 +155,7 @@ describe('reset Password API', () => {
       .put('/reset-Password')
       .send(reset)
       .end((error, res) => {
-        res.should.have.status(201);
+        res.should.have.status(200);
         res.body.should.have.property('success').eql(true);
         res.body.should.have.property('message').eql('Password reset succesfully');
         done();
@@ -175,12 +164,18 @@ describe('reset Password API', () => {
 
   it('givenresetdetails_whenNotproper_shouldberesetlinkSent', (done) => {
     const reset = inputData.user.invalidDetails;
+    const registerfaker = {
+      // firstName: faker.name.firstName(),
+    //   lastName: faker.name.lastName(),
+      email: faker.internet.email(),
+      password: faker.internet.password(),
+    };
     chai
       .request(server)
       .put('/reset-Password')
-      .send(reset)
+      .send(registerfaker)
       .end((error, res) => {
-        res.should.have.status(400);
+        res.should.have.status(422);
         res.body.should.have.property('success').eql(false);
         res.body.should.have.property('message').eql('Invalid password');
         done();

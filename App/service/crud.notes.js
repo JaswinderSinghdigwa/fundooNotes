@@ -1,5 +1,5 @@
 const { logger } = require('../../logger/logger');
-const noteModel = require('../models/notes');
+const noteModel = require('../models/crud.notes');
 
 class Service {
   /**
@@ -28,16 +28,16 @@ class Service {
       }
     });
   };
-  getNoteById = (id, callback) => {
-    noteModel.getNoteById(id, (err, data) => {
+  getNoteById = (id ,callback)=>{
+    noteModel.getNoteById(id, (error, data) => {
       if (data) {
-        return callback(null, data)
-      } else {
-        logger.error(error);
-        return callback(err, null)
+        callback(null, data);
       }
-    });
-  };
+      else {
+        callback(error, null);
+      }
+    })
+  }
   updateNoteById = (updateNote, callback) => {
     noteModel.updateNoteById(updateNote, (error, data) => {
       if (error) {

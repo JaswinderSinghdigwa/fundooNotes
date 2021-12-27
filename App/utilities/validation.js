@@ -4,7 +4,7 @@ class Validation {
   ValidationRegister =
     Joi.object({
       firstName: Joi.string()
-        .min(3)
+        .min(2)
         .max(30)
         .required()
         .pattern(new RegExp("^([A-Z]?[a-zA-Z]{1,30}[ ]?[.]?[']?[ ]?[a-zA-Z]{1,30}[ ]?[.]?[']?[ ]?[a-zA-Z]{0,30}[ ]?[a-zA-Z]{0,20}?)")),
@@ -71,10 +71,10 @@ class Validation {
     noteId: Joi.string().required()
   });
   notesUpdateValidation = Joi.object({
-    id: Joi.string(),
+    id: Joi.string().required(),
     userId: Joi.string().required(),
-    title: Joi.string().min(3),
-    description: Joi.string().min(3)
+    title: Joi.string().min(2),
+    description: Joi.string().min(2)
   });
   validateDeleteNote = Joi.object({
     id:Joi.string(),

@@ -52,6 +52,11 @@ class Model {
       }
     });
   }
+
+  /**
+   * @description function written to getnotes by id from database
+   * @returns retrieved notes or if error returns error
+   */
   getNoteById = (id, callback) => {
     NoteRegister.find({ $and: [{ _id: id.noteId }, { userId: id.userId }] })
       .then((data) => {
@@ -60,6 +65,11 @@ class Model {
         callback(err, null)
       })
   };
+
+  /**
+   * @description function written to updateNotes by id from database
+   * @returns retrieved notes or if error returns error
+   */
   updateNoteById = (updatedNote, callback) => {
     try {
       NoteRegister.findByIdAndUpdate(updatedNote.id, { title: updatedNote.title, description: updatedNote.description }, { new: true }, (err, data) => {
@@ -73,12 +83,17 @@ class Model {
       return callback(err, null);
     }
   };
+
+  /**
+   * @description function written to DeleteNotes by id from database
+   * @returns retrieved notes or if error returns error
+   */
   deleteNoteById = (id, callback) => {
-    NoteRegister.findOne({userId: id.userId },(error,data)=>{
+    NoteRegister.findOneAndDelete({ $and: [{ _id: id.noteId }, { userId: id.userId }] }, (error, data) => {
       if (data) {
-       return callback(null, data);
+        return callback(null, data);
       }
-     return callback(error, null);
+      return callback(error, null);
     })
   };
 }
