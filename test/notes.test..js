@@ -113,7 +113,7 @@ describe('Get notes by ID api', () => {
       .request(server)
       .get('/getnotes/61c28a8516512bcec838cbbc')
       .set({ authorization: token })
-      .send(token, '61c28a8516512bcec838cbbc')
+      .send('61c28a8516512bcec838cbbc')
       .end((err, res) => {
         res.should.have.status(200);
         done();
@@ -125,7 +125,7 @@ describe('Get notes by ID api', () => {
       .request(server)
       .get('/getnotes/61c28a8516512bcec838cbbc')
       .set({ authorization: token })
-      .send(token, '61c28a8516512bcec838cbbc')
+      .send('61c28a8516512bcec838cbbc')
       .end((err, res) => {
         res.should.have.status(400);
         done();
@@ -137,7 +137,7 @@ describe('Get notes by ID api', () => {
       .request(server)
       .get('/getnotes/61c28a8516512bcec838cbbc')
       .set({ authorization: token })
-      .send(token, '61c28a8516512bcec838cbbc')
+      .send('61c28a8516512bcec838cbbc')
       .end((err, res) => {
         if (err) {
           res.should.have.status(400);
@@ -153,7 +153,7 @@ describe('Get notes by ID api', () => {
       .request(server)
       .get('/getnotes/61c28a8516512bcec838cbbc')
       .set({ authorization: token })
-      .send(token, '61c28a8516512bcec838cbbc')
+      .send('61c28a8516512bcec838cbbc')
       .end((err, res) => {
         if (err) {
           res.should.have.status(400);
@@ -169,7 +169,6 @@ describe('Get notes by ID api', () => {
       .request(server)
       .get('/getnotes/61c28a8516512bcec838cbbc')
       .set({ authorization: token })
-      .send(token, '61c28a8516512bcec838cbbc')
       .end((err, res) => {
         if (err) {
           res.should.have.status(400);
@@ -201,7 +200,6 @@ describe('Update notes api', () => {
       .request(server)
       .put('/updatenotes/61c28a8516512bcec838cbbc')
       .set({ authorization: token })
-      .send()
       .end((err, res) => {
         res.should.have.status(201);
         done();

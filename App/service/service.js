@@ -1,4 +1,4 @@
-const userModel = require('../models/note.model.js')
+const userModel = require('../models/user.model')
 const helper = require('../utilities/helper');
 const { logger } = require('../../logger/logger');
 const nodemailer = require('../utilities/nodemailer.js');
@@ -11,8 +11,8 @@ class userService {
      * @param {*} callback
      */
 
-  registerUser = (user, callback) => {
-    userModel.registerUser(user, (err, data) => {
+  register = (user, callback) => {
+    userModel.register(user, (err, data) => {
       if (err) {
         callback(err, null);
       } else {
@@ -27,8 +27,8 @@ class userService {
      * @param {*} authenticateUser
      */
 
-  userLogin = (InfoLogin, callback) => {
-    userModel.loginModel(InfoLogin, (error, data) => {
+  login = (InfoLogin, callback) => {
+    userModel.UserLogin(InfoLogin, (error, data) => {
       if (data) {
         let passwordResult = helper.comparePassword(InfoLogin.password, data.password);
         if (!passwordResult) {
@@ -48,12 +48,12 @@ class userService {
 
   /** 
     @description: Function gets data from model, whether it is valid or not.
-     * @param {*} user
+     * @param {*} email
      * @param {*} callback
      */
 
-    forgotPassword = (email, callback) => {
-      userModel.forgotPassword(email, (error, data) => {
+    forgotPassword = (user, callback) => {
+      userModel.forgotPassword(user, (error, data) => {
         if (error) {
           logger.error(error);
           return callback(error, null);
@@ -66,15 +66,22 @@ class userService {
       });
     }
 
-    resetPassword = (userData, callback) => {
-      userModel.resetPassword(userData)
-        .then((data)=> {
-          logger.error(data);
-          return callback(null,data);
-        }).catch((error)=> {
-          return callback(error,null);
-        });
-      };
+     /**
+     * @description it acts as a middleware between controller and model for reset password
+     * @param {*} inputData
+     * @param {*} callback
+     * @returns
+     */
+  resetPassword = (userData, callback) => {
+    userModel.resetPassword(userData, (error, data) => {
+      if (error) {
+        logger.error(error);
+        return callback(error, null);
+      } else {
+        return callback(null, data);
+      }
+    });
+}
 }
 
 module.exports = new userService();

@@ -5,17 +5,17 @@
  * @author       Jaswinder Singh
  */
 
-const note = require('../Controller/crud.notes.js')
-const controller = require('../Controller/note.controller.js');
+const note = require('../Controller/notes.controller')
+const controller = require('../Controller/user.controller.js');
 const helper = require('../utilities/helper.js');
-const labelController = require('../Controller/crud.label')
+const labelController = require('../Controller/label.controller')
 
 module.exports = (app) => {
   // api for registration
   app.post('/register', controller.register);
   // api for login
   app.post('/login', controller.login);
-  // api for forget pasword
+  // api for forgot pasword
   app.post('/forgotPassword', controller.forgotPassword);
   // api for Reset password
   app.put('/reset-Password', controller.resetPassword);

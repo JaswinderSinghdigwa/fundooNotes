@@ -81,6 +81,9 @@ class Validation {
     noteId: Joi.string(),
     userId: Joi.string()
   })
+  validateLabel = Joi.object({
+    labelName: Joi.string()
+  });
 }
 
 module.exports = new Validation(); 

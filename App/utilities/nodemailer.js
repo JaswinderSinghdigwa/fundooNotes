@@ -10,12 +10,12 @@ const Otp=require('../models/otp.model.js');
 
 exports.sendEmail = (data) => {
     let otpcode = Math.random().toString(36).substring(2, 12);
-    let optData = new Otp({
+    let otpData = new Otp({
         email: data.email,
         code: otpcode,
-        expireIn: new Date().getTime() + 30 * 1000
+        expireIn: new Date().getTime() + 60 * 1000
     })
-    optData.save();
+    otpData.save();
     const transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
@@ -34,7 +34,7 @@ exports.sendEmail = (data) => {
 
     transporter.sendMail(message, (err, info) => {
         if (err) {
-            console.log(err);
+            console.log("44",err);
         } else {
             console.log('email has been sent', info.response);
             return info.response;

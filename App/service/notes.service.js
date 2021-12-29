@@ -1,5 +1,5 @@
 const { logger } = require('../../logger/logger');
-const noteModel = require('../models/crud.notes');
+const noteModel = require('../models/notes.model');
 
 class Service {
   /**
@@ -17,7 +17,6 @@ class Service {
       }
     });
   }
-  
   getNote = (id, callback) => {
     noteModel.getNote(id, (error, data) => {
       if (data) {

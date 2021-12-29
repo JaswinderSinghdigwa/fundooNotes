@@ -1,8 +1,11 @@
-{"level":"info","message":"Email id found","timestamp":"2021-12-27T08:27:57.931Z"}
-{"level":"info","message":" token generated","timestamp":"2021-12-27T08:27:58.075Z"}
-{"level":"info","message":"Get All Notes successfully","timestamp":"2021-12-27T08:28:14.057Z"}
-{"level":"error","message":"Note is Found","timestamp":"2021-12-27T08:28:54.437Z"}
-{"level":"error","message":"Note is Found","timestamp":"2021-12-27T08:29:11.225Z"}
-{"level":"error","message":"Note is Found","timestamp":"2021-12-27T08:29:52.031Z"}
-{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-27T08:30:35.047Z"}
-{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-27T08:31:08.125Z"}
+{"level":"info","message":"Registration is done successfully !","timestamp":"2021-12-29T08:55:46.216Z"}
+{"level":"info","message":"Email id found","timestamp":"2021-12-29T08:56:04.375Z"}
+{"level":"info","message":" token generated","timestamp":"2021-12-29T08:56:04.477Z"}
+{"level":"info","message":"Password has benn changed !","timestamp":"2021-12-29T08:56:39.451Z"}
+{"level":"info","message":"Successfully inserted note","timestamp":"2021-12-29T08:57:21.371Z"}
+{"level":"info","message":"Get All Notes successfully","timestamp":"2021-12-29T08:57:32.348Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-29T08:57:58.377Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-29T08:58:18.455Z"}
+{"level":"info","message":"Email id found","timestamp":"2021-12-29T11:08:11.704Z"}
+{"level":"info","message":" token generated","timestamp":"2021-12-29T11:08:11.873Z"}
+{"level":"info","message":"Successfully inserted note","timestamp":"2021-12-29T11:09:08.647Z"}

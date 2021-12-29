@@ -10,15 +10,13 @@ const jwt = require('jsonwebtoken');
 
 class helperClass {
 
-  hashing = (password) => {
-    return new Promise((resolve, reject) => {
+  hashing = (password,callback) => {
     bcrypt.hash(password, 10)
-      .then((err)=> {
-        resolve(err);
-      }).catch((hash)=> {
-         reject(hash);
+      .then((hash)=> {
+        return callback(null,hash);
+      }).catch((err)=> {
+        callback(err,null);
       });
-    });
   }
 
   token = (data) => {
@@ -31,6 +29,7 @@ class helperClass {
     };
     return jwt.sign({ dataForToken }, process.env.JWT_SECRET, { expiresIn: '24H' });
   }
+  
   validateToken = (req, res, next) => {
     const header = req.headers.authorization;
     const myArr = header.split(" ");

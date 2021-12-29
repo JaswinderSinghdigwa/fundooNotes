@@ -1,5 +1,5 @@
 const { logger } = require('../../logger/logger');
-const noteService = require('../service/crud.notes.js');
+const noteService = require('../service/notes.service.js');
 const validation = require('../utilities/validation')
 
 class Note {

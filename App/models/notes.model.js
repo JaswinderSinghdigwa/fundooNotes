@@ -7,6 +7,7 @@
 
 const { logger } = require('../../logger/logger');
 const mongoose = require('mongoose');
+const { db } = require('./otp.model');
 const noteSchema = mongoose.Schema({
   userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   title: {
@@ -21,7 +22,7 @@ const noteSchema = mongoose.Schema({
   timestamps: true
 });
 
-const NoteRegister = mongoose.model('NoteRegister', noteSchema)
+const NoteRegister = db.model('NoteRegister', noteSchema)
 
 class Model {
   /**
@@ -50,7 +51,7 @@ class Model {
    * @returns retrieved notes or if error returns error
    */
   getNote = (id, callback) => {
-    NoteRegister.findOne({ userId: id.id }, (error, data) => {
+    NoteRegister.find({ userId: id.id }, (error, data) => {
       if (data) {
         callback(null, data);
       }
@@ -103,5 +104,7 @@ class Model {
       return callback(error, null);
     })
   };
+   
 }
-module.exports = new Model();
+
+module.exports = new Model(),{NoteRegister}; 
