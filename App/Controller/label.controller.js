@@ -20,7 +20,7 @@ class LabelController {
     addLabel = (req, res) => {
         try {
             if(req.user){
-            const labelName =req.body.labelName
+            const labelName ={labelName : req.body.labelName}
             const validateResult = validation.validateLabel.validate(labelName);
             if (validateResult.error) {
                 const response = {sucess : false ,message :"Wrong Input Vaidation"}
@@ -29,10 +29,12 @@ class LabelController {
             const labelInfo = {
                 labelName: req.body.labelName,
                 userId: req.user.dataForToken.id,
-                noteId : req.params.id
+                noteId : req.params.id,
+                email : req.user.dataForToken.email
             }
             labelService.addLabel(labelInfo, (error, data) => {
                 if (error) {
+                    console.log("222",error)
                     const response = {sucess : true , message : error.message}
                    return res.status(401).send(response)
                 }

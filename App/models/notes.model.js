@@ -107,4 +107,7 @@ class Model {
    
 }
 
-module.exports = new Model(),{NoteRegister}; 
+module.exports = {
+  Model : new Model(),
+  Note : NoteRegister
+}; 
