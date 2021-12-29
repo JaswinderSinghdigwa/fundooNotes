@@ -1,5 +1,3 @@
-const validation = require('../utilities/validation')
-const labelService = require('../service/label.service')
 /*************************************************************************
 * Purpose : to recieve request from routes and forward it to service layer
 *
@@ -9,6 +7,9 @@ const labelService = require('../service/label.service')
 * @since : 29/12/2021
 *
 **************************************************************************/
+const validation = require('../utilities/validation')
+const labelService = require('../service/label.service')
+
 class LabelController {
     /**
      * @description function written to Added Label into the database
@@ -16,7 +17,7 @@ class LabelController {
      * @param {*} res
      * @returns response
      */
-    addLabelById = (req, res) => {
+    addLabel = (req, res) => {
         try {
             if(req.user){
             const labelName =req.body.labelName

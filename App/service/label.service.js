@@ -1,3 +1,4 @@
+const labelmodel = require('../models/label.model')
 /*************************************************************************
 * Purpose : to recieve request from controller and send it to model layer 
     and perform some intermediate business logic
@@ -13,13 +14,16 @@ class LabelService {
      * @description Create a new label 
      * @method labelModel.create calls model class method
      */
-     addLabel = (label,callback) => {
-        if(!label){
-            console.log("2222",label);
-            return callback("label is undefine or null",null)
-        }
-        console.log("this is my body",label)
-        return callback(null,label);    
+     addLabel = (labelInfo,callback) => {
+         labelmodel.addLabel(labelInfo,(error,data)=>{
+             if(error){
+                 return callback(error,null)
+             }
+             else if(!data){
+                 return callback(null,data)
+             }
+             return callback(null,data)
+         })
     }
 }
 module.exports = new LabelService();

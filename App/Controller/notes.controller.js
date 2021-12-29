@@ -1,3 +1,12 @@
+/*************************************************************************
+* Purpose : to recieve request from routes and forward it to service layer
+*
+* @file : notes.controller.js
+* @author : Jaswinder Singh  <findjassi1212@gmail.com>
+* @version : 1.0
+* 
+*
+**************************************************************************/
 const { logger } = require('../../logger/logger');
 const noteService = require('../service/notes.service.js');
 const validation = require('../utilities/validation')

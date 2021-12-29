@@ -54,7 +54,7 @@ describe('Add label by id api ', () => {
                 done();
             })
     })
-    it.only('Should give true when service layer give response', (done) => {
+    it.only('Should give true when service layer is giving response', (done) => {
         const token = labelDB.label.validToken;
         const labelName = {
             labelname: faker.lorem.word()
@@ -69,7 +69,7 @@ describe('Add label by id api ', () => {
                 done();
             })
     })
-    it.only('Should give false when service layer , is not returning appropriate response', (done) => {
+    it.only('Should give true when model layer is giving response', (done) => {
         const token = labelDB.label.validToken;
         const labelName = {
             labelname: faker.lorem.word()
@@ -80,24 +80,10 @@ describe('Add label by id api ', () => {
             .set({ authorization: token })
             .send(labelName)
             .end((err, res) => {
-                res.should.have.status(400);
+                res.should.have.status(200);
                 done();
             })
     })
-    it.only('Should give false when service layer , is returning null or undefine', (done) => {
-        const token = labelDB.label.validToken;
-        const labelName = {
-            labelname: faker.lorem.word()
-        }
-        chai
-            .request(server)
-            .post('/addlabel/61cc41d4db10efa515b4e1e8')
-            .set({ authorization: token })
-            .send(labelName)
-            .end((err, res) => {
-                res.should.have.status(401);
-                done();
-            })
-    })
+    
 
 })

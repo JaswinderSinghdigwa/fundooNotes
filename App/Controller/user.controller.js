@@ -1,8 +1,3 @@
-const userService = require('../service/service.js')
-const validation = require('../utilities/validation');
-const { logger } = require('../../logger/logger');
-const { database } = require('faker/locale/en_BORK');
-
 /*************************************************************************
 * Purpose : to recieve request from routes and forward it to service layer
 *
@@ -11,6 +6,10 @@ const { database } = require('faker/locale/en_BORK');
 * @version : 1.0
 *
 **************************************************************************/
+const userService = require('../service/service.js')
+const validation = require('../utilities/validation');
+const { logger } = require('../../logger/logger');
+const { database } = require('faker/locale/en_BORK');
 
 class Controller {
   /**
