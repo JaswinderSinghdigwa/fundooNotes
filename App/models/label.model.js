@@ -10,6 +10,7 @@
 **************************************************************************/
 const NoteRegister = require('../models/notes.model').Note;
 const mongoose = require('mongoose');
+const {logger} = require('../../logger/logger') 
 
 const labelSchema = mongoose.Schema({
     userId: {
@@ -54,19 +55,23 @@ class LabelModel {
                 });
                 labelmodel.save((error, data))
                     .then((data) => {
+                        logger.info('Successfully added label !');
                         return callback(null, data)
                     }).catch((error) => {
+                        logger.info('Some error occurred while adding label');
                         callback(error, null)
                     })
             } else if (data) {
                 label.findOneAndUpdate({ userId: labelInfo.userId, labelName: labelInfo.labelName }, { $addToSet: { noteId: labelInfo.noteId } }, (error, data) => {
                     if (error) {
-                        callback("error occured", null)
+                        callback(error, null)
                     }
                     else if (!data) {
+                        logger.info('label is not found !');
                         callback("label is not found", null)
                     }
                     else {
+                        logger.info('Successfully added label !');
                         return callback(null, data)
                     }
                 })

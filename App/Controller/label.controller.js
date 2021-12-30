@@ -9,6 +9,7 @@
 **************************************************************************/
 const validation = require('../utilities/validation')
 const labelService = require('../service/label.service')
+const {logger} = require('../../logger/logger')
 
 class LabelController {
     /**
@@ -34,13 +35,16 @@ class LabelController {
             }
             labelService.addLabel(labelInfo, (error, data) => {
                 if (error) {
+                    logger.error('Some error occurred !')
                     const response = {sucess : false , message : 'Some error occured'}
                    return res.status(200).send(response)
                 }
                 else if (!data){
+                    logger.info('Some error occurred while adding label')
                     const response = {sucess : true , message : 'Data is undefine or null' }
                    return res.status(400).send(response)
                 }
+                logger.info('Successfully added label !');
                 const response = {sucess : true ,message :"Valid Entry of Token",data:data}
                 return res.status(200).json(response)
         })
