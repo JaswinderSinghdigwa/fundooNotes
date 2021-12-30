@@ -34,14 +34,14 @@ class LabelController {
             }
             labelService.addLabel(labelInfo, (error, data) => {
                 if (error) {
-                    const response = {sucess : false , message : error.message}
+                    const response = {sucess : false , message : 'Some error occured'}
                    return res.status(200).send(response)
                 }
                 else if (!data){
                     const response = {sucess : true , message : 'Data is undefine or null' }
                    return res.status(400).send(response)
                 }
-                const response = {sucess : true ,message :"Valid Entry of Token"}
+                const response = {sucess : true ,message :"Valid Entry of Token",data:data}
                 return res.status(200).json(response)
         })
     }
@@ -50,7 +50,6 @@ class LabelController {
             return res.status(400).json(response)
         } 
     }catch (err) {
-            console.log("this is error",error)
             return res.status(500).json({
                 sucess : false,
                 message: 'Internal Error'

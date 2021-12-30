@@ -16,8 +16,11 @@ class LabelService {
      */
      addLabel = (labelInfo,callback) => {
          labelmodel.addLabel(labelInfo,(error,data)=>{
-              if(!data){
-                 return callback("Model response is not coming",null)
+              if(error){
+                 return callback(error,null)
+             }
+             else if(!data){
+                return callback(null,data)
              }
              return callback(null,data)
          })
