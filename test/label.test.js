@@ -132,12 +132,23 @@ describe('Add label by id api ', () => {
 })
 
 describe('get label  api ', () => {
-    it.only('getlabel_by_checking_server', (done) => {
+    it('getlabel_by_checking_server', (done) => {
         chai
             .request(server)
             .get('/getlabel')
             .end((err, res) => {
                 res.should.have.status(500);
+                done();
+            });
+    });
+    it('it should give true when token is decoded', (done) => {
+        const token = labelDB.label.validToken;
+        chai
+            .request(server)
+            .get('/getlabel')
+            .set({authorization : token})
+            .end((err, res) => {
+                res.should.have.status(200);
                 done();
             });
     });
