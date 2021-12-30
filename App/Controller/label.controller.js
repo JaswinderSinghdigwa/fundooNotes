@@ -62,11 +62,19 @@ class LabelController {
     getlabel = (req,res)=>{
         try{
             if(req.user){
-                    const response = {sucess : true , message : 'Some error occured'}
+                const userId = { 
+                    id: req.body.id,
+                };
+                const validateResult = validation.validateUserid.validate(userId);
+                if(validateResult.error){
+                    const response = {sucess : false , message : 'Some error occured'}
+                   return res.status(400).send(response)
+                }
+                    const response = {sucess : true , message : 'label is fetched'}
                    return res.status(200).send(response)
             }
             else{
-                const response = {sucess : true , message : 'Some error occured'}
+                const response = {sucess : true , message : 'Invalid Token'}
                    return res.status(400).send(response)
             }
         }

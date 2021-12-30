@@ -163,4 +163,19 @@ describe('get label  api ', () => {
                 done();
             });
     });
+    it.only('it should give false when userid is invalid', (done) => {
+        const token = labelDB.label.validToken;
+        const id = labelDB.label.id
+        chai
+            .request(server)
+            .get('/getlabel')
+            .set({authorization : token})
+            .send({id : "32166"})
+            .end((err, res) => {
+                res.should.have.status(400);
+                done();
+            });
+    })
+    
+
 })
