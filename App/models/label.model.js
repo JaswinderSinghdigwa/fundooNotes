@@ -41,12 +41,11 @@ class LabelModel {
 	 */
 
     addLabel = (labelInfo, callback) => {
-            if(!labelInfo){
-                return callback("Model layer is not giving Response",null)
-            }
-            else{
-                return callback("Model layer is giving Response",labelInfo)
-            }
+        const findNotes = NoteRegister.find({ email: labelInfo.email,_id: labelInfo.noteId });
+                if (findNotes.length === 0) {
+                    return callback('This note is not exist or this belongs to another user',null);
+                }
+                return callback ('This note belongs to same user',labelInfo.noteId)
     }
 }
 
