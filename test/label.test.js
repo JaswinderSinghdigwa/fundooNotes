@@ -113,5 +113,20 @@ describe('Add label by id api ', () => {
                 res.should.have.status(200);
                 done();
             })
-    })   
+    })
+    it('Should give true when new label is created', (done) => {
+        const token = labelDB.label.validToken;
+        const labelName = {
+            labelname: faker.lorem.word()
+        }
+        chai
+            .request(server)
+            .post('/addlabel/61cc41d4db10efa515b4e1e8')
+            .set({ authorization: token })
+            .send(labelName)
+            .end((err, res) => {
+                res.should.have.status(200);
+                done();
+            })
+    })      
 })
