@@ -45,7 +45,10 @@ class LabelModel {
                 if (findNotes.length === 0) {
                     return callback('This note is not exist or this belongs to another user',null);
                 }
-                return callback ('This note belongs to same user',labelInfo.noteId)
+                const findlabel = label.find({ userId: labelInfo.id, labelName: labelInfo.labelname });
+                if (findlabel.length !== 0) {
+                  return callback("the fetched userId is match with label",labelInfo.userId)
+                }
     }
 }
 
