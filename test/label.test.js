@@ -132,7 +132,7 @@ describe('Add label by id api ', () => {
 })
 
 describe('get label  api ', () => {
-    it.only('getlabel_by_checking_server', (done) => {
+    it('getlabel_by_checking_server', (done) => {
         chai
             .request(server)
             .get('/getlabel')
@@ -141,7 +141,7 @@ describe('get label  api ', () => {
                 done();
             });
     });
-    it.only('it should give true when token is decoded', (done) => {
+    it('it should give true when token is decoded', (done) => {
         const token = labelDB.label.validToken;
         chai
             .request(server)
@@ -152,7 +152,7 @@ describe('get label  api ', () => {
                 done();
             });
     });
-    it.only('it should give false when token is invalid', (done) => {
+    it('it should give false when token is invalid', (done) => {
         const token = labelDB.label.invalidToken;
         chai
             .request(server)
@@ -163,9 +163,8 @@ describe('get label  api ', () => {
                 done();
             });
     });
-    it.only('it should give false when userid is invalid', (done) => {
+    it('it should give false when userid is not validate', (done) => {
         const token = labelDB.label.validToken;
-        const id = labelDB.label.id
         chai
             .request(server)
             .get('/getlabel')
