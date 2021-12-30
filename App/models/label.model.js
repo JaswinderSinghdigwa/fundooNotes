@@ -45,9 +45,19 @@ class LabelModel {
                 if (findNotes.length === 0) {
                     return callback('This note is not exist or this belongs to another user',null);
                 }
-                const findlabel = label.find({ userId: labelInfo.id, labelName: labelInfo.labelname });
+                const findlabel = label.find({ userId: labelInfo.id, labelName: labelInfo.labelName });
                 if (findlabel.length !== 0) {
-                  return callback("the fetched userId is match with label",labelInfo.userId)
+                    label.findOneAndUpdate({ labelName:labelInfo.labelName },{ $addToSet: { noteId: labelInfo.noteId } },(error,data)=>{
+                        if(error){
+                            callback("error occured",null)
+                        }
+                        else if(!data){
+                            callback("label is not found",null)
+                        }
+                        else{
+                            return callback(null,data)
+                        }
+                    })
                 }
     }
 }

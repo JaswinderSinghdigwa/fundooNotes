@@ -34,8 +34,8 @@ class LabelController {
             }
             labelService.addLabel(labelInfo, (error, data) => {
                 if (error) {
-                    const response = {sucess : true , message : error.message}
-                   return res.status(401).send(response)
+                    const response = {sucess : false , message : error.message}
+                   return res.status(200).send(response)
                 }
                 else if (!data){
                     const response = {sucess : true , message : 'Data is undefine or null' }
