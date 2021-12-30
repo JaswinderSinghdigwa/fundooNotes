@@ -31,9 +31,9 @@ class helperClass {
   }
   
   validateToken = (req, res, next) => {
-    const header = req.headers.authorization;
-    const myArr = header.split(" ");
-    const token = myArr[1];
+    const headertoken = req.headers.authorization;
+    const Arr = headertoken.split(" ");
+    const token = Arr[1];
     try {
       if (token) {
         jwt.verify(token, process.env.JWT_SECRET, (error, decoded) => {
