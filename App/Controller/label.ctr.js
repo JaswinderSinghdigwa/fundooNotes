@@ -39,10 +39,10 @@ class LabelController {
                         const response = { sucess: false, message: 'Some error occured' }
                         return res.status(404).send(response)
                     }
-                    // else if(!data){
-                    // const response = { sucess: true, message: "Successfully added label !", data: data }
-                    // return res.status(400).json(response)
-                    // }
+                    else if(!data){
+                    const response = { sucess: true, message: "Successfully added label !", data: data }
+                    return res.status(400).json(response)
+                    }
                     logger.info('Successfully added label !');
                     const response = { sucess: true, message: "Successfully added label !", data: data }
                     return res.status(200).json(response)
@@ -67,7 +67,7 @@ class LabelController {
                     const response = { sucess: false, message: 'Wrong Input Validation', data: validateResult }
                     return res.status(400).send(response)
                 }
-                labelService.getLabel(userId, (error, data) => {
+                labelService.getLabel(userId , (error, data) => {
                     if (error) {
                         const response = { sucess: false, message: 'Some error occured' }
                         return res.status(200).send(response)

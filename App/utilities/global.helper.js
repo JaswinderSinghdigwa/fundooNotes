@@ -31,8 +31,8 @@ class helperClass {
   }
   
   validateToken = (req, res, next) => {
-    const headertoken = req.headers.authorization;
-    const Arr = headertoken.split(" ");
+    const Bearertoken = req.headers.authorization;
+    const Arr = Bearertoken.split(" ");
     const token = Arr[1];
     try {
       if (token) {

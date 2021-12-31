@@ -10,7 +10,7 @@
 **************************************************************************/
 const NoteRegister = require('./notes.mdl').Note;
 const mongoose = require('mongoose');
-const {logger} = require('../../logger/logger') 
+const { logger } = require('../../logger/logger')
 
 const labelSchema = mongoose.Schema({
     userId: {
@@ -43,11 +43,11 @@ class LabelModel {
      */
 
     addLabel = (labelInfo, callback) => {
-        const findNotes = NoteRegister.find({ email: labelInfo.email , userId: labelInfo.userId })
+        const findNotes = NoteRegister.find({ email: labelInfo.email, userId: labelInfo.userId })
         if (findNotes.length === 0) {
             return callback('This note is not exist or this belongs to another user', null);
         }
-       label.find({userId: labelInfo.userId, labelName: labelInfo.labelName}, (error, data) => {
+        label.find({ userId: labelInfo.userId, labelName: labelInfo.labelName }, (error, data) => {
             if (!data) {
                 const labelmodel = new label({
                     userId: labelInfo.id,
@@ -61,15 +61,15 @@ class LabelModel {
                     }).catch((error) => {
                         logger.info('Some error occurred while adding label');
                         callback(error, null)
-                    })                
+                    })
             } else if (data) {
-                label.findOneAndUpdate({labelName: labelInfo.labelName }, { $addToSet: { noteId: labelInfo.noteId } }, (error, data) => {
+                label.findOneAndUpdate({ labelName: labelInfo.labelName }, { $addToSet: { noteId: labelInfo.noteId } }, (error, data) => {
                     if (error) {
                         callback(error, null)
                     }
                     else if (!data) {
                         logger.log("label is  not found");
-                        return callback("label is not found",data)
+                        return callback("label is not found", data)
                     }
                     else {
                         logger.error(error);
@@ -78,6 +78,13 @@ class LabelModel {
                 })
             }
         })
+    }
+    getLabel = (labelInfo, callback) => {
+        if (labelInfo) {
+            return callback("Service is not giving response", null)
+        }else{
+            return callback(null, labelInfo)
+        }
     }
 }
 module.exports = new LabelModel();
