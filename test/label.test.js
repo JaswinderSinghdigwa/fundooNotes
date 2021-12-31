@@ -218,12 +218,14 @@ describe('get label_by id api ', () => {
             });
     });
     it.only('it should give true when ,add controller layer and checking the response of token in getlabel_by_id_', (done) => {
+        const token = labelDB.label.validToken
         chai
             .request(server)
             .get('/getlabel/:id')
+            .set({authorization : token})
             .end((err, res) => {
-                res.should.have.status(500);
-                done();
-            });
+                res.should.have.status(201);
+                    done();
+                });
     });
 })
