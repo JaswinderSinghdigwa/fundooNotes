@@ -228,4 +228,15 @@ describe('get label_by id api ', () => {
                     done();
                 });
     });
+    it.only('it should give true when ,add controller layer and checking response by of invalid token in getlabel_by_id_', (done) => {
+        const token = labelDB.label.invalidToken
+        chai
+            .request(server)
+            .get('/getlabel/:id')
+            .set({authorization : token})
+            .end((err, res) => {
+                res.should.have.status(400);
+                    done();
+                });
+    });
 })
