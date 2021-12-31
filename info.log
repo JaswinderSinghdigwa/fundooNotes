@@ -884,3 +884,162 @@
 {"level":"info","message":"Successfully added label !","timestamp":"2021-12-31T08:06:19.909Z"}
 {"level":"error","message":null,"timestamp":"2021-12-31T08:21:11.903Z"}
 {"level":"info","message":"Successfully added label !","timestamp":"2021-12-31T08:21:11.909Z"}
+{"level":"info","message":"Successfully inserted note","timestamp":"2021-12-31T08:50:01.174Z"}
+{"level":"info","message":"Get All Notes successfully","timestamp":"2021-12-31T08:50:01.321Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-31T08:50:01.422Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-31T08:50:01.469Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-31T08:50:01.518Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-31T08:50:01.548Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-31T08:50:01.575Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T08:50:01.645Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T08:50:01.690Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T08:50:01.708Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T08:50:01.734Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T08:50:01.763Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T08:50:01.784Z"}
+{"level":"info","message":"Successfully inserted note","timestamp":"2021-12-31T08:55:16.976Z"}
+{"level":"info","message":"Get All Notes successfully","timestamp":"2021-12-31T08:55:17.068Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-31T08:55:17.151Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-31T08:55:17.200Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-31T08:55:17.256Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-31T08:55:17.279Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-31T08:55:17.308Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T08:55:17.389Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T08:55:17.429Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T08:55:17.456Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T08:55:17.476Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T08:55:17.496Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T08:55:17.525Z"}
+{"level":"info","message":"Successfully inserted note","timestamp":"2021-12-31T08:59:12.487Z"}
+{"level":"info","message":"Get All Notes successfully","timestamp":"2021-12-31T08:59:12.579Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-31T08:59:12.657Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-31T08:59:12.697Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-31T08:59:12.733Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-31T08:59:12.757Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-31T08:59:12.785Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T08:59:12.828Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T08:59:12.871Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T08:59:12.895Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T08:59:12.926Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T08:59:12.944Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T08:59:12.963Z"}
+{"level":"info","message":"Successfully added label !","timestamp":"2021-12-31T09:06:58.734Z"}
+{"level":"info","message":"Successfully added label !","timestamp":"2021-12-31T09:06:58.831Z"}
+{"level":"info","message":"Successfully inserted note","timestamp":"2021-12-31T09:06:59.474Z"}
+{"level":"info","message":"Get All Notes successfully","timestamp":"2021-12-31T09:06:59.560Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-31T09:06:59.674Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-31T09:06:59.718Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-31T09:06:59.756Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-31T09:06:59.797Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-31T09:06:59.811Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T09:06:59.869Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T09:06:59.911Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T09:06:59.933Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T09:06:59.947Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T09:06:59.967Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T09:06:59.995Z"}
+{"level":"info","message":"Successfully added label !","timestamp":"2021-12-31T10:06:48.359Z"}
+{"level":"info","message":"Successfully added label !","timestamp":"2021-12-31T10:06:48.432Z"}
+{"level":"info","message":"Successfully inserted note","timestamp":"2021-12-31T10:06:48.844Z"}
+{"level":"info","message":"Get All Notes successfully","timestamp":"2021-12-31T10:06:48.907Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-31T10:06:48.985Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-31T10:06:49.014Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-31T10:06:49.041Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-31T10:06:49.055Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-31T10:06:49.075Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T10:06:49.103Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T10:06:49.131Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T10:06:49.147Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T10:06:49.159Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T10:06:49.180Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T10:06:49.198Z"}
+{"level":"info","message":"Successfully added label !","timestamp":"2021-12-31T10:07:22.170Z"}
+{"level":"info","message":"Successfully added label !","timestamp":"2021-12-31T10:07:22.229Z"}
+{"level":"info","message":"Successfully inserted note","timestamp":"2021-12-31T10:07:22.515Z"}
+{"level":"info","message":"Get All Notes successfully","timestamp":"2021-12-31T10:07:22.568Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-31T10:07:22.609Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-31T10:07:22.640Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-31T10:07:22.664Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-31T10:07:22.681Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-31T10:07:22.700Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T10:07:22.730Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T10:07:22.762Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T10:07:22.778Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T10:07:22.794Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T10:07:22.811Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T10:07:22.829Z"}
+{"level":"info","message":"Successfully added label !","timestamp":"2021-12-31T10:08:49.124Z"}
+{"level":"info","message":"Successfully added label !","timestamp":"2021-12-31T10:08:49.180Z"}
+{"level":"info","message":"Successfully inserted note","timestamp":"2021-12-31T10:08:49.430Z"}
+{"level":"info","message":"Get All Notes successfully","timestamp":"2021-12-31T10:08:49.488Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-31T10:08:49.528Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-31T10:08:49.560Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-31T10:08:49.590Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-31T10:08:49.607Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-31T10:08:49.643Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T10:08:49.671Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T10:08:49.700Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T10:08:49.717Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T10:08:49.750Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T10:08:49.771Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T10:08:49.799Z"}
+{"level":"info","message":"Successfully added label !","timestamp":"2021-12-31T10:10:17.850Z"}
+{"level":"info","message":"Successfully added label !","timestamp":"2021-12-31T10:10:17.912Z"}
+{"level":"info","message":"Successfully inserted note","timestamp":"2021-12-31T10:10:18.238Z"}
+{"level":"info","message":"Get All Notes successfully","timestamp":"2021-12-31T10:10:18.296Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-31T10:10:18.336Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-31T10:10:18.364Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-31T10:10:18.389Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-31T10:10:18.404Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-31T10:10:18.456Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T10:10:18.481Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T10:10:18.510Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T10:10:18.540Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T10:10:18.559Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T10:10:18.587Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T10:10:18.622Z"}
+{"level":"info","message":"Successfully added label !","timestamp":"2021-12-31T10:12:53.232Z"}
+{"level":"info","message":"Successfully added label !","timestamp":"2021-12-31T10:12:53.292Z"}
+{"level":"info","message":"Successfully inserted note","timestamp":"2021-12-31T10:12:53.537Z"}
+{"level":"info","message":"Get All Notes successfully","timestamp":"2021-12-31T10:12:53.587Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-31T10:12:53.632Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-31T10:12:53.657Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-31T10:12:53.683Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-31T10:12:53.699Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-31T10:12:53.715Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T10:12:53.746Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T10:12:53.774Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T10:12:53.791Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T10:12:53.807Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T10:12:53.824Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T10:12:53.840Z"}
+{"level":"info","message":"Successfully added label !","timestamp":"2021-12-31T10:14:37.728Z"}
+{"level":"info","message":"Successfully added label !","timestamp":"2021-12-31T10:14:37.807Z"}
+{"level":"info","message":"Successfully inserted note","timestamp":"2021-12-31T10:14:38.179Z"}
+{"level":"info","message":"Get All Notes successfully","timestamp":"2021-12-31T10:14:38.249Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-31T10:14:38.314Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-31T10:14:38.348Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-31T10:14:38.378Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-31T10:14:38.397Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-31T10:14:38.411Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T10:14:38.447Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T10:14:38.476Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T10:14:38.489Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T10:14:38.507Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T10:14:38.523Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T10:14:38.537Z"}
+{"level":"info","message":"Successfully added label !","timestamp":"2021-12-31T10:15:40.282Z"}
+{"level":"info","message":"Successfully added label !","timestamp":"2021-12-31T10:15:40.331Z"}
+{"level":"info","message":"Successfully inserted note","timestamp":"2021-12-31T10:15:40.500Z"}
+{"level":"info","message":"Get All Notes successfully","timestamp":"2021-12-31T10:15:40.538Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-31T10:15:40.570Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-31T10:15:40.587Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-31T10:15:40.604Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-31T10:15:40.616Z"}
+{"level":"info","message":"Get Note _id successfully","timestamp":"2021-12-31T10:15:40.626Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T10:15:40.647Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T10:15:40.664Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T10:15:40.674Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T10:15:40.686Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T10:15:40.698Z"}
+{"level":"info","message":"Successfully Update note","timestamp":"2021-12-31T10:15:40.708Z"}

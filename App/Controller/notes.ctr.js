@@ -27,7 +27,6 @@ class Note {
       };
       const createNoteValidation = validation.notesCreationValidation.validate(note);
       if (createNoteValidation.error) {
-        console.log(createNoteValidation.error);
         return res.status(400).send({
           success: false,
           message: 'Wrong Input Validations',
@@ -69,7 +68,6 @@ class Note {
       const id = { id: req.user.dataForToken.id };
       const getNoteValidation = validation.NoteValidation.validate(id);
       if (getNoteValidation.error) {
-        console.log(getNoteValidation.error);
         return res.status(400).send({
           success: false,
           message: 'Wrong Input Validations',
@@ -113,7 +111,6 @@ class Note {
       const id = { userId: req.user.dataForToken.id, noteId: req.params.id };
       const getNoteValidation = validation.getNoteValidation.validate(id);
       if (getNoteValidation.error) {
-        console.log(getNoteValidation.error);
         return res.status(400).send({
           success: false,
           message: 'Wrong Input Validations',
@@ -122,7 +119,6 @@ class Note {
       }
       noteService.getNoteById(id, (err, data) => {
         if (err) {
-          console.log("222",err);
           logger.error('Note is Found')
           return res.status(404).json({
             message: 'Note not found',
@@ -170,7 +166,6 @@ class Note {
       }
       noteService.updateNoteById(updateNote, (error, data) => {
         if (error) {
-          console.log("111",error);
           logger.error('failed to update note');
           return res.status(400).json({
             message: 'failed to update note',
@@ -204,7 +199,6 @@ class Note {
       const id = { userId: req.user.dataForToken.id, noteId: req.params.id };
       const deleteNoteValidation = validation.validateDeleteNote.validate(id);
       if (deleteNoteValidation.error) {
-        console.log(deleteNoteValidation.error);
         return res.status(400).send({
           success: false,
           message: 'Wrong Input Validations',
@@ -225,7 +219,6 @@ class Note {
         });
       });
     } catch (error) {
-      console.log("error",error);
       logger.error('Internal server error');
       return res.status(500).json({
         message: 'Internal Server Error',

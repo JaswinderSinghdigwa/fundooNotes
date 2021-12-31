@@ -35,12 +35,14 @@ class LabelController {
                 }
                 labelService.addLabel(labelInfo, (error, data) => {
                     if (error) {
-                        console.log("666",error)
                         logger.error('Some error occurred !')
                         const response = { sucess: false, message: 'Some error occured' }
-                        return res.status(400).send(response)
+                        return res.status(404).send(response)
                     }
-                    console.log("3333",data)
+                    // else if(!data){
+                    // const response = { sucess: true, message: "Successfully added label !", data: data }
+                    // return res.status(400).json(response)
+                    // }
                     logger.info('Successfully added label !');
                     const response = { sucess: true, message: "Successfully added label !", data: data }
                     return res.status(200).json(response)
@@ -62,15 +64,13 @@ class LabelController {
                 const userId = { id: req.user.dataForToken.id }
                 const validateResult = validation.validateUserid.validate(userId);
                 if (validateResult.error) {
-                    console.log(validateResult.error)
                     const response = { sucess: false, message: 'Wrong Input Validation', data: validateResult }
                     return res.status(400).send(response)
                 }
                 labelService.getLabel(userId, (error, data) => {
                     if (error) {
-                        console.log("555",userId);
                         const response = { sucess: false, message: 'Some error occured' }
-                        return res.status(400).send(response)
+                        return res.status(200).send(response)
                     }
                     else if(!data){
                         const response = { sucess: false, message: 'data is undefine or null' }

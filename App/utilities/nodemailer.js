@@ -34,7 +34,7 @@ exports.sendEmail = (data) => {
 
     transporter.sendMail(message, (err, info) => {
         if (err) {
-            console.log("44",err);
+            console.log("mail is not sent",err);
         } else {
             console.log('email has been sent', info.response);
             return info.response;

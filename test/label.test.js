@@ -169,20 +169,9 @@ describe('get label  api ', () => {
             .request(server)
             .get('/getlabel')
             .set({ authorization: token })
-            .send({ id: "32166" })
+            .send({ id: "61cc41d4db10efa515b4e1e8" })
             .end((err, res) => {
-                res.should.have.status(400);
-                done();
-            });
-    })
-    it('it should give true when userid is validate', (done) => {
-        const token = labelDB.label.validToken;
-        chai
-            .request(server)
-            .get('/getlabel')
-            .set({ authorization: token })
-            .end((err, res) => {
-                res.should.have.status(400);
+                res.should.have.status(200);
                 done();
             });
     })
