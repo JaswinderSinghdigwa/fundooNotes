@@ -86,5 +86,7 @@ class LabelModel {
             })
         }) 
     }
+    // Retrieve labels by id
+
 }
 module.exports = new LabelModel();
