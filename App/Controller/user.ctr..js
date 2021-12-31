@@ -9,7 +9,7 @@
 const userService = require('../service/service.js')
 const validation = require('../utilities/validation');
 const { logger } = require('../../logger/logger');
-const { database } = require('faker/locale/en_BORK');
+// const { database } = require('faker/locale/en_BORK');
 
 class Controller {
   /**
@@ -17,7 +17,7 @@ class Controller {
 	 * @method register is a service class method
 	 * @method validate validates inputs using Joi
 	 */
-  register = (req, res) => {
+  register = async (req, res) => {
     try {
       const userRegistrationData = {
         firstName: req.body.firstName,
@@ -25,7 +25,7 @@ class Controller {
         email: req.body.email,
         password: req.body.password
       };
-      const validationResult = validation.ValidationRegister.validate(userRegistrationData)
+      const validationResult = await validation.ValidationRegister.validate(userRegistrationData)
       if (validationResult.error) {
         logger.error('Wrong Input Validations');
         return res.status(400).send({
@@ -34,22 +34,21 @@ class Controller {
           data: validationResult.error.message
         });
       }
-      userService.register(userRegistrationData, (error, data) => {
-        if (error) {
-          logger.error('User with this email Id is alreday exists');
-          return res.status(400).json({
-            success: false,
-            message: 'User already exist',
-          });
-        } else {
-          logger.info('Registration is done successfully !');
-          return res.status(200).json({
-            success: true,
-            message: 'Registration is done successfully !',
-            data: data,
-          });
-        }
-      });
+    const userRegisterService = userService.register(userRegistrationData);
+      userRegisterService.then((data)=>{
+        logger.info('Registration is done successfully !');
+        return res.status(200).json({
+          success: true,
+          message: 'Registration is done successfully !',
+          data: data,
+        });
+      }).catch((error)=>{
+        logger.error('User with this email Id is alreday exists');
+        return res.status(400).json({
+          success: false,
+          message: 'User already exist',
+        });
+      })
     } catch (error) {
       logger.error('Some error occurred !');
       return res.status(500).json({
@@ -69,7 +68,6 @@ class Controller {
         email: req.body.email,
         password: req.body.password
       };
-
       const validationResult= validation.ValidationLogin.validate(userLoginData);
       if (validationResult.error) {
         logger.error(validationResult.error);
@@ -78,31 +76,26 @@ class Controller {
           message: validationResult.error.message
         });
       }
-
-      userService.login(userLoginData, (error, data) => {
-        if (error) {
-					logger.error(error.message);
-          return res.status(400).json({
-            success: false,
-            message: error.message,
+      userService.login(userLoginData) 
+        .then((data)=>{
+          return res.status(200).json({
+            success: true,
+            message: 'Token gernerator Successfully',
+            data:data
           });
-        }
-        return res.status(200).json({
-          success: true,
-          message: 'Login Successfull !',
-          data: data
+        }).catch((error)=>{
+          return res.status(200).json({
+            success: true,
+            message: 'Login Successfull !',error,
+          });
+        })
+      }catch(err){
+        return res.status(500).json({
+          success: false,
+          message: 'Interal Server error',
         });
-      });
+      }
     }
-    catch (error) {
-      logger.error('Some error occurred !');
-      return res.status(500).json({
-        success: false,
-        message: 'Some error occurred !', 
-        data: null
-      });
-    }
-  };
 
   /**
 	 * @description Sends resetpassword links to user's emailId
@@ -115,7 +108,6 @@ class Controller {
         email: req.body.email
       };
       const validationResult = validation.validationforgotPassword.validate(userData);
-
       if (validationResult.error) {
         logger.error(error.message);
         return res.status(400).send({

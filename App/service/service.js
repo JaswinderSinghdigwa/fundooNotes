@@ -1,7 +1,8 @@
-const userModel = require('../models/user.model')
-const helper = require('../utilities/helper');
+const userModel = require('../models/user.mdl')
+const helper = require('../utilities/global.helper');
 const { logger } = require('../../logger/logger');
 const nodemailer = require('../utilities/nodemailer.js');
+const { token } = require('../utilities/global.helper');
 
 class userService {
 
@@ -11,39 +12,42 @@ class userService {
      * @param {*} callback
      */
 
-  register = (user, callback) => {
-    userModel.register(user, (err, data) => {
-      if (err) {
-        callback(err, null);
-      } else {
-        callback(null, data);
-      }
-    });
-  }
+  register =  (user) => {
+    return new Promise((resolve,reject)=>{
+    let userRegister = userModel.register(user);
+      userRegister.then((data)=>{
+        resolve(data);
+      }).catch((error)=>{
+        reject(error)
+      })
+      })
+    }
 
-    /**
-     * @description: Function gets data from model, whether it is valid or not.
-     * @param {*} loginData
-     * @param {*} authenticateUser
-     */
+  /**
+   * @description: Function gets data from model, whether it is valid or not.
+   * @param {*} loginData
+   * @param {*} authenticateUser
+   */
 
-  login = (InfoLogin, callback) => {
-    userModel.UserLogin(InfoLogin, (error, data) => {
-      if (data) {
+  login = (InfoLogin) => {
+    return new Promise((resolve,reject)=>{
+      let result = userModel.UserLogin(InfoLogin)
+      result.then((data)=> {
         let passwordResult = helper.comparePassword(InfoLogin.password, data.password);
         if (!passwordResult) {
           logger.error(error);
-          return callback("some error ocured !!!", null);
+          resolve("password is not hashed");
         }
         const token = helper.token(data);
         logger.info(' token generated');
-        return callback(null, token);
-      } else {
+        resolve(token);
+      }).catch((error)=>{
         logger.error(error);
-        return callback(error, null);
-      }
-    });
+        reject(error);
+      }) 
+    })
   }
+    
 
   /** 
     @description: Function gets data from model, whether it is valid or not.
@@ -51,26 +55,26 @@ class userService {
      * @param {*} callback
      */
 
-    forgotPassword = (user, callback) => {
-      userModel.forgotPassword(user, (error, data) => {
-        if (error) {
-          logger.error(error);
-          return callback(error, null);
-        } else if(!data) {
-          console.log("!!! Some Error in your code",null)
-        }
-        else{
-          return callback(null, nodemailer.sendEmail(data));
-        }
-      });
-    }
+  forgotPassword = (user, callback) => {
+    userModel.forgotPassword(user, (error, data) => {
+      if (error) {
+        logger.error(error);
+        return callback(error, null);
+      } else if (!data) {
+        logger.log("!!! Some Error in your code")
+      }
+      else {
+        return callback(null, nodemailer.sendEmail(data));
+      }
+    });
+  }
 
-     /**
-     * @description it acts as a middleware between controller and model for reset password
-     * @param {*} inputData
-     * @param {*} callback
-     * @returns
-     */
+  /**
+  * @description it acts as a middleware between controller and model for reset password
+  * @param {*} inputData
+  * @param {*} callback
+  * @returns
+  */
   resetPassword = (userData, callback) => {
     userModel.resetPassword(userData, (error, data) => {
       if (error) {
@@ -80,7 +84,7 @@ class userService {
         return callback(null, data);
       }
     });
-}
+  }
 }
 
 module.exports = new userService();

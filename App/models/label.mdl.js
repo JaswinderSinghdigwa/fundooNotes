@@ -8,7 +8,7 @@
 * @since : 29/12/2021
 *
 **************************************************************************/
-const NoteRegister = require('../models/notes.model').Note;
+const NoteRegister = require('./notes.mdl').Note;
 const mongoose = require('mongoose');
 const {logger} = require('../../logger/logger') 
 
@@ -25,6 +25,7 @@ const labelSchema = mongoose.Schema({
 
     labelName: {
         type: String,
+        unique: true,
         required: true
     },
 
@@ -46,11 +47,11 @@ class LabelModel {
         if (findNotes.length === 0) {
             return callback('This note is not exist or this belongs to another user', null);
         }
-        label.findOne({userId: labelInfo.userId, labelName: labelInfo.labelName}, (error, data) => {
+       label.find({userId: labelInfo.userId}, {labelName: labelInfo.labelName}, (error, data) => {
             if (!data) {
                 const labelmodel = new label({
                     userId: labelInfo.id,
-                    noteId: labelInfo.noteId,
+                    noteId: [labelInfo.noteId],
                     labelName: labelInfo.labelName,
                 });
                 labelmodel.save((error, data))
@@ -60,24 +61,21 @@ class LabelModel {
                     }).catch((error) => {
                         logger.info('Some error occurred while adding label');
                         callback(error, null)
-                    })
+                    })                
             } else if (data) {
-                label.findOneAndUpdate({ userId: labelInfo.userId, labelName: labelInfo.labelName }, { $addToSet: { noteId: labelInfo.noteId } }, (error, data) => {
+                label.findOneAndUpdate({labelName: labelInfo.labelName }, { $addToSet: { noteId: labelInfo.noteId } }, (error, data) => {
                     if (error) {
                         callback(error, null)
                     }
                     else if (!data) {
-                        logger.info('label is not found !');
-                        callback("label is not found", null)
+                        logger.log("label is  not found");
+                        return callback("label is not found",data)
                     }
                     else {
-                        logger.info('Successfully added label !');
-                        return callback(null, data)
+                        logger.error(error);
+                        return callback(error, data)
                     }
                 })
-            }
-            else {
-                callback("somme error occured", null)
             }
         })
     }

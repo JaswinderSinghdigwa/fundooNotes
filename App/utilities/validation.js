@@ -85,7 +85,7 @@ class Validation {
     labelName: Joi.string()
   });
   validateUserid = Joi.object({
-    id: Joi.string().max(3)
+    id: Joi.string()
   });
 }
 

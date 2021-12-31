@@ -98,7 +98,7 @@ describe('Add label by id api ', () => {
                 res.should.have.status(200);
                 done();
             })
-    }) 
+    })
     it('Should give true when fetched user is belong to labelInfo', (done) => {
         const token = labelDB.label.validToken;
         const labelName = {
@@ -128,7 +128,7 @@ describe('Add label by id api ', () => {
                 res.should.have.status(200);
                 done();
             })
-    })      
+    })
 })
 
 describe('get label  api ', () => {
@@ -146,7 +146,7 @@ describe('get label  api ', () => {
         chai
             .request(server)
             .get('/getlabel')
-            .set({authorization : token})
+            .set({ authorization: token })
             .end((err, res) => {
                 res.should.have.status(200);
                 done();
@@ -157,7 +157,7 @@ describe('get label  api ', () => {
         chai
             .request(server)
             .get('/getlabel')
-            .set({authorization : token})
+            .set({ authorization: token })
             .end((err, res) => {
                 res.should.have.status(400);
                 done();
@@ -168,13 +168,33 @@ describe('get label  api ', () => {
         chai
             .request(server)
             .get('/getlabel')
-            .set({authorization : token})
-            .send({id : "32166"})
+            .set({ authorization: token })
+            .send({ id: "32166" })
             .end((err, res) => {
                 res.should.have.status(400);
                 done();
             });
     })
-    
-
+    it('it should give true when userid is validate', (done) => {
+        const token = labelDB.label.validToken;
+        chai
+            .request(server)
+            .get('/getlabel')
+            .set({ authorization: token })
+            .end((err, res) => {
+                res.should.have.status(400);
+                done();
+            });
+    })
+    it('Should return true from GetLabel API Service Layer ,return appropriate response" ', (done) => {
+        const token = labelDB.label.validToken;
+        chai
+            .request(server)
+            .get('/getlabel')
+            .set({ authorization: token })
+            .end((err, res) => {
+                res.should.have.status(200);
+                done();
+            });
+    })
 })
