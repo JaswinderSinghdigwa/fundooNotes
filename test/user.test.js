@@ -113,7 +113,7 @@ describe('login', () => {
         }
         res.should.have.status(400);
         res.body.should.have.property('success').eql(false);
-        res.body.should.have.property('message').eql('Unable to login. Please enter correct info');
+        res.body.should.have.property('message').eql('Login Failed !');
         done();
       });
   });

@@ -22,18 +22,5 @@ class LabelService {
             return callback(null, data)
         })
     }
-
-    getLabel = (labelId, callback) => {
-        if (labelId) {
-            labelmodel.getLabel(labelId, (error, data) => {
-                if (error) {
-                    return callback(error, null)
-                }
-                else {
-                    return callback("Service layer is not giving response", data)
-                }
-            })
-        }
-    }
 }
 module.exports = new LabelService();

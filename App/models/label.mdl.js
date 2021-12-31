@@ -13,10 +13,7 @@ const mongoose = require('mongoose');
 const { logger } = require('../../logger/logger')
 
 const labelSchema = mongoose.Schema({
-    userId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-    },
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
 
     noteId: [{
         type: mongoose.Schema.Types.ObjectId,
@@ -48,9 +45,9 @@ class LabelModel {
             return callback('This note is not exist or this belongs to another user', null);
         }
         label.find({ userId: labelInfo.userId, labelName: labelInfo.labelName }, (error, data) => {
-            if (!data) {
+            if (!data || data.length === 0) {
                 const labelmodel = new label({
-                    userId: labelInfo.id,
+                    userId: labelInfo.userId,
                     noteId: [labelInfo.noteId],
                     labelName: labelInfo.labelName,
                 });
@@ -63,28 +60,21 @@ class LabelModel {
                         callback(error, null)
                     })
             } else if (data) {
-                label.findOneAndUpdate({ labelName: labelInfo.labelName }, { $addToSet: { noteId: labelInfo.noteId } }, (error, data) => {
+                label.findOneAndUpdate({ userId: labelInfo.userId , labelName: labelInfo.labelName }, { $addToSet: { noteId: [labelInfo.noteId] } }, (error, data) => {
                     if (error) {
                         callback(error, null)
                     }
                     else if (!data) {
-                        logger.log("label is  not found");
-                        return callback("label is not found", data)
+                        logger.info("label is  not found");
+                        return callback('label is  not found', data)
                     }
                     else {
-                        logger.error(error);
                         return callback(error, data)
                     }
                 })
             }
         })
     }
-    getLabel = (userId, callback) => {
-        if (!userId) {
-            return callback("Service is not giving response", null);
-        }else{
-            return callback(null, userId);
-        }
-    }
+    
 }
 module.exports = new LabelModel();

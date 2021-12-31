@@ -17,7 +17,7 @@ class Controller {
 	 * @method register is a service class method
 	 * @method validate validates inputs using Joi
 	 */
-  register = async (req, res) => {
+  register =  (req, res) => {
     try {
       const userRegistrationData = {
         firstName: req.body.firstName,
@@ -25,7 +25,7 @@ class Controller {
         email: req.body.email,
         password: req.body.password
       };
-      const validationResult = await validation.ValidationRegister.validate(userRegistrationData)
+      const validationResult = validation.ValidationRegister.validate(userRegistrationData)
       if (validationResult.error) {
         logger.error('Wrong Input Validations');
         return res.status(400).send({
@@ -46,7 +46,7 @@ class Controller {
         logger.error('User with this email Id is alreday exists');
         return res.status(400).json({
           success: false,
-          message: 'User already exist',
+          message: 'User already exist',error
         });
       })
     } catch (error) {
@@ -84,9 +84,9 @@ class Controller {
             data:data
           });
         }).catch((error)=>{
-          return res.status(200).json({
-            success: true,
-            message: 'Login Successfull !',error,
+          return res.status(400).json({
+            success: false,
+            message: 'Login Failed !',error,
           });
         })
       }catch(err){
