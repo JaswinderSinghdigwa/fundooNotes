@@ -40,7 +40,7 @@ class LabelModel {
      */
 
     addLabel = (labelInfo, callback) => {
-        const findNotes = NoteRegister.find({ email: labelInfo.email, userId: labelInfo.userId })
+        const findNotes = NoteRegister.find({ email: labelInfo.email, _id: labelInfo.noteId })
         if (findNotes.length === 0) {
             return callback('This note is not exist or this belongs to another user', null);
         }
@@ -75,6 +75,16 @@ class LabelModel {
             }
         })
     }
-    
+    // Retrieve all labels
+    getLabel = (userId) => {
+        return new Promise((resolve,reject)=>{
+            label.find({userId:userId.id})
+            .then((data)=>{
+                resolve(data)
+            }).catch((error)=>{
+                reject(error)
+            })
+        }) 
+    }
 }
 module.exports = new LabelModel();

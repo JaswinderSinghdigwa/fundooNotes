@@ -22,5 +22,16 @@ class LabelService {
             return callback(null, data)
         })
     }
+    // Retrieve all labels
+    getLabel = (userId) => {
+        return new Promise((resolve,reject)=>{
+            let labelModelResult = labelmodel.getLabel(userId)
+            labelModelResult.then((data)=>{
+                resolve(data)
+            }).catch((error)=>{
+                reject(error)
+            })
+        })
+    }
 }
 module.exports = new LabelService();
