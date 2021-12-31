@@ -79,11 +79,11 @@ class LabelModel {
             }
         })
     }
-    getLabel = (labelInfo, callback) => {
-        if (labelInfo) {
-            return callback("Service is not giving response", null)
+    getLabel = (userId, callback) => {
+        if (!userId) {
+            return callback("Service is not giving response", null);
         }else{
-            return callback(null, labelInfo)
+            return callback(null, userId);
         }
     }
 }

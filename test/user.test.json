@@ -2,8 +2,8 @@
     "user": {
         "correctRegister": {
             "firstName" : "Sumit",
-            "lastName":"bansal",
-            "email":"findjassi67788@gmail.com",
+            "lastName":"bansal1",
+            "email":"uttar13@mailinator.com",
             "password":"123456@Aa"
         },
         "registrationWithImproperDetails": {
@@ -26,8 +26,8 @@
             "password": "1234578Hk"
         },
         "loginWithImproperDetails": {
-            "email": "findjassi121212@gmail.com",
-            "password": "1211111578Hk"
+            "email" :"Dindjassi121212@gmailcom",
+            "password" : "1234679Ba"
         },
         "ForgotPasswordPos": {
             "email": "findjassi121212@gmail.com"
