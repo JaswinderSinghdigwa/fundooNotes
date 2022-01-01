@@ -283,12 +283,23 @@ describe('get label_by id api ', () => {
 })
 
 describe('update label_by id api ', () => {
-    it.only('Added Controller layer and Checking Response of Updatelabelby_id', (done) => {
+    it('Added Controller layer and Checking Response of Updatelabelby_id', (done) => {
         chai
             .request(server)
             .put('/updatelabel/:id')
             .end((err, res) => {
                 res.should.have.status(500);
+                done();
+            });
+    });
+    it('it should give true when,token is valid ', (done) => {
+        const token = labelDB.label.validToken
+        chai
+            .request(server)
+            .put('/updatelabel/:id')
+            .set({authorization : token})
+            .end((err, res) => {
+                res.should.have.status(200);
                 done();
             });
     });
