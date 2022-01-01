@@ -32,7 +32,7 @@ module.exports = (app) => {
    // api for Add Label By Id 
    app.post('/addlabel/:id', helper.validateToken, labelController.addLabel);
    // api for get Label  
-   app.get('/getlabel/:id', helper.validateToken, labelController.getlabel);
+   app.get('/getlabel', helper.validateToken, labelController.getlabel);
    // api for get Label  
    app.get('/getlabel/:id', helper.validateToken, labelController.getlabelById);
 }; 

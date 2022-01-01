@@ -53,7 +53,7 @@ class helperClass {
   }
   
   comparePassword = (password, result) => {
-    return bcrypt.compareSync(password, result);
+    return bcrypt.compare(password, result);
   }
  
 };

@@ -25,8 +25,8 @@ class LabelService {
     // Retrieve all labels
     getLabel = (userId) => {
         return new Promise((resolve,reject)=>{
-            let labelModelResult = labelmodel.getLabel(userId)
-            labelModelResult.then((data)=>{
+            let result = labelmodel.getLabel(userId)
+            result.then((data)=>{
                 resolve(data)
             }).catch((error)=>{
                 reject(error)

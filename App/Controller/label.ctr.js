@@ -39,9 +39,9 @@ class LabelController {
                         const response = { sucess: false, message: 'Some error occured' }
                         return res.status(404).send(response)
                     }
-                    else if(!data){
-                    const response = { sucess: true, message: "Successfully added label !", data: data }
-                    return res.status(400).json(response)
+                    else if (!data) {
+                        const response = { sucess: true, message: "Successfully added label !", data: data }
+                        return res.status(400).json(response)
                     }
                     logger.info('Successfully added label !');
                     const response = { sucess: true, message: "Successfully added label !", data: data }
@@ -67,18 +67,14 @@ class LabelController {
                     const response = { sucess: false, message: 'Wrong Input Validation', data: validateResult }
                     return res.status(400).send(response)
                 }
-                labelService.getLabel(userId , (error, data) => {
-                    if (error) {
-                        const response = { sucess: false, message: 'Some error occured' }
-                        return res.status(200).send(response)
-                    }
-                    else if(!data){
-                        const response = { sucess: false, message: 'data is undefine or null' }
-                        return res.status(201).send(response)
-                    }
-                    const response = { sucess: true, message: 'label is fetched' }
+                labelService.getLabel(userId)
+                 .then((data)=>{
+                    const response = { sucess: true, message: 'label is fetched',data:data }
                     return res.status(200).send(response)
-                })
+                 }).catch((error)=>{
+                    const response = { sucess: false, message: 'Some error occured' }
+                        return res.status(200).send(response)
+                 })
             }
             else {
                 const response = { sucess: false, message: 'Invalid Token' }
@@ -91,12 +87,21 @@ class LabelController {
         }
     }
 
-    getlabelById = (req,res)=>{
-        try{
-            const response = { sucess: false, message: "Internal  Server error" }
-            return res.status(200).json(response)
-        }
-        catch{
+    getlabelById = (req, res) => {
+        try {
+            const credentials = {
+                userId: req.user.dataForToken.id,
+                labelId: req.params.id
+            };
+            const validationResult = validation.labelvalidator.validate(credentials)
+            if (validationResult.error) {
+                const response = { sucess: false, message: "Wrong Credential  Validation" }
+                res.status(422).json(response)
+            }
+            const response = { sucess: true, message: "Succesfuly label is fetch",data:credentials}
+            return res.status(201).json(response)   
+    }
+        catch {
             const response = { sucess: false, message: "Internal  Server error" }
             return res.status(500).json(response)
         }

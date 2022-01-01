@@ -60,7 +60,7 @@ class LabelModel {
                         callback(error, null)
                     })
             } else if (data) {
-                label.findOneAndUpdate({ userId: labelInfo.userId , labelName: labelInfo.labelName }, { $addToSet: { noteId: [labelInfo.noteId] } }, (error, data) => {
+                label.findOneAndUpdate({ userId: labelInfo.userId, labelName: labelInfo.labelName }, { $addToSet: { noteId: [labelInfo.noteId] } }, (error, data) => {
                     if (error) {
                         callback(error, null)
                     }
@@ -77,14 +77,16 @@ class LabelModel {
     }
     // Retrieve all labels
     getLabel = (userId) => {
-        return new Promise((resolve,reject)=>{
-            label.find({userId:userId.id})
-            .then((data)=>{
-                resolve(data)
-            }).catch((error)=>{
-                reject(error)
-            })
-        }) 
+        return new Promise((resolve, reject) => {
+            label.find({ userId: userId.id })
+                .then((data) => {
+
+                    resolve(data)
+                }).catch((error) => {
+
+                    reject(error)
+                })
+        })
     }
     // Retrieve labels by id
 

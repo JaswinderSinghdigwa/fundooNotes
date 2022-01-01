@@ -83,9 +83,6 @@ describe('Add label by id api ', () => {
     })
     it('Should give true when note is belong to same user', (done) => {
         const token = labelDB.label.validToken;
-        const labelName = {
-            labelname: faker.lorem.word()
-        }
         chai
             .request(server)
             .post('/addlabel/61cc41d4db10efa515b4e1e8')
@@ -221,21 +218,32 @@ describe('get label_by id api ', () => {
         const token = labelDB.label.validToken
         chai
             .request(server)
-            .get('/getlabel/:id')
+            .get('/getlabel/61cfd6c0209440838069fbeb')
             .set({authorization : token})
             .end((err, res) => {
                 res.should.have.status(201);
                     done();
                 });
     });
-    it.only('it should give true when ,add controller layer and checking response by of invalid token in getlabel_by_id_', (done) => {
+    it.only('it should give false when ,add controller layer and checking response by of invalid token in getlabel_by_id_', (done) => {
         const token = labelDB.label.invalidToken
         chai
             .request(server)
             .get('/getlabel/:id')
-            .set({authorization : token})
+            .set({authorization: token})
             .end((err, res) => {
                 res.should.have.status(400);
+                    done();
+                });
+    });
+    it.only('it should give true when ,Credential is Validated in getlabel_by_id_', (done) => { 
+        const token = labelDB.label.validToken
+        chai
+            .request(server)
+            .get('/getlabel/61cfd6c0209440838069fbeb')
+            .set({ authorization: token })
+            .end((err, res) => {
+                res.should.have.status(201);
                     done();
                 });
     });

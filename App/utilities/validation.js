@@ -87,6 +87,11 @@ class Validation {
   validateUserid = Joi.object({
     id: Joi.string()
   });
+  labelvalidator = Joi.object({
+    userId:Joi.string(),
+    labelId
+    :Joi.string()
+  })
 }
 
 module.exports = new Validation(); 
