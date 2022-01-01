@@ -205,7 +205,7 @@ describe('get label  api ', () => {
 })
 
 describe('get label_by id api ', () => {
-    it.only('getlabel_by_id_checking_server', (done) => {
+    it('getlabel_by_id_checking_server', (done) => {
         chai
             .request(server)
             .get('/getlabel/:id')
@@ -214,7 +214,7 @@ describe('get label_by id api ', () => {
                 done();
             });
     });
-    it.only('it should give true when ,add controller layer and checking the response of token in getlabel_by_id_', (done) => {
+    it('it should give true when ,add controller layer and checking the response of token in getlabel_by_id_', (done) => {
         const token = labelDB.label.validToken
         chai
             .request(server)
@@ -225,7 +225,7 @@ describe('get label_by id api ', () => {
                     done();
                 });
     });
-    it.only('it should give false when ,add controller layer and checking response by of invalid token in getlabel_by_id_', (done) => {
+    it('it should give false when ,add controller layer and checking response by of invalid token in getlabel_by_id_', (done) => {
         const token = labelDB.label.invalidToken
         chai
             .request(server)
@@ -236,7 +236,7 @@ describe('get label_by id api ', () => {
                     done();
                 });
     });
-    it.only('it should give true when ,Credential is Validated in getlabel_by_id_', (done) => { 
+    it('it should give true when ,Credential is Validated in getlabel_by_id_', (done) => { 
         const token = labelDB.label.validToken
         chai
             .request(server)
@@ -247,7 +247,7 @@ describe('get label_by id api ', () => {
                     done();
                 });
     });
-    it.only('it should give true when , Added Servce layer in getlabel_by_id_', (done) => { 
+    it('it should give true when , Added Servce layer in getlabel_by_id_', (done) => { 
         const token = labelDB.label.validToken
         chai
             .request(server)
@@ -258,7 +258,18 @@ describe('get label_by id api ', () => {
                     done();
                 });
     });
-    it.only('it should give true when , Added Model layer in getlabel_by_id_', (done) => { 
+    it('it should give true when , Added Model layer in getlabel_by_id_', (done) => { 
+        const token = labelDB.label.validToken
+        chai
+            .request(server)
+            .get('/getlabel/61cfd6c0209440838069fbeb')
+            .set({ authorization: token })
+            .end((err, res) => {
+                res.should.have.status(201);
+                    done();
+                });
+    });
+    it('it should give true when , check response with valid Param and findng the label with label id ', (done) => { 
         const token = labelDB.label.validToken
         chai
             .request(server)

@@ -91,10 +91,12 @@ class LabelModel {
     // Retrieve labels by id
     getlabelById = (credential) => {
         return new Promise((resolve, reject) => {
-                if(credential){           
-                    resolve(credential)
-                }
-                reject("Model is getting response")
+            label.find({ userId: credential.userId, _id: credential.labelId })
+                .then(data => {
+                    resolve(data)
+                }).catch(error => {
+                    reject(error)
+                })
         })
     }
 }
