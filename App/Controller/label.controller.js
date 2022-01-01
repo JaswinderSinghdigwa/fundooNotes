@@ -130,13 +130,12 @@ class LabelController {
                     const response = { sucess: false, message: "Added Service Layer",data:data }
                     return res.status(200).json(response)
                 }).catch(error=>{
-                    const response = { sucess: false, message: "some error occured " }
+                    const response = { sucess: false, message: "some error occured ",error:error }
                     return res.status(400).json(response)
                 })
                
 
         } catch (error) {
-            console.log("errr",error);
             const response = { sucess: false, message: "Internal  Server error" }
             return res.status(500).json(response)
         }
