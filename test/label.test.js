@@ -283,7 +283,7 @@ describe('get label_by id api ', () => {
 })
 
 describe('update label_by id api ', () => {
-    it.only('it should give true when,token is valid ', (done) => {
+    it('it should give true when,token is valid ', (done) => {
         const token = labelDB.label.validToken
         chai
             .request(server)
@@ -294,7 +294,7 @@ describe('update label_by id api ', () => {
                 done();
             });
     });
-    it.only('it should give true when,token is not decoded ', (done) => {
+    it('it should give true when,token is not decoded ', (done) => {
         const token = labelDB.label.invalidToken
         chai
             .request(server)
@@ -305,7 +305,7 @@ describe('update label_by id api ', () => {
                 done();
             });
     });
-    it.only('it should give true when true params is validate', (done) => {
+    it('it should give true when true params is validate', (done) => {
         const token = labelDB.label.invalidToken
         chai
             .request(server)
@@ -316,7 +316,7 @@ describe('update label_by id api ', () => {
                 done();
             });
     });
-    it.only('it should give false when Something is Wrong with credential ,Validation Failed ', (done) => {
+    it('it should give false when Something is Wrong with credential ,Validation Failed ', (done) => {
         const token = labelDB.label.invalidToken
         chai
             .request(server)
@@ -324,6 +324,18 @@ describe('update label_by id api ', () => {
             .set({authorization : token})
             .end((err, res) => {
                 res.should.have.status(400);
+                done();
+            });
+    });
+    it('it should give true when labelName is Valdated with Credential ', (done) => {
+        const token = labelDB.label.validToken
+        chai
+            .request(server)
+            .put('/updatelabel/61cfd6c0209469fbeb')
+            .set({authorization : token})
+            .send({labelName : 'Jaswinder'})
+            .end((err, res) => {
+                res.should.have.status(200);
                 done();
             });
     });

@@ -94,7 +94,8 @@ class Validation {
   })
   updatelabelbyid =Joi.object({
     userId:Joi.string(),
-    id:Joi.string()
+    id:Joi.string(),
+    labelName : Joi.string()
   })
 }
 
