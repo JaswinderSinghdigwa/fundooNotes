@@ -283,16 +283,7 @@ describe('get label_by id api ', () => {
 })
 
 describe('update label_by id api ', () => {
-    it('Added Controller layer and Checking Response of Updatelabelby_id', (done) => {
-        chai
-            .request(server)
-            .put('/updatelabel/:id')
-            .end((err, res) => {
-                res.should.have.status(500);
-                done();
-            });
-    });
-    it('it should give true when,token is valid ', (done) => {
+    it.only('it should give true when,token is valid ', (done) => {
         const token = labelDB.label.validToken
         chai
             .request(server)
@@ -303,11 +294,33 @@ describe('update label_by id api ', () => {
                 done();
             });
     });
-    it('it should give true when,token is not decoded ', (done) => {
+    it.only('it should give true when,token is not decoded ', (done) => {
         const token = labelDB.label.invalidToken
         chai
             .request(server)
             .put('/updatelabel/:id')
+            .set({authorization : token})
+            .end((err, res) => {
+                res.should.have.status(400);
+                done();
+            });
+    });
+    it.only('it should give true when true params is validate', (done) => {
+        const token = labelDB.label.invalidToken
+        chai
+            .request(server)
+            .put('/updatelabel/61cfd6c0209440838069fbeb')
+            .set({authorization : token})
+            .end((err, res) => {
+                res.should.have.status(400);
+                done();
+            });
+    });
+    it.only('it should give false when Something is Wrong with credential ,Validation Failed ', (done) => {
+        const token = labelDB.label.invalidToken
+        chai
+            .request(server)
+            .put('/updatelabel/61cfd6c0209469fbeb')
             .set({authorization : token})
             .end((err, res) => {
                 res.should.have.status(400);

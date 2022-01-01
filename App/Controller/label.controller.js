@@ -99,31 +99,36 @@ class LabelController {
                 res.status(422).json(response)
             }
             labelService.getlabelById(credentials)
-                .then(data=> {
-                const response = { sucess: true, message: "Succesfuly label is fetch", data: data }
-                return res.status(201).json(response);
-            }).catch(error=>{
-                const response = { sucess: false, message: "Succesfuly label is not fetch",error:error.message }
-                return res.status(400).json(response)
-            })
+                .then(data => {
+                    const response = { sucess: true, message: "Succesfuly label is fetch", data: data }
+                    return res.status(201).json(response);
+                }).catch(error => {
+                    const response = { sucess: false, message: "Succesfuly label is not fetch", error: error.message }
+                    return res.status(400).json(response)
+                })
         }
-        catch(error) {
+        catch (error) {
             const response = { sucess: false, message: "Internal  Server error" }
             return res.status(500).json(response)
         }
     }
 
     updatelabelById = (req, res) => {
-        try{
-            if(req.user){
+        try {
+                const updtlabel = {
+                    userId: req.user.dataForToken.id,
+                    id: req.params.id
+                };
+                const validatiionResult = validation.updatelabelbyid.validate(updtlabel)
+                if(validatiionResult.error){
+                const response = { sucess: false, message: "Validation Failed", error : validatiionResult.error }
+                 return res.status(422).json(response)
+                }
                 const response = { sucess: true, message: "token is decoded and giving true response" }
-                 return res.status(200).json(response)
-            }else{
-                const response = { sucess: true, message: "token is decoded and giving true response" }
-                 return res.status(400).json(response)
-            }
-            
-        }catch(error){
+                return res.status(200).json(response)
+
+        } catch (error) {
+            console.log("errr",error);
             const response = { sucess: false, message: "Internal  Server error" }
             return res.status(500).json(response)
         }

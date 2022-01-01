@@ -92,6 +92,10 @@ class Validation {
     labelId
     :Joi.string()
   })
+  updatelabelbyid =Joi.object({
+    userId:Joi.string(),
+    id:Joi.string()
+  })
 }
 
 module.exports = new Validation(); 
