@@ -285,3 +285,20 @@
 {"level":"error","timestamp":"2022-01-01T06:22:33.955Z"}
 {"level":"error","message":"Some error occurred !","timestamp":"2022-01-01T06:22:34.054Z"}
 {"level":"info","message":"Password has benn changed !","timestamp":"2022-01-01T06:22:34.342Z"}
+{"level":"info","message":"Some error occurred while adding label","timestamp":"2022-01-01T06:59:09.262Z"}
+{"level":"info","message":"Some error occurred while adding label","timestamp":"2022-01-01T06:59:09.316Z"}
+{"level":"info","message":"Some error occurred while adding label","timestamp":"2022-01-01T06:59:09.358Z"}
+{"level":"info","message":"Some error occurred while adding label","timestamp":"2022-01-01T06:59:09.390Z"}
+{"level":"info","message":"Some error occurred while adding label","timestamp":"2022-01-01T06:59:09.422Z"}
+{"level":"info","message":"Some error occurred while adding label","timestamp":"2022-01-01T06:59:09.453Z"}
+{"level":"info","message":"Some error occurred while adding label","timestamp":"2022-01-01T06:59:09.496Z"}
+{"level":"error","message":"Wrong Input Validations","timestamp":"2022-01-01T06:59:10.206Z"}
+{"level":"error","message":"Wrong Input Validations","timestamp":"2022-01-01T06:59:10.223Z"}
+{"level":"error","message":"Wrong Input Validations","timestamp":"2022-01-01T06:59:10.236Z"}
+{"level":"error","message":"Wrong Input Validations","timestamp":"2022-01-01T06:59:10.250Z"}
+{"level":"info","message":"Email id found","timestamp":"2022-01-01T06:59:10.273Z"}
+{"level":"info","message":" token generated","timestamp":"2022-01-01T06:59:10.281Z"}
+{"level":"info","message":"Email id found","timestamp":"2022-01-01T06:59:10.297Z"}
+{"level":"error","timestamp":"2022-01-01T06:59:10.299Z"}
+{"level":"error","message":"Some error occurred !","timestamp":"2022-01-01T06:59:10.364Z"}
+{"level":"info","message":"Password has benn changed !","timestamp":"2022-01-01T06:59:10.515Z"}

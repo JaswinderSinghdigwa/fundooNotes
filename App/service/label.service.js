@@ -46,5 +46,14 @@ class LabelService {
                 })
         })
     }
+
+    updatelabelById = (updtlabel) => {
+        return new Promise((resolve, reject) => {
+            if (updtlabel) {
+                resolve(updtlabel)
+            }
+            reject("Some error occured")
+        })
+    }
 }
 module.exports = new LabelService();

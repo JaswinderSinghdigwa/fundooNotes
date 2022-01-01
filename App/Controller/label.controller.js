@@ -125,8 +125,15 @@ class LabelController {
                 const response = { sucess: false, message: "Validation Failed", error : validatiionResult.error }
                  return res.status(422).json(response)
                 }
-                const response = { sucess: true, message: "true Params" }
-                return res.status(200).json(response)
+                labelService.updatelabelById(updtlabel)
+                .then(data=>{
+                    const response = { sucess: false, message: "Added Service Layer",data:data }
+                    return res.status(200).json(response)
+                }).catch(error=>{
+                    const response = { sucess: false, message: "some error occured " }
+                    return res.status(400).json(response)
+                })
+               
 
         } catch (error) {
             console.log("errr",error);

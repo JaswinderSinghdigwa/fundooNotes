@@ -339,5 +339,18 @@ describe('update label_by id api ', () => {
                 done();
             });
     });
+    it('it should give true when Service Layer is Added ', (done) => {
+        const token = labelDB.label.validToken
+        chai
+            .request(server)
+            .put('/updatelabel/61cfd6c0209469fbeb')
+            .set({authorization : token})
+            .send({labelName : 'Jaswinder'})
+            .end((err, res) => {
+                res.should.have.status(200);
+                done();
+            });
+    });
+    
 })
 
