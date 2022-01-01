@@ -198,3 +198,22 @@
 {"level":"info","message":"Successfully added label !","timestamp":"2022-01-01T04:21:27.623Z"}
 {"level":"info","message":"Successfully added label !","timestamp":"2022-01-01T04:21:31.994Z"}
 {"level":"info","message":"Successfully added label !","timestamp":"2022-01-01T04:21:31.995Z"}
+{"level":"info","message":"Some error occurred while adding label","timestamp":"2022-01-01T05:06:30.988Z"}
+{"level":"info","message":"Some error occurred while adding label","timestamp":"2022-01-01T05:06:31.071Z"}
+{"level":"info","message":"Some error occurred while adding label","timestamp":"2022-01-01T05:06:31.130Z"}
+{"level":"info","message":"Some error occurred while adding label","timestamp":"2022-01-01T05:06:31.181Z"}
+{"level":"info","message":"Some error occurred while adding label","timestamp":"2022-01-01T05:06:31.225Z"}
+{"level":"info","message":"Some error occurred while adding label","timestamp":"2022-01-01T05:06:31.271Z"}
+{"level":"info","message":"Some error occurred while adding label","timestamp":"2022-01-01T05:06:31.320Z"}
+{"level":"error","message":"Wrong Input Validations","timestamp":"2022-01-01T05:06:32.207Z"}
+{"level":"error","message":"Wrong Input Validations","timestamp":"2022-01-01T05:06:32.234Z"}
+{"level":"error","message":"Wrong Input Validations","timestamp":"2022-01-01T05:06:32.256Z"}
+{"level":"error","message":"Wrong Input Validations","timestamp":"2022-01-01T05:06:32.268Z"}
+{"level":"info","message":"Email id found","timestamp":"2022-01-01T05:06:32.299Z"}
+{"level":"info","message":" token generated","timestamp":"2022-01-01T05:06:32.307Z"}
+{"level":"info","message":"Email id found","timestamp":"2022-01-01T05:06:32.335Z"}
+{"level":"error","timestamp":"2022-01-01T05:06:32.336Z"}
+{"level":"error","message":"Some error occurred !","timestamp":"2022-01-01T05:06:32.413Z"}
+{"level":"info","message":"Password has benn changed !","timestamp":"2022-01-01T05:06:32.587Z"}
+{"level":"info","message":"Successfully added label !","timestamp":"2022-01-01T05:09:12.986Z"}
+{"level":"info","message":"Successfully added label !","timestamp":"2022-01-01T05:10:20.893Z"}

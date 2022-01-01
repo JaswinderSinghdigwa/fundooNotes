@@ -89,6 +89,13 @@ class LabelModel {
         })
     }
     // Retrieve labels by id
-
+    getlabelById = (credential) => {
+        return new Promise((resolve, reject) => {
+                if(credential){           
+                    resolve(credential)
+                }
+                reject("Model is getting response")
+        })
+    }
 }
 module.exports = new LabelModel();

@@ -25,24 +25,26 @@ class LabelService {
     }
     // Retrieve all labels
     getLabel = (userId) => {
-        return new Promise((resolve,reject)=>{
+        return new Promise((resolve, reject) => {
             let result = labelmodel.getLabel(userId)
-            result.then((data)=>{
+            result.then((data) => {
                 resolve(data)
-            }).catch((error)=>{
+            }).catch((error) => {
                 reject(error)
             })
         })
     }
 
-    // Retrieve all labels by Id
+    // Retrieve labels by Id
     getlabelById = (credential) => {
-        return new Promise((resolve,reject)=>{
-            if(credential){
-                resolve(credential)
-            }
-                reject("data is not found")
-            })
+        return new Promise((resolve, reject) => {
+            labelmodel.getlabelById(credential)
+                .then(data => {
+                    resolve(data)
+                }).catch(error => {
+                    reject(error)
+                })
+        })
     }
 }
 module.exports = new LabelService();

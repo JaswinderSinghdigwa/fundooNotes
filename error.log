@@ -38,3 +38,9 @@
 {"level":"error","timestamp":"2022-01-01T04:05:13.019Z"}
 {"level":"error","timestamp":"2022-01-01T04:16:19.139Z"}
 {"level":"error","message":"User with this email Id is alreday exists","timestamp":"2022-01-01T04:17:06.943Z"}
+{"level":"error","message":"Wrong Input Validations","timestamp":"2022-01-01T05:06:32.208Z"}
+{"level":"error","message":"Wrong Input Validations","timestamp":"2022-01-01T05:06:32.234Z"}
+{"level":"error","message":"Wrong Input Validations","timestamp":"2022-01-01T05:06:32.256Z"}
+{"level":"error","message":"Wrong Input Validations","timestamp":"2022-01-01T05:06:32.269Z"}
+{"level":"error","timestamp":"2022-01-01T05:06:32.336Z"}
+{"level":"error","message":"Some error occurred !","timestamp":"2022-01-01T05:06:32.413Z"}
