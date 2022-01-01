@@ -6,7 +6,7 @@
  */
 const nodemailer = require('nodemailer');
 require('dotenv').config();
-const Otp=require('../models/otp.mdl.js');
+const Otp=require('../models/otp.model.js');
 
 exports.sendEmail = (data) => {
     let otpcode = Math.random().toString(36).substring(2, 12);

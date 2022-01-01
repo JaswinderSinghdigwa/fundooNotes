@@ -7,7 +7,7 @@
 
 const { logger } = require('../../logger/logger');
 const mongoose = require('mongoose');
-const { db } = require('./otp.mdl');
+const { db } = require('./otp.model');
 const noteSchema = mongoose.Schema({
   userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   title: {

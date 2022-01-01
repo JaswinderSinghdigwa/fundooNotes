@@ -1,5 +1,5 @@
 const { logger } = require('../../logger/logger');
-const noteModel = require('../models/notes.mdl').Model;
+const noteModel = require('../models/notes.model').Model;
 
 class Service {
   /**

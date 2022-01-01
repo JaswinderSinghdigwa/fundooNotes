@@ -1,4 +1,4 @@
-const userModel = require('../models/user.mdl')
+const userModel = require('../models/user.model')
 const helper = require('../utilities/global.helper');
 const { logger } = require('../../logger/logger');
 const nodemailer = require('../utilities/nodemailer.js');

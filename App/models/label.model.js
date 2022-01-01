@@ -8,7 +8,7 @@
 * @since : 29/12/2021
 *
 **************************************************************************/
-const NoteRegister = require('./notes.mdl').Note;
+const NoteRegister = require('./notes.model').Note;
 const mongoose = require('mongoose');
 const { logger } = require('../../logger/logger')
 

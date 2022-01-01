@@ -5,10 +5,10 @@
  * @author       Jaswinder Singh
  */
 
-const note = require('../Controller/notes.ctr')
-const controller = require('../Controller/user.ctr..js');
+const note = require('../Controller/notes.controller')
+const controller = require('../Controller/user.controller..js');
 const helper = require('../utilities/global.helper.js');
-const labelController = require('../Controller/label.ctr')
+const labelController = require('../Controller/label.controller')
 
 module.exports = (app) => {
   // api for registration
@@ -35,4 +35,6 @@ module.exports = (app) => {
    app.get('/getlabel', helper.validateToken, labelController.getlabel);
    // api for get Label  
    app.get('/getlabel/:id', helper.validateToken, labelController.getlabelById);
+   // api for get Label  
+   app.put('/updatelabel/:id', helper.validateToken, labelController.updatelabelById);
 }; 

@@ -1,5 +1,5 @@
 const { resolve } = require('bluebird')
-const labelmodel = require('../models/label.mdl')
+const labelmodel = require('../models/label.model')
 /*************************************************************************
 * Purpose : to recieve request from controller and send it to model layer 
     and perform some intermediate business logic

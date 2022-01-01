@@ -2,7 +2,7 @@ var Promise = require("bluebird");
 const bcrypt = Promise.promisifyAll(require("bcrypt"));
 const mongoose = require('mongoose');
 const { logger } = require('../../logger/logger')
-const Otp = require('./otp.mdl')
+const Otp = require('./otp.model')
 const utilities = require('../utilities/global.helper')
 
 const userSchema = mongoose.Schema({
