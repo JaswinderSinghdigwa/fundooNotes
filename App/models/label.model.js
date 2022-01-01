@@ -102,10 +102,12 @@ class LabelModel {
 
     updatelabelById = (updtlabel) => {
         return new Promise((resolve, reject) => {
-            if (updtlabel) {
-                resolve(updtlabel)
-            }
-            reject("Some error occured")
+            label.findByIdAndUpdate(updtlabel.id , { labelName: updtlabel.labelName }, { new: true })
+            .then(data=>{
+                resolve(data)
+            }).catch(error=>{
+                reject(error)
+            })
         })
     }
 }

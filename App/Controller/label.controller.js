@@ -127,14 +127,12 @@ class LabelController {
                 }
                 labelService.updatelabelById(updtlabel)
                 .then(data=>{
-                    const response = { sucess: false, message: "Added Service Layer",data:data }
+                    const response = { sucess: true, message: "Succesfully Updated label",data:data }
                     return res.status(200).json(response)
                 }).catch(error=>{
                     const response = { sucess: false, message: "some error occured ",error:error }
                     return res.status(400).json(response)
                 })
-               
-
         } catch (error) {
             const response = { sucess: false, message: "Internal  Server error" }
             return res.status(500).json(response)

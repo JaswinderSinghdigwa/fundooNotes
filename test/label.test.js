@@ -287,7 +287,7 @@ describe('update label_by id api ', () => {
         const token = labelDB.label.validToken
         chai
             .request(server)
-            .put('/updatelabel/:id')
+            .put('/updatelabel/61cfd6cb209440838069fbf1')
             .set({authorization : token})
             .end((err, res) => {
                 res.should.have.status(200);
@@ -309,7 +309,7 @@ describe('update label_by id api ', () => {
         const token = labelDB.label.invalidToken
         chai
             .request(server)
-            .put('/updatelabel/61cfd6c0209440838069fbeb')
+            .put('/updatelabel/61cfd6cb209440838069fbf1')
             .set({authorization : token})
             .end((err, res) => {
                 res.should.have.status(400);
@@ -331,7 +331,7 @@ describe('update label_by id api ', () => {
         const token = labelDB.label.validToken
         chai
             .request(server)
-            .put('/updatelabel/61cfd6c0209469fbeb')
+            .put('/updatelabel/61cfd6cb209440838069fbf1')
             .set({authorization : token})
             .send({labelName : 'Jaswinder'})
             .end((err, res) => {
@@ -343,7 +343,7 @@ describe('update label_by id api ', () => {
         const token = labelDB.label.validToken
         chai
             .request(server)
-            .put('/updatelabel/61cfd6c0209469fbeb')
+            .put('/updatelabel/61cfd6cb209440838069fbf1')
             .set({authorization : token})
             .send({labelName : 'Jaswinder'})
             .end((err, res) => {
@@ -355,7 +355,19 @@ describe('update label_by id api ', () => {
         const token = labelDB.label.validToken
         chai
             .request(server)
-            .put('/updatelabel/61cfd6c0209469fbeb')
+            .put('/updatelabel/61cfd6cb209440838069fbf1')
+            .set({authorization : token})
+            .send({labelName : 'Jaswinder'})
+            .end((err, res) => {
+                res.should.have.status(200);
+                done();
+            });
+    });
+    it('it should give true when label is Updated is Succesfully ', (done) => {
+        const token = labelDB.label.validToken
+        chai
+            .request(server)
+            .put('/updatelabel/61cfd6cb209440838069fbf1')
             .set({authorization : token})
             .send({labelName : 'Jaswinder'})
             .end((err, res) => {
