@@ -138,5 +138,13 @@ class LabelController {
             return res.status(500).json(response)
         }
     }
+    deletelabelById = (req, res) => {
+        try{
+
+        }catch(error){
+            const response = { sucess: false, message: "Internal  Server error" }
+            return res.status(500).json(response)
+        }
+    }
 }
 module.exports = new LabelController();
