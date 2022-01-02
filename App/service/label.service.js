@@ -59,11 +59,11 @@ class LabelService {
     }
 
     deleteLabel = async (credential) => {
-        let deletelabel = await labelmodel.deleteLabel(credential)
-        if(!deletelabel){
+        let deletedlabel = await labelmodel.deleteLabel(credential)
+        if(!deletedlabel){
             return false;
         }
-            return deletelabel;
+            return deletedlabel;
     }
 }
 module.exports = new LabelService();

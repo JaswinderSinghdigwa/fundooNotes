@@ -110,13 +110,12 @@ class LabelModel {
         })
     }
 
-    deleteLabel  = (credential)=>{
-        return new Promise((resolve, reject) => {
-        if(credential){
-           resolve(credential)
+    deleteLabel  = async (credential) => {
+        let deletedlabel = await label.findOneAndDelete(credential.id , {userId: credential.userId })
+        if(!deletedlabel){
+            return false;
         }
-        reject(null)
-    })
-}
+        return deletedlabel;
+    }
 }
 module.exports = new LabelModel();

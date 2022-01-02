@@ -378,7 +378,7 @@ describe('update label_by id api ', () => {
 })
 
 describe('Delete label_by id api ', () => {
-    it.only('checking response from controller Layer', (done) => {
+    it('checking response from controller Layer', (done) => {
         chai
             .request(server)
             .delete('/deletelabel/:id')
@@ -387,7 +387,7 @@ describe('Delete label_by id api ', () => {
                 done();
             });
     });
-    it.only('it should give true when,token is valid ', (done) => {
+    it('it should give true when,token is valid ', (done) => {
         const token = labelDB.label.validToken
         chai
             .request(server)
@@ -398,7 +398,7 @@ describe('Delete label_by id api ', () => {
                 done();
             });
     });
-    it.only('it should give false when,token is invalid ', (done) => {
+    it('it should give false when,token is invalid ', (done) => {
         const token = labelDB.label.invalidToken
         chai
             .request(server)
@@ -409,7 +409,7 @@ describe('Delete label_by id api ', () => {
                 done();
             });
     });
-    it.only('it should give true when,true param is validated ', (done) => {
+    it('it should give true when,true param is validated ', (done) => {
         const token = labelDB.label.validToken
         chai
             .request(server)
@@ -420,7 +420,7 @@ describe('Delete label_by id api ', () => {
                 done();
             });
     });
-    it.only('Should return true from DeleteLabelApi Service Layer ,return appropriate response', (done) => {
+    it('Should return true from DeleteLabelApi Service Layer ,return appropriate response', (done) => {
         const token = labelDB.label.validToken
         chai
             .request(server)
@@ -431,7 +431,18 @@ describe('Delete label_by id api ', () => {
                 done();
             });
     });
-    it.only('Should return true from DeleteLabelApi model Layer ,return appropriate response', (done) => {
+    it('Should return true from DeleteLabelApi model Layer ,return appropriate response', (done) => {
+        const token = labelDB.label.validToken
+        chai
+            .request(server)
+            .delete('/deletelabel/61d144c1354b91b200a7dd96')
+            .set({authorization:token})
+            .end((err, res) => {
+                res.should.have.status(200);
+                done();
+            });
+    });
+    it('Should return true when label is deleted ,return appropriate response', (done) => {
         const token = labelDB.label.validToken
         chai
             .request(server)
