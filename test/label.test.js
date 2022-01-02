@@ -169,7 +169,7 @@ describe('get label  api ', () => {
                 done();
             });
     })
-    it('Should return true from GetLabel API Service Layer ,return appropriate response" ', (done) => {
+    it('Should return true from GetLabel Service Layer ,return appropriate response" ', (done) => {
         const token = labelDB.label.validToken;
         chai
             .request(server)
@@ -378,7 +378,7 @@ describe('update label_by id api ', () => {
 })
 
 describe('Delete label_by id api ', () => {
-    it('checking response from controller Layer', (done) => {
+    it.only('checking response from controller Layer', (done) => {
         chai
             .request(server)
             .delete('/deletelabel/:id')
@@ -387,7 +387,7 @@ describe('Delete label_by id api ', () => {
                 done();
             });
     });
-    it('it should give true when,token is valid ', (done) => {
+    it.only('it should give true when,token is valid ', (done) => {
         const token = labelDB.label.validToken
         chai
             .request(server)
@@ -398,7 +398,7 @@ describe('Delete label_by id api ', () => {
                 done();
             });
     });
-    it('it should give false when,token is invalid ', (done) => {
+    it.only('it should give false when,token is invalid ', (done) => {
         const token = labelDB.label.invalidToken
         chai
             .request(server)
@@ -409,7 +409,18 @@ describe('Delete label_by id api ', () => {
                 done();
             });
     });
-    it('it should give true when,true param is validated ', (done) => {
+    it.only('it should give true when,true param is validated ', (done) => {
+        const token = labelDB.label.validToken
+        chai
+            .request(server)
+            .delete('/deletelabel/61cfd6c0209440838069fbeb')
+            .set({authorization:token})
+            .end((err, res) => {
+                res.should.have.status(200);
+                done();
+            });
+    });
+    it.only('Should return true from DeletrLabelApi Service Layer ,return appropriate response', (done) => {
         const token = labelDB.label.validToken
         chai
             .request(server)

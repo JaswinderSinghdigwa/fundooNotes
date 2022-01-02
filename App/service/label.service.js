@@ -57,5 +57,12 @@ class LabelService {
             })
         })
     }
+
+    deleteLabel  = (id, resolve, reject)=>{
+        if(id){
+           return resolve(id)
+        }
+        return reject(null)
+    }
 }
 module.exports = new LabelService();

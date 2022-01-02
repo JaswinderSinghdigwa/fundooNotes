@@ -149,8 +149,15 @@ class LabelController {
                 const response = { sucess: false, message: "Validaton faliled", error: validatiionResult.error }
                 return res.status(400).json(response)
             }
-            const response = { sucess: true, message: "Add Controller Layer" }
-            return res.status(200).json(response)
+            labelService.deleteLabel(credentials, resolve, reject)
+                function resolve(data){
+                    const response = { sucess: true, message: "label is deleted Succesfully", error: validatiionResult.error }
+                    return res.status(200).json(response)
+                }
+                function reject(error){
+                    const response = { sucess: false, message: "failed to remove labels", error: error }
+                    return res.status(400).json(response)
+                }
         } catch (error) {
             console.log("error", error);
             const response = { sucess: false, message: "Internal  Server error" }
