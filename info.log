@@ -458,3 +458,7 @@
 {"level":"error","timestamp":"2022-01-02T03:20:18.209Z"}
 {"level":"error","message":"Some error occurred !","timestamp":"2022-01-02T03:20:18.338Z"}
 {"level":"info","message":"Password has benn changed !","timestamp":"2022-01-02T03:20:18.556Z"}
+{"level":"info","message":"Successfully added label !","timestamp":"2022-01-02T06:22:57.963Z"}
+{"level":"info","message":"Successfully added label !","timestamp":"2022-01-02T06:22:57.965Z"}
+{"level":"info","message":"Get All Notes successfully","timestamp":"2022-01-02T06:23:21.497Z"}
+{"level":"info","message":"Successfully added label !","timestamp":"2022-01-02T06:23:52.177Z"}
