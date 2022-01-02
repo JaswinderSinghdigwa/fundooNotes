@@ -501,6 +501,47 @@
                     }
                 }
             }
+        },
+        "/deleteLabel/{id}": {
+            "delete": {
+                "tags": [
+                    "Delete Label"
+                ],
+                "description": "Delete Label by ID ",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "Token for validation",
+                        "schema": {
+                            "type": "string",
+                            "required": true
+                        }
+                    },
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "Id of label you want to delete",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Delete note succesfully !!"
+                    },
+                    "400": {
+                        "description": "Please enter Valid Token"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -593,6 +634,13 @@
               }
         },
         "UpdateLabel": {
+            "type": "object",
+            "properties": {
+                "labelName": {
+                    "type": "string"
+                }
+            }
+        },"DeleteLabel": {
             "type": "object",
             "properties": {
                 "labelName": {
