@@ -115,22 +115,22 @@ class LabelController {
 
     updatelabelById = (req, res) => {
         try {
-                const updtlabel = {
-                    userId: req.user.dataForToken.id,
-                    id: req.params.id,
-                    labelName : req.body.labelName
-                };
-                const validatiionResult = validation.updatelabelbyid.validate(updtlabel)
-                if(validatiionResult.error){
-                const response = { sucess: false, message: "Validation Failed", error : validatiionResult.error }
-                 return res.status(422).json(response)
-                }
-                labelService.updatelabelById(updtlabel)
-                .then(data=>{
-                    const response = { sucess: true, message: "Succesfully Updated label",data:data }
+            const updtlabel = {
+                userId: req.user.dataForToken.id,
+                id: req.params.id,
+                labelName: req.body.labelName
+            };
+            const validatiionResult = validation.updatelabelbyid.validate(updtlabel)
+            if (validatiionResult.error) {
+                const response = { sucess: false, message: "Validation Failed", error: validatiionResult.error }
+                return res.status(422).json(response)
+            }
+            labelService.updatelabelById(updtlabel)
+                .then(data => {
+                    const response = { sucess: true, message: "Succesfully Updated label", data: data }
                     return res.status(200).json(response)
-                }).catch(error=>{
-                    const response = { sucess: false, message: "some error occured ",error:error }
+                }).catch(error => {
+                    const response = { sucess: false, message: "some error occured ", error: error }
                     return res.status(400).json(response)
                 })
         } catch (error) {
@@ -139,10 +139,20 @@ class LabelController {
         }
     }
     deletelabelById = (req, res) => {
-        try{
-            const response = { sucess: false, message: "Add Controller Layer" }
+        try {
+            const credentials = {
+                id: req.params.id,
+                userId: req.user.dataForToken.id
+            }
+            const validatiionResult = validation.deletelabel.validate(credentials)
+            if (validatiionResult.error) {
+                const response = { sucess: false, message: "Validaton faliled", error: validatiionResult.error }
+                return res.status(400).json(response)
+            }
+            const response = { sucess: true, message: "Add Controller Layer" }
             return res.status(200).json(response)
-        }catch(error){
+        } catch (error) {
+            console.log("error", error);
             const response = { sucess: false, message: "Internal  Server error" }
             return res.status(500).json(response)
         }

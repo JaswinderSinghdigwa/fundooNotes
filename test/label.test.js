@@ -409,4 +409,15 @@ describe('Delete label_by id api ', () => {
                 done();
             });
     });
+    it('it should give true when,true param is validated ', (done) => {
+        const token = labelDB.label.validToken
+        chai
+            .request(server)
+            .delete('/deletelabel/61cfd6c0209440838069fbeb')
+            .set({authorization:token})
+            .end((err, res) => {
+                res.should.have.status(200);
+                done();
+            });
+    });
 })
