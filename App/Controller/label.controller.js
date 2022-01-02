@@ -140,7 +140,8 @@ class LabelController {
     }
     deletelabelById = (req, res) => {
         try{
-
+            const response = { sucess: false, message: "Add Controller Layer" }
+            return res.status(200).json(response)
         }catch(error){
             const response = { sucess: false, message: "Internal  Server error" }
             return res.status(500).json(response)

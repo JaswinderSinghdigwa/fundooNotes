@@ -47,8 +47,8 @@ describe('Add label by id api ', () => {
             .post('/addlabel/61cc41d4db10efa515b4e1e8')
             .set({ authorization: token })
             .end((err, res) => {
-                if(err){
-                    res.should.have.status(400); 
+                if (err) {
+                    res.should.have.status(400);
                 }
                 res.should.have.status(200);
                 done();
@@ -60,7 +60,7 @@ describe('Add label by id api ', () => {
             .request(server)
             .post('/addlabel/61cc41d4db10efa515b4e1e8')
             .set({ authorization: token })
-            .send({labelName : "karan"})
+            .send({ labelName: "karan" })
             .end((err, res) => {
                 res.should.have.status(200);
                 done();
@@ -75,7 +75,7 @@ describe('Add label by id api ', () => {
             .request(server)
             .post('/addlabel/61cd183582547e820aff07f8')
             .set({ authorization: token })
-            .send({labelName : "karan"})
+            .send({ labelName: "karan" })
             .end((err, res) => {
                 res.should.have.status(200);
                 done();
@@ -87,7 +87,7 @@ describe('Add label by id api ', () => {
             .request(server)
             .post('/addlabel/61cc41d4db10efa515b4e1e8')
             .set({ authorization: token })
-            .send({labelName : "karan"})
+            .send({ labelName: "karan" })
             .end((err, res) => {
                 res.should.have.status(200);
                 done();
@@ -102,7 +102,7 @@ describe('Add label by id api ', () => {
             .request(server)
             .post('/addlabel/61cd183582547e820aff07f8')
             .set({ authorization: token })
-            .send({labelName : "karan"})
+            .send({ labelName: "karan" })
             .end((err, res) => {
                 res.should.have.status(200);
                 done();
@@ -117,7 +117,7 @@ describe('Add label by id api ', () => {
             .request(server)
             .post('/addlabel/61cd183582547e820aff07f8')
             .set({ authorization: token })
-            .send({labelName : "karan"})
+            .send({ labelName: "karan" })
             .end((err, res) => {
                 res.should.have.status(200);
                 done();
@@ -219,24 +219,24 @@ describe('get label_by id api ', () => {
         chai
             .request(server)
             .get('/getlabel/61cfd6c0209440838069fbeb')
-            .set({authorization : token})
+            .set({ authorization: token })
             .end((err, res) => {
                 res.should.have.status(201);
-                    done();
-                });
+                done();
+            });
     });
     it('it should give false when ,add controller layer and checking response by of invalid token in getlabel_by_id_', (done) => {
         const token = labelDB.label.invalidToken
         chai
             .request(server)
             .get('/getlabel/:id')
-            .set({authorization: token})
+            .set({ authorization: token })
             .end((err, res) => {
                 res.should.have.status(400);
-                    done();
-                });
+                done();
+            });
     });
-    it('it should give true when ,Credential is Validated in getlabel_by_id_', (done) => { 
+    it('it should give true when ,Credential is Validated in getlabel_by_id_', (done) => {
         const token = labelDB.label.validToken
         chai
             .request(server)
@@ -244,10 +244,10 @@ describe('get label_by id api ', () => {
             .set({ authorization: token })
             .end((err, res) => {
                 res.should.have.status(201);
-                    done();
-                });
+                done();
+            });
     });
-    it('it should give true when , Added Servce layer in getlabel_by_id_', (done) => { 
+    it('it should give true when , Added Servce layer in getlabel_by_id_', (done) => {
         const token = labelDB.label.validToken
         chai
             .request(server)
@@ -255,10 +255,10 @@ describe('get label_by id api ', () => {
             .set({ authorization: token })
             .end((err, res) => {
                 res.should.have.status(201);
-                    done();
-                });
+                done();
+            });
     });
-    it('it should give true when , Added Model layer in getlabel_by_id_', (done) => { 
+    it('it should give true when , Added Model layer in getlabel_by_id_', (done) => {
         const token = labelDB.label.validToken
         chai
             .request(server)
@@ -266,10 +266,10 @@ describe('get label_by id api ', () => {
             .set({ authorization: token })
             .end((err, res) => {
                 res.should.have.status(201);
-                    done();
-                });
+                done();
+            });
     });
-    it('it should give true when , check response with valid Param and findng the label with label id ', (done) => { 
+    it('it should give true when , check response with valid Param and findng the label with label id ', (done) => {
         const token = labelDB.label.validToken
         chai
             .request(server)
@@ -277,8 +277,8 @@ describe('get label_by id api ', () => {
             .set({ authorization: token })
             .end((err, res) => {
                 res.should.have.status(201);
-                    done();
-                });
+                done();
+            });
     });
 })
 
@@ -288,7 +288,7 @@ describe('update label_by id api ', () => {
         chai
             .request(server)
             .put('/updatelabel/61cfd6cb209440838069fbf1')
-            .set({authorization : token})
+            .set({ authorization: token })
             .end((err, res) => {
                 res.should.have.status(200);
                 done();
@@ -299,7 +299,7 @@ describe('update label_by id api ', () => {
         chai
             .request(server)
             .put('/updatelabel/:id')
-            .set({authorization : token})
+            .set({ authorization: token })
             .end((err, res) => {
                 res.should.have.status(400);
                 done();
@@ -310,7 +310,7 @@ describe('update label_by id api ', () => {
         chai
             .request(server)
             .put('/updatelabel/61cfd6cb209440838069fbf1')
-            .set({authorization : token})
+            .set({ authorization: token })
             .end((err, res) => {
                 res.should.have.status(400);
                 done();
@@ -321,7 +321,7 @@ describe('update label_by id api ', () => {
         chai
             .request(server)
             .put('/updatelabel/61cfd6c0209469fbeb')
-            .set({authorization : token})
+            .set({ authorization: token })
             .end((err, res) => {
                 res.should.have.status(400);
                 done();
@@ -332,8 +332,8 @@ describe('update label_by id api ', () => {
         chai
             .request(server)
             .put('/updatelabel/61cfd6cb209440838069fbf1')
-            .set({authorization : token})
-            .send({labelName : 'Jaswinder'})
+            .set({ authorization: token })
+            .send({ labelName: 'Jaswinder' })
             .end((err, res) => {
                 res.should.have.status(200);
                 done();
@@ -344,8 +344,8 @@ describe('update label_by id api ', () => {
         chai
             .request(server)
             .put('/updatelabel/61cfd6cb209440838069fbf1')
-            .set({authorization : token})
-            .send({labelName : 'Jaswinder'})
+            .set({ authorization: token })
+            .send({ labelName: 'Jaswinder' })
             .end((err, res) => {
                 res.should.have.status(200);
                 done();
@@ -356,8 +356,8 @@ describe('update label_by id api ', () => {
         chai
             .request(server)
             .put('/updatelabel/61cfd6cb209440838069fbf1')
-            .set({authorization : token})
-            .send({labelName : 'Jaswinder'})
+            .set({ authorization: token })
+            .send({ labelName: 'Jaswinder' })
             .end((err, res) => {
                 res.should.have.status(200);
                 done();
@@ -368,24 +368,34 @@ describe('update label_by id api ', () => {
         chai
             .request(server)
             .put('/updatelabel/61cfd6cb209440838069fbf1')
-            .set({authorization : token})
-            .send({labelName : 'Jaswinder'})
+            .set({ authorization: token })
+            .send({ labelName: 'Jaswinder' })
             .end((err, res) => {
                 res.should.have.status(200);
                 done();
             });
-    }); 
+    });
 })
 
 describe('Delete label_by id api ', () => {
     it('it should give true when,token is valid ', (done) => {
-            const token = labelDB.label.validToken
-            chai
-                .request(server)
-                .delete('/deletelabel/:id')
-                .end((err, res) => {
-                    res.should.have.status(500);
-                    done();
-                });
-        });
+        chai
+            .request(server)
+            .delete('/deletelabel/:id')
+            .end((err, res) => {
+                res.should.have.status(500);
+                done();
+            });
+    });
+    it('it should give true when,token is valid ', (done) => {
+        const token = labelDB.label.validToken
+        chai
+            .request(server)
+            .delete('/deletelabel/:id')
+            .set({authorization:token})
+            .end((err, res) => {
+                res.should.have.status(200);
+                done();
+            });
+    });
 })
