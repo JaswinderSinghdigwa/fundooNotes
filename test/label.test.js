@@ -378,7 +378,7 @@ describe('update label_by id api ', () => {
 })
 
 describe('Delete label_by id api ', () => {
-    it('it should give true when,token is valid ', (done) => {
+    it('checking response from controller Layer', (done) => {
         chai
             .request(server)
             .delete('/deletelabel/:id')
@@ -395,6 +395,17 @@ describe('Delete label_by id api ', () => {
             .set({authorization:token})
             .end((err, res) => {
                 res.should.have.status(200);
+                done();
+            });
+    });
+    it('it should give false when,token is invalid ', (done) => {
+        const token = labelDB.label.invalidToken
+        chai
+            .request(server)
+            .delete('/deletelabel/:id')
+            .set({authorization:token})
+            .end((err, res) => {
+                res.should.have.status(400);
                 done();
             });
     });
