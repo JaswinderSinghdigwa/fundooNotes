@@ -420,7 +420,18 @@ describe('Delete label_by id api ', () => {
                 done();
             });
     });
-    it.only('Should return true from DeletrLabelApi Service Layer ,return appropriate response', (done) => {
+    it.only('Should return true from DeleteLabelApi Service Layer ,return appropriate response', (done) => {
+        const token = labelDB.label.validToken
+        chai
+            .request(server)
+            .delete('/deletelabel/61cfd6c0209440838069fbeb')
+            .set({authorization:token})
+            .end((err, res) => {
+                res.should.have.status(200);
+                done();
+            });
+    });
+    it.only('Should return true from DeleteLabelApi model Layer ,return appropriate response', (done) => {
         const token = labelDB.label.validToken
         chai
             .request(server)

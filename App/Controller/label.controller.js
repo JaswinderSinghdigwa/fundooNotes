@@ -151,7 +151,7 @@ class LabelController {
             }
             labelService.deleteLabel(credentials, resolve, reject)
                 function resolve(data){
-                    const response = { sucess: true, message: "label is deleted Succesfully", error: validatiionResult.error }
+                    const response = { sucess: true, message: "label is deleted Succesfully", data:data }
                     return res.status(200).json(response)
                 }
                 function reject(error){
@@ -159,7 +159,6 @@ class LabelController {
                     return res.status(400).json(response)
                 }
         } catch (error) {
-            console.log("error", error);
             const response = { sucess: false, message: "Internal  Server error" }
             return res.status(500).json(response)
         }

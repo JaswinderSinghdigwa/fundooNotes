@@ -50,19 +50,20 @@ class LabelService {
     updatelabelById = (updtlabel) => {
         return new Promise((resolve, reject) => {
             labelmodel.updatelabelById(updtlabel)
-            .then(data=>{
-                resolve(data)
-            }).catch(error=>{
-                reject(error)
-            })
+                .then(data => {
+                    resolve(data)
+                }).catch(error => {
+                    reject(error)
+                })
         })
     }
 
-    deleteLabel  = (id, resolve, reject)=>{
-        if(id){
-           return resolve(id)
+    deleteLabel = async (credential, resolve, reject) => {
+        let deletelabel = await labelmodel.deleteLabel(credential)
+        if(deletelabel){
+            return resolve(deletelabel)
         }
-        return reject(null)
+            return reject(null);
     }
 }
 module.exports = new LabelService();

@@ -80,7 +80,6 @@ class LabelModel {
         return new Promise((resolve, reject) => {
             label.find({ userId: userId.id })
                 .then((data) => {
-
                     resolve(data)
                 }).catch((error) => {
 
@@ -110,5 +109,14 @@ class LabelModel {
             })
         })
     }
+
+    deleteLabel  = (credential)=>{
+        return new Promise((resolve, reject) => {
+        if(credential){
+           resolve(credential)
+        }
+        reject(null)
+    })
+}
 }
 module.exports = new LabelModel();
