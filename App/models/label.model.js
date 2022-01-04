@@ -60,35 +60,25 @@ class LabelModel {
                         callback(error, null)
                     })
             } else if (data) {
-                label.findOneAndUpdate({ userId: labelInfo.userId, labelName: labelInfo.labelName }, { $addToSet: { noteId: [labelInfo.noteId] } }, (error, data) => {
-                    if (error) {
-                        callback(error, null)
-                    }
-                    else if (!data) {
-                        logger.info("label is  not found");
-                        return callback('label is  not found', data)
-                    }
-                    else {
-                        return callback(error, data)
-                    }
-                })
-            }
+                label.findOneAndUpdate({ userId: labelInfo.userId, labelName: labelInfo.labelName }, { $addToSet: { noteId: [labelInfo.noteId] } })
+                    .then(data=>{
+                        return callback(null, data)
+                    }).catch(error=>{
+                        return callback(error,null)
+                    })
+                }
         })
     }
     // Retrieve all labels
-    getLabel = (userId) => {
-        return new Promise((resolve, reject) => {
-            label.find({ userId: userId.id })
-                .then((data) => {
-                    resolve(data)
-                }).catch((error) => {
-
-                    reject(error)
-                })
-        })
+    findAllLabel = async (userId) => {
+        let findlabel = await label.find({ userId: userId.id })
+        if (!findlabel) {
+            return false;
+        }
+        return findlabel;
     }
     // Retrieve labels by id
-    getlabelById = (credential) => {
+    findlabelById = (credential) => {
         return new Promise((resolve, reject) => {
             label.find({ userId: credential.userId, _id: credential.labelId })
                 .then(data => {
@@ -99,20 +89,17 @@ class LabelModel {
         })
     }
 
-    updatelabelById = (updtlabel) => {
-        return new Promise((resolve, reject) => {
-            label.findByIdAndUpdate(updtlabel.id , { labelName: updtlabel.labelName }, { new: true })
-            .then(data=>{
-                resolve(data)
-            }).catch(error=>{
-                reject(error)
-            })
-        })
+    updatelabelById = async (updtlabel) => {
+        let updatelabel = await label.findByIdAndUpdate(updtlabel.id, { labelName: updtlabel.labelName }, { new: true })
+        if (!updatelabel) {
+            return false
+        }
+        return updatelabel
     }
 
-    deleteLabel  = async (credential) => {
-        let deletedlabel = await label.findOneAndDelete(credential.id , {userId: credential.userId })
-        if(!deletedlabel){
+    deleteLabel = async (credential) => {
+        let deletedlabel = await label.findOneAndDelete(credential.id, { userId: credential.userId })
+        if (!deletedlabel) {
             return false;
         }
         return deletedlabel;

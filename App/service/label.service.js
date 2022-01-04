@@ -18,27 +18,24 @@ class LabelService {
     addLabel = (labelInfo, callback) => {
         labelmodel.addLabel(labelInfo, (error, data) => {
             if (!data) {
-                return callback(null, data)
+                return callback(error, data)
             }
             return callback(null, data)
         })
     }
     // Retrieve all labels
-    getLabel = (userId) => {
-        return new Promise((resolve, reject) => {
-            let result = labelmodel.getLabel(userId)
-            result.then((data) => {
-                resolve(data)
-            }).catch((error) => {
-                reject(error)
-            })
-        })
+    findAllLabel = async (userId) => {
+        let result = await labelmodel.findAllLabel(userId)
+        if (!result) {
+            return false;
+        }
+        return result;
     }
 
     // Retrieve labels by Id
-    getlabelById = (credential) => {
+    findlabelById = (credential) => {
         return new Promise((resolve, reject) => {
-            labelmodel.getlabelById(credential)
+            labelmodel.findlabelById(credential)
                 .then(data => {
                     resolve(data)
                 }).catch(error => {
@@ -48,22 +45,19 @@ class LabelService {
     }
 
     updatelabelById = (updtlabel) => {
-        return new Promise((resolve, reject) => {
-            labelmodel.updatelabelById(updtlabel)
-                .then(data => {
-                    resolve(data)
-                }).catch(error => {
-                    reject(error)
-                })
-        })
+        let updatelabel = labelmodel.updatelabelById(updtlabel)
+        if (!updatelabel) {
+            return false;
+        }
+        return updatelabel
     }
 
     deleteLabel = async (credential) => {
         let deletedlabel = await labelmodel.deleteLabel(credential)
-        if(!deletedlabel){
+        if (!deletedlabel) {
             return false;
         }
-            return deletedlabel;
+        return deletedlabel;
     }
 }
 module.exports = new LabelService();

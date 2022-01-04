@@ -20,7 +20,6 @@ class LabelController {
      */
     addLabel = (req, res) => {
         try {
-            if (req.user) {
                 const labelName = { labelName: req.body.labelName }
                 const validateResult = validation.validateLabel.validate(labelName);
                 if (validateResult.error) {
@@ -47,18 +46,13 @@ class LabelController {
                     const response = { sucess: true, message: "Successfully added label !", data: data }
                     return res.status(200).json(response)
                 })
-            }
-            else {
-                const response = { sucess: false, message: "Invalid Entry of Token" }
-                return res.status(400).json(response)
-            }
         } catch (err) {
             const response = { sucess: false, message: "Internal  Server error" }
             return res.status(500).json(response);
         }
     }
 
-    getlabel = (req, res) => {
+    findAlllabel = async (req, res) => {
         try {
             if (req.user) {
                 const userId = { id: req.user.dataForToken.id }
@@ -67,14 +61,13 @@ class LabelController {
                     const response = { sucess: false, message: 'Wrong Input Validation', data: validateResult }
                     return res.status(400).send(response)
                 }
-                labelService.getLabel(userId)
-                    .then((data) => {
-                        const response = { sucess: true, message: 'label is fetched', data: data }
-                        return res.status(200).send(response)
-                    }).catch((error) => {
+               let findlabel =  await labelService.findAllLabel(userId)
+                    if(!findlabel){
                         const response = { sucess: false, message: 'Some error occured' }
+                        return res.status(400).send(response)
+                    }
+                        const response = { sucess: true, message: 'label is fetched', data: findlabel }
                         return res.status(200).send(response)
-                    })
             }
             else {
                 const response = { sucess: false, message: 'Invalid Token' }
@@ -87,7 +80,7 @@ class LabelController {
         }
     }
 
-    getlabelById = (req, res) => {
+    findlabelById = (req, res) => {
         try {
             const credentials = {
                 userId: req.user.dataForToken.id,
@@ -98,7 +91,7 @@ class LabelController {
                 const response = { sucess: false, message: "Wrong Credential  Validation" }
                 res.status(422).json(response)
             }
-            labelService.getlabelById(credentials)
+            labelService.findlabelById(credentials)
                 .then(data => {
                     const response = { sucess: true, message: "Succesfuly label is fetch", data: data }
                     return res.status(201).json(response);
@@ -113,7 +106,7 @@ class LabelController {
         }
     }
 
-    updatelabelById = (req, res) => {
+    updatelabelById = async(req, res) => {
         try {
             const updtlabel = {
                 userId: req.user.dataForToken.id,
@@ -138,6 +131,7 @@ class LabelController {
             return res.status(500).json(response)
         }
     }
+
     deletelabelById = async (req, res) => {
         try {
             const credentials = {

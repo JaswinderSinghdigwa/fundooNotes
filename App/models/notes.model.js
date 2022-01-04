@@ -30,84 +30,79 @@ class Model {
  * @param {*} a valid info is expected
  * @returns saved data or if error returns error
  */
-  createNote = (info, callback) => {
+  createNote = async (info) => {
     const note = new NoteRegister({
       userId: info.userId,
       title: info.title,
       description: info.description
     });
-    note.save((error, data) => {
-      if (error) {
-        logger.error(error);
-        return callback(error, null);
-      } else {
-        return callback(null, data);
-      }
-    });
-  }
-
-  /**
-   * @description function written to get all notes from database
-   * @returns retrieved notes or if error returns error
-   */
-  getNote = (id, callback) => {
-    NoteRegister.find({ userId: id.id }, (error, data) => {
-      if (data) {
-        callback(null, data);
-      }
-      else {
-        callback(error, null);
-      }
-    });
-  }
-
-  /**
-   * @description function written to getnotes by id from database
-   * @returns retrieved notes or if error returns error
-   */
-  getNoteById = (id, callback) => {
-    NoteRegister.find({ $and: [{ _id: id.noteId }, { userId: id.userId }] })
-      .then((data) => {
-        callback(null, data)
-      }).catch((err) => {
-        callback(err, null)
-      })
-  };
-
-  /**
-   * @description function written to updateNotes by id from database
-   * @returns retrieved notes or if error returns error
-   */
-  updateNoteById = (updatedNote, callback) => {
+    let addnote = await note.save()
     try {
-      NoteRegister.findByIdAndUpdate(updatedNote.id, { title: updatedNote.title, description: updatedNote.description }, { new: true }, (err, data) => {
-        if (err) {
-          return callback(err, null);
-        } else {
-          return callback(null, data);
-        }
-      });
-    } catch (err) {
-      return callback(err, null);
-    }
-  };
-
-  /**
-   * @description function written to DeleteNotes by id from database
-   * @returns retrieved notes or if error returns error
-   */
-  deleteNoteById = (id, callback) => {
-    NoteRegister.findOneAndDelete({ $and: [{ _id: id.noteId }, { userId: id.userId }] }, (error, data) => {
-      if (data) {
-        return callback(null, data);
+      if (!addnote) {
+        return false;
       }
-      return callback(error, null);
-    })
-  };
-   
+      return addnote
+    } catch (error) {
+      logger.error(error);
+      return error;
+    }
+  }
+
+/**
+ * @description function written to get all notes from database
+ * @returns retrieved notes or if error returns error
+ */
+ findNote = async (id) => {
+  let findnote = await NoteRegister.find({ userId: id.id })
+    if (!findnote) {
+      return false
+    }
+    return findnote;
+ }
+
+/**
+ * @description function written to getnotes by id from database
+ * @returns retrieved notes or if error returns error
+ */
+findNoteById = async (id) => {
+  let findnote = await NoteRegister.find({ $and: [{ _id: id.noteId }, { userId: id.userId }] })
+  if (!findnote) {
+    return false
+  }
+  return findnote
 }
 
+/**
+ * @description function written to updateNotes by id from database
+ * @returns retrieved notes or if error returns error
+ */
+updateNoteById = (updatedNote, callback) => {
+  NoteRegister.findByIdAndUpdate(updatedNote.id, { title: updatedNote.title, description: updatedNote.description }, { new: true }, (err, data) => {
+  if (err) {
+        return callback(err, null);
+      } else if(!data){
+        return callback("data is not  found", data);
+      }
+      return callback(null,data)
+    });
+  }
+
+/**
+ * @description function written to DeleteNotes by id from database
+ * @returns retrieved notes or if error returns error
+ */
+deleteNoteById = (id) => {
+  return new Promise((resolve, reject) => {
+    NoteRegister.findOneAndDelete({ $and: [{ _id: id.noteId }, { userId: id.userId }] })
+      .then(data => {
+        resolve(data)
+      }).catch(error => {
+        reject(error)
+      })
+  })
+}
+}
 module.exports = {
-  Model : new Model(),
-  Note : NoteRegister
+  Model: new Model(),
+  Note: NoteRegister
 }; 

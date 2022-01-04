@@ -22,9 +22,9 @@ module.exports = (app) => {
   // api for Create Note 
   app.post('/createnotes',helper.validateToken,note.createNote);
    // api for getnote
-  app.get('/getnotes', helper.validateToken, note.getNote);
+  app.get('/getnotes', helper.validateToken, note.findNote);
    // api for getnotes Id 
-   app.get('/getnotes/:id', helper.validateToken, note.getNoteById);
+   app.get('/getnotes/:id', helper.validateToken, note.findNoteById);
    // api for updatenotes Id 
    app.put('/updatenotes/:id', helper.validateToken, note.updateNoteById); 
    // api for delete By Id 
@@ -32,9 +32,9 @@ module.exports = (app) => {
    // api for Add Label By Id 
    app.post('/addlabel/:id', helper.validateToken, labelController.addLabel);
    // api for get Label  
-   app.get('/getlabel', helper.validateToken, labelController.getlabel);
+   app.get('/getlabel', helper.validateToken, labelController.findAlllabel);
    // api for get Label  
-   app.get('/getlabel/:id', helper.validateToken, labelController.getlabelById);
+   app.get('/getlabel/:id', helper.validateToken, labelController.findlabelById);
    // api for Update Label by id 
    app.put('/updatelabel/:id', helper.validateToken, labelController.updatelabelById);
     // api for Delete Label by Id  

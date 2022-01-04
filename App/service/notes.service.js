@@ -7,55 +7,51 @@ class Service {
     * @param {*} A valid note is expected
     * @returns error if it has error else data
     */
-  createNote = (note, callback) => {
-    noteModel.createNote(note, (error, data) => {
-      if (error) {
-        logger.error(error);
-        return callback(error, null);
+  createNote = async(note) => {
+    let addnote = await noteModel.createNote(note)
+      if(!addnote){
+        return false;
+      }
+        return addnote
+  }
+
+  findNote = async (id) => {
+    let findnote = await noteModel.findNote(id)
+      if (!findnote) {
+        return false;
+      }
+      return findnote;
+  }
+
+  findNoteById = async(id)=>{
+    let findnotebyId = await noteModel.findNoteById(id)
+      if (!findnotebyId ) {
+        return false
+      }
+      return findnotebyId 
+  }
+
+  updateNoteById = (updateNote, callback) => {
+    noteModel.updateNoteById(updateNote,(err,data)=>{
+      if (err) {
+        logger.error(err);
+        return callback(err, null);
       } else {
         return callback(null, data);
-      }
-    });
-  }
-  getNote = (id, callback) => {
-    noteModel.getNote(id, (error, data) => {
-      if (data) {
-        callback(null, data);
-      }
-      else {
-        callback(error, null);
-      }
-    });
-  };
-  getNoteById = (id ,callback)=>{
-    noteModel.getNoteById(id, (error, data) => {
-      if (data) {
-        callback(null, data);
-      }
-      else {
-        callback(error, null);
       }
     })
+  };
+
+  deleteNoteById =(id) => {
+    return new Promise((resolve,reject)=>{
+      noteModel.deleteNoteById(id)
+      .then(data=>{
+        resolve(data)
+      }).catch(error=>{
+        reject(error)
+      })
+    })
   }
-  updateNoteById = (updateNote, callback) => {
-    noteModel.updateNoteById(updateNote, (error, data) => {
-      if (error) {
-        logger.error(error);
-        return callback(error, null);
-      } else {
-        return callback(null, data);
-      }
-    }
-    );
-  };
-  deleteNoteById =(id,callback) => {
-    noteModel.deleteNoteById(id ,(error,data)=>{
-      if(error){
-        return callback(error,null);
-      }
-      return callback(null,data);
-    });
-  };
 }
 
 module.exports = new Service();

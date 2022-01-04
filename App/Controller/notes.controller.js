@@ -18,7 +18,7 @@ class Note {
    * @param {*} res
    * @returns response
    */
-  createNote = (req, res) => {
+  createNote = async (req, res) => {
     try {
       const note = {
         userId: req.user.dataForToken.id,
@@ -33,21 +33,18 @@ class Note {
           data: createNoteValidation
         });
       }
-      noteService.createNote(note, (error, data) => {
-        if (error) {
-          logger.error('failed to post note');
-          return res.status(400).json({
-            message: 'failed to post note',
-            success: false
-          });
-        } else {
-          logger.info('Successfully inserted note');
-          return res.status(201).send({
-            message: 'Successfully inserted note',
-            success: true,
-            data: data
-          });
-        }
+      let addnote = await noteService.createNote(note)
+      if (!addnote) {
+        logger.error('failed to post note');
+        return res.status(400).json({
+          message: 'failed to post note',
+          success: false
+        })
+      } logger.info('Successfully inserted note');
+      return res.status(201).send({
+        message: 'Successfully inserted note',
+        success: true,
+        data: addnote
       });
     } catch (error) {
       logger.error('Internal Error');
@@ -63,7 +60,7 @@ class Note {
    * @param {*} res
    * @returns response
    */
-  getNote = (req, res) => {
+  findNote = async (req, res) => {
     try {
       const id = { id: req.user.dataForToken.id };
       const getNoteValidation = validation.NoteValidation.validate(id);
@@ -74,28 +71,25 @@ class Note {
           data: getNoteValidation
         });
       }
-      noteService.getNote(id, (error, data) => {
-        if (data) {
-          logger.info('Get All Notes successfully');
-          return res.status(201).json({
-            message: 'Get All Notes successfully',
-            success: true,
-            data: data
-          })
-        }
-        else {
+      let findnote = await noteService.findNote(id)
+        if (!findnote) {
           logger.error('Failed to get all notes');
           return res.status(400).json({
             message: 'failed to get all notes',
             success: false
           })
         }
-      })
+        logger.info('Get All Notes successfully');
+        return res.status(201).json({
+          message: 'Get All Notes successfully',
+          success: true,
+          data: findnote
+        })
     }
-    catch {
+    catch(err){
       logger.error('Internal Error');
       return res.status(500).json({
-        message: 'Internal Error'
+        message: 'Internal Error',
       });
     }
   }
@@ -106,7 +100,7 @@ class Note {
    * @param {*} res
    * @returns response
    */
-  getNoteById = (req, res) => {
+  findNoteById = async(req, res) => {
     try {
       const id = { userId: req.user.dataForToken.id, noteId: req.params.id };
       const getNoteValidation = validation.getNoteValidation.validate(id);
@@ -117,23 +111,23 @@ class Note {
           data: getNoteValidation
         });
       }
-      noteService.getNoteById(id, (err, data) => {
-        if (err) {
-          logger.error('Note is Found')
-          return res.status(404).json({
-            message: 'Note not found',
-            success: false
-          });
-        }
-        logger.info('Get Note _id successfully');
-        return res.status(200).json({
-          message: 'Note retrieved succesfully',
-          success: true,
-          data: data
-
+      let findnotebyId = await noteService.findNoteById(id)
+      if (!findnotebyId) {
+        logger.error(error)
+        return res.status(404).json({
+          message: 'Note not found',
+          success: false
         });
+      }
+      logger.info('Get Note _id successfully');
+      return res.status(200).json({
+        message: 'Note retrieved succesfully',
+        success: true,
+        data: findnotebyId
+
       });
-    } catch (err) {
+    }
+    catch (err) {
       return res.status(500).json({
         message: 'Internal Error',
         success: false,
@@ -180,7 +174,7 @@ class Note {
           });
         }
       });
-    } catch {
+    } catch(error){
       logger.error('Internal server error');
       return res.status(500).json({
         message: 'Error occured',
@@ -205,19 +199,19 @@ class Note {
           data: deleteNoteValidation
         });
       }
-      noteService.deleteNoteById(id, (error, data) => {
-        if (error) {
+      noteService.deleteNoteById(id)
+        .then(data => {
+          return res.status(201).send({
+            message: 'Successfully Deleted note',
+            success: true,
+            data: data
+          });
+        }).catch(error => {
           return res.status(400).json({
-            message: 'Note not found',
+            message: 'Note not found', error,
             success: false
           });
-        }
-        return res.status(201).send({
-          message: 'Successfully Deleted note',
-          success: true,
-          data:data
-        });
-      });
+        })
     } catch (error) {
       logger.error('Internal server error');
       return res.status(500).json({
