@@ -186,3 +186,13 @@
 {"level":"error","message":"Some error occurred !","timestamp":"2022-01-04T12:32:05.257Z"}
 {"level":"error","message":"Otp doesnt match","timestamp":"2022-01-04T12:32:05.265Z"}
 {"level":"error","timestamp":"2022-01-04T12:32:05.265Z"}
+{"level":"info","message":"Successfully added label !","timestamp":"2022-01-04T13:11:17.200Z"}
+{"level":"info","message":"Successfully added label !","timestamp":"2022-01-04T13:11:17.201Z"}
+{"level":"info","message":"Successfully added label !","timestamp":"2022-01-04T13:11:29.683Z"}
+{"level":"info","message":"Successfully added label !","timestamp":"2022-01-04T13:11:29.683Z"}
+{"level":"info","message":"Successfully added label !","timestamp":"2022-01-04T13:11:37.866Z"}
+{"level":"info","message":"Successfully added label !","timestamp":"2022-01-04T13:11:37.867Z"}
+{"level":"info","message":"Successfully added label !","timestamp":"2022-01-04T13:11:44.440Z"}
+{"level":"info","message":"Successfully added label !","timestamp":"2022-01-04T13:11:44.441Z"}
+{"level":"info","message":"Successfully added label !","timestamp":"2022-01-04T13:12:00.263Z"}
+{"level":"info","message":"Successfully added label !","timestamp":"2022-01-04T13:12:00.265Z"}

@@ -1,5 +1,7 @@
-const { resolve } = require('bluebird')
-const labelmodel = require('../models/label.model')
+const labelmodel = require('../models/label.model');
+const nodeRedis = require('../Connector/redis.connector');
+
+
 /*************************************************************************
 * Purpose : to recieve request from controller and send it to model layer 
     and perform some intermediate business logic
@@ -37,6 +39,7 @@ class LabelService {
         return new Promise((resolve, reject) => {
             labelmodel.findlabelById(credential)
                 .then(data => {
+                    nodeRedis.setData('getRedisById',60,JSON.stringify(data))
                     resolve(data)
                 }).catch(error => {
                     reject(error)

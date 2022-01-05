@@ -19,7 +19,7 @@ const dbConfig = require('./config/database.config.js');
 dbConfig.connection();
 // define a simple route
 app.get('/', (req, res) => {
-    res.json({"message": "Welcome to fundooNotes application. Take notes quickly. Organize and keep track of all your notes."});
+    res.json({"message": "Welcome to fundooNotes App. Organize and keep track of all your notes."});
 });
 // Require Notes routes
 require('./App/routes/note.routes.js')(app);

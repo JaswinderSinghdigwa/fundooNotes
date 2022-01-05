@@ -69,10 +69,6 @@ class LabelController {
                         const response = { sucess: true, message: 'label is fetched', data: findlabel }
                         return res.status(200).send(response)
             }
-            else {
-                const response = { sucess: false, message: 'Invalid Token' }
-                return res.status(400).send(response)
-            }
         }
         catch (error) {
             const response = { sucess: false, message: "Internal  Server error" }
@@ -96,7 +92,7 @@ class LabelController {
                     const response = { sucess: true, message: "Succesfuly label is fetch", data: data }
                     return res.status(201).json(response);
                 }).catch(error => {
-                    const response = { sucess: false, message: "Succesfuly label is not fetch", error: error.message }
+                    const response = { sucess: false, message: "label is not fetch", error: error.message }
                     return res.status(400).json(response)
                 })
         }
