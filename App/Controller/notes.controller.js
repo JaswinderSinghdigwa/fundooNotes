@@ -204,7 +204,7 @@ class Note {
           return res.status(201).send({
             message: 'Successfully Deleted note',
             success: true,
-            data: data
+            data:data
           });
         }).catch(error => {
           return res.status(400).json({

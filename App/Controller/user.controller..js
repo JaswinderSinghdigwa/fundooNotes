@@ -6,10 +6,9 @@
 * @version : 1.0
 *
 **************************************************************************/
-const userService = require('../service/service.js')
+const service = require('../service/user.service.js')
 const validation = require('../utilities/validation');
 const { logger } = require('../../logger/logger');
-// const { database } = require('faker/locale/en_BORK');
 
 class Controller {
   /**
@@ -19,42 +18,37 @@ class Controller {
 	 */
   register =  (req, res) => {
     try {
-      const userRegistrationData = {
+      const userRegistrationInfo = {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         email: req.body.email,
         password: req.body.password
       };
-      const validationResult = validation.ValidationRegister.validate(userRegistrationData)
+      const validationResult = validation.ValidationRegister.validate(userRegistrationInfo)
       if (validationResult.error) {
-        logger.error('Wrong Input Validations');
-        return res.status(400).send({
-          success: false,
-          message: 'Wrong Input Validations',
-          data: validationResult.error.message
-        });
+        logger.error('Failed To Validated Input');
+          const response = { success: false, message: validationResult.error.message };
+          return res.status(400).send(response);
       }
-    const userRegisterService = userService.register(userRegistrationData);
+    const userRegisterService = service.register(userRegistrationInfo);
       userRegisterService.then((data)=>{
-        logger.info('Registration is done successfully !');
-        return res.status(200).json({
-          success: true,
-          message: 'Registration is done successfully !',
-          data: data,
-        });
+        logger.info('Successfully Resgistration is done');
+        const response = { sucess : true, message : "Resgistration is done Successfully",data:data}
+        return res.status(200).json(response)
       }).catch((error)=>{
         logger.error('User with this email Id is alreday exists');
-        return res.status(400).json({
-          success: false,
-          message: 'User already exist',error
-        });
+        const response = { sucess: false, message: "User is already exist", error : error }
+        return res.status(400).json(response)
       })
     } catch (error) {
-      logger.error('Some error occurred !');
-      return res.status(500).json({
-        success: false, 
-        message: "Some error occurred !",
-      });
+      if (error.name === 'MongoError' && error.code === 11000) {
+        logger.error('User with this email Id is alreday exists');
+        const response = { success: false, message: 'User with this email Id is alreday exists' };
+        return res.status(409).send(response);
+      }
+      logger.error('Some error occured while registering');
+      const response = { success: false, message: 'Some error occured while registering' };
+      return res.status(500).send(response);
     }
   }
 
@@ -64,36 +58,31 @@ class Controller {
 	 */
   login = (req, res) => {
     try {
-      const userLoginData = {
+      const LoginData = {
         email: req.body.email,
         password: req.body.password
       };
-      const validationResult= validation.ValidationLogin.validate(userLoginData);
+      const validationResult= validation.ValidationLogin.validate(LoginData);
       if (validationResult.error) {
         logger.error(validationResult.error);
-        res.status(400).send({
-          success: false,
-          message: validationResult.error.message
-        });
+        const response = { success: false, message: 'failed to validated Input' };
+        return res.status(400).send(response);
       }
-      userService.login(userLoginData) 
+      service.login(LoginData) 
         .then((data)=>{
-          return res.status(200).json({
-            success: true,
-            message: 'Token gernerator Successfully',
-            data:data
-          });
+          if(!data){
+            const response = { success: false, message: 'Authorization failed' };
+            return res.status(401).send(response);
+          }
+            const response = { success: true, message: 'Token gernerator Successfully' , data:data}
+            return res.status(200).json({response})
         }).catch((error)=>{
-          return res.status(400).json({
-            success: false,
-            message: 'Login Failed !',error,
-          });
-        })
-      }catch(err){
-        return res.status(500).json({
-          success: false,
-          message: 'Interal Server error',
-        });
+            const response = {success: false,message: 'Login Failed !',error,}
+            return res.status(400).json({response})
+          })
+        }catch(err){
+          const response = { success: false, message: 'Some error occured while registering' };
+          return res.status(500).send(response);
       }
     }
 
@@ -104,39 +93,30 @@ class Controller {
 	 */
   forgotPassword = (req, res) => {
     try {
-      const userData = {
+      const userInfo = {
         email: req.body.email
       };
-      const validationResult = validation.validationforgotPassword.validate(userData);
+      const validationResult = validation.validationforgotPassword.validate(userInfo);
       if (validationResult.error) {
         logger.error(error.message);
-        return res.status(400).send({
-          success: false,
-          message: 'Wrong Input Validations',
-        });
+        const response = { success: false, message: 'failed to validated Input' };
+        return res.status(400).send(response);
       }
 
-      userService.forgotPassword(userData, (error, data) => {
+      service.forgotPassword(userInfo, (error, data) => {
         if (error) {
-          logger.error(error.message);
-          return res.status(400).send({
-            success: false,
-            message: 'failed to send email',
-          });
+          logger.error('failed to send email');
+          const response = { success: false, message: 'failed to send email' };
+          return res.status(400).send(response);
         }else {
-          return res.status(200).send({
-            success: true,
-            message: 'Email sent successfully',
-            data : data
-          });
+          const response = { success: true, message: 'Email sent successfully' };
+          return res.status(200).send(response);
         }
       });
     } catch (error) {
       logger.error('Some error occurred !');
-      return res.status(500).send({
-        success: false,
-        message: 'Some error occurred !'
-      });
+      const response = { success: false, message: 'Some error occured while registering' };
+      return res.status(500).send(response);
     }
   }
 
@@ -147,21 +127,21 @@ class Controller {
 	 */
    resetPassword = (req, res) => {
 		try {
-			const resetPasswordData = {
+			const resetPasswordInfo = {
 				email: req.body.email,
 				password: req.body.password,
         code: req.body.code
 			};
-      const validationResult = validation.validateReset.validate(resetPasswordData);
+      const validationResult = validation.validateReset.validate(resetPasswordInfo);
 			if (validationResult.error) {
 				const response = { success: false, message: validationResult.error.message };
 				return res.status(400).send(response);
 			}
 
-			userService.resetPassword(resetPasswordData, (error, data) => {
+			service.resetPassword(resetPasswordInfo, (error, data) => {
 				if (error) {
 					logger.error(error.message);
-					const response = { success: false, message: error.message };
+					const response = { success: false, message: 'Falied to reset Password' };
 					return res.status(400).send(response);
 				}
 
@@ -171,7 +151,7 @@ class Controller {
 					return res.status(401).send(response);
 				}
 				else {
-					const response = { success: true, message: 'Password has been changed !', data: resetPasswordData };
+					const response = { success: true, message: 'Password has been changed !', data: resetPasswordInfo };
 					logger.info('Password has benn changed !');
 					res.status(200).send(response);
 				}

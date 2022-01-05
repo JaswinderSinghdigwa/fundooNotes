@@ -106,3 +106,156 @@
 {"level":"error","message":"Some error occurred !","timestamp":"2022-01-04T12:32:05.257Z"}
 {"level":"error","message":"Otp doesnt match","timestamp":"2022-01-04T12:32:05.265Z"}
 {"level":"error","timestamp":"2022-01-04T12:32:05.265Z"}
+{"level":"error","message":"User with this email Id is alreday exists","timestamp":"2022-01-05T14:30:05.019Z"}
+{"level":"error","message":"Otp doesnt match","timestamp":"2022-01-05T14:51:03.966Z"}
+{"level":"error","timestamp":"2022-01-05T14:51:03.967Z"}
+{"level":"error","message":"Otp doesnt match","timestamp":"2022-01-05T14:51:53.256Z"}
+{"level":"error","timestamp":"2022-01-05T14:51:53.258Z"}
+{"level":"error","message":"Otp doesnt match","timestamp":"2022-01-05T14:52:22.018Z"}
+{"level":"error","timestamp":"2022-01-05T14:52:22.019Z"}
+{"level":"error","message":"Otp doesnt match","timestamp":"2022-01-05T14:54:46.851Z"}
+{"level":"error","timestamp":"2022-01-05T14:54:46.852Z"}
+{"level":"error","message":"Otp doesnt match","timestamp":"2022-01-05T14:57:30.849Z"}
+{"level":"error","timestamp":"2022-01-05T14:57:30.850Z"}
+{"level":"error","message":"Otp doesnt match","timestamp":"2022-01-05T14:58:09.945Z"}
+{"level":"error","timestamp":"2022-01-05T14:58:09.946Z"}
+{"level":"error","message":"Otp doesnt match","timestamp":"2022-01-05T15:02:24.729Z"}
+{"level":"error","timestamp":"2022-01-05T15:02:24.730Z"}
+{"level":"error","message":"Some error occurred !","timestamp":"2022-01-05T15:07:14.008Z"}
+{"level":"error","message":"Otp doesnt match","timestamp":"2022-01-05T15:09:08.726Z"}
+{"level":"error","timestamp":"2022-01-05T15:09:08.732Z"}
+{"level":"error","message":"Otp doesnt match","timestamp":"2022-01-05T15:16:40.168Z"}
+{"level":"error","timestamp":"2022-01-05T15:16:40.169Z"}
+{"level":"error","message":"Otp doesnt match","timestamp":"2022-01-05T15:23:06.594Z"}
+{"level":"error","timestamp":"2022-01-05T15:23:06.595Z"}
+{"level":"error","message":"Failed To Validated Input","timestamp":"2022-01-05T15:54:37.733Z"}
+{"level":"error","message":"Failed To Validated Input","timestamp":"2022-01-05T15:54:37.749Z"}
+{"level":"error","message":"Failed To Validated Input","timestamp":"2022-01-05T15:54:37.757Z"}
+{"level":"error","message":"Failed To Validated Input","timestamp":"2022-01-05T15:54:37.766Z"}
+{"level":"error","timestamp":"2022-01-05T15:54:37.831Z"}
+{"level":"error","message":"Some error occurred !","timestamp":"2022-01-05T15:54:37.900Z"}
+{"level":"error","message":"Otp doesnt match","timestamp":"2022-01-05T15:54:37.925Z"}
+{"level":"error","timestamp":"2022-01-05T15:54:37.926Z"}
+{"level":"error","message":"Some error occurred !","timestamp":"2022-01-05T15:57:41.491Z"}
+{"level":"error","message":"Some error occurred !","timestamp":"2022-01-05T15:57:41.527Z"}
+{"level":"error","message":"Failed To Validated Input","timestamp":"2022-01-05T15:57:42.410Z"}
+{"level":"error","message":"Failed To Validated Input","timestamp":"2022-01-05T15:57:42.424Z"}
+{"level":"error","message":"Failed To Validated Input","timestamp":"2022-01-05T15:57:42.433Z"}
+{"level":"error","message":"Failed To Validated Input","timestamp":"2022-01-05T15:57:42.440Z"}
+{"level":"error","timestamp":"2022-01-05T15:57:42.506Z"}
+{"level":"error","message":"Some error occurred !","timestamp":"2022-01-05T15:57:42.552Z"}
+{"level":"error","message":"Otp doesnt match","timestamp":"2022-01-05T15:57:42.586Z"}
+{"level":"error","timestamp":"2022-01-05T15:57:42.587Z"}
+{"level":"error","message":"Some error occurred !","timestamp":"2022-01-05T16:04:18.949Z"}
+{"level":"error","message":"Some error occurred !","timestamp":"2022-01-05T16:04:19.001Z"}
+{"level":"error","message":"data is not  found","timestamp":"2022-01-05T16:04:19.737Z"}
+{"level":"error","message":"failed to update note","timestamp":"2022-01-05T16:04:19.737Z"}
+{"level":"error","message":"data is not  found","timestamp":"2022-01-05T16:04:19.769Z"}
+{"level":"error","message":"failed to update note","timestamp":"2022-01-05T16:04:19.769Z"}
+{"level":"error","message":"data is not  found","timestamp":"2022-01-05T16:04:19.785Z"}
+{"level":"error","message":"failed to update note","timestamp":"2022-01-05T16:04:19.785Z"}
+{"level":"error","message":"data is not  found","timestamp":"2022-01-05T16:04:19.803Z"}
+{"level":"error","message":"failed to update note","timestamp":"2022-01-05T16:04:19.804Z"}
+{"level":"error","message":"data is not  found","timestamp":"2022-01-05T16:04:19.824Z"}
+{"level":"error","message":"failed to update note","timestamp":"2022-01-05T16:04:19.825Z"}
+{"level":"error","message":"data is not  found","timestamp":"2022-01-05T16:04:19.848Z"}
+{"level":"error","message":"failed to update note","timestamp":"2022-01-05T16:04:19.848Z"}
+{"level":"error","message":"Failed To Validated Input","timestamp":"2022-01-05T16:04:19.946Z"}
+{"level":"error","message":"Failed To Validated Input","timestamp":"2022-01-05T16:04:19.956Z"}
+{"level":"error","message":"Failed To Validated Input","timestamp":"2022-01-05T16:04:19.965Z"}
+{"level":"error","message":"Failed To Validated Input","timestamp":"2022-01-05T16:04:19.971Z"}
+{"level":"error","timestamp":"2022-01-05T16:04:20.009Z"}
+{"level":"error","message":"Some error occurred !","timestamp":"2022-01-05T16:04:20.052Z"}
+{"level":"error","message":"Otp doesnt match","timestamp":"2022-01-05T16:04:20.075Z"}
+{"level":"error","timestamp":"2022-01-05T16:04:20.081Z"}
+{"level":"error","message":"Some error occurred !","timestamp":"2022-01-05T16:57:44.168Z"}
+{"level":"error","message":"Some error occurred !","timestamp":"2022-01-05T16:57:44.201Z"}
+{"level":"error","message":"data is not  found","timestamp":"2022-01-05T16:57:44.937Z"}
+{"level":"error","message":"failed to update note","timestamp":"2022-01-05T16:57:44.938Z"}
+{"level":"error","message":"data is not  found","timestamp":"2022-01-05T16:57:44.965Z"}
+{"level":"error","message":"failed to update note","timestamp":"2022-01-05T16:57:44.965Z"}
+{"level":"error","message":"data is not  found","timestamp":"2022-01-05T16:57:44.987Z"}
+{"level":"error","message":"failed to update note","timestamp":"2022-01-05T16:57:44.987Z"}
+{"level":"error","message":"data is not  found","timestamp":"2022-01-05T16:57:45.009Z"}
+{"level":"error","message":"failed to update note","timestamp":"2022-01-05T16:57:45.009Z"}
+{"level":"error","message":"data is not  found","timestamp":"2022-01-05T16:57:45.032Z"}
+{"level":"error","message":"failed to update note","timestamp":"2022-01-05T16:57:45.033Z"}
+{"level":"error","message":"data is not  found","timestamp":"2022-01-05T16:57:45.053Z"}
+{"level":"error","message":"failed to update note","timestamp":"2022-01-05T16:57:45.053Z"}
+{"level":"error","message":"Failed To Validated Input","timestamp":"2022-01-05T16:57:45.128Z"}
+{"level":"error","message":"Failed To Validated Input","timestamp":"2022-01-05T16:57:45.142Z"}
+{"level":"error","message":"Failed To Validated Input","timestamp":"2022-01-05T16:57:45.152Z"}
+{"level":"error","message":"Failed To Validated Input","timestamp":"2022-01-05T16:57:45.160Z"}
+{"level":"error","timestamp":"2022-01-05T16:57:45.200Z"}
+{"level":"error","message":"Some error occurred !","timestamp":"2022-01-05T16:57:45.246Z"}
+{"level":"error","message":"Otp doesnt match","timestamp":"2022-01-05T16:57:45.268Z"}
+{"level":"error","timestamp":"2022-01-05T16:57:45.269Z"}
+{"level":"error","message":"Some error occurred !","timestamp":"2022-01-05T17:05:08.218Z"}
+{"level":"error","message":"Some error occurred !","timestamp":"2022-01-05T17:05:08.262Z"}
+{"level":"error","message":"data is not  found","timestamp":"2022-01-05T17:05:08.921Z"}
+{"level":"error","message":"failed to update note","timestamp":"2022-01-05T17:05:08.921Z"}
+{"level":"error","message":"data is not  found","timestamp":"2022-01-05T17:05:08.947Z"}
+{"level":"error","message":"failed to update note","timestamp":"2022-01-05T17:05:08.947Z"}
+{"level":"error","message":"data is not  found","timestamp":"2022-01-05T17:05:08.965Z"}
+{"level":"error","message":"failed to update note","timestamp":"2022-01-05T17:05:08.966Z"}
+{"level":"error","message":"data is not  found","timestamp":"2022-01-05T17:05:08.988Z"}
+{"level":"error","message":"failed to update note","timestamp":"2022-01-05T17:05:08.988Z"}
+{"level":"error","message":"data is not  found","timestamp":"2022-01-05T17:05:09.006Z"}
+{"level":"error","message":"failed to update note","timestamp":"2022-01-05T17:05:09.007Z"}
+{"level":"error","message":"data is not  found","timestamp":"2022-01-05T17:05:09.024Z"}
+{"level":"error","message":"failed to update note","timestamp":"2022-01-05T17:05:09.024Z"}
+{"level":"error","message":"Failed To Validated Input","timestamp":"2022-01-05T17:05:09.097Z"}
+{"level":"error","message":"Failed To Validated Input","timestamp":"2022-01-05T17:05:09.109Z"}
+{"level":"error","message":"Failed To Validated Input","timestamp":"2022-01-05T17:05:09.117Z"}
+{"level":"error","message":"Failed To Validated Input","timestamp":"2022-01-05T17:05:09.124Z"}
+{"level":"error","timestamp":"2022-01-05T17:05:09.167Z"}
+{"level":"error","message":"Some error occurred !","timestamp":"2022-01-05T17:05:09.233Z"}
+{"level":"error","message":"Otp doesnt match","timestamp":"2022-01-05T17:05:09.253Z"}
+{"level":"error","timestamp":"2022-01-05T17:05:09.254Z"}
+{"level":"error","message":"Some error occurred !","timestamp":"2022-01-05T17:07:59.112Z"}
+{"level":"error","message":"Some error occurred !","timestamp":"2022-01-05T17:07:59.143Z"}
+{"level":"error","message":"data is not  found","timestamp":"2022-01-05T17:07:59.702Z"}
+{"level":"error","message":"failed to update note","timestamp":"2022-01-05T17:07:59.702Z"}
+{"level":"error","message":"data is not  found","timestamp":"2022-01-05T17:07:59.728Z"}
+{"level":"error","message":"failed to update note","timestamp":"2022-01-05T17:07:59.729Z"}
+{"level":"error","message":"data is not  found","timestamp":"2022-01-05T17:07:59.744Z"}
+{"level":"error","message":"failed to update note","timestamp":"2022-01-05T17:07:59.744Z"}
+{"level":"error","message":"data is not  found","timestamp":"2022-01-05T17:07:59.758Z"}
+{"level":"error","message":"failed to update note","timestamp":"2022-01-05T17:07:59.759Z"}
+{"level":"error","message":"data is not  found","timestamp":"2022-01-05T17:07:59.774Z"}
+{"level":"error","message":"failed to update note","timestamp":"2022-01-05T17:07:59.774Z"}
+{"level":"error","message":"data is not  found","timestamp":"2022-01-05T17:07:59.786Z"}
+{"level":"error","message":"failed to update note","timestamp":"2022-01-05T17:07:59.786Z"}
+{"level":"error","message":"Failed To Validated Input","timestamp":"2022-01-05T17:07:59.846Z"}
+{"level":"error","message":"Failed To Validated Input","timestamp":"2022-01-05T17:07:59.858Z"}
+{"level":"error","message":"Failed To Validated Input","timestamp":"2022-01-05T17:07:59.866Z"}
+{"level":"error","message":"Failed To Validated Input","timestamp":"2022-01-05T17:07:59.873Z"}
+{"level":"error","timestamp":"2022-01-05T17:07:59.916Z"}
+{"level":"error","message":"Some error occurred !","timestamp":"2022-01-05T17:07:59.953Z"}
+{"level":"error","message":"Otp doesnt match","timestamp":"2022-01-05T17:07:59.971Z"}
+{"level":"error","timestamp":"2022-01-05T17:07:59.972Z"}
+{"level":"error","timestamp":"2022-01-05T17:37:36.849Z"}
+{"level":"error","timestamp":"2022-01-05T17:38:13.719Z"}
+{"level":"error","message":"Otp doesnt match","timestamp":"2022-01-05T17:39:49.839Z"}
+{"level":"error","timestamp":"2022-01-05T17:39:49.840Z"}
+{"level":"error","message":"Otp doesnt match","timestamp":"2022-01-05T17:40:40.217Z"}
+{"level":"error","timestamp":"2022-01-05T17:40:40.218Z"}
+{"level":"error","message":"Otp doesnt match","timestamp":"2022-01-05T17:56:59.325Z"}
+{"level":"error","timestamp":"2022-01-05T17:56:59.326Z"}
+{"level":"error","message":"Otp doesnt match","timestamp":"2022-01-05T17:59:50.267Z"}
+{"level":"error","timestamp":"2022-01-05T17:59:50.268Z"}
+{"level":"error","message":"Otp doesnt match","timestamp":"2022-01-05T18:02:59.181Z"}
+{"level":"error","timestamp":"2022-01-05T18:02:59.181Z"}
+{"level":"error","message":"Otp doesnt match","timestamp":"2022-01-05T18:05:37.111Z"}
+{"level":"error","timestamp":"2022-01-05T18:05:37.112Z"}
+{"level":"error","message":"Otp doesnt match","timestamp":"2022-01-05T18:05:37.605Z"}
+{"level":"error","timestamp":"2022-01-05T18:05:37.607Z"}
+{"level":"error","message":"Otp doesnt match","timestamp":"2022-01-05T18:07:57.834Z"}
+{"level":"error","timestamp":"2022-01-05T18:07:57.836Z"}
+{"level":"error","message":"Otp doesnt match","timestamp":"2022-01-05T18:10:04.033Z"}
+{"level":"error","timestamp":"2022-01-05T18:10:04.034Z"}
+{"level":"error","message":"Otp doesnt match","timestamp":"2022-01-05T18:10:44.880Z"}
+{"level":"error","timestamp":"2022-01-05T18:10:44.881Z"}
+{"level":"error","message":"Otp doesnt match","timestamp":"2022-01-05T18:12:21.507Z"}
+{"level":"error","timestamp":"2022-01-05T18:12:21.508Z"}
+{"level":"error","message":"Internal Error","timestamp":"2022-01-05T18:24:34.206Z"}

@@ -17,7 +17,7 @@ describe('create notes api', () => {
     };
     chai
       .request(server)
-      .post('/createnotes')
+      .post('/note')
       .set({ authorization: token })
       .send(createNotes)
       .end((err, res) => {
@@ -34,7 +34,7 @@ describe('create notes api', () => {
     };
     chai
       .request(server)
-      .post('/createnotes')
+      .post('/note')
       .set({ authorization: token })
       .send(createNotes)
       .end((err, res) => {
@@ -50,7 +50,7 @@ describe('get notes api', () => {
     const token = noteDB.notes.validToken;
     chai
       .request(server)
-      .get('/getnotes')
+      .get('/notes')
       .set({ authorization: token })
       .end((err, res) => {
         res.should.have.status(201);
@@ -62,7 +62,7 @@ describe('get notes api', () => {
     const token = noteDB.notes.invalidToken;
     chai
       .request(server)
-      .get('/getnotes')
+      .get('/notes')
       .set({ authorization: token })
       .end((err, res) => {
         res.should.have.status(400);
@@ -76,7 +76,7 @@ describe('Get notes by ID api', () => {
     const token = noteDB.notes.invalidToken;
     chai
       .request(server)
-      .get('/getnotes/:id')
+      .get('/note/:id')
       .set({ authorization: token })
       .end((err, res) => {
         res.should.have.status(400);
@@ -87,7 +87,7 @@ describe('Get notes by ID api', () => {
     const token = noteDB.notes.validToken;
     chai
       .request(server)
-      .get('/getnotes/61c28a8516512bcec838cbbc')
+      .get('/note/61c28a8516512bcec838cbbc')
       .set({ authorization: token })
       .send()
       .end((err, res) => {
@@ -99,7 +99,7 @@ describe('Get notes by ID api', () => {
     const token = noteDB.notes.invalidToken;
     chai
       .request(server)
-      .get('/getnotes/61c28a8516512bcec838cbbc')
+      .get('/note/61c28a8516512bcec838cbbc')
       .set({ authorization: token })
       .send()
       .end((err, res) => {
@@ -111,7 +111,7 @@ describe('Get notes by ID api', () => {
     const token = noteDB.notes.validToken;
     chai
       .request(server)
-      .get('/getnotes/61c28a8516512bcec838cbbc')
+      .get('/note/61c28a8516512bcec838cbbc')
       .set({ authorization: token })
       .send('61c28a8516512bcec838cbbc')
       .end((err, res) => {
@@ -123,7 +123,7 @@ describe('Get notes by ID api', () => {
     const token = noteDB.notes.invalidToken;
     chai
       .request(server)
-      .get('/getnotes/61c28a8516512bcec838cbbc')
+      .get('/note/61c28a8516512bcec838cbbc')
       .set({ authorization: token })
       .send('61c28a8516512bcec838cbbc')
       .end((err, res) => {
@@ -135,7 +135,7 @@ describe('Get notes by ID api', () => {
     const token = noteDB.notes.validToken;
     chai
       .request(server)
-      .get('/getnotes/61c28a8516512bcec838cbbc')
+      .get('/note/61c28a8516512bcec838cbbc')
       .set({ authorization: token })
       .send('61c28a8516512bcec838cbbc')
       .end((err, res) => {
@@ -151,7 +151,7 @@ describe('Get notes by ID api', () => {
     const token = noteDB.notes.validToken;
     chai
       .request(server)
-      .get('/getnotes/61c28a8516512bcec838cbbc')
+      .get('/note/61c28a8516512bcec838cbbc')
       .set({ authorization: token })
       .send('61c28a8516512bcec838cbbc')
       .end((err, res) => {
@@ -167,7 +167,7 @@ describe('Get notes by ID api', () => {
     const token = noteDB.notes.validToken;
     chai
       .request(server)
-      .get('/getnotes/61c28a8516512bcec838cbbc')
+      .get('/note/61c28a8516512bcec838cbbc')
       .set({ authorization: token })
       .end((err, res) => {
         if (err) {
@@ -186,7 +186,7 @@ describe('Update notes api', () => {
     const token = noteDB.notes.invalidToken;
     chai
       .request(server)
-      .put('/updatenotes/:id')
+      .put('/note/:id')
       .set({ authorization: token })
       .send({})
       .end((err, res) => {
@@ -198,7 +198,7 @@ describe('Update notes api', () => {
     const token = noteDB.notes.validToken;
     chai
       .request(server)
-      .put('/updatenotes/61c28a8516512bcec838cbbc')
+      .put('/note/61c28a8516512bcec838cbbc')
       .set({ authorization: token })
       .end((err, res) => {
         res.should.have.status(201);
@@ -213,7 +213,7 @@ describe('Update notes api', () => {
     }
     chai
       .request(server)
-      .put('/updatenotes/61c28a9316512bcec838cbbe')
+      .put('/note/61c28a9316512bcec838cbbe')
       .set({ authorization: token })
       .send(UpdateNote)
       .end((err, res) => {
@@ -229,7 +229,7 @@ describe('Update notes api', () => {
     }
     chai
       .request(server)
-      .put('/updatenotes/61c28a9316512bcec838cbbe')
+      .put('/note/61c28a9316512bcec838cbbe')
       .set({ authorization: token })
       .send(UpdateNote)
       .end((err, res) => {
@@ -239,11 +239,15 @@ describe('Update notes api', () => {
   });
   it('Should return true from UpdateNote Service Layer , return appropriate response', (done) => {
     const token = noteDB.notes.validToken;
+    const UpdateNote = {
+      title: faker.lorem.word(),
+      description: faker.lorem.word()
+    }
     chai
       .request(server)
-      .put('/updatenotes/61c28a9316512bcec838cbbe')
+      .put('/note/61c28a9316512bcec838cbbe')
       .set({ authorization: token })
-      .send()
+      .send({UpdateNote})
       .end((err, res) => {
         res.should.have.status(201);
         done();
@@ -251,11 +255,15 @@ describe('Update notes api', () => {
   });
   it('Should return true from ModelLayer , return appropriate response', (done) => {
     const token = noteDB.notes.validToken;
+    const UpdateNote = {
+      title: faker.lorem.word(),
+      description: faker.lorem.word()
+    }
     chai
       .request(server)
-      .put('/updatenotes/61c28a9316512bcec838cbbe')
+      .put('/note/61c28a9316512bcec838cbbe')
       .set({ authorization: token })
-      .send()
+      .send({UpdateNote})
       .end((err, res) => {
         res.should.have.status(201);
         done();
@@ -263,11 +271,15 @@ describe('Update notes api', () => {
   });
   it('Should return true when id is matched', (done) => {
     const token = noteDB.notes.validToken;
+    const UpdateNote = {
+      title: faker.lorem.word(),
+      description: faker.lorem.word()
+    }
     chai
       .request(server)
-      .put('/updatenotes/61c28a9316512bcec838cbbe')
+      .put('/note/61c28a9316512bcec838cbbe')
       .set({ authorization: token })
-      .send()
+      .send({UpdateNote})
       .end((err, res) => {
         res.should.have.status(201);
         done();
@@ -275,11 +287,15 @@ describe('Update notes api', () => {
   });
   it('Should return true when note is updated', (done) => {
     const token = noteDB.notes.validToken;
+    const UpdateNote = {
+      title: faker.lorem.word(),
+      description: faker.lorem.word()
+    }
     chai
       .request(server)
-      .put('/updatenotes/61c28a9316512bcec838cbbe')
+      .put('/note/61c28a9316512bcec838cbbe')
       .set({ authorization: token })
-      .send()
+      .send(UpdateNote )
       .end((err, res) => {
         res.should.have.status(201);
         done();
@@ -293,7 +309,7 @@ describe('Delete notes api', () => {
     const token = noteDB.notes.invalidToken;
     chai
       .request(server)
-      .delete('/deletenotes/:id')
+      .delete('/note/:id')
       .set({ authorization: token })
       .end((err, res) => {
         res.should.have.status(400);
@@ -304,7 +320,7 @@ describe('Delete notes api', () => {
     const token = noteDB.notes.validToken;
     chai
       .request(server)
-      .delete('/deletenotes/61c28a9316512bcec838cbbe')
+      .delete('/note/61c28a9316512bcec838cbbe')
       .set({ authorization: token })
       .end((err, res) => {
         res.should.have.status(201);
@@ -315,7 +331,7 @@ describe('Delete notes api', () => {
     const token = noteDB.notes.validToken;
     chai
       .request(server)
-      .delete('/deletenotes/61c28a9316512bcec838cbbe')
+      .delete('/note/61c28a9316512bcec838cbbe')
       .set({ authorization: token })
       .end((err, res) => {
         if (err) {
@@ -330,7 +346,7 @@ describe('Delete notes api', () => {
     const token = noteDB.notes.validToken;
     chai
       .request(server)
-      .delete('/deletenotes/61c28a9316512bcec838cbbe')
+      .delete('/note/61c28a9316512bcec838cbbe')
       .set({ authorization: token })
       .end((err, res) => {
         if (err) {
@@ -345,7 +361,7 @@ describe('Delete notes api', () => {
     const token = noteDB.notes.validToken;
     chai
       .request(server)
-      .delete('/deletenotes/61c28a9316512bcec838cbbe')
+      .delete('/note/61c28a9316512bcec838cbbe')
       .set({ authorization: token })
       .end((err, res) => {
         if (err) {
@@ -360,7 +376,7 @@ describe('Delete notes api', () => {
     const token = noteDB.notes.validToken;
     chai
       .request(server)
-      .delete('/deletenotes/61c28a9316512bcec838cbbe')
+      .delete('/note/61c28a9316512bcec838cbbe')
       .set({ authorization: token })
       .end((err, res) => {
         if (err) {

@@ -22,7 +22,7 @@ const noteSchema = mongoose.Schema({
   timestamps: true
 });
 
-const NoteRegister = db.model('NoteRegister', noteSchema)
+const notes = db.model('NoteRegister', noteSchema)
 
 class Model {
   /**
@@ -31,7 +31,7 @@ class Model {
  * @returns saved data or if error returns error
  */
   createNote = async (info) => {
-    const note = new NoteRegister({
+    const note = new notes({
       userId: info.userId,
       title: info.title,
       description: info.description
@@ -53,7 +53,7 @@ class Model {
  * @returns retrieved notes or if error returns error
  */
  findNote = async (id) => {
-  let findnote = await NoteRegister.find({ userId: id.id })
+  let findnote = await notes.find({ userId: id.id })
     if (!findnote) {
       return false
     }
@@ -65,7 +65,7 @@ class Model {
  * @returns retrieved notes or if error returns error
  */
 findNoteById = async (id) => {
-  let findnote = await NoteRegister.find({ $and: [{ _id: id.noteId }, { userId: id.userId }] })
+  let findnote = await notes.find({ $and: [{ _id: id.noteId }, { userId: id.userId }] })
   if (!findnote) {
     return false
   }
@@ -77,7 +77,7 @@ findNoteById = async (id) => {
  * @returns retrieved notes or if error returns error
  */
 updateNoteById = (updatedNote, callback) => {
-  NoteRegister.findByIdAndUpdate(updatedNote.id, { title: updatedNote.title, description: updatedNote.description }, { new: true }, (err, data) => {
+  notes.findByIdAndUpdate(updatedNote.id, { title: updatedNote.title, description: updatedNote.description }, { new: true }, (err, data) => {
   if (err) {
         return callback(err, null);
       } else if(!data){
@@ -93,8 +93,11 @@ updateNoteById = (updatedNote, callback) => {
  */
 deleteNoteById = (id) => {
   return new Promise((resolve, reject) => {
-    NoteRegister.findOneAndDelete({ $and: [{ _id: id.noteId }, { userId: id.userId }] })
+    notes.findOneAndDelete({ $and: [{ _id: id.noteId }, { userId: id.userId }] })
       .then(data => {
+        if(!data){
+          console.log("data is not found",data);
+        }
         resolve(data)
       }).catch(error => {
         reject(error)
@@ -104,5 +107,5 @@ deleteNoteById = (id) => {
 }
 module.exports = {
   Model: new Model(),
-  Note: NoteRegister
+  Note: notes
 }; 

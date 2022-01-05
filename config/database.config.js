@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
-require('dotenv').config();
-class DBconnection{
+const dotenv = require('dotenv');
+dotenv.config();
+class DatBaseconnection{
      connection=()=>{
        const uri= process.env.URL;
         mongoose.connect(uri, {
@@ -12,4 +13,4 @@ class DBconnection{
         });  
     }
 }   
-module.exports=new DBconnection();      
+module.exports=new DatBaseconnection();      

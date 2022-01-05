@@ -23,7 +23,7 @@ class LabelController {
                 const labelName = { labelName: req.body.labelName }
                 const validateResult = validation.validateLabel.validate(labelName);
                 if (validateResult.error) {
-                    const response = { sucess: false, message: "Wrong Input Vaidation" }
+                    const response = { sucess: false, message: "Failed to Validated Inputs" }
                     return res.status(422).json(response)
                 }
                 const labelInfo = {
@@ -58,17 +58,22 @@ class LabelController {
                 const userId = { id: req.user.dataForToken.id }
                 const validateResult = validation.validateUserid.validate(userId);
                 if (validateResult.error) {
-                    const response = { sucess: false, message: 'Wrong Input Validation', data: validateResult }
+                    const response = { sucess: false, message: 'Failed to Validated Inputs', data: validateResult }
                     return res.status(400).send(response)
                 }
                let findlabel =  await labelService.findAllLabel(userId)
                     if(!findlabel){
+                        return res.status(400).send({
+                          success: false,
+                          message: 'Wrong Input Validations',
+                          data: getNoteValidation
+                        });
+                    }
                         const response = { sucess: false, message: 'Some error occured' }
                         return res.status(400).send(response)
                     }
                         const response = { sucess: true, message: 'label is fetched', data: findlabel }
                         return res.status(200).send(response)
-            }
         }
         catch (error) {
             const response = { sucess: false, message: "Internal  Server error" }

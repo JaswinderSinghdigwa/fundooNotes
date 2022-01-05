@@ -5,31 +5,32 @@
  * @returns
  */
 const nodemailer = require('nodemailer');
-require('dotenv').config();
-const Otp=require('../models/otp.model.js');
+const dotenv = require('dotenv');
+dotenv.config();
+const oneTimePassWord = require('../models/otp.model.js');
 
-exports.sendEmail = (data) => {
-    let otpcode = Math.random().toString(36).substring(2, 12);
-    let otpData = new Otp({
-        email: data.email,
-        code: otpcode,
+exports.sendEmail = (info) => {
+    let oneTimeCode = Math.random().toString(36).substring(2, 12);
+    let oneTimeData = new oneTimePassWord({
+        email: info.email,
+        code: oneTimeCode,
         expireIn: new Date().getTime() + 60 * 1000
     })
-    otpData.save();
+    oneTimeData.save();
     const transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
             user: process.env.EMAIL,
-            pass: process.env.pass
+            pass: process.env.PASSWORD
         }
     });
 
     const message = {
         from: process.env.EMAIL,
-        to: data.email,
+        to: info.email,
         subject: 'Fundoo notes otp code',
         html: `Enter this otp to reset your password
-    <h3>${otpcode}</h3>`
+    <h3>${oneTimePassWord}</h3>`
     };
 
     transporter.sendMail(message, (err, info) => {

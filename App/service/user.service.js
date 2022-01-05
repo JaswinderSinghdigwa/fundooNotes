@@ -2,7 +2,7 @@ const userModel = require('../models/user.model')
 const helper = require('../utilities/global.helper');
 const { logger } = require('../../logger/logger');
 const nodemailer = require('../utilities/nodemailer.js');
-const { token } = require('../utilities/global.helper');
+const { usertoken } = require('../utilities/global.helper');
 
 class userService {
 
@@ -33,14 +33,14 @@ class userService {
     return new Promise((resolve,reject)=>{
       let result = userModel.UserLogin(InfoLogin)
       result.then((data)=> {
-        let passwordResult = helper.comparePassword(InfoLogin.password, data.password);
+        let passwordResult = helper.comparison(InfoLogin.password, data.password);
         if (!passwordResult) {
-          logger.error(error);
+          logger.info(error);
           resolve("password is not hashed");
         }
-        const token = helper.token(data);
+        const usertoken = helper.userToken(data);
         logger.info(' token generated');
-        resolve(token);
+        resolve(usertoken);
       }).catch((error)=>{
         logger.error(error);
         reject(error);
@@ -75,8 +75,8 @@ class userService {
   * @param {*} callback
   * @returns
   */
-  resetPassword = (userData, callback) => {
-    userModel.resetPassword(userData, (error, data) => {
+  resetPassword = (resetPasswordInfo, callback) => {
+    userModel.resetPassword(resetPasswordInfo, (error, data) => {
       if (error) {
         logger.error(error);
         return callback(error, null);

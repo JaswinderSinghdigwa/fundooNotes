@@ -3,21 +3,21 @@ const redis = require("redis");
 let client;
 class RedisServer {
   constructor () {
-    this.connection();
+    this.connect();
   }
 
-  connection = () => {
+  connect = () => {
     client = redis.createClient(6379, "127.0.0.1");
     client.connect();
-    client.on("connection", function () {
-      console.log("Connected Redis");
+    client.on("connect", function () {
+      console.log("Connected to Redis");
     });
   };
 
-  findData = async (key) => {
-    let getdata = await client.get(key + "getRedisById")
+  findAllData = async (key) => {
+    let data = await client.get(key + "getById")
     try {
-      if (!getdata) {
+      if (!data) {
         return null;
       }
       return JSON.parse(data);
@@ -30,14 +30,16 @@ class RedisServer {
     client.setEx(key, time, data);
   };
 
-  delCache = (key) => {
-    client.del(key, (err, res) => {
-      if (err) {
-        return false;
-      } else {
-        return res;
-      }
-    });
+  filterCache = async(key) => {
+     let deletecache = await client.del(key)
+     try{
+       if(!deletecache){
+          return null;
+       }
+       return true;
+     }catch(error){
+      console.log("Some Error occured while in clearing cache",error);
+     }
   };
 }
 module.exports = new RedisServer();

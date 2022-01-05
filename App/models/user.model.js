@@ -2,7 +2,7 @@ var Promise = require("bluebird");
 const bcrypt = Promise.promisifyAll(require("bcrypt"));
 const mongoose = require('mongoose');
 const { logger } = require('../../logger/logger')
-const Otp = require('./otp.model')
+const oneTimePassWord = require('./otp.model')
 const utilities = require('../utilities/global.helper')
 
 const userSchema = mongoose.Schema({
@@ -67,11 +67,14 @@ class userModel {
     * @param {mongoose method} findone
     * */
 
-    UserLogin = (loginData, callBack) => {
+    UserLogin = (loginData) => {
         //To find a user email in the database
         return new Promise((resolve,reject)=>{
         user.findOne({ email: loginData.email })
         .then((data)=>{
+            if(!data){
+                console.log("data is not found",data);
+            }
             logger.info('Email id found');  
             resolve(data)
         }).catch((error)=>{
@@ -91,7 +94,10 @@ class userModel {
             if (err) {
                 logger.error('User with email id doesnt exists');
                 return callback('User with email id doesnt exists', null);
-            } else {
+            }else if(!data){
+                console.log("data is not found",data);
+            } 
+            else {
                 return callback(null, data);
             }
         });
@@ -103,10 +109,10 @@ class userModel {
   * @param {*} callback
   */
     resetPassword = (userData, callback) => {
-        Otp.findOne({ code: userData.code }, (error, data) => {
+        oneTimePassWord.findOne({ code: userData.code }, (error, data) => {
             if (data) {
                 if (userData.code == data.code) {
-                    utilities.hashing(userData.password, (err, hash) => {
+                    utilities.hashpassword(userData.password, (err, hash) => {
                         if (hash) {
                             userData.password = hash;
                             user.updateOne({ email: userData.email }, { '$set': { "password": userData.password } }, (error, data) => {
@@ -114,11 +120,11 @@ class userModel {
                                     return callback(null, data)
                                 }
                                 else {
-                                    return callback("Error in updating", null)
+                                    return callback(error, null)
                                 }
                             })
                         } else {
-                            return callback("Error in hash on password", null)
+                            return callback(err, null)
                         }
                     })
                 } else {

@@ -72,11 +72,18 @@ class LabelModel {
     // Retrieve all labels
     findAllLabel = async (userId) => {
         let findlabel = await label.find({ userId: userId.id })
-        if (!findlabel) {
-            return false;
+        try{
+            if (!findlabel) {
+                return false;
+            }
+            return findlabel;
         }
-        return findlabel;
+        catch(error){
+            console.log("Error Occured while finding Label",error);
+        }
+       
     }
+
     // Retrieve labels by id
     findlabelById = (credential) => {
         return new Promise((resolve, reject) => {
@@ -91,18 +98,28 @@ class LabelModel {
 
     updatelabelById = async (updtlabel) => {
         let updatelabel = await label.findByIdAndUpdate(updtlabel.id, { labelName: updtlabel.labelName }, { new: true })
-        if (!updatelabel) {
+        try{
+            if (!updatelabel) {
             return false
         }
         return updatelabel
+        }
+        catch(error){
+            console.log("Error Occured while finding Label",error);
+        }
     }
 
     deleteLabel = async (credential) => {
         let deletedlabel = await label.findOneAndDelete(credential.id, { userId: credential.userId })
-        if (!deletedlabel) {
+        try{
+            if (!deletedlabel) {
             return false;
         }
         return deletedlabel;
+        }
+        catch(error){
+            console.log("Error Occured while finding Label",error);
+        }
     }
 }
 module.exports = new LabelModel();
