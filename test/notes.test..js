@@ -139,10 +139,6 @@ describe('Get notes by ID api', () => {
       .set({ authorization: token })
       .send('61c28a8516512bcec838cbbc')
       .end((err, res) => {
-        if (err) {
-          res.should.have.status(400);
-          return done();
-        }
         res.should.have.status(200);
         return done();
       });
@@ -155,10 +151,6 @@ describe('Get notes by ID api', () => {
       .set({ authorization: token })
       .send('61c28a8516512bcec838cbbc')
       .end((err, res) => {
-        if (err) {
-          res.should.have.status(400);
-          return done();
-        }
         res.should.have.status(200);
         return done();
       });
@@ -170,10 +162,6 @@ describe('Get notes by ID api', () => {
       .get('/note/61c28a8516512bcec838cbbc')
       .set({ authorization: token })
       .end((err, res) => {
-        if (err) {
-          res.should.have.status(400);
-          return done();
-        }
         res.should.have.status(200);
         return done();
       });

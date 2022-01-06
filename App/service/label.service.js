@@ -28,49 +28,58 @@ class LabelService {
     // Retrieve all labels
     findAllLabel = async (userId) => {
         let result = await labelmodel.findAllLabel(userId)
-        try{if (!result) {
-            return false;
-        }
-        return result;
-        }catch(error){
-            console.log("Error Occured while finding Label",error);
+        try {
+            if (!result) {
+                return false;
+            }
+            return result;
+        } catch (error) {
+            console.log("Error Occured while finding Label", error);
         }
     }
 
     // Retrieve labels by Id
-    findlabelById = (credential) => {
-        return new Promise((resolve, reject) => {
-            labelmodel.findlabelById(credential)
-                .then(data => {
-                    nodeRedis.setData('getById',60,JSON.stringify(data))
+    findlabelById =  async (credential) => {
+        let data = await nodeRedis.findAllData()
+         if (!data) {
+             return new Promise((resolve, reject) => {
+               labelmodel.findlabelById(credential)
+                .then(data => {  
                     resolve(data)
-                }).catch(error => {
+                }).catch((error) => {
                     reject(error)
                 })
-        })
-    }
+            })
+        }
+            else if (data) {
+                nodeRedis.setData('getById', 60, JSON.stringify(data))
+                resolve(data)
+            }
+            reject(error)
+        }
 
     updatelabelById = (updtlabel) => {
         let updatelabel = labelmodel.updatelabelById(updtlabel)
-        try{
+        try {
             if (!updatelabel) {
                 return false;
             }
-            return updatelabel  
-        }catch(error){
-            console.log("Error Occured while finding Label",error);
+            return updatelabel
+        } catch (error) {
+            console.log("Error Occured while finding Label", error);
         }
-        
+
     }
 
     deleteLabel = async (credential) => {
         let deletedlabel = await labelmodel.deleteLabel(credential)
-        try{if (!deletedlabel) {
-            return false;
-        }
-        return deletedlabel;
-        }catch(error){
-            console.log("Error Occured while finding Label",error);
+        try {
+            if (!deletedlabel) {
+                return false;
+            }
+            return deletedlabel;
+        } catch (error) {
+            console.log("Error Occured while finding Label", error);
         }
     }
 }

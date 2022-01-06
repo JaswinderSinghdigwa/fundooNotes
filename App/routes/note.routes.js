@@ -7,7 +7,7 @@
 
 const note = require('../Controller/notes.controller')
 const controller = require('../Controller/user.controller..js');
-const globalhelper = require('../utilities/global.helper.js');
+const helper = require('../utilities/global.helper.js');
 const labelController = require('../Controller/label.controller')
 
 module.exports = (app) => {
@@ -20,23 +20,23 @@ module.exports = (app) => {
   // api for Reset password
   app.put('/reset-Password', controller.resetPassword);
   // api for Create Note 
-  app.post('/note',globalhelper.decodeToken,note.createNote);
+  app.post('/note', helper.decodeToken,note.createNote);
    // api for getnote
-  app.get('/notes', globalhelper.decodeToken, note.findNote);
+  app.get('/notes', helper.decodeToken, note.findNote);
    // api for getnotes Id 
-   app.get('/note/:id', globalhelper.decodeToken, note.findNoteById);
+   app.get('/note/:id', helper.decodeToken, note.findNoteById);
    // api for updatenotes Id 
-   app.put('/note/:id', globalhelper.decodeToken, note.updateNoteById); 
+   app.put('/note/:id', helper.decodeToken, note.updateNoteById); 
    // api for delete By Id 
-   app.delete('/note/:id', globalhelper.decodeToken, note.deleteNoteById);
+   app.delete('/note/:id', helper.decodeToken, note.deleteNoteById);
    // api for Add Label By Id 
-   app.post('/note/label/:noteid', globalhelper.decodeToken, labelController.addLabel);
+   app.post('/note/label/:id', helper.decodeToken, labelController.addLabel);
    // api for get Label  
-   app.get('/note/labels', globalhelper.decodeToken, labelController.findAlllabel);
+   app.get('/labels', helper.decodeToken, labelController.findAlllabel);
    // api for get Label  
-   app.get('/note/labels/:labelid', globalhelper.decodeToken, labelController.findlabelById);
+   app.get('/note/labels/:id', helper.decodeToken, labelController.findlabelById);
    // api for Update Label by id 
-   app.put('/note/labels/:labelid', globalhelper.decodeToken, labelController.updatelabelById);
+   app.put('/note/labels/:id', helper.decodeToken, labelController.updatelabelById);
     // api for Delete Label by Id  
-   app.delete('/note/label/:labelid', globalhelper.decodeToken, labelController.deletelabelById);
+   app.delete('/note/label/:id', helper.decodeToken, labelController.deletelabelById);
 }; 

@@ -46,7 +46,7 @@ class Note {
         success: true,
         data: addnote
       });
-    } catch (error) {
+    } catch(error) {
       logger.error('Internal Error');
       return res.status(500).json({
         message: 'Internal Error'
@@ -127,7 +127,7 @@ class Note {
 
       });
     }
-    catch (err) {
+    catch(err){
       return res.status(500).json({
         message: 'Internal Error',
         success: false,

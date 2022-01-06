@@ -144,7 +144,7 @@
                 }
             }
         },
-        "/createnotes": {
+        "/note": {
             "post": {
                 "tags": [
                     "Create Notes"
@@ -188,7 +188,7 @@
                 }
             }
         },
-        "/getnotes": {
+        "/notes": {
             "get": {
                 "tags": [
                     "Get Notes"
@@ -224,7 +224,7 @@
                 }
             }
         },
-        "/getnotes/{id}": {
+        "/note/{id}": {
             "get": {
                 "tags": [
                     "Get Notes"
@@ -268,7 +268,7 @@
                 }
             }
         },
-        "/updatenotes/{id}": {
+        "/note/{id}": {
             "put": {
                 "tags": [
                     "update Notes"
@@ -317,7 +317,7 @@
                 }
             }
         },
-        "/deletenotes/{id}": {
+        "/note/{id}": {
             "delete": {
                 "tags": [
                     "Delete Notes"
@@ -358,7 +358,7 @@
                 }
             }
         },
-        "/addlabel/{id}":{
+        "/note/label/{id}":{
             "post":{
               "tags":["Add label"],
               "description":"Added label",
@@ -396,7 +396,7 @@
               }
             }
         },
-        "/getlabel":{
+        "/labels":{
             "get":{
               "tags":["get labels"],
               "description":"Gets all labels",
@@ -420,7 +420,7 @@
             }
         },
 
-        "/getlabel/{id}":{
+        "/note/labels/{id}":{
             "get":{
               "tags":["get label by id"],
               "description":"Gets label by id",
@@ -452,7 +452,7 @@
               }
             }
         },
-        "/updatelabel/{id}": {
+        "/note/labels/{id}": {
             "put": {
                 "tags": [
                     "Update Label"
@@ -502,7 +502,7 @@
                 }
             }
         },
-        "/deleteLabel/{id}": {
+        "/note/label/{id}": {
             "delete": {
                 "tags": [
                     "Delete Label"

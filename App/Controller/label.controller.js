@@ -10,6 +10,7 @@
 const validation = require('../utilities/validation')
 const labelService = require('../service/label.service')
 const { logger } = require('../../logger/logger')
+const { error } = require('winston')
 
 class LabelController {
     /**
@@ -20,6 +21,7 @@ class LabelController {
      */
     addLabel = (req, res) => {
         try {
+                if(req.user){
                 const labelName = { labelName: req.body.labelName }
                 const validateResult = validation.validateLabel.validate(labelName);
                 if (validateResult.error) {
@@ -35,7 +37,7 @@ class LabelController {
                 labelService.addLabel(labelInfo, (error, data) => {
                     if (error) {
                         logger.error('Some error occurred !')
-                        const response = { sucess: false, message: 'Some error occured' }
+                        const response = { sucess: false, message: 'Some error occured',error }
                         return res.status(404).send(response)
                     }
                     else if (!data) {
@@ -46,6 +48,7 @@ class LabelController {
                     const response = { sucess: true, message: "Successfully added label !", data: data }
                     return res.status(200).json(response)
                 })
+            }
         } catch (err) {
             const response = { sucess: false, message: "Internal  Server error" }
             return res.status(500).json(response);
@@ -68,14 +71,13 @@ class LabelController {
                           message: 'Wrong Input Validations',
                           data: getNoteValidation
                         });
+                    } 
+                    const response = { sucess: true, message: 'label is fetched', data: findlabel }
+                    return res.status(200).send(response)  
                     }
-                        const response = { sucess: false, message: 'Some error occured' }
-                        return res.status(400).send(response)
-                    }
-                        const response = { sucess: true, message: 'label is fetched', data: findlabel }
-                        return res.status(200).send(response)
+                       
         }
-        catch (error) {
+        catch(error) {
             const response = { sucess: false, message: "Internal  Server error" }
             return res.status(500).json(response)
         }
@@ -83,6 +85,7 @@ class LabelController {
 
     findlabelById = (req, res) => {
         try {
+            if(req.user){
             const credentials = {
                 userId: req.user.dataForToken.id,
                 labelId: req.params.id
@@ -94,6 +97,7 @@ class LabelController {
             }
             labelService.findlabelById(credentials)
                 .then(data => {
+                    console.log("666",data);
                     const response = { sucess: true, message: "Succesfuly label is fetch", data: data }
                     return res.status(201).json(response);
                 }).catch(error => {
@@ -101,7 +105,7 @@ class LabelController {
                     return res.status(400).json(response)
                 })
         }
-        catch (error) {
+    }catch (error) {
             const response = { sucess: false, message: "Internal  Server error" }
             return res.status(500).json(response)
         }
@@ -109,6 +113,7 @@ class LabelController {
 
     updatelabelById = async(req, res) => {
         try {
+            if(req.user){
             const updtlabel = {
                 userId: req.user.dataForToken.id,
                 id: req.params.id,
@@ -127,6 +132,7 @@ class LabelController {
                     const response = { sucess: false, message: "some error occured ", error: error }
                     return res.status(400).json(response)
                 })
+            }
         } catch (error) {
             const response = { sucess: false, message: "Internal  Server error" }
             return res.status(500).json(response)
@@ -135,6 +141,7 @@ class LabelController {
 
     deletelabelById = async (req, res) => {
         try {
+            if(req.user){
             const credentials = {
                 id: req.params.id,
                 userId: req.user.dataForToken.id
@@ -153,6 +160,7 @@ class LabelController {
                     const response = { sucess: true, message: "label is deleted Succesfully", data:deletelabel }
                     return res.status(200).json(response)
                 }
+            }
         } catch(error){
             const response = { sucess: false, message: "Internal  Server error" ,error}
             return res.status(500).json(response)

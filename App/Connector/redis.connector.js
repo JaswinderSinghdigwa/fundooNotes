@@ -22,7 +22,7 @@ class RedisServer {
       }
       return JSON.parse(data);
     }catch(error) {
-      console.log("failed to get data",error);
+      throw error;
     }
   }
 

@@ -128,7 +128,7 @@ class userModel {
                         }
                     })
                 } else {
-                    return callback("User not found", null)
+                    return callback("code not found", null)
                 }
             } else {
                 return callback("Otp doesnt match", null)

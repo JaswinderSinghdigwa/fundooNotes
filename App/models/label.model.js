@@ -48,7 +48,7 @@ class LabelModel {
             if (!data || data.length === 0) {
                 const labelmodel = new label({
                     userId: labelInfo.userId,
-                    noteId: [labelInfo.noteId],
+                    noteId: labelInfo.noteId,
                     labelName: labelInfo.labelName,
                 });
                 labelmodel.save((error, data))

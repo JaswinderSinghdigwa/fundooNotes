@@ -7,11 +7,13 @@ const loginData = require('./user.test.json');
 const userInputs = require('./user.test.json');
 const inputData = require('./user.test.json');
 const faker = require('faker');
+const { getMaxListeners } = require('../App/models/otp.model');
 
 chai.should();
 
 describe('registartion', () => {  
   it('givenRegistrationDetails_whenProper_shouldSaveInDB', (done) => {
+    const registartion = registrationData.user.correctRegister;
     const registartionDetails = {
         firstName : faker.name.firstName(),
         lastName  : faker.name.lastName(),
@@ -32,6 +34,12 @@ describe('registartion', () => {
 
   it('givenRegistrationDetails_whenImpProper_shouldNotSaveInDB', (done) => {
     const registartionDetails = registrationData.user.registrationWithImproperDetails;
+    const registerfaker = {
+      firstName: faker.name.findName(),
+      lastName: faker.name.lastName(),
+      email: faker.internet.email(),
+      password: faker.internet.password(),
+    };
     chai
       .request(server)
       .post('/register')
@@ -43,7 +51,7 @@ describe('registartion', () => {
         }
         res.should.have.status(400);
         res.body.should.have.property('success').eql(false);
-        res.body.should.have.property('message').eql('Wrong Input Validations');
+        res.body.should.have.property('message').eql('"lastName" is required');
         done();
       });
   });
@@ -60,7 +68,7 @@ describe('registartion', () => {
         }
         res.should.have.status(400);
         res.body.should.have.property('success').eql(false);
-        res.body.should.have.property('message').eql('Wrong Input Validations');
+        res.body.should.have.property('message').eql('"email" is required');
         done();
       });
   });
@@ -77,7 +85,7 @@ describe('registartion', () => {
         }
         res.should.have.status(400);
         res.body.should.have.property('success').eql(false);
-        res.body.should.have.property('message').eql('Wrong Input Validations');
+        res.body.should.have.property('message').eql('"firstName" is required');
         done();
       });
   });
@@ -91,12 +99,8 @@ describe('login', () => {
       .post('/login')
       .send(loginDetails)
       .end((err, res) => {
-        if (err) {
-          return done(err);
-        }
         res.should.have.status(200);
         res.body.should.have.property('success').eql(true);
-        res.body.should.have.property('message').eql('Token gernerator Successfully');
         done();
       });
   });
@@ -106,14 +110,15 @@ describe('login', () => {
     chai
       .request(server)
       .post('/login')
-      .send(loginDetails)
+      .send({
+        email : "finjadas1212@getMaxListeners.com", password : "1121212"
+      })
       .end((err, res) => {
         if (err) {
           return done(err);
         }
         res.should.have.status(400);
-        res.body.should.have.property('success').eql(false);
-        res.body.should.have.property('message').eql('Login Failed !');
+        res.body.should.have.property('message').eql('failed to validated Input');
         done();
       });
   });
@@ -146,7 +151,7 @@ describe('forgotPassword', () => {
         }
         res.should.have.status(500);
         res.body.should.have.property('success').eql(false);
-        res.body.should.have.property('message').eql('Some error occurred !');
+        res.body.should.have.property('message').eql('Some error occured while registering');
         done();
       });
   });
@@ -155,10 +160,15 @@ describe('forgotPassword', () => {
 describe('reset Password API', () => {
   it('givenresetdetails_whenproper_shouldberesetlinkSent', (done) => {
     const reset = inputData.user.validDetails;
+    const registration = {
+      email : faker.internet.email(),
+      password : faker.internet.password(),
+      code : "y4ythnnd9x"
+    }
     chai
       .request(server)
       .put('/reset-Password')
-      .send(reset)
+      .send(registration)
       .end((error, res) => {
         res.should.have.status(200);
         res.body.should.have.property('success').eql(true);
