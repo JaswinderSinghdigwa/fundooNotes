@@ -23,20 +23,22 @@ module.exports = (app) => {
   app.post('/note', helper.decodeToken,note.createNote);
    // api for getnote
   app.get('/notes', helper.decodeToken, note.findNote);
-   // api for getnotes Id 
-   app.get('/note/:id', helper.decodeToken, note.findNoteById);
+   // api for getnotes Id .. puting route name note instead of notes not working in swagger 
+   app.get('/notes/:id', helper.decodeToken, note.findNoteById);
    // api for updatenotes Id 
-   app.put('/note/:id', helper.decodeToken, note.updateNoteById); 
+   app.put('/updatenotes/:id', helper.decodeToken, note.updateNoteById); 
    // api for delete By Id 
    app.delete('/note/:id', helper.decodeToken, note.deleteNoteById);
    // api for Add Label By Id 
    app.post('/note/label/:id', helper.decodeToken, labelController.addLabel);
    // api for get Label  
    app.get('/labels', helper.decodeToken, labelController.findAlllabel);
-   // api for get Label  
-   app.get('/note/labels/:id', helper.decodeToken, labelController.findlabelById);
+   // api for get Label ..puting route name note instead of notes not working in swagger 
+   app.get('/notes/labels/:id', helper.decodeToken, labelController.findlabelById);
    // api for Update Label by id 
-   app.put('/note/labels/:id', helper.decodeToken, labelController.updatelabelById);
+   app.put('/notes/label/:id', helper.decodeToken, labelController.updatelabelById);
     // api for Delete Label by Id  
-   app.delete('/note/label/:id', helper.decodeToken, labelController.deletelabelById);
+   app.delete('/note/labels/:id', helper.decodeToken, labelController.deletelabelById);
+
+   app.get('/confirmRegister/:token', controller.confirmRegister)
 }; 

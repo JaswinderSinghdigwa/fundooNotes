@@ -20,8 +20,9 @@ class Note {
    */
   createNote = async (req, res) => {
     try {
+      if(req.user){
       const note = {
-        userId: req.user.dataForToken.id,
+        userId: req.user.decodedtoken.id,
         title: req.body.title,
         description: req.body.description
       };
@@ -46,6 +47,7 @@ class Note {
         success: true,
         data: addnote
       });
+    }
     } catch(error) {
       logger.error('Internal Error');
       return res.status(500).json({
@@ -62,7 +64,7 @@ class Note {
    */
   findNote = async (req, res) => {
     try {
-      const id = { id: req.user.dataForToken.id };
+      const id = { id: req.user.decodedtoken.id };
       const getNoteValidation = validation.NoteValidation.validate(id);
       if (getNoteValidation.error) {
         return res.status(400).send({
@@ -90,6 +92,7 @@ class Note {
       logger.error('Internal Error');
       return res.status(500).json({
         message: 'Internal Error',
+        err:err
       });
     }
   }
@@ -100,10 +103,11 @@ class Note {
    * @param {*} res
    * @returns response
    */
-  findNoteById = async(req, res) => {
+  findNoteById = async (req, res) => {
     try {
-      const id = { userId: req.user.dataForToken.id, noteId: req.params.id };
-      const getNoteValidation = validation.getNoteValidation.validate(id);
+      if(req.user){
+      const noteInfo = { userId: req.user.decodedtoken.id, noteId: req.params.id };
+      const getNoteValidation = validation.getNoteValidation.validate(noteInfo);
       if (getNoteValidation.error) {
         return res.status(400).send({
           success: false,
@@ -111,7 +115,7 @@ class Note {
           data: getNoteValidation
         });
       }
-      let findnotebyId = await noteService.findNoteById(id)
+      let findnotebyId = await noteService.findNoteById(noteInfo)
       if (!findnotebyId) {
         logger.error(error)
         return res.status(404).json({
@@ -127,7 +131,9 @@ class Note {
 
       });
     }
+  }
     catch(err){
+      logger.error("error");
       return res.status(500).json({
         message: 'Internal Error',
         success: false,
@@ -145,7 +151,7 @@ class Note {
     try {
       const updateNote = {
         id: req.params.id,
-        userId: req.user.dataForToken.id,
+        userId: req.user.decodedtoken.id,
         title: req.body.title,
         description: req.body.description
       };
@@ -190,7 +196,7 @@ class Note {
    */
   deleteNoteById = (req, res) => {
     try {
-      const id = { userId: req.user.dataForToken.id, noteId: req.params.id };
+      const id = { userId: req.user.decodedtoken.id, noteId: req.params.id };
       const deleteNoteValidation = validation.validateDeleteNote.validate(id);
       if (deleteNoteValidation.error) {
         return res.status(400).send({
@@ -200,11 +206,11 @@ class Note {
         });
       }
       noteService.deleteNoteById(id)
-        .then(data => {
-          return res.status(201).send({
-            message: 'Successfully Deleted note',
-            success: true,
-            data:data
+        .then(() => {
+          return res.status(204).send({
+            // message: 'Successfully Deleted note',
+            // success: true,
+            // data:data
           });
         }).catch(error => {
           return res.status(400).json({

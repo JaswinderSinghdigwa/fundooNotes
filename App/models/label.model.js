@@ -79,7 +79,7 @@ class LabelModel {
             return findlabel;
         }
         catch(error){
-            console.log("Error Occured while finding Label",error);
+            logger.error("Error Occured while finding Label");
         }
        
     }
@@ -105,7 +105,7 @@ class LabelModel {
         return updatelabel
         }
         catch(error){
-            console.log("Error Occured while finding Label",error);
+            logger.error("Error Occured while finding Label");
         }
     }
 
@@ -115,10 +115,10 @@ class LabelModel {
             if (!deletedlabel) {
             return false;
         }
-        return deletedlabel;
+        return {};
         }
         catch(error){
-            console.log("Error Occured while finding Label",error);
+            logger.error("Error Occured while finding Label");
         }
     }
 }

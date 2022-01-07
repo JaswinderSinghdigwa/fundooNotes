@@ -1,5 +1,6 @@
 const labelmodel = require('../models/label.model');
 const nodeRedis = require('../Connector/redis.connector');
+const { logger } = require('../../logger/logger');
 
 
 /*************************************************************************
@@ -34,13 +35,13 @@ class LabelService {
             }
             return result;
         } catch (error) {
-            console.log("Error Occured while finding Label", error);
+            logger.error("Error Occured while finding Label");
         }
     }
 
     // Retrieve labels by Id
     findlabelById =  async (credential) => {
-        let data = await nodeRedis.findAllData()
+        let data = await nodeRedis.findAllData('getById')
          if (!data) {
              return new Promise((resolve, reject) => {
                labelmodel.findlabelById(credential)
@@ -51,9 +52,9 @@ class LabelService {
                 })
             })
         }
-            else if (data) {
-                nodeRedis.setData('getById', 60, JSON.stringify(data))
-                resolve(data)
+         else if (data) {
+            nodeRedis.setData('getById', 60, JSON.stringify(data))
+            resolve(data)
             }
             reject(error)
         }
@@ -66,7 +67,7 @@ class LabelService {
             }
             return updatelabel
         } catch (error) {
-            console.log("Error Occured while finding Label", error);
+            logger.error("Error Occured while finding Label");
         }
 
     }
@@ -77,9 +78,9 @@ class LabelService {
             if (!deletedlabel) {
                 return false;
             }
-            return deletedlabel;
+            return {};
         } catch (error) {
-            console.log("Error Occured while finding Label", error);
+            logger.error("Error Occured while finding Label");
         }
     }
 }

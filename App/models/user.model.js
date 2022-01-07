@@ -22,10 +22,15 @@ const userSchema = mongoose.Schema({
     password: {
         type: String,
         required: true,
-    }
+    },
+    googleLogin: { type: Boolean },
+     verified: {
+    type: Boolean,
+    default: false
+  }
 },
     {
-        timestamps: true
+        timestamps: false   
     })
 userSchema.pre('save', async function (next) { // this line
     const user = this;
@@ -73,10 +78,13 @@ class userModel {
         user.findOne({ email: loginData.email })
         .then((data)=>{
             if(!data){
-                console.log("data is not found",data);
+                logger.info("data is not found");
             }
-            logger.info('Email id found');  
-            resolve(data)
+            else if(data.verified == true){
+
+                logger.info('Email id found');  
+                resolve(data)
+            }
         }).catch((error)=>{
             logger.error('Find error while loggin user');
             reject(error)
@@ -95,7 +103,7 @@ class userModel {
                 logger.error('User with email id doesnt exists');
                 return callback('User with email id doesnt exists', null);
             }else if(!data){
-                console.log("data is not found",data);
+                logger.info("data is not found");
             } 
             else {
                 return callback(null, data);
@@ -135,5 +143,18 @@ class userModel {
             }
         })
     }
+
+    confirmRegister = (data, callback) => {
+    user.findOneAndUpdate({email: data.email},{verified: true},(error, data) => {
+        if (error) {
+          logger.error("data not found in database");
+          return callback(error, null);
+        } else {
+          logger.info("data found in database");
+          return callback(null, data);
+        }
+      }
+    );
+  };
 }
 module.exports = new userModel();

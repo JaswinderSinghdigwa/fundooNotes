@@ -1,4 +1,5 @@
 const redis = require("redis");
+const { logger } = require("../../logger/logger");
 
 let client;
 class RedisServer {
@@ -38,7 +39,7 @@ class RedisServer {
        }
        return true;
      }catch(error){
-      console.log("Some Error occured while in clearing cache",error);
+      logger.error("Some Error occured while in clearing cache");
      }
   };
 }

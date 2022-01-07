@@ -1,7 +1,11 @@
 const userModel = require('../models/user.model')
 const helper = require('../utilities/global.helper');
 const { logger } = require('../../logger/logger');
-const nodemailer = require('../utilities/nodemailer.js');
+const nodemailer = require('../utilities/rabbitMqmail');
+const mailer = require('../utilities/nodemailer')
+const rabbitMQ = require("../Connector/rabbitMq");
+const jwt = require('jsonwebtoken')
+const utilities = require('../utilities/global.helper')
 const { usertoken } = require('../utilities/global.helper');
 
 class userService {
@@ -16,12 +20,24 @@ class userService {
     return new Promise((resolve,reject)=>{
     let userRegister = userModel.register(user);
       userRegister.then((data)=>{
-        resolve(data);
-      }).catch((error)=>{
+        // Send Welcome Mail to User on his Mail
+        nodemailer.sendWelcomeMail(user);
+        const secretkey = process.env.JWT_SECRET;
+        utilities.jwtTokenVerifyMail(data, secretkey, (err, token) => {
+          if (token) {
+            rabbitMQ.sender(data, data.email);
+            mailer.verifyMail(token, data);
+            resolve(token)
+        }else{
+          resolve(null)
+        }
+      })
+      resolve(data);
+  }).catch((error)=>{
         reject(error)
       })
-      })
-    }
+    })
+}
 
   /**
    * @description: Function gets data from model, whether it is valid or not.
@@ -85,6 +101,26 @@ class userService {
       }
     });
   }
+
+  confirmRegister = (data, callback) => {
+    const decode = jwt.verify(data.token, process.env.JWT_SECRET);
+    if (decode) {
+      rabbitMQ
+        .receiver(decode.email)
+        .then((val) => {
+          userModel.confirmRegister(JSON.parse(val), (error, data) => {
+            if (data) {
+              return callback(null, data);
+            } else {
+              return callback(error, null);
+            }
+          });
+        })
+        .catch((error) => {
+          logger.error(error);
+        });
+    }
+  };
 }
 
 module.exports = new userService();

@@ -64,8 +64,8 @@ class Model {
  * @description function written to getnotes by id from database
  * @returns retrieved notes or if error returns error
  */
-findNoteById = async (id) => {
-  let findnote = await notes.find({ $and: [{ _id: id.noteId }, { userId: id.userId }] })
+findNoteById = async (noteInfo) => {
+  let findnote = await notes.find({ $and: [{ _id: noteInfo.noteId }, { userId: noteInfo.userId }] })
   if (!findnote) {
     return false
   }
@@ -96,9 +96,9 @@ deleteNoteById = (id) => {
     notes.findOneAndDelete({ $and: [{ _id: id.noteId }, { userId: id.userId }] })
       .then(data => {
         if(!data){
-          console.log("data is not found",data);
+          logger.info("data is not found");
         }
-        resolve(data)
+        resolve({})
       }).catch(error => {
         reject(error)
       })

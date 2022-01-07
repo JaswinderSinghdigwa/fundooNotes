@@ -33,14 +33,15 @@ class Controller {
     const userRegisterService = service.register(userRegistrationInfo);
       userRegisterService.then((data)=>{
         logger.info('Successfully Resgistration is done');
-        const response = { sucess : true, message : "Resgistration is done Successfully",data:data}
+        const response = { sucess : true, message : "Resgistration is done Successfully"}
         return res.status(200).json(response)
       }).catch((error)=>{
         logger.error('User with this email Id is alreday exists');
         const response = { sucess: false, message: "User is already exist", error : error }
         return res.status(400).json(response)
       })
-    } catch (error) {
+      }
+     catch (error) {
       if (error.name === 'MongoError' && error.code === 11000) {
         logger.error('User with this email Id is alreday exists');
         const response = { success: false, message: 'User with this email Id is alreday exists' };
@@ -64,6 +65,7 @@ class Controller {
       };
       const validationResult= validation.ValidationLogin.validate(LoginData);
       if (validationResult.error) {
+        logger.error(validationResult.error);
         logger.error(validationResult.error);
         const response = { success: false, message: 'failed to validated Input' };
         return res.status(400).send(response);
@@ -163,6 +165,25 @@ class Controller {
 			res.status(500).send(response);
 		}
 	}
-}
+
+  confirmRegister = (req, res) => {
+      const data = {
+        token: req.params.token}
+      service.confirmRegister(data, (error, data) => {
+        if (error) {
+          return res.status(404).json({
+            success: false,
+            message: "error"
+          });
+        } else {
+          return res.status(200).json({
+            success: true,
+            message: "Email Successfully Verified",
+            data: data
+          });
+        }
+      });
+    }
+  };
 
 module.exports = new Controller();

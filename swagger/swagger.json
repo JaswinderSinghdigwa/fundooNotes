@@ -224,10 +224,10 @@
                 }
             }
         },
-        "/note/{id}": {
+        "/notes/{id}": {
             "get": {
                 "tags": [
-                    "Get Notes"
+                    "Get Notes By Id"
                 ],
                 "description": "Get a note by ID for perticuler person id",
                 "parameters": [
@@ -256,59 +256,10 @@
                     "$ref": "#/definitions/notes"
                 },
                 "responses": {
-                    "201": {
+                    "200": {
                         "description": "Create note succesfully !!"
                     },
                     "400": {
-                        "description": "Please enter Valid Token"
-                    },
-                    "500": {
-                        "description": "Internal server error"
-                    }
-                }
-            }
-        },
-        "/note/{id}": {
-            "put": {
-                "tags": [
-                    "update Notes"
-                ],
-                "description": "update a note by ID for perticuler person id !!",
-                "parameters": [
-                    {
-                        "in": "header",
-                        "name": "Authorization",
-                        "description": "Token for vaidation",
-                        "schema": {
-                            "type": "string",
-                            "required": true
-                        }
-                    },
-                    {
-                        "in": "path",
-                        "name": "id",
-                        "description": "Id of note you want to update",
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "in": "body",
-                        "name": "note",
-                        "description": "Note body",
-                        "schema": {
-                            "$ref": "#/definitions/updatenotes"
-                        }
-                    }
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "responses": {
-                    "201": {
-                        "description": "update note succesfully !!"
-                    },
-                    "401": {
                         "description": "Please enter Valid Token"
                     },
                     "500": {
@@ -346,8 +297,8 @@
                     "application/json"
                 ],
                 "responses": {
-                    "201": {
-                        "description": "Delete note succesfully !!"
+                    "204": {
+                        "description": null
                     },
                     "401": {
                         "description": "Please enter Valid Token"
@@ -419,8 +370,7 @@
               }
             }
         },
-
-        "/note/labels/{id}":{
+        "/notes/labels/{id}":{
             "get":{
               "tags":["get label by id"],
               "description":"Gets label by id",
@@ -452,7 +402,7 @@
               }
             }
         },
-        "/note/labels/{id}": {
+        "/notes/label/{id}": {
             "put": {
                 "tags": [
                     "Update Label"
@@ -502,12 +452,12 @@
                 }
             }
         },
-        "/note/label/{id}": {
+        "/note/labels/{id}": {
             "delete": {
                 "tags": [
                     "Delete Label"
                 ],
-                "description": "Delete Label by ID ",
+                "description": null,
                 "parameters": [
                     {
                         "in": "header",
@@ -521,7 +471,7 @@
                     {
                         "in": "path",
                         "name": "id",
-                        "description": "Id of label you want to delete",
+                        "description":null,
                         "schema": {
                             "type": "string"
                         }
@@ -531,8 +481,8 @@
                     "application/json"
                 ],
                 "responses": {
-                    "200": {
-                        "description": "Delete note succesfully !!"
+                    "204": {
+                        "description": null
                     },
                     "400": {
                         "description": "Please enter Valid Token"
@@ -542,7 +492,56 @@
                     }
                 }
             }
-        }
+        },
+        "/updatenotes/{id}": {
+            "put": {
+                "tags": [
+                    "update Notes"
+                ],
+                "description": "update a note by ID for perticuler person id !!",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "Token for vaidation",
+                        "schema": {
+                            "type": "string",
+                            "required": true
+                        }
+                    },
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "Id of note you want to update",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "in": "body",
+                        "name": "note",
+                        "description": "Note body",
+                        "schema": {
+                            "$ref": "#/definitions/updatenotes"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "update note succesfully !!"
+                    },
+                    "400": {
+                        "description": "Please enter Valid Token"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        } 
     },
     "definitions": {
         "registerUser": {

@@ -6,7 +6,7 @@
  */
 
 var bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+const jsonwebtoken = require('jsonwebtoken');
 
 class helperClass {
 
@@ -40,7 +40,7 @@ class helperClass {
       const token = myArr[1];
       try {
         if (token) {
-          jwt.verify(token, process.env.JWT_SECRET, (error, decoded) => {
+          jsonwebtoken.verify(token, process.env.JWT_SECRET, (error, decoded) => {
             if (error) {
               return res.status(400).send({ success: false, message: 'Invalid Token' });
             } else {
@@ -59,5 +59,20 @@ class helperClass {
     comparison = (password, passResult) => {
       return bcrypt.compare(password, passResult);
     }
+
+    jwtTokenVerifyMail = (payload, secretkey, callback) => {
+      jsonwebtoken.sign(
+        { email: payload.email },
+        secretkey,
+        { expiresIn: "50h" },
+        (err, token) => {
+          if (err) {
+            return callback("token not generated", null);
+          } else {
+            return callback(null, token);
+          }
+        }
+      );
+    };
   };
 module.exports = new helperClass();

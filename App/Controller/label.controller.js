@@ -30,9 +30,9 @@ class LabelController {
                 }
                 const labelInfo = {
                     labelName: req.body.labelName,
-                    userId: req.user.dataForToken.id,
+                    userId: req.user.decodedtoken.id,
                     noteId: req.params.id,
-                    email: req.user.dataForToken.email
+                    email: req.user.decodedtoken.email
                 }
                 labelService.addLabel(labelInfo, (error, data) => {
                     if (error) {
@@ -58,7 +58,7 @@ class LabelController {
     findAlllabel = async (req, res) => {
         try {
             if (req.user) {
-                const userId = { id: req.user.dataForToken.id }
+                const userId = { id: req.user.decodedtoken.id }
                 const validateResult = validation.validateUserid.validate(userId);
                 if (validateResult.error) {
                     const response = { sucess: false, message: 'Failed to Validated Inputs', data: validateResult }
@@ -87,7 +87,7 @@ class LabelController {
         try {
             if(req.user){
             const credentials = {
-                userId: req.user.dataForToken.id,
+                userId: req.user.decodedtoken.id,
                 labelId: req.params.id
             };
             const validationResult = validation.labelvalidator.validate(credentials)
@@ -97,7 +97,6 @@ class LabelController {
             }
             labelService.findlabelById(credentials)
                 .then(data => {
-                    console.log("666",data);
                     const response = { sucess: true, message: "Succesfuly label is fetch", data: data }
                     return res.status(201).json(response);
                 }).catch(error => {
@@ -115,7 +114,7 @@ class LabelController {
         try {
             if(req.user){
             const updtlabel = {
-                userId: req.user.dataForToken.id,
+                userId: req.user.decodedtoken.id,
                 id: req.params.id,
                 labelName: req.body.labelName
             };
@@ -144,7 +143,7 @@ class LabelController {
             if(req.user){
             const credentials = {
                 id: req.params.id,
-                userId: req.user.dataForToken.id
+                userId: req.user.decodedtoken.id
             }
             const validatiionResult = validation.deletelabel.validate(credentials)
             if (validatiionResult.error) {
@@ -157,8 +156,8 @@ class LabelController {
                     return res.status(400).json(response)
                 }
                 else{
-                    const response = { sucess: true, message: "label is deleted Succesfully", data:deletelabel }
-                    return res.status(200).json(response)
+                    // const response = { sucess: true, message: "label is deleted Succesfully", data:deletelabel }
+                    return res.status(204).json({})
                 }
             }
         } catch(error){

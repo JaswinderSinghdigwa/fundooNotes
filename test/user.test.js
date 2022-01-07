@@ -35,7 +35,7 @@ describe('registartion', () => {
   it('givenRegistrationDetails_whenImpProper_shouldNotSaveInDB', (done) => {
     const registartionDetails = registrationData.user.registrationWithImproperDetails;
     const registerfaker = {
-      firstName: faker.name.findName(),
+      firstName: faker.name.firstName(),
       lastName: faker.name.lastName(),
       email: faker.internet.email(),
       password: faker.internet.password(),
@@ -43,7 +43,7 @@ describe('registartion', () => {
     chai
       .request(server)
       .post('/register')
-      .send(registartionDetails)
+      .send(registerfaker)
       .end((err, res) => {
         if (err) {
           console.log('Please check details again and re-enter the details with proper format');

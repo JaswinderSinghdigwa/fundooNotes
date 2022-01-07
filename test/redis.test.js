@@ -10,7 +10,7 @@ const { string } = require("joi");
 chai.should();
 describe("Get notes by ID api with redis", () => {
   it("givenPoperDetails_ShouldGetNote", (done) => {
-    const token = redisDB.redis.getNoteWithValidToken;
+    const token = redisjson.redis.getNoteWithValidToken;
     chai
       .request(server)
       .get("/note/labels/6165357e39139e12b1b2986f")
@@ -21,7 +21,7 @@ describe("Get notes by ID api with redis", () => {
       });
   });
   it("givenPoperDetails_ShouldGetNote", (done) => {
-    const token = redisDB.redis.getNoteWithInValidToken;
+    const token = redisjson.redis.getNoteWithInValidToken;
     chai
       .request(server)
       .get("/note/labels/6165357e39139e12b1b2986f")
@@ -34,7 +34,7 @@ describe("Get notes by ID api with redis", () => {
 });
 describe("Get label by ID api with redis", () => {
   it("givenPoperDetails_ShouldGetlabel", (done) => {
-    const token = redisDB.redis.validToken;
+    const token = redisjson.redis.validToken;
     chai
       .request(server)
       .get("/note/61b31eed880372b4f25dedc8")

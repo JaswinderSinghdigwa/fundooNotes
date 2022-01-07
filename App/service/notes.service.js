@@ -1,5 +1,7 @@
 const { logger } = require('../../logger/logger');
 const noteModel = require('../models/notes.model').Model;
+const nodeRedis = require('../Connector/redis.connector');
+
 
 class Service {
   /**
@@ -23,12 +25,17 @@ class Service {
       return findnote;
   }
 
-  findNoteById = async(id)=>{
-    let findnotebyId = await noteModel.findNoteById(id)
+  findNoteById = async(noteInfo)=>{
+    let data = await nodeRedis.findAllData('getById')
+    if (!data) {
+    let findnotebyId = await noteModel.findNoteById(noteInfo)
       if (!findnotebyId ) {
         return false
       }
       return findnotebyId 
+    }
+      nodeRedis.setData('getById', 60, JSON.stringify(data))
+      return data;
   }
 
   updateNoteById = (updateNote, callback) => {
@@ -45,8 +52,8 @@ class Service {
   deleteNoteById =(id) => {
     return new Promise((resolve,reject)=>{
       noteModel.deleteNoteById(id)
-      .then(data=>{
-        resolve(data)
+      .then(()=>{
+        resolve({})
       }).catch(error=>{
         reject(error)
       })
