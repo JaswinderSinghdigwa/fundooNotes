@@ -16,10 +16,10 @@ class userService {
      * @param {*} callback
      */
 
-  register =  (user) => {
-    return new Promise((resolve,reject)=>{
-    let userRegister = userModel.register(user);
-      userRegister.then((data)=>{
+  register = (user) => {
+    return new Promise((resolve, reject) => {
+      let userRegister = userModel.register(user);
+      userRegister.then((data) => {
         // Send Welcome Mail to User on his Mail
         nodemailer.sendWelcomeMail(user);
         const secretkey = process.env.JWT_SECRET;
@@ -28,16 +28,16 @@ class userService {
             rabbitMQ.sender(data, data.email);
             mailer.verifyMail(token, data);
             resolve(token)
-        }else{
-          resolve(null)
-        }
-      })
-      resolve(data);
-  }).catch((error)=>{
+          } else {
+            resolve(null)
+          }
+        })
+        resolve(data);
+      }).catch((error) => {
         reject(error)
       })
     })
-}
+  }
 
   /**
    * @description: Function gets data from model, whether it is valid or not.
@@ -46,9 +46,9 @@ class userService {
    */
 
   login = (InfoLogin) => {
-    return new Promise((resolve,reject)=>{
+    return new Promise((resolve, reject) => {
       let result = userModel.UserLogin(InfoLogin)
-      result.then((data)=> {
+      result.then((data) => {
         let passwordResult = helper.comparison(InfoLogin.password, data.password);
         if (!passwordResult) {
           logger.info(error);
@@ -57,13 +57,13 @@ class userService {
         const usertoken = helper.userToken(data);
         logger.info(' token generated');
         resolve(usertoken);
-      }).catch((error)=>{
+      }).catch((error) => {
         logger.error(error);
         reject(error);
-      }) 
+      })
     })
   }
-    
+
 
   /** 
     @description: Function gets data from model, whether it is valid or not.
@@ -80,7 +80,7 @@ class userService {
         logger.log("!!! Some Error in your code")
       }
       else {
-        return callback(null, nodemailer.sendEmail(data));
+        return callback(null, mailer.sendEmail(data));
       }
     });
   }

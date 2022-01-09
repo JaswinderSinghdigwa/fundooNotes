@@ -8,7 +8,8 @@
         },
         "registrationWithImproperDetails": {
             "firstName": "Jaiswender",
-            "email": "jaiswender@gmail.com",
+            "lastName": "digwa",
+            "email": "findjassi121212@gmail.com",
             "password": "Jaiswender$123#"
         },
         "registrationWithOutEmail": {
@@ -22,8 +23,8 @@
             "password": "srinivas$123"
         },
         "login": {
-            "email": "findjassi121212@gmail.com",
-            "password": "123465Hk"
+            "email":"findjassi121212@gmail.com",
+            "password":"123456@Aa"
         },
         "loginWithImproperDetails": {
             "email" :"Dindjassi121212@gmail.com",
@@ -36,7 +37,7 @@
             "email": "akashgmail.com"
         },
         "validDetails": {
-            "email": "findjassi121212@gmail.com",
+            "email": "js4770563@gmail.com",
             "code": "y4ythnnd9x",
             "password": "1234578Hk"
         },

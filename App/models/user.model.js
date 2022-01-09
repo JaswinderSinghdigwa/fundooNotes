@@ -85,6 +85,10 @@ class userModel {
                 logger.info('Email id found');  
                 resolve(data)
             }
+            else{
+                logger.error(`email is not verified yet ${data.email}`);
+                reject("email is not verified yet");
+            }
         }).catch((error)=>{
             logger.error('Find error while loggin user');
             reject(error)

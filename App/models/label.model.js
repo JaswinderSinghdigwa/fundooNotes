@@ -61,27 +61,27 @@ class LabelModel {
                     })
             } else if (data) {
                 label.findOneAndUpdate({ userId: labelInfo.userId, labelName: labelInfo.labelName }, { $addToSet: { noteId: [labelInfo.noteId] } })
-                    .then(data=>{
+                    .then(data => {
                         return callback(null, data)
-                    }).catch(error=>{
-                        return callback(error,null)
+                    }).catch(error => {
+                        return callback(error, null)
                     })
-                }
+            }
         })
     }
     // Retrieve all labels
     findAllLabel = async (userId) => {
         let findlabel = await label.find({ userId: userId.id })
-        try{
+        try {
             if (!findlabel) {
                 return false;
             }
             return findlabel;
         }
-        catch(error){
+        catch (error) {
             logger.error("Error Occured while finding Label");
         }
-       
+
     }
 
     // Retrieve labels by id
@@ -98,27 +98,28 @@ class LabelModel {
 
     updatelabelById = async (updtlabel) => {
         let updatelabel = await label.findByIdAndUpdate(updtlabel.id, { labelName: updtlabel.labelName }, { new: true })
-        try{
+        try {
             if (!updatelabel) {
-            return false
+                return false
+            }
+            return updatelabel
         }
-        return updatelabel
-        }
-        catch(error){
+        catch (error) {
             logger.error("Error Occured while finding Label");
         }
     }
 
     deleteLabel = async (credential) => {
-        let deletedlabel = await label.findOneAndDelete(credential.id, { userId: credential.userId })
-        try{
+        let deletedlabel = await label.findOneAndDelete({ $and: [{ _id: credential.id }, { userId: credential.userId }] })
+        try {
             if (!deletedlabel) {
-            return false;
+                return deletedlabel;
+            }
+            return deletedlabel;
         }
-        return {};
-        }
-        catch(error){
+        catch (error) {
             logger.error("Error Occured while finding Label");
+            return true
         }
     }
 }

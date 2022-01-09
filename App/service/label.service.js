@@ -40,24 +40,24 @@ class LabelService {
     }
 
     // Retrieve labels by Id
-    findlabelById =  async (credential) => {
+    findlabelById = async (credential) => {
         let data = await nodeRedis.findAllData('getById')
-         if (!data) {
-             return new Promise((resolve, reject) => {
-               labelmodel.findlabelById(credential)
-                .then(data => {  
-                    resolve(data)
-                }).catch((error) => {
-                    reject(error)
-                })
+        if (!data) {
+            return new Promise((resolve, reject) => {
+                labelmodel.findlabelById(credential)
+                    .then(data => {
+                        resolve(data)
+                    }).catch((error) => {
+                        reject(error)
+                    })
             })
         }
-         else if (data) {
+        else if (data) {
             nodeRedis.setData('getById', 60, JSON.stringify(data))
             resolve(data)
-            }
-            reject(error)
         }
+        reject(error)
+    }
 
     updatelabelById = (updtlabel) => {
         let updatelabel = labelmodel.updatelabelById(updtlabel)
@@ -75,10 +75,9 @@ class LabelService {
     deleteLabel = async (credential) => {
         let deletedlabel = await labelmodel.deleteLabel(credential)
         try {
-            if (!deletedlabel) {
-                return false;
+            if (deletedlabel) {
+                return deletedlabel;
             }
-            return {};
         } catch (error) {
             logger.error("Error Occured while finding Label");
         }

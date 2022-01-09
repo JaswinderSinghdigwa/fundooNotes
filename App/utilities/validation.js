@@ -18,7 +18,7 @@ class Validation {
 
 
       email: Joi.string()
-        .pattern(new RegExp('^[a-z0-9.+-]+@[A-Za-z0-9.-]+.[A-Za-z]{2,6}$'))
+        .pattern(new RegExp('^[a-zA-z]{3}([+-_ .]*[a-zA-Z0-9]+)*[@][a-zA-z0-9]+(.[a-z]{2,3})*$'))
         .required(),
 
       password: Joi.string()
@@ -30,7 +30,7 @@ class Validation {
   ValidationLogin =
     Joi.object({
       email: Joi.string()
-        .pattern(new RegExp('^[a-z0-9.+-]+@[A-Za-z0-9.-]+.[A-Za-z]{2,6}$'))
+        .pattern(new RegExp('^[a-zA-z]{3}([+-_ .]*[a-zA-Z0-9]+)*[@][a-zA-z0-9]+(.[a-z]{2,3})*$'))
         .required(),
 
       password: Joi.string()
@@ -77,7 +77,7 @@ class Validation {
     description: Joi.string().min(2)
   });
   validateDeleteNote = Joi.object({
-    id:Joi.string(),
+    id: Joi.string(),
     noteId: Joi.string(),
     userId: Joi.string()
   })
@@ -88,18 +88,18 @@ class Validation {
     id: Joi.string()
   });
   labelvalidator = Joi.object({
-    userId:Joi.string(),
+    userId: Joi.string(),
     labelId
-    :Joi.string()
+      : Joi.string()
   })
-  updatelabelbyid =Joi.object({
-    userId:Joi.string(),
-    id:Joi.string(),
-    labelName : Joi.string()
+  updatelabelbyid = Joi.object({
+    userId: Joi.string(),
+    id: Joi.string(),
+    labelName: Joi.string().min(5).required()
   })
   deletelabel = Joi.object({
-    userId:Joi.string(),
-    id:Joi.string()
+    userId: Joi.string(),
+    id: Joi.string().min(10).required()
   })
 }
 

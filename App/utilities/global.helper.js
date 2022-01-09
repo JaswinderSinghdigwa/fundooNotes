@@ -56,23 +56,23 @@ class helperClass {
       }
     }
   }
-    comparison = (password, passResult) => {
-      return bcrypt.compare(password, passResult);
-    }
+  comparison = (password, passResult) => {
+    return bcrypt.compare(password, passResult);
+  }
 
-    jwtTokenVerifyMail = (payload, secretkey, callback) => {
-      jsonwebtoken.sign(
-        { email: payload.email },
-        secretkey,
-        { expiresIn: "50h" },
-        (err, token) => {
-          if (err) {
-            return callback("token not generated", null);
-          } else {
-            return callback(null, token);
-          }
+  jwtTokenVerifyMail = (payload, secretkey, callback) => {
+    jsonwebtoken.sign(
+      { email: payload.email },
+      secretkey,
+      { expiresIn: "50h" },
+      (err, token) => {
+        if (err) {
+          return callback("token not generated", null);
+        } else {
+          return callback(null, token);
         }
-      );
-    };
+      }
+    );
   };
+};
 module.exports = new helperClass();

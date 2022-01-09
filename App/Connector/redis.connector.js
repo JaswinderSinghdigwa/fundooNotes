@@ -3,7 +3,7 @@ const { logger } = require("../../logger/logger");
 
 let client;
 class RedisServer {
-  constructor () {
+  constructor() {
     this.connect();
   }
 
@@ -22,7 +22,7 @@ class RedisServer {
         return null;
       }
       return JSON.parse(data);
-    }catch(error) {
+    } catch (error) {
       throw error;
     }
   }
@@ -31,16 +31,16 @@ class RedisServer {
     client.setEx(key, time, data);
   };
 
-  filterCache = async(key) => {
-     let deletecache = await client.del(key)
-     try{
-       if(!deletecache){
-          return null;
-       }
-       return true;
-     }catch(error){
+  filterCache = async (key) => {
+    let deletecache = await client.del(key)
+    try {
+      if (!deletecache) {
+        return null;
+      }
+      return true;
+    } catch (error) {
       logger.error("Some Error occured while in clearing cache");
-     }
+    }
   };
 }
 module.exports = new RedisServer();

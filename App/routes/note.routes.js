@@ -20,25 +20,25 @@ module.exports = (app) => {
   // api for Reset password
   app.put('/reset-Password', controller.resetPassword);
   // api for Create Note 
-  app.post('/note', helper.decodeToken,note.createNote);
-   // api for getnote
+  app.post('/note', helper.decodeToken, note.createNote);
+  // api for getnote
   app.get('/notes', helper.decodeToken, note.findNote);
-   // api for getnotes Id .. puting route name note instead of notes not working in swagger 
-   app.get('/notes/:id', helper.decodeToken, note.findNoteById);
-   // api for updatenotes Id 
-   app.put('/updatenotes/:id', helper.decodeToken, note.updateNoteById); 
-   // api for delete By Id 
-   app.delete('/note/:id', helper.decodeToken, note.deleteNoteById);
-   // api for Add Label By Id 
-   app.post('/note/label/:id', helper.decodeToken, labelController.addLabel);
-   // api for get Label  
-   app.get('/labels', helper.decodeToken, labelController.findAlllabel);
-   // api for get Label ..puting route name note instead of notes not working in swagger 
-   app.get('/notes/labels/:id', helper.decodeToken, labelController.findlabelById);
-   // api for Update Label by id 
-   app.put('/notes/label/:id', helper.decodeToken, labelController.updatelabelById);
-    // api for Delete Label by Id  
-   app.delete('/note/labels/:id', helper.decodeToken, labelController.deletelabelById);
-
-   app.get('/confirmRegister/:token', controller.confirmRegister)
+  // api for getnotes Id .. puting route name note instead of notes not working in swagger 
+  app.get('/notes/:id', helper.decodeToken, note.findNoteById);
+  // api for updatenotes Id 
+  app.put('/updatenotes/:id', helper.decodeToken, note.updateNoteById);
+  // api for delete By Id 
+  app.delete('/note/:id', helper.decodeToken, note.deleteNoteById);
+  // api for Add Label By Id 
+  app.post('/note/label/:id', helper.decodeToken, labelController.addLabel);
+  // api for get Label  
+  app.get('/labels', helper.decodeToken, labelController.findAlllabel);
+  // api for get Label ..puting route name note instead of notes not working in swagger 
+  app.get('/notes/labels/:id', helper.decodeToken, labelController.findlabelById);
+  // api for Update Label by id 
+  app.put('/notes/label/:id', helper.decodeToken, labelController.updatelabelById);
+  // api for Delete Label by Id  
+  app.delete('/note/labels/:id', helper.decodeToken, labelController.deletelabelById);
+   // api for conformRegster Label by Id  
+  app.get('/confirmRegister/:token', controller.confirmRegister)
 }; 

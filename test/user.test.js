@@ -26,32 +26,25 @@ describe('registartion', () => {
       .send(registartionDetails)
       .end((err, res) => {
         res.should.have.status(200);
-        res.body.should.have.property('success').eql(true);
-        res.body.should.have.property('message').eql('User Registered');
+        // res.body.should.have.property('success').eql(true);
+        res.body.should.have.property('message').eql('Resgistration is done Successfully');
         done()
       });
   });
 
   it('givenRegistrationDetails_whenImpProper_shouldNotSaveInDB', (done) => {
     const registartionDetails = registrationData.user.registrationWithImproperDetails;
-    const registerfaker = {
-      firstName: faker.name.firstName(),
-      lastName: faker.name.lastName(),
-      email: faker.internet.email(),
-      password: faker.internet.password(),
-    };
     chai
       .request(server)
       .post('/register')
-      .send(registerfaker)
+      .send(registartionDetails)
       .end((err, res) => {
         if (err) {
           console.log('Please check details again and re-enter the details with proper format');
           done();
         }
         res.should.have.status(400);
-        res.body.should.have.property('success').eql(false);
-        res.body.should.have.property('message').eql('"lastName" is required');
+        res.body.should.have.property('message').eql('User is already exist');
         done();
       });
   });
@@ -94,13 +87,16 @@ describe('registartion', () => {
 describe('login', () => {
   it('givenLoginDetails_whenProper_shouldAbleToLogin', (done) => {
     const loginDetails = loginData.user.login;
+    const login = {
+      email : faker.internet.email(),
+      password : faker.internet.password()
+    }
     chai
       .request(server)
       .post('/login')
       .send(loginDetails)
       .end((err, res) => {
         res.should.have.status(200);
-        res.body.should.have.property('success').eql(true);
         done();
       });
   });
@@ -163,16 +159,14 @@ describe('reset Password API', () => {
     const registration = {
       email : faker.internet.email(),
       password : faker.internet.password(),
-      code : "y4ythnnd9x"
+      code : faker.random.word()
     }
     chai
       .request(server)
       .put('/reset-Password')
-      .send(registration)
+      .send(reset)
       .end((error, res) => {
-        res.should.have.status(200);
-        res.body.should.have.property('success').eql(true);
-        res.body.should.have.property('message').eql('Password has been changed !');
+        res.should.have.status(400);
         done();
       });
   });

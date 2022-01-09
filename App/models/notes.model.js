@@ -48,62 +48,62 @@ class Model {
     }
   }
 
-/**
- * @description function written to get all notes from database
- * @returns retrieved notes or if error returns error
- */
- findNote = async (id) => {
-  let findnote = await notes.find({ userId: id.id })
+  /**
+   * @description function written to get all notes from database
+   * @returns retrieved notes or if error returns error
+   */
+  findNote = async (id) => {
+    let findnote = await notes.find({ userId: id.id })
     if (!findnote) {
       return false
     }
     return findnote;
- }
-
-/**
- * @description function written to getnotes by id from database
- * @returns retrieved notes or if error returns error
- */
-findNoteById = async (noteInfo) => {
-  let findnote = await notes.find({ $and: [{ _id: noteInfo.noteId }, { userId: noteInfo.userId }] })
-  if (!findnote) {
-    return false
   }
-  return findnote
-}
 
-/**
- * @description function written to updateNotes by id from database
- * @returns retrieved notes or if error returns error
- */
-updateNoteById = (updatedNote, callback) => {
-  notes.findByIdAndUpdate(updatedNote.id, { title: updatedNote.title, description: updatedNote.description }, { new: true }, (err, data) => {
-  if (err) {
+  /**
+   * @description function written to getnotes by id from database
+   * @returns retrieved notes or if error returns error
+   */
+  findNoteById = async (noteInfo) => {
+    let findnote = await notes.find({ $and: [{ _id: noteInfo.noteId }, { userId: noteInfo.userId }] })
+    if (!findnote) {
+      return false
+    }
+    return findnote
+  }
+
+  /**
+   * @description function written to updateNotes by id from database
+   * @returns retrieved notes or if error returns error
+   */
+  updateNoteById = (updatedNote, callback) => {
+    notes.findByIdAndUpdate(updatedNote.id, { title: updatedNote.title, description: updatedNote.description }, { new: true }, (err, data) => {
+      if (err) {
         return callback(err, null);
-      } else if(!data){
+      } else if (!data) {
         return callback("data is not  found", data);
       }
-      return callback(null,data)
+      return callback(null, data)
     });
   }
 
-/**
- * @description function written to DeleteNotes by id from database
- * @returns retrieved notes or if error returns error
- */
-deleteNoteById = (id) => {
-  return new Promise((resolve, reject) => {
-    notes.findOneAndDelete({ $and: [{ _id: id.noteId }, { userId: id.userId }] })
-      .then(data => {
-        if(!data){
-          logger.info("data is not found");
-        }
-        resolve({})
-      }).catch(error => {
-        reject(error)
-      })
-  })
-}
+  /**
+   * @description function written to DeleteNotes by id from database
+   * @returns retrieved notes or if error returns error
+   */
+  deleteNoteById = (id) => {
+    return new Promise((resolve, reject) => {
+      notes.findOneAndDelete({ $and: [{ _id: id.noteId }, { userId: id.userId }] })
+        .then(data => {
+          if (!data) {
+            logger.info("data is not found");
+          }
+          resolve({})
+        }).catch(error => {
+          reject(error)
+        })
+    })
+  }
 }
 module.exports = {
   Model: new Model(),

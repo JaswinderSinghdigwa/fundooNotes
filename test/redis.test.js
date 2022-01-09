@@ -9,53 +9,49 @@ const { expect } = require("chai");
 const { string } = require("joi");
 chai.should();
 describe("Get notes by ID api with redis", () => {
-  it("givenPoperDetails_ShouldGetNote", (done) => {
-    const token = redisjson.redis.getNoteWithValidToken;
+  it("ShouldGetNote from database", (done) => {
+    const token = redisjson.redis.validToken;
     chai
       .request(server)
-      .get("/note/labels/6165357e39139e12b1b2986f")
+      .get("/notes/61d88901a543c18ec872cd50")
       .set({ authorization: token })
       .end((err, res) => {
         res.should.have.status(200);
         done();
       });
   });
-  it("givenPoperDetails_ShouldGetNote", (done) => {
-    const token = redisjson.redis.getNoteWithInValidToken;
+  it("_ShouldGetNote from RedisCachememory", (done) => {
+    const token = redisjson.redis.validToken;;
     chai
       .request(server)
-      .get("/note/labels/6165357e39139e12b1b2986f")
+      .get("/notes/61d88901a543c18ec872cd50")
       .set({ authorization: token })
       .end((err, res) => {
-        res.should.have.status(400);
+        res.should.have.status(200);
         done();
       });
   });
 });
 describe("Get label by ID api with redis", () => {
-  it("givenPoperDetails_ShouldGetlabel", (done) => {
+  it("ShouldGetlabel from Database", (done) => {
     const token = redisjson.redis.validToken;
     chai
       .request(server)
-      .get("/note/61b31eed880372b4f25dedc8")
+      .get("/notes/labels/61d889a6a543c18ec872cd56")
       .set({ authorization: token })
       .end((err, res) => {
-        res.should.have.status(200);
-        res.body.should.have.property("success").eql(true);
-        res.body.should.have
-          .property("message")
-          .eql("label retrieved succesfully");
+        res.should.have.status(201);
         done();
       });
   });
-  it("givenImPoperDetails_ShouldGetlabel", (done) => {
-    const token = redisjson.redis.getNoteWithInValidToken;
+  it("ShouldGetlabel from database", (done) => {
+    const token = redisjson.redis.validToken;
     chai
       .request(server)
-      .get("/note/61b31eed880372b4f25dedc8")
+      .get("/notes/labels/61d889a6a543c18ec872cd56")
       .set({ authorization: token })
       .end((err, res) => {
-        res.should.have.status(400);
+        res.should.have.status(201);
         done();
       });
   });
