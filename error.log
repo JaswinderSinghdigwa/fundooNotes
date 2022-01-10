@@ -1138,3 +1138,51 @@
 {"level":"error","message":"Some error occurred !","timestamp":"2022-01-09T13:11:23.772Z"}
 {"level":"error","message":"Otp doesnt match","timestamp":"2022-01-09T13:11:23.784Z"}
 {"level":"error","timestamp":"2022-01-09T13:11:23.784Z"}
+{"kind":"ObjectId","level":"error","path":"_id","reason":{},"stringValue":"\"61d8a1c8bc569ceb4\"","timestamp":"2022-01-09T16:54:04.030Z","value":"61d8a1c8bc569ceb4","valueType":"string"}
+{"kind":"ObjectId","level":"error","path":"_id","reason":{},"stringValue":"\"61d8a1c8bc564679ca3\"","timestamp":"2022-01-09T16:54:04.037Z","value":"61d8a1c8bc564679ca3","valueType":"string"}
+{"_original":{"description":"golden period of life","id":"61d89b2ed11dc06d15554019","title":"S","userId":"61d87876d80a65db9df88a90"},"details":[{"context":{"key":"title","label":"title","limit":2,"value":"S"},"message":"\"title\" length must be at least 2 characters long","path":["title"],"type":"string.min"}],"level":"error","timestamp":"2022-01-09T16:54:04.299Z"}
+{"_original":{"description":"g","id":"61d89b2ed11dc06d15554019","title":"School","userId":"61d87876d80a65db9df88a90"},"details":[{"context":{"key":"description","label":"description","limit":2,"value":"g"},"message":"\"description\" length must be at least 2 characters long","path":["description"],"type":"string.min"}],"level":"error","timestamp":"2022-01-09T16:54:04.304Z"}
+{"level":"error","message":"User with this email Id is alreday exists","timestamp":"2022-01-09T16:54:04.551Z"}
+{"level":"error","message":"Failed To Validated Input","timestamp":"2022-01-09T16:54:04.562Z"}
+{"level":"error","message":"Failed To Validated Input","timestamp":"2022-01-09T16:54:04.569Z"}
+{"_original":{"email":"finjadas1212@getMaxListeners.com","password":"1121212"},"details":[{"context":{"key":"password","label":"password","regex":{},"value":"1121212"},"message":"\"password\" with value \"1121212\" fails to match the required pattern: /(?=^.{8,}$)((?=.*\\d)|(?=.*\\W+))(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$/","path":["password"],"type":"string.pattern.base"}],"level":"error","timestamp":"2022-01-09T16:54:04.621Z"}
+{"_original":{"email":"finjadas1212@getMaxListeners.com","password":"1121212"},"details":[{"context":{"key":"password","label":"password","regex":{},"value":"1121212"},"message":"\"password\" with value \"1121212\" fails to match the required pattern: /(?=^.{8,}$)((?=.*\\d)|(?=.*\\W+))(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$/","path":["password"],"type":"string.pattern.base"}],"level":"error","timestamp":"2022-01-09T16:54:04.622Z"}
+{"level":"error","message":"Some error occurred !","timestamp":"2022-01-09T16:54:04.650Z"}
+{"level":"error","message":"Otp doesnt match","timestamp":"2022-01-09T16:54:04.663Z"}
+{"level":"error","timestamp":"2022-01-09T16:54:04.663Z"}
+{"kind":"ObjectId","level":"error","path":"_id","reason":{},"stringValue":"\"61d8a1c8bc569ceb4\"","timestamp":"2022-01-09T17:42:16.603Z","value":"61d8a1c8bc569ceb4","valueType":"string"}
+{"kind":"ObjectId","level":"error","path":"_id","reason":{},"stringValue":"\"61d8a1c8bc564679ca3\"","timestamp":"2022-01-09T17:42:16.612Z","value":"61d8a1c8bc564679ca3","valueType":"string"}
+{"_original":{"description":"golden period of life","id":"61d89b2ed11dc06d15554019","title":"S","userId":"61d87876d80a65db9df88a90"},"details":[{"context":{"key":"title","label":"title","limit":2,"value":"S"},"message":"\"title\" length must be at least 2 characters long","path":["title"],"type":"string.min"}],"level":"error","timestamp":"2022-01-09T17:42:16.952Z"}
+{"_original":{"description":"g","id":"61d89b2ed11dc06d15554019","title":"School","userId":"61d87876d80a65db9df88a90"},"details":[{"context":{"key":"description","label":"description","limit":2,"value":"g"},"message":"\"description\" length must be at least 2 characters long","path":["description"],"type":"string.min"}],"level":"error","timestamp":"2022-01-09T17:42:16.961Z"}
+{"level":"error","message":"User with this email Id is alreday exists","timestamp":"2022-01-09T17:42:17.254Z"}
+{"level":"error","message":"Failed To Validated Input","timestamp":"2022-01-09T17:42:17.291Z"}
+{"level":"error","message":"Failed To Validated Input","timestamp":"2022-01-09T17:42:17.299Z"}
+{"_original":{"email":"finjadas1212@getMaxListeners.com","password":"1121212"},"details":[{"context":{"key":"password","label":"password","regex":{},"value":"1121212"},"message":"\"password\" with value \"1121212\" fails to match the required pattern: /(?=^.{8,}$)((?=.*\\d)|(?=.*\\W+))(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$/","path":["password"],"type":"string.pattern.base"}],"level":"error","timestamp":"2022-01-09T17:42:17.337Z"}
+{"_original":{"email":"finjadas1212@getMaxListeners.com","password":"1121212"},"details":[{"context":{"key":"password","label":"password","regex":{},"value":"1121212"},"message":"\"password\" with value \"1121212\" fails to match the required pattern: /(?=^.{8,}$)((?=.*\\d)|(?=.*\\W+))(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$/","path":["password"],"type":"string.pattern.base"}],"level":"error","timestamp":"2022-01-09T17:42:17.337Z"}
+{"level":"error","message":"Some error occurred !","timestamp":"2022-01-09T17:42:17.375Z"}
+{"level":"error","message":"Otp doesnt match","timestamp":"2022-01-09T17:42:17.396Z"}
+{"level":"error","timestamp":"2022-01-09T17:42:17.397Z"}
+{"kind":"ObjectId","level":"error","path":"_id","reason":{},"stringValue":"\"61d8a1c8bc569ceb4\"","timestamp":"2022-01-10T02:13:58.313Z","value":"61d8a1c8bc569ceb4","valueType":"string"}
+{"kind":"ObjectId","level":"error","path":"_id","reason":{},"stringValue":"\"61d8a1c8bc564679ca3\"","timestamp":"2022-01-10T02:13:58.323Z","value":"61d8a1c8bc564679ca3","valueType":"string"}
+{"_original":{"description":"golden period of life","id":"61d89b2ed11dc06d15554019","title":"S","userId":"61d87876d80a65db9df88a90"},"details":[{"context":{"key":"title","label":"title","limit":2,"value":"S"},"message":"\"title\" length must be at least 2 characters long","path":["title"],"type":"string.min"}],"level":"error","timestamp":"2022-01-10T02:13:58.606Z"}
+{"_original":{"description":"g","id":"61d89b2ed11dc06d15554019","title":"School","userId":"61d87876d80a65db9df88a90"},"details":[{"context":{"key":"description","label":"description","limit":2,"value":"g"},"message":"\"description\" length must be at least 2 characters long","path":["description"],"type":"string.min"}],"level":"error","timestamp":"2022-01-10T02:13:58.613Z"}
+{"level":"error","message":"User with this email Id is alreday exists","timestamp":"2022-01-10T02:13:58.858Z"}
+{"level":"error","message":"Failed To Validated Input","timestamp":"2022-01-10T02:13:58.867Z"}
+{"level":"error","message":"Failed To Validated Input","timestamp":"2022-01-10T02:13:58.871Z"}
+{"_original":{"email":"finjadas1212@getMaxListeners.com","password":"1121212"},"details":[{"context":{"key":"password","label":"password","regex":{},"value":"1121212"},"message":"\"password\" with value \"1121212\" fails to match the required pattern: /(?=^.{8,}$)((?=.*\\d)|(?=.*\\W+))(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$/","path":["password"],"type":"string.pattern.base"}],"level":"error","timestamp":"2022-01-10T02:13:58.900Z"}
+{"_original":{"email":"finjadas1212@getMaxListeners.com","password":"1121212"},"details":[{"context":{"key":"password","label":"password","regex":{},"value":"1121212"},"message":"\"password\" with value \"1121212\" fails to match the required pattern: /(?=^.{8,}$)((?=.*\\d)|(?=.*\\W+))(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$/","path":["password"],"type":"string.pattern.base"}],"level":"error","timestamp":"2022-01-10T02:13:58.900Z"}
+{"level":"error","message":"Some error occurred !","timestamp":"2022-01-10T02:13:58.929Z"}
+{"level":"error","message":"Otp doesnt match","timestamp":"2022-01-10T02:13:58.944Z"}
+{"level":"error","timestamp":"2022-01-10T02:13:58.944Z"}
+{"kind":"ObjectId","level":"error","path":"_id","reason":{},"stringValue":"\"61d8a1c8bc569ceb4\"","timestamp":"2022-01-10T02:45:38.101Z","value":"61d8a1c8bc569ceb4","valueType":"string"}
+{"kind":"ObjectId","level":"error","path":"_id","reason":{},"stringValue":"\"61d8a1c8bc564679ca3\"","timestamp":"2022-01-10T02:45:38.111Z","value":"61d8a1c8bc564679ca3","valueType":"string"}
+{"_original":{"description":"golden period of life","id":"61d89b2ed11dc06d15554019","title":"S","userId":"61d87876d80a65db9df88a90"},"details":[{"context":{"key":"title","label":"title","limit":2,"value":"S"},"message":"\"title\" length must be at least 2 characters long","path":["title"],"type":"string.min"}],"level":"error","timestamp":"2022-01-10T02:45:38.419Z"}
+{"_original":{"description":"g","id":"61d89b2ed11dc06d15554019","title":"School","userId":"61d87876d80a65db9df88a90"},"details":[{"context":{"key":"description","label":"description","limit":2,"value":"g"},"message":"\"description\" length must be at least 2 characters long","path":["description"],"type":"string.min"}],"level":"error","timestamp":"2022-01-10T02:45:38.425Z"}
+{"level":"error","message":"User with this email Id is alreday exists","timestamp":"2022-01-10T02:45:38.700Z"}
+{"level":"error","message":"Failed To Validated Input","timestamp":"2022-01-10T02:45:38.710Z"}
+{"level":"error","message":"Failed To Validated Input","timestamp":"2022-01-10T02:45:38.716Z"}
+{"_original":{"email":"finjadas1212@getMaxListeners.com","password":"1121212"},"details":[{"context":{"key":"password","label":"password","regex":{},"value":"1121212"},"message":"\"password\" with value \"1121212\" fails to match the required pattern: /(?=^.{8,}$)((?=.*\\d)|(?=.*\\W+))(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$/","path":["password"],"type":"string.pattern.base"}],"level":"error","timestamp":"2022-01-10T02:45:38.747Z"}
+{"_original":{"email":"finjadas1212@getMaxListeners.com","password":"1121212"},"details":[{"context":{"key":"password","label":"password","regex":{},"value":"1121212"},"message":"\"password\" with value \"1121212\" fails to match the required pattern: /(?=^.{8,}$)((?=.*\\d)|(?=.*\\W+))(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$/","path":["password"],"type":"string.pattern.base"}],"level":"error","timestamp":"2022-01-10T02:45:38.748Z"}
+{"level":"error","message":"Some error occurred !","timestamp":"2022-01-10T02:45:38.794Z"}
+{"level":"error","message":"Otp doesnt match","timestamp":"2022-01-10T02:45:38.804Z"}
+{"level":"error","timestamp":"2022-01-10T02:45:38.804Z"}
